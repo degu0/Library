@@ -3,6 +3,8 @@
 namespace Library_ETE\controller;
 
 use Library_ETE\controller\inheritance\Controller;
+use Library_ETE\model\BD\BookDataBase;
+use Library_ETE\model\BD\PeopleDataBase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -30,14 +32,20 @@ class TableController extends Controller implements RequestHandlerInterface
 
     public function people() : ResponseInterface
     {
-        $bodyHttp = $this->getHTTPBodyBuffer("/table/people.php");
+        $peopleDB = new PeopleDataBase();
+
+        $listPeople = $peopleDB->getList();
+        $bodyHttp = $this->getHTTPBodyBuffer("/table/people.php",["listPeople" => $listPeople]);
         $response = new Response(200, [], $bodyHttp);
         return $response;
     }
 
     public function book() : ResponseInterface
     {
-        $bodyHttp = $this->getHTTPBodyBuffer("/table/book.php");
+        $bookBD = new BookDataBase();
+
+        $listBook = $bookBD->getList();
+        $bodyHttp = $this->getHTTPBodyBuffer("/table/book.php", ["listBook" => $listBook]);
         $response = new Response(200, [], $bodyHttp);
         return $response;
     }

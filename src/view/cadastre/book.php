@@ -5,7 +5,7 @@
     <h1>Cadastro de livros   
     </h1>
     <section>
-        <form action="/cadastro/livro/add">
+        <form action="/cadastro/livro/add" method="POST">
             <label for="idBookName">Nome do livro: </label>
             <input type="text" name="bookName" id="idBookName"> <br>
             <label for="idBookClassificon">Classificação: </label>

@@ -4,7 +4,7 @@
 <main>
     <h1>Cadastro de pessoas</h1>
     <section>
-        <form action="POST">
+        <form action="cadastro/pessoa/add" method="$_POST">
             <label for="idPeopleName">Nome: </label>
             <input type="text" name="peopleName" id="idPeopleName"><br>
             <label for="idPeopleTrade">Oficio: </label>

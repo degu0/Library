@@ -12,6 +12,8 @@ return [
     "/erro" => ErroController::class,
     "/cadastro" => CadastreController::class,
     "/cadastro/pessoa" => CadastreController::class,
+    "/cadastro/pessoa/add" => CadastreController::class,
+    "/cadastro/livro/add" => CadastreController::class,
     "/cadastro/livro" => CadastreController::class,
     "/emprestimo" => LoanController::class,
     "/tabela" => TableController::class,
