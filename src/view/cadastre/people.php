@@ -1,9 +1,32 @@
 <title>Library - Cadastro Pessoas</title>
-<?php require __DIR__ . "/../share/head.php";?>
+<?php require __DIR__ . "/../share/head.php"; ?>
 
 <main>
     <h1>Cadastro de pessoas</h1>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores mollitia similique illo, accusamus repellat delectus eaque porro eius, labore, ab tempora! Harum nam ratione minima sint. Eius facilis porro ipsum.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum corrupti alias facere exercitationem maxime at facilis quia nulla voluptate. Sunt cumque placeat dolorum ea laboriosam doloribus tempora dicta quae tenetur</p>
+    <section>
+        <form action="POST">
+            <label for="idPeopleName">Nome: </label>
+            <input type="text" name="peopleName" id="idPeopleName"><br>
+            <label for="idPeopleTrade">Oficio: </label>
+            <input type="text" name="peopleTrade" id="idPeopleTrade"><br>
+            <label for="idPeopleClass">Turma: </label>
+            <select name="peopleClass" id="idPeopleClass">
+                <option value="null"></option>
+                <option value="1_MKT_A">1 marketing A</option>
+                <option value="1_MKT_B">1 marketing B</option>
+                <option value="1_TDS_A">1 sistemas A</option>
+                <option value="1_TDS_B">1 sistemas B</option>
+                <option value="2_MTK_A">2 marketing A</option>
+                <option value="2_MKT_B">2 marketing B</option>
+                <option value="2_TDS_A">2 sistemas A</option>
+                <option value="2_TDS_B">2 sistemas B</option>
+                <option value="3_MKT_A">3 marketing A</option>
+                <option value="3_MKT_B">3 marketing B</option>
+                <option value="3_TDS_A">3 sistemas A</option>
+                <option value="3_TDS_B">3 sistemas B</option>
+            </select><br>
+            <input type="submit" value="cadastrar">
+        </form>
+    </section>
 </main>
-<?php require __DIR__ . "/../share/footer.php";?>
+<?php require __DIR__ . "/../share/footer.php"; ?>

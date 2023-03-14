@@ -4,7 +4,7 @@ use Library;
 create table Livros (
 	id int auto_increment,
 	Nome varchar(50) not null,
-    Classificacao enum('Nao_Ditaticos', 'Ditaticos', 'Tecnicos') not null, 
+    Classificacao enum('Nao_Didaticos', 'Didaticos', 'Tecnicos') not null, 
     Quantidade int not null,
     primary key(id)
 );
