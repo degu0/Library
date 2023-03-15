@@ -20,6 +20,7 @@ create table Pessoas (
 create table Emprestimo (
 	id int auto_increment,
     Data_Entrega date not null, 
+	Data_Final date not null,
     FK_id_Livro int,
     FK_id_Pessoa int,
     

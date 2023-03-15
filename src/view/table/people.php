@@ -15,6 +15,9 @@
                 <td><?php echo $people->getName();?></td>
                 <td><?php echo $people->getTrade();?></td>
                 <td><?php echo $people->getClass();?></td>
+                <td>
+                    <?php echo "<a href='/tabela/pessoa/edit?id=".$people->getId(). "'>EDIT</a>";?>
+                </td>
             </tr>
         </tbody>
     </table>

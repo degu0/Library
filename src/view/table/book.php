@@ -16,7 +16,7 @@
                 <td><?php echo $book->getClassification(); ?></td>
                 <td><?php echo $book->getQuantity(); ?></td>
                 <td>
-                    <?php echo "<a href='/tabela/livro/edit?id=" .  $ensino->getId() . "'>EDIT</a>"; ?>
+                    <?php echo "<a href='/tabela/livro/edit?id=" .  $book->getId() . "'>EDIT</a>"; ?>
                 </td>
             </tr>
         </tbody>

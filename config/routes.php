@@ -15,12 +15,15 @@ return [
     "/cadastro/pessoa/add" => CadastreController::class,
     "/cadastro/livro" => CadastreController::class,
     "/cadastro/livro/add" => CadastreController::class,
-    "/cadastro/livro/edit" => CadastreController::class,
-    "/cadastro/livro/update" => CadastreController::class,
-    "/cadastro/livro/delete" => CadastreController::class,
     "/emprestimo" => LoanController::class,
     "/tabela" => TableController::class,
     "/tabela/pessoa" => TableController::class,
+    "/tabela/pessoa/edit" => TableController::class,
+    "/tabela/pessoa/update" => TableController::class,
+    "/tabela/pessoa/delete" => TableController::class,
     "/tabela/livro" => TableController::class,
+    "/tabela/livro/edit" => TableController::class,
+    "/tabela/livro/update" => TableController::class,
+    "/tabela/livro/delete" => TableController::class,
     "/percentual" => PercentageController::class
 ];

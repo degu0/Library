@@ -5,6 +5,7 @@ namespace Library_ETE\controller;
 use Library_ETE\controller\inheritance\Controller;
 use Library_ETE\model\BD\BookDataBase;
 use Library_ETE\model\BD\PeopleDataBase;
+use Library_ETE\model\People;
 use Library_ETE\model\Book;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -22,6 +23,13 @@ class TableController extends Controller implements RequestHandlerInterface
 
         if (strpos($path_info, "pessoa")) {
             $response = $this->people();
+            if (strpos($path_info, "edit")) {
+                $response = $this->editPeople($request);
+            } else if (strpos($path_info, "update")) {
+                $response = $this->updatePeople($request);
+            } else if (strpos($path_info, "delete")) {
+                $response = $this->deletePeople($request);
+            } 
         } else if (strpos($path_info, "livro")) {
             $response = $this->book();
             if (strpos($path_info, "edit")) {
@@ -47,6 +55,41 @@ class TableController extends Controller implements RequestHandlerInterface
         $response = new Response(200, [], $bodyHttp);
         return $response;
     }
+
+    public function editPeople(ServerRequestInterface $request): ResponseInterface
+    {
+        $peopleDB = new PeopleDataBase();
+        $people = $peopleDB->getPeople($request->getQueryParams()["id"]);
+        $bodyHttp = $this->getHTTPBodyBuffer("/edit/people.php", ["people" => $people]);
+        $response = new Response(200, [], $bodyHttp);
+
+        return $response;
+    }
+
+    public function updatePeople(ServerRequestInterface $request):ResponseInterface
+    {
+        $peopleDB = new PeopleDataBase();
+        $people = new People(
+            $request->getParsedBody()["peopleName"],
+            $request->getParsedBody()["peopleTrade"],
+            $request->getParsedBody()["peopleClass"]
+        );
+
+        $peopleDB->update($people);
+
+        $response = new Response(302, ["Location" => "/tabela/livro"], null);
+        return $response;
+    }
+
+    public function deletePeople(ServerRequestInterface $request): ResponseInterface
+    {
+        $peopleDB = new PeopleDataBase();
+        $peopleDB->delete($request->getQueryParams()["id"]);
+
+        $response = new Response(302, ["Location" => "/tabela/livro"], null);
+        return $response;
+    }
+
 
     public function book() : ResponseInterface
     {
