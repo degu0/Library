@@ -17,6 +17,10 @@ class Book
         $this->quantity = $quantity;
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function getName()
     {

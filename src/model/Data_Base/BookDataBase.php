@@ -55,4 +55,67 @@ class BookDataBase
         $this->conexao->fecharConexao();
         return $listBook;
     }
+
+    public function update(Book $BookUpdate)
+    {
+        $comando = "UPDATE livro SET Nome = ?, Classificacao = ?, Quantidade = ? WHERE id = ?;";
+
+        $id = $BookUpdate->getId();
+        $name = $BookUpdate->getName();
+        $classification = $BookUpdate->getClassification();
+        $quantity = $BookUpdate->getQuantity();
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param(
+            "ssii",
+            $name,
+            $classification,
+            $quantity,
+            $id
+        );
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+        $this->conexao->fecharConexao();
+    }
+
+    public function delete($id)
+    {
+        $comando = "DELETE FROM Livro WHERE id = ?;";
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+
+        $preparacao->bind_param("s", $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+
+        $this->conexao->fecharConexao();
+    }
+
+    public function getBook($id)
+    {
+        $comando = "SELECT * FROM Livro WHERE id = ?;";
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("i", $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+
+        $linha = $resultado->fetch_assoc();
+        $book = new Book($linha["Nome"], $linha["Classificacao"],$linha["Quantidade"], $linha["id"]);
+        $this->conexao->fecharConexao();
+        return $book;
+    }
+
 }

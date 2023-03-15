@@ -5,6 +5,7 @@ namespace Library_ETE\controller;
 use Library_ETE\controller\inheritance\Controller;
 use Library_ETE\model\BD\BookDataBase;
 use Library_ETE\model\BD\PeopleDataBase;
+use Library_ETE\model\Book;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -23,6 +24,13 @@ class TableController extends Controller implements RequestHandlerInterface
             $response = $this->people();
         } else if (strpos($path_info, "livro")) {
             $response = $this->book();
+            if (strpos($path_info, "edit")) {
+                $response = $this->editBook($request);
+            } else if (strpos($path_info, "update")) {
+                $response = $this->updateBook($request);
+            } else if (strpos($path_info, "delete")) {
+                $response = $this->deleteBook($request);
+            } 
         }else {
             $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
             $response = new Response(200, [], $bodyHttp);
@@ -49,4 +57,39 @@ class TableController extends Controller implements RequestHandlerInterface
         $response = new Response(200, [], $bodyHttp);
         return $response;
     }
+
+    public function editBook(ServerRequestInterface $request): ResponseInterface
+    {
+        $bookDB = new BookDataBase();
+        $book = $bookDB->getBook($request->getQueryParams()["id"]);
+        $bodyHttp = $this->getHTTPBodyBuffer("/edit/book.php", ["book" => $book]);
+        $response = new Response(200, [], $bodyHttp);
+
+        return $response;
+    }
+
+    public function updateBook(ServerRequestInterface $request):ResponseInterface
+    {
+        $bookDB = new BookDataBase();
+        $book = new Book(
+            $request->getParsedBody()["bookName"],
+            $request->getParsedBody()["bookClassificon"],
+            $request->getParsedBody()["bookQuantity"]
+        );
+
+        $bookDB->update($book);
+
+        $response = new Response(302, ["Location" => "/tabela/livro"], null);
+        return $response;
+    }
+
+    public function deleteBook(ServerRequestInterface $request): ResponseInterface
+    {
+        $bookDB = new BookDataBase();
+        $bookDB->delete($request->getQueryParams()["id"]);
+
+        $response = new Response(302, ["Location" => "/tabela/livro"], null);
+        return $response;
+    }
+
 }
