@@ -48,9 +48,9 @@ class CadastreController extends Controller implements RequestHandlerInterface
     public function addPeople(ServerRequestInterface $request): ResponseInterface 
     {
         $people = new People(
-            $request->getParsedBody()["idPeopleName"],
-            $request->getParsedBody()["idPeopleTrade"],
-            $request->getParsedBody()["idPeopleClass"]
+            $request->getParsedBody()["peopleName"],
+            $request->getParsedBody()["peopleTrade"],
+            $request->getParsedBody()["peopleClass"]
         );
 
         $peopleDataBase = new PeopleDataBase();

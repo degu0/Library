@@ -23,6 +23,9 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="/emprestimo">Emprestimo</a>
+                    </li>
+                    <li>
                         <a href="/tabela">Tabela</a>
                         <ul>
                             <a href="/tabela/pessoa">Pessoas</a>

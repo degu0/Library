@@ -16,7 +16,7 @@ class BookDataBase
 
     public function add(Book $Book)
     {
-        $comando = "INSERT INTO Livro (Nome, Classificacao, Quantidade) VALUES (?, ?, ?);";
+        $comando = "INSERT INTO Livros (Nome, Classificacao, Quantidade) VALUES (?, ?, ?);";
         $name = $Book->getName();
         $classification = $Book->getClassification();
         $quantity = $Book->getQuantity();
@@ -41,7 +41,7 @@ class BookDataBase
 
     public function getList()
     {
-        $comando = "SELECT * FROM Livro;";
+        $comando = "SELECT * FROM Livros;";
         $resultado = $this->conexao->mysqli->query($comando);
         if ($resultado == false) {
             return null;
@@ -58,7 +58,7 @@ class BookDataBase
 
     public function update(Book $BookUpdate)
     {
-        $comando = "UPDATE livro SET Nome = ?, Classificacao = ?, Quantidade = ? WHERE id = ?;";
+        $comando = "UPDATE Livros SET Nome = ?, Classificacao = ?, Quantidade = ? WHERE id = ?;";
 
         $id = $BookUpdate->getId();
         $name = $BookUpdate->getName();
@@ -84,7 +84,7 @@ class BookDataBase
 
     public function delete($id)
     {
-        $comando = "DELETE FROM Livro WHERE id = ?;";
+        $comando = "DELETE FROM Livros WHERE id = ?;";
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
 
@@ -101,7 +101,7 @@ class BookDataBase
 
     public function getBook($id)
     {
-        $comando = "SELECT * FROM Livro WHERE id = ?;";
+        $comando = "SELECT * FROM Livros WHERE id = ?;";
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id);

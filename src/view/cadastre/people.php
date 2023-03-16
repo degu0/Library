@@ -4,13 +4,13 @@
 <main>
     <h1>Cadastro de pessoas</h1>
     <section>
-        <form action="cadastro/pessoa/add" method="$_POST">
-            <label for="idPeopleName">Nome: </label>
-            <input type="text" name="peopleName" id="idPeopleName"><br>
-            <label for="idPeopleTrade">Oficio: </label>
-            <input type="text" name="peopleTrade" id="idPeopleTrade"><br>
-            <label for="idPeopleClass">Turma: </label>
-            <select name="peopleClass" id="idPeopleClass">
+        <form action="/cadastro/pessoa/add" method="POST">
+            <label for="peopleName">Nome: </label>
+            <input type="text" name="peopleName" id="peopleName"><br>
+            <label for="peopleTrade">Oficio: </label>
+            <input type="text" name="peopleTrade" id="peopleTrade"><br>
+            <label for="peopleClass">Turma: </label>
+            <select name="peopleClass" id="peopleClass">
                 <option value="null"></option>
                 <option value="1_MKT_A">1 marketing A</option>
                 <option value="1_MKT_B">1 marketing B</option>

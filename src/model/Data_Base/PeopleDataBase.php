@@ -16,7 +16,7 @@ class PeopleDataBase
 
     public function add(People $People)
     {
-        $comando = "INSERT INTO Pessoa (Nome, Oficio, Turma) VALUES (?, ?, ?);";
+        $comando = "INSERT INTO Pessoas (Nome, Oficio, Turma) VALUES (?, ?, ?);";
         $name = $People->getName();
         $trade = $People->getTrade();
         $class = $People->getClass();
@@ -41,7 +41,7 @@ class PeopleDataBase
 
     public function getList()
     {
-        $comando = "SELECT * FROM Pessoa;";
+        $comando = "SELECT * FROM Pessoas;";
         $resultado = $this->conexao->mysqli->query($comando);
         if ($resultado == false) {
             return null;
@@ -58,7 +58,7 @@ class PeopleDataBase
 
     public function update(People $PeopleUpdate)
     {
-        $comando = "UPDATE pessoa SET Nome = ?, Oficio = ?, Turma = ? WHERE id = ?;";
+        $comando = "UPDATE Pessoas SET Nome = ?, Oficio = ?, Turma = ? WHERE id = ?;";
 
         $id = $PeopleUpdate->getId();
         $name = $PeopleUpdate->getName();
@@ -84,7 +84,7 @@ class PeopleDataBase
 
     public function delete($id)
     {
-        $comando = "DELETE FROM Pessoa WHERE id = ?;";
+        $comando = "DELETE FROM Pessoas WHERE id = ?;";
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
 
@@ -101,7 +101,7 @@ class PeopleDataBase
 
     public function getPeople($id)
     {
-        $comando = "SELECT * FROM Pessoa WHERE id = ?;";
+        $comando = "SELECT * FROM Pessoas WHERE id = ?;";
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id);

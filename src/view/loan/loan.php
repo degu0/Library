@@ -2,8 +2,30 @@
 <?php require __DIR__ . "/../share/head.php";?>
 
 <main>
-    <h1>Percentual</h1>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores mollitia similique illo, accusamus repellat delectus eaque porro eius, labore, ab tempora! Harum nam ratione minima sint. Eius facilis porro ipsum.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum corrupti alias facere exercitationem maxime at facilis quia nulla voluptate. Sunt cumque placeat dolorum ea laboriosam doloribus tempora dicta quae tenetur</p>
+    <section>
+        <h1>Emprestimo</h1>
+        <form action="/emprestimo/tabela" method="POST">
+            <label for="peopleLoan">Aluno(a)/Funcionário(a):</label>
+            <select name="peopleLoan" id="peopleLoan">
+            <option value="1">1</option>
+                <!-- <?php
+                    foreach ($listPeople as $people) { ?>
+                    <option value="<?php echo $people->getId();?>"><?php echo $people->getName();?></option>
+                <?php } ?> -->
+            </select><br>
+            <label for="bookLoan">Livros</label>
+            <select name="bookLoan" id="bookLoan">
+                <option value="1">1</option>
+                <!-- <?php
+                    foreach ($listaBook as $book) { ?>
+                    <option value="<?php echo $book->getId();?>"><?php echo $book->getName();?></option>
+                <?php } ?> -->
+            </select><br>
+            <label for="dateLoan">Data de pega:</label>
+            <input type="date" name="dateLoan" id="dateLoan"><br>
+            <label for="finalDateLoan">Data de devolução:</label>
+            <input type="date" name="finalDateLoan" id="finalDateLoan"><br>
+        </form>
+    </section>
 </main>
 <?php require __DIR__ . "/../share/footer.php";?>

@@ -25,9 +25,12 @@ create table Emprestimo (
     FK_id_Pessoa int,
     
     primary key(id),
-    foreign key(FK_id_Livro) references Livro(id) ON DELETE CASCADE,
+    foreign key(FK_id_Livro) references Livros(id) ON DELETE CASCADE,
     foreign key(FK_id_Pessoa) references Pessoas(id) ON DELETE CASCADE
 );
+
+
+SELECT * FROM Pessoas;
 
 
 

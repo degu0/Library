@@ -9,12 +9,12 @@ class Book
     private $classification;
     private $quantity;
 
-    public function __construct($id = null, $name, $classification, $quantity)
+    public function __construct($name, $classification, $quantity, $id = null)
     {
-        $this->id = $id;
         $this->name = $name;
         $this->classification = $classification;
         $this->quantity = $quantity;
+        $this->id = $id;
     }
 
     public function getId()

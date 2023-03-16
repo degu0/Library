@@ -9,12 +9,12 @@ class People
     private $trade;
     private $class;
 
-    public function __construct($id = null, $name, $trade, $class)
+    public function __construct($name, $trade, $class, $id = null)
     {
-        $this->id = $id;
         $this->name = $name;
         $this->trade = $trade;
         $this->class = $class;
+        $this->id = $id;
     }
 
     public function getId()
