@@ -10,7 +10,7 @@
             <td scope="col">Quantidade</td>
         </thead>
         <tbody>
-            <?php foreach ($listBook as $book) ?>
+            <?php foreach ($listBook as $book) {?>
             <tr>
                 <td><?php echo $book->getName(); ?></td>
                 <td><?php echo $book->getClassification(); ?></td>
@@ -19,6 +19,7 @@
                     <?php echo "<a href='/tabela/livro/edit?id=" .  $book->getId() . "'>EDIT</a>"; ?>
                 </td>
             </tr>
+            <?php }?>
         </tbody>
     </table>
 </main>

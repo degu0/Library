@@ -23,7 +23,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="/emprestimo">Emprestimo</a>
+                        <a href="/emprestimo/cadastro">Emprestimo</a>
                     </li>
                     <li>
                         <a href="/tabela">Tabela</a>

@@ -10,7 +10,7 @@
             <td scope="col">Turma</td>
         </thead>
         <tbody>
-        <?php foreach($listPeople as $people)?>
+        <?php foreach($listPeople as $people) {?>
             <tr>
                 <td><?php echo $people->getName();?></td>
                 <td><?php echo $people->getTrade();?></td>
@@ -18,7 +18,8 @@
                 <td>
                     <?php echo "<a href='/tabela/pessoa/edit?id=".$people->getId(). "'>EDIT</a>";?>
                 </td>
-            </tr>
+            </tr
+            <?php }?>
         </tbody>
     </table>
 </main>

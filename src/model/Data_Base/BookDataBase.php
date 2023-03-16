@@ -1,8 +1,8 @@
 <?php 
 
-namespace Library_ETE\model\BD;
+namespace Library_ETE\model\Data_Base;
 
-use Library_ETE\model\BD\Conexao;
+use Library_ETE\model\Data_Base\Conexao;
 use Library_ETE\model\Book;
 
 class BookDataBase 
@@ -29,6 +29,8 @@ class BookDataBase
             $classification,
             $quantity
         );
+
+        $preparacao->execute();
 
         $resultado = $preparacao->get_result();
 
@@ -116,6 +118,22 @@ class BookDataBase
         $book = new Book($linha["Nome"], $linha["Classificacao"],$linha["Quantidade"], $linha["id"]);
         $this->conexao->fecharConexao();
         return $book;
+    }
+    
+    public function getNameBook()
+    {
+        $comando = "SELECT id,Nome FROM Livros;";
+        $resultado = $this->conexao->mysqli->query($comando);
+        if ($resultado == false) {
+            return null;
+        }
+        $listName = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $listName[] = new Book($linha["Nome"], null, null, $linha["id"]);
+        }
+
+        return $listName;
     }
 
 }

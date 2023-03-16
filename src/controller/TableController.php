@@ -3,8 +3,8 @@
 namespace Library_ETE\controller;
 
 use Library_ETE\controller\inheritance\Controller;
-use Library_ETE\model\BD\BookDataBase;
-use Library_ETE\model\BD\PeopleDataBase;
+use Library_ETE\model\Data_Base\BookDataBase;
+use Library_ETE\model\Data_Base\PeopleDataBase;
 use Library_ETE\model\People;
 use Library_ETE\model\Book;
 use Psr\Http\Message\ResponseInterface;
@@ -72,12 +72,13 @@ class TableController extends Controller implements RequestHandlerInterface
         $people = new People(
             $request->getParsedBody()["peopleName"],
             $request->getParsedBody()["peopleTrade"],
-            $request->getParsedBody()["peopleClass"]
+            $request->getParsedBody()["peopleClass"],
+            $request->getQueryParams()["id"]
         );
 
         $peopleDB->update($people);
 
-        $response = new Response(302, ["Location" => "/tabela/livro"], null);
+        $response = new Response(302, ["Location" => "/tabela/pessoa"], null);
         return $response;
     }
 
@@ -117,7 +118,8 @@ class TableController extends Controller implements RequestHandlerInterface
         $book = new Book(
             $request->getParsedBody()["bookName"],
             $request->getParsedBody()["bookClassificon"],
-            $request->getParsedBody()["bookQuantity"]
+            $request->getParsedBody()["bookQuantity"],
+            $request->getQueryParams()["id"]
         );
 
         $bookDB->update($book);

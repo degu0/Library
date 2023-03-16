@@ -1,8 +1,8 @@
 <?php
 
-namespace Library_ETE\model\BD;
+namespace Library_ETE\model\Data_Base;
 
-use Library_ETE\model\BD\Conexao;
+use Library_ETE\model\Data_Base\Conexao;
 use Library_ETE\model\People;
 
 class PeopleDataBase
@@ -30,6 +30,8 @@ class PeopleDataBase
             $class
         );
 
+        $preparacao->execute();
+
         $resultado = $preparacao->get_result();
 
         if ($resultado == false) {
@@ -49,7 +51,7 @@ class PeopleDataBase
         $listPeople = [];
 
         while ($linha = $resultado->fetch_assoc()) {
-            $listPeople[] = new People($linha["Nome"], $linha["Ofico"], $linha["Turma"], $linha["id"]);
+            $listPeople[] = new People($linha["Nome"], $linha["Oficio"], $linha["Turma"], $linha["id"]);
         }
 
         $this->conexao->fecharConexao();
@@ -116,5 +118,21 @@ class PeopleDataBase
         $people = new People($linha["Nome"], $linha["Oficio"], $linha["Turma"], $linha["id"]);
         $this->conexao->fecharConexao();
         return $people;
+    }
+
+    public function getNamePeople()
+    {
+        $comando = "SELECT id,Nome FROM Pessoas;";
+        $resultado = $this->conexao->mysqli->query($comando);
+        if ($resultado == false) {
+            return null;
+        }
+        $listName = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $listName[] = new People($linha["Nome"], null, null, $linha["id"]);
+        }
+
+        return $listName;
     }
 }

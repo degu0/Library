@@ -4,8 +4,8 @@ namespace Library_ETE\controller;
 
 use Library_ETE\model\People;
 use Library_ETE\model\Book;
-use Library_ETE\model\BD\PeopleDataBase;
-use Library_ETE\model\BD\BookDataBase;
+use Library_ETE\model\Data_Base\PeopleDataBase;
+use Library_ETE\model\Data_Base\BookDataBase;
 use Library_ETE\controller\inheritance\Controller;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -76,10 +76,11 @@ class CadastreController extends Controller implements RequestHandlerInterface
             $request->getParsedBody()["bookQuantity"]
         );
 
+        
         $bookDataBase = new BookDataBase();
         $bookDataBase->add($book);
 
-        $response = new Response(302, ["Location" => "/tabela/pessoa"], null);
+        $response = new Response(302, ["Location" => "/tabela/livro"], null);
 
         return $response;
     }

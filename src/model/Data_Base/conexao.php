@@ -1,6 +1,6 @@
 <?php
 
-namespace Library_ETE\model\BD;
+namespace Library_ETE\model\Data_Base;
 
 use mysqli;
 

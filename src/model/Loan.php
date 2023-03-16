@@ -5,19 +5,19 @@ namespace Library_ETE\model;
 class Loan 
 {
     private $id;
-    private $date;
-    private $dateFinal;
     private $book;
     private $people;
+    private $date;
+    private $dateFinal;
 
 
-    public function __construct($id = null, $date, $dateFinal, $book, $people)
+    public function __construct($book, $people, $date, $dateFinal, $id = null)
     {
         $this->id = $id;
-        $this->date = $date;
-        $this->dateFinal = $dateFinal;
         $this->book = $book;
         $this->people = $people;
+        $this->date = $date;
+        $this->dateFinal = $dateFinal;
     }
 
     public function getId()
