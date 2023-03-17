@@ -17,6 +17,7 @@
                 <td><?php echo $people->getClass();?></td>
                 <td>
                     <?php echo "<a href='/tabela/pessoa/edit?id=".$people->getId(). "'>EDIT</a>";?>
+                    <?php echo "<a href='/tabela/pessoa/delete?id=" . $people->getId() . "'>DELETE</a>"; ?>
                 </td>
             </tr
             <?php }?>

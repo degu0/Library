@@ -17,6 +17,7 @@
                 <td><?php echo $book->getQuantity(); ?></td>
                 <td>
                     <?php echo "<a href='/tabela/livro/edit?id=" .  $book->getId() . "'>EDIT</a>"; ?>
+                    <?php echo "<a href='/tabela/livro/delete?id=" . $book->getId() . "'>DELETE</a>"; ?>
                 </td>
             </tr>
             <?php }?>

@@ -17,17 +17,17 @@ class LoanDataBase
     public function add(Loan $Loan)
     {
         $comando = "INSERT INTO Emprestimo (FK_id_Livro, FK_id_Pessoa, Data_Entrega, Data_Final) VALUES (?, ?, ?, ?);";
-        $namePeople = $Loan->getPeople();
         $nameBook = $Loan->getBook();
+        $namePeople = $Loan->getPeople();
         $dateStart = $Loan->getDate();
         $dateFinal = $Loan->getDateFinal();
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
 
         $preparacao->bind_param(
-            "iiii",
-            $namePeople,
+            "iiss",
             $nameBook,
+            $namePeople,
             $dateStart,
             $dateFinal
         );
@@ -63,48 +63,49 @@ class LoanDataBase
         return $listLoan;
     }
 
-    // public function update(Loan $LoanUpdate)
-    // {
-    //     $comando = "UPDATE Pessoas SET Nome = ?, Oficio = ?, Turma = ? WHERE id = ?;";
+    public function update(Loan $LoanUpdate)
+    {
+        $comando = "UPDATE Emprestimo SET FK_id_Livro = ?, FK_id_Pessoa = ?, Data_Entrega = ?, Data_Final = ? WHERE id = ?;";
 
-    //     $id = $LoanUpdate->getId();
-    //     $name = $LoanUpdate->getName();
-    //     $trade = $LoanUpdate->getTrade();
-    //     $class = $LoanUpdate->getClass();
+        $id = $LoanUpdate->getId();
+        $book = $LoanUpdate->getBook();
+        $people = $LoanUpdate->getPeople();
+        $date = $LoanUpdate->getDate();
+        $dateFinal = $LoanUpdate->getDateFinal();
 
-    //     $preparacao = $this->conexao->mysqli->prepare($comando);
-    //     $preparacao->bind_param(
-    //         "sssi",
-    //         $name,
-    //         $trade,
-    //         $class,
-    //         $id
-    //     );
-    //     $preparacao->execute();
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param(
+            "iissi",
+            $book,
+            $people,
+            $date,
+            $dateFinal,
+            $id
+        );
+        $preparacao->execute();
 
-    //     $resultado = $preparacao->get_result();
-    //     if ($resultado == false) {
-    //         return null;
-    //     }
-    //     $this->conexao->fecharConexao();
-    // }
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+        $this->conexao->fecharConexao();
+    }
 
-    // public function delete($id)
-    // {
-    //     $comando = "DELETE FROM Pessoas WHERE id = ?;";
+    public function delete($id)
+    {
+        $comando = "DELETE FROM Emprestimo WHERE id = ?;";
 
-    //     $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("s", $id);
+        $preparacao->execute();
 
-    //     $preparacao->bind_param("s", $id);
-    //     $preparacao->execute();
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
 
-    //     $resultado = $preparacao->get_result();
-    //     if ($resultado == false) {
-    //         return null;
-    //     }
-
-    //     $this->conexao->fecharConexao();
-    // }
+        $this->conexao->fecharConexao();
+    }
 
     public function getLoan($id)
     {

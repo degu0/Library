@@ -87,7 +87,7 @@ class TableController extends Controller implements RequestHandlerInterface
         $peopleDB = new PeopleDataBase();
         $peopleDB->delete($request->getQueryParams()["id"]);
 
-        $response = new Response(302, ["Location" => "/tabela/livro"], null);
+        $response = new Response(302, ["Location" => "/tabela/pessoa"], null);
         return $response;
     }
 

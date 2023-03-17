@@ -26,15 +26,15 @@ class LoanController extends Controller implements RequestHandlerInterface
             if (strpos($path_info, "add")) {
                 $response = $this->add($request);
             }
-        }else if (strpos($path_info, "tabela")) {
+        } else if (strpos($path_info, "tabela")) {
             $response = $this->table($request);
-            // if (strpos($path_info, "edit")) {
-            //     $response = $this->edit($request);
-            // } else if (strpos($path_info, "update")) {
-            //     $response = $this->update($request);
-            // } else if (strpos($path_info, "delete")) {
-            //     $response = $this->delete($request);
-            // } 
+            if (strpos($path_info, "edit")) {
+                $response = $this->edit($request);
+            } else if (strpos($path_info, "update")) {
+                $response = $this->update($request);
+            } else if (strpos($path_info, "delete")) {
+                $response = $this->delete($request);
+            }
         }
 
         return $response;
@@ -55,11 +55,13 @@ class LoanController extends Controller implements RequestHandlerInterface
     public function add(ServerRequestInterface $request): ResponseInterface
     {
         $loan = new Loan(
-            $request->getParsedBody()["loanPeople"],
             $request->getParsedBody()["loanBook"],
+            $request->getParsedBody()["loanPeople"],
             $request->getParsedBody()["loanDate"],
             $request->getParsedBody()["loanDateFinal"]
         );
+        // var_dump($loan);
+        // exit;
 
         $loanDataBase = new LoanDataBase();
         $loanDataBase->add($loan);
@@ -69,49 +71,49 @@ class LoanController extends Controller implements RequestHandlerInterface
         return $response;
     }
 
-    public function table() : ResponseInterface
+    public function table(): ResponseInterface
     {
         $loanDB = new LoanDataBase();
 
         $listLoan = $loanDB->getList();
-        $bodyHttp = $this->getHTTPBodyBuffer("/loan/table.php",["listLoan" => $listLoan]);
+        $bodyHttp = $this->getHTTPBodyBuffer("/loan/table.php", ["listLoan" => $listLoan]);
         $response = new Response(200, [], $bodyHttp);
         return $response;
     }
 
-    // public function edit(ServerRequestInterface $request): ResponseInterface
-    // {
-    //     $loanDB = new LoanDataBase();
-    //     $loan = $loanDB->getLoan($request->getQueryParams()["id"]);
-    //     $bodyHttp = $this->getHTTPBodyBuffer("/loan/edit.php", ["loan" => $loan]);
-    //     $response = new Response(200, [], $bodyHttp);
+    public function edit(ServerRequestInterface $request): ResponseInterface
+    {
+        $loanDB = new LoanDataBase();
+        $loan = $loanDB->getLoan($request->getQueryParams()["id"]);
+        $bodyHttp = $this->getHTTPBodyBuffer("/loan/edit.php", ["loan" => $loan]);
+        $response = new Response(200, [], $bodyHttp);
 
-    //     return $response;
-    // }
+        return $response;
+    }
 
-    // public function update(ServerRequestInterface $request):ResponseInterface
-    // {
-    //     $loanDB = new LoanDataBase();
-    //     $loan = new Loan(
-    //         $request->getParsedBody()["loanPeople"],
-    //         $request->getParsedBody()["loanBook"],
-    //         $request->getParsedBody()["loanDate"],
-    //         $request->getParsedBody()["loanDateFinal"],
-    //         $request->getQueryParams()["id"]
-    //     );
+    public function update(ServerRequestInterface $request): ResponseInterface
+    {
+        $loanDB = new LoanDataBase();
+        $loan = new Loan(
+            $request->getParsedBody()["loanBook"],
+            $request->getParsedBody()["loanPeople"],
+            $request->getParsedBody()["loanDate"],
+            $request->getParsedBody()["loanDateFinal"],
+            $request->getQueryParams()["id"]
+        );
 
-    //     $loanDB->update($loan);
+        $loanDB->update($loan);
 
-    //     $response = new Response(302, ["Location" => "/emprestimo/tabela"], null);
-    //     return $response;
-    // }
+        $response = new Response(302, ["Location" => "/emprestimo/tabela"], null);
+        return $response;
+    }
 
-    // public function delete(ServerRequestInterface $request): ResponseInterface
-    // {
-    //     $loanDB = new LoanDataBase();
-    //     $loanDB->delete($request->getQueryParams()["id"]);
+    public function delete(ServerRequestInterface $request): ResponseInterface
+    {
+        $loanDB = new LoanDataBase();
+        $loanDB->delete($request->getQueryParams()["id"]);
 
-    //     $response = new Response(302, ["Location" => "/tabela/livro"], null);
-    //     return $response;
-    // }
+        $response = new Response(302, ["Location" => "/emprestimo/tabela"], null);
+        return $response;
+    }
 }

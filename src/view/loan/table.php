@@ -18,7 +18,8 @@
                 <td><?php echo $loan->getDate();?></td>
                 <td><?php echo $loan->getDateFinal();?></td>
                 <td>
-                    <?php echo "<a href='/tabela/pessoa/edit?id=".$loan->getId(). "'>EDIT</a>";?>
+                    <?php echo "<a href='/empretimo/tabela/edit?id=".$loan->getId(). "'>EDIT</a>";?>
+                    <?php echo "<a href='/emprestimo/tabela/delete?id=" . $loan->getId() . "'>DELETE</a>"; ?>
                 </td>
             </tr
             <?php }?>
