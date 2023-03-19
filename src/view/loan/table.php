@@ -1,5 +1,6 @@
 <title>Library - Tabelas Emprestimos</title>
 <?php require __DIR__ . "/../share/head.php";?>
+<link rel="stylesheet" href="/librares/css/table.css">
 
 <main>
     <h1>Tabela de emprestimos</h1>
@@ -9,6 +10,7 @@
             <td scope="col">Nome_Livro</td>
             <td scope="col">Dia Inicio</td>
             <td scope="col">Dia Final</td>
+            <td scope="col">Configurações</td>
         </thead>
         <tbody>
         <?php foreach($listLoan as $loan) {?>

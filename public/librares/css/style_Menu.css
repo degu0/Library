@@ -3,10 +3,19 @@
     padding: 0;
 }
 
+:root {
+    --corFundo : #261A1A;
+    --corFundoDrop: #2f2121;
+    --corFontes: #ffff;
+    --corLinha: #3c3939;
+}
+
 #logo {
     font-size: 25px;
     text-decoration: uppercase;
     letter-spacing: 4px;
+    text-decoration: none;
+    color: var(--corFontes);
 }
 
 nav {
@@ -14,47 +23,51 @@ nav {
     justify-content: space-around;
     align-items: center;
     font-family: 'Courier New', Courier, monospace;
-    background: #261A1A;
+    background: var(--corFundo);
     height: 8vh;
 }
 
-a {
-    color: #fff;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-a:hover {
-    opacity: 0.7;
-}
-
-
-#nav-list {
+nav ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
+
 }
 
-#nav-list li {
+nav ul li {
     position: relative;
-    letter-spacing: 3px;
-    margin-left: 32px;
 }
 
-
-/*sub menu*/
-.dropdown {
-    display: none;
-    left: 0;
-    position: absolute;
-    list-style: none;
-    left: -25%;
-    padding-top: 5px;
+nav ul li a {
+    display: block;
+    color: var(--corFontes);
+    text-decoration: none;
+    padding: 0 20px;
+    line-height: 60px;
+    font-size: 16px;
 }
 
-#nav-list li:hover ul.dropdown {
+nav ul li:hover>ul {
     display: block;
 }
 
-.dropdown li a {
-    color: red;
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: var(--corFundoDrop);
+    z-index: 1;
+}
+
+nav ul ul li {
+    width: 200px;
+    border-top: 1px solid var(--corLinha);
+}
+
+nav ul ul li a {
+    display: block;
+    padding: 10px 20px;
+    line-height: 20px;
+    font-size: 14px;
 }

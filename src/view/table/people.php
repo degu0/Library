@@ -1,5 +1,6 @@
 <title>Library - Tabelas pessoas</title>
 <?php require __DIR__ . "/../share/head.php";?>
+<link rel="stylesheet" href="/librares/css/table.css">
 
 <main>
     <h1>Tabela de pessoas</h1>
@@ -8,6 +9,7 @@
             <td scope="col">Nome</td>
             <td scope="col">Oficio</td>
             <td scope="col">Turma</td>
+            <td scope="col">Configurações</td>
         </thead>
         <tbody>
         <?php foreach($listPeople as $people) {?>

@@ -1,12 +1,15 @@
 <title>Library</title>
-<?php require __DIR__ . "/../share/head.php";?>
+<?php require __DIR__ . "/../share/head.php"; ?>
+<link rel="stylesheet" href="/librares/css/home.css">
 <style>
     #green {
         background-color: green;
     }
+
     #yellow {
         background-color: yellow;
     }
+
     #red {
         background-color: red;
     }
@@ -14,9 +17,9 @@
 <main>
     <h1>Home</h1>
     <div>
-        <input type="search" name="search" id="">
+        <input type="search" name="search" id="search">
     </div>
-    <div>
+    <div id="tableInfo">
         <table>
             <thead>
                 <th scope="col">Cor</th>
@@ -60,4 +63,4 @@
         <h2>Percentual</h2>
     </div>
 </main>
-<?php require __DIR__ . "/../share/footer.php";?>
+<?php require __DIR__ . "/../share/footer.php"; ?>

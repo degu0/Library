@@ -1,5 +1,6 @@
 <title>Library - Tabelas livros</title>
 <?php require __DIR__ . "/../share/head.php"; ?>
+<link rel="stylesheet" href="/librares/css/table.css">
 
 <main>
     <h1>Tabela de livros</h1>
@@ -8,6 +9,7 @@
             <td scope="col">Nome</td>
             <td scope="col">Classificao</td>
             <td scope="col">Quantidade</td>
+            <td scope="col">Configurações</td>
         </thead>
         <tbody>
             <?php foreach ($listBook as $book) {?>

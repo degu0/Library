@@ -1,5 +1,6 @@
 <title>Library - Percentual</title>
 <?php require __DIR__ . "/../share/head.php"; ?>
+<link rel="stylesheet" href="/librares/css/cadastre.css">
 
 <main>
     <section>
