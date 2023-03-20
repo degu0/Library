@@ -56,6 +56,7 @@
     <div>
         <a href="/cadastro/pessoa">Pessoa</a>
         <a href="/cadastro/livro">Livro</a>
+        <a href="/emprestimo/cadastro">Emprestimo</a>
         <a href="/tabela/livro">Livro</a>
         <a href="/tabela/livro">Pessoa</a>
     </div>

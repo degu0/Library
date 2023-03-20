@@ -19,7 +19,9 @@ html, body {
 
 main {
     text-align: center;
-    margin: 100px;
+    min-width: 300px;
+    max-width: 1000px;
+    margin: auto;
 }
 
 h1 {

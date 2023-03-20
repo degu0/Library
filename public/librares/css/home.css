@@ -19,8 +19,11 @@ body {
 }
 
 main {
+    min-width: 300px;
+    max-width: 1000px;
+    margin: auto;
     text-align: center;
-    padding: 25px;
+    padding: 50px;
 }
 
 h1 {
