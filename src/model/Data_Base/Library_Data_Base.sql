@@ -30,19 +30,16 @@ create table Emprestimo (
 );
 
 
-SELECT * FROM Emprestimo;
+SELECT * FROM livros;
+SELECT * FROM livros WHERE Classificao = 'Nao_Didaticos';
 UPDATE Livros SET Nome = 'text', Classificacao = 'Didaticos', Quantidade = 123 WHERE id = 1;
-INSERT INTO Livros (Nome, Classificacao, Quantidade) VALUES ('o', 'Didaticos', 2)
+INSERT INTO Livros (Nome, Classificacao, Quantidade) VALUES ('o', 'Didaticos', 2);
 
 
-SELECT d.id, d.Nome , CONCAT(Serie,' ', Curso, ' ', turma) AS Turma, p.Nome AS Professor, d.Quantidade_Aulas, d.Duplicidade
-        FROM disciplina_turma_Professor d INNER JOIN Turma t ON t.id = d.FK_id_Turma
-        INNER JOIN Professor p ON p.id = d.FK_id_Professor
-        ORDER BY d.nome; 
-
-SELECT e.id, p.Nome, l.Nome, e.Data_Entrega, e.Data_Final 
+SELECT e.id, p.Nome as NomePessoa, l.Nome, e.Data_Entrega, e.Data_Final 
 FROM Emprestimo e 
 INNER JOIN Pessoas p ON p.id = e.FK_id_Pessoa
 INNER JOIN Livros l ON l.id = e.FK_id_Livro;
 
+DROP DATABASE Library;
 

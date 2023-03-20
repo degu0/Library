@@ -30,8 +30,26 @@ class TableController extends Controller implements RequestHandlerInterface
             } else if (strpos($path_info, "delete")) {
                 $response = $this->deletePeople($request);
             } 
-        } else if (strpos($path_info, "livro")) {
+        } else if (strpos($path_info, "livro_nao_didatico")) {
             $response = $this->book();
+            if (strpos($path_info, "edit")) {
+                $response = $this->editBook($request);
+            } else if (strpos($path_info, "update")) {
+                $response = $this->updateBook($request);
+            } else if (strpos($path_info, "delete")) {
+                $response = $this->deleteBook($request);
+            } 
+        }else if (strpos($path_info, "livro_didatico")) {
+            $response = $this->textBook();
+            if (strpos($path_info, "edit")) {
+                $response = $this->editBook($request);
+            } else if (strpos($path_info, "update")) {
+                $response = $this->updateBook($request);
+            } else if (strpos($path_info, "delete")) {
+                $response = $this->deleteBook($request);
+            } 
+        }else if (strpos($path_info, "livro_tecnico")) {
+            $response = $this->technicalBooks();
             if (strpos($path_info, "edit")) {
                 $response = $this->editBook($request);
             } else if (strpos($path_info, "update")) {
@@ -96,8 +114,26 @@ class TableController extends Controller implements RequestHandlerInterface
     {
         $bookBD = new BookDataBase();
 
-        $listBook = $bookBD->getList();
+        $listBook = $bookBD->getNoTextBook();
         $bodyHttp = $this->getHTTPBodyBuffer("/table/book.php", ["listBook" => $listBook]);
+        $response = new Response(200, [], $bodyHttp);
+        return $response;
+    }
+    public function textBook() : ResponseInterface
+    {
+        $bookBD = new BookDataBase();
+
+        $listBook = $bookBD->getTextBook();
+        $bodyHttp = $this->getHTTPBodyBuffer("/table/textbook.php", ["listBook" => $listBook]);
+        $response = new Response(200, [], $bodyHttp);
+        return $response;
+    }
+    public function technicalBooks() : ResponseInterface
+    {
+        $bookBD = new BookDataBase();
+
+        $listBook = $bookBD->getTechnicalBook();
+        $bodyHttp = $this->getHTTPBodyBuffer("/table/technicalbook.php", ["listBook" => $listBook]);
         $response = new Response(200, [], $bodyHttp);
         return $response;
     }

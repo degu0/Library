@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/librares/css/style_Menu.css">
+    <link rel="stylesheet" href="/librares/css/head.css">
 </head>
 
 <body>
@@ -32,7 +32,7 @@
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #F2F5F9; font-size: 17px;">Tabela</a>
                     <ul class="dropdown">
                         <li><a href="/tabela/pessoa">Pessoas</a></li>
-                        <li><a href="/tabela/livro">Livros</a></li>
+                        <li><a href="/tabela/livro_nao_didatico">Livros</a></li>
                     </ul>
                 </li>
                 <li><a href="/percentual">Percentual</a></li>

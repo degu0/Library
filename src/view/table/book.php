@@ -1,9 +1,17 @@
 <title>Library - Tabelas livros</title>
 <?php require __DIR__ . "/../share/head.php"; ?>
 <link rel="stylesheet" href="/librares/css/table.css">
-
+<style>
+    a {
+        color: blue;
+        margin-right: 10px;
+    }
+</style>
 <main>
     <h1>Tabela de livros</h1>
+    <a href="/tabela/livro_nao_didatico">Livros não didáticos</a>
+    <a href="/tabela/livro_didatico">Livros didáticos</a>
+    <a href="/tabela/livro_tecnico">Livros técnicos</a>
     <table>
         <thead>
             <td scope="col">Nome</td>

@@ -57,6 +57,54 @@ class BookDataBase
         $this->conexao->fecharConexao();
         return $listBook;
     }
+    public function getNoTextBook()
+    {
+        $comando = "SELECT * FROM Livros WHERE Classificacao = 'Nao_Didaticos';";
+        $resultado = $this->conexao->mysqli->query($comando);
+        if ($resultado == false) {
+            return null;
+        }
+        $listBook = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $listBook[] = new Book($linha["Nome"], $linha["Classificacao"], $linha["Quantidade"], $linha["id"]);
+        }
+
+        $this->conexao->fecharConexao();
+        return $listBook;
+    }
+    public function getTextBook()
+    {
+        $comando = "SELECT * FROM Livros WHERE Classificacao = 'Didaticos';";
+        $resultado = $this->conexao->mysqli->query($comando);
+        if ($resultado == false) {
+            return null;
+        }
+        $listBook = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $listBook[] = new Book($linha["Nome"], $linha["Classificacao"], $linha["Quantidade"], $linha["id"]);
+        }
+
+        $this->conexao->fecharConexao();
+        return $listBook;
+    }
+    public function getTechnicalBook()
+    {
+        $comando = "SELECT * FROM Livros WHERE Classificacao = 'Tecnicos';";
+        $resultado = $this->conexao->mysqli->query($comando);
+        if ($resultado == false) {
+            return null;
+        }
+        $listBook = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $listBook[] = new Book($linha["Nome"], $linha["Classificacao"], $linha["Quantidade"], $linha["id"]);
+        }
+
+        $this->conexao->fecharConexao();
+        return $listBook;
+    }
 
     public function update(Book $BookUpdate)
     {
