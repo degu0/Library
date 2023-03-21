@@ -8,7 +8,10 @@ use Library_ETE\controller\TableController;
 use Library_ETE\controller\PercentageController;
 
 return [
-    "/" => HomeController::class,
+    "/home" => HomeController::class,
+    "/home/pesquisar" => HomeController::class,
+    "/home/delete" => HomeController::class,
+    "/home/adiar" => HomeController::class,
     "/erro" => ErroController::class,
     "/cadastro/pessoa" => CadastreController::class,
     "/cadastro/pessoa/add" => CadastreController::class,

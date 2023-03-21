@@ -26,9 +26,9 @@
 <body>
     <header>
         <nav>
-            <a href="/" id="logo">Library</a>
+            <a href="/home" id="logo">Library</a>
             <ul id="nav-list">
-                <li><a href="/">Home</a></li>
+                <li><a href="/home">Home</a></li>
                 <li class="dropdown-center">
                     <a href="">Cadastro</a>
                     <ul class="dropdown">
@@ -55,53 +55,47 @@
         </nav>
     </header>
     <main>
-        <h1>Home</h1>
-        <div>
-            <input type="search" name="search" id="search">
-        </div>
-        <div id="tableInfo">
-            <table>
-                <thead>
-                    <th scope="col">Cor</th>
-                    <th scope="col">Nome de livro</th>
-                    <th scope="col">Nome da pessoa</th>
-                    <th scope="col">Excluir</th>
-                    <th scope="col">Adiar</th>
+        <div class="divPart">
+            <div id="box-search">
+                <form action="/home/pesquisar" method="GET">
+                    <input type="search" name="busca" id="search" placeholder="Pesquisar">
+                    <button id="buttom-search"><img src="/images/search.png" alt="search" height="23px" width="23px"></button>
+                </form>
+            </div>
+            <div id="tableInfo">
+                <table>
+                    <thead>
+                        <th scope="col">Data de entrega</th>
+                        <th scope="col">Nome de livro</th>
+                        <th scope="col">Nome da pessoa</th>
+                        <th scope="col">Deletar</th>
+                        <th scope="col">Adiar</th>
                     </thead>
-                <tbody>
-                    <tr>
-                        <td id="green"></td>
-                        <td>Harry Potter</td>
-                        <td>Zezinho</td>
-                        <td>X</td>
-                        <td>+</td>
-                    </tr>
-                    <tr>
-                        <td id="yellow"></td>
-                        <td>Narnia</td>
-                        <td>Maria</td>
-                        <td>X</td>
-                        <td>+</td>
-                    </tr>
-                    <tr>
-                        <td id="red"></td>
-                        <td>Pequeno principe</td>
-                        <td>Joazinho</td>
-                        <td>X</td>
-                        <td>+</td>
-                    </tr>
-                </tbody>
-            </table>
+                    <tbody>
+                        <?php foreach ($listLoan as $loan) { ?>
+                            <tr>
+                                <td><?php echo  date('d/m/Y', strtotime($loan->getDateFinal())); ?></td>
+                                <td><?php echo $loan->getBook(); ?></td>
+                                <td><?php echo $loan->getPeople(); ?></td>
+                                <td><?php echo "<a href='/home/delete?id=" . $loan->getId() . "'>DELETE</a>"; ?></td>
+                                <td>+</td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div>
-            <a href="/cadastro/pessoa">Pessoa</a>
-            <a href="/cadastro/livro">Livro</a>
-            <a href="/emprestimo/cadastro">Emprestimo</a>
-            <a href="/tabela/livro_nao_didatico">Livro</a>
-            <a href="/tabela/pessoa">Pessoa</a>
-        </div>
-        <div>
-            <h2>Percentual</h2>
+        <div class="divPart">
+            <div>
+                <a href="/cadastro/pessoa">Pessoa</a>
+                <a href="/cadastro/livro">Livro</a>
+                <a href="/emprestimo/cadastro">Emprestimo</a>
+                <a href="/tabela/livro_nao_didatico">Livro</a>
+                <a href="/tabela/pessoa">Pessoa</a>
+            </div>
+            <div>
+                <h2>Percentual</h2>
+            </div>
         </div>
     </main>
     <?php require __DIR__ . "/../share/footer.php"; ?>

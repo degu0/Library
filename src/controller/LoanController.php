@@ -58,10 +58,8 @@ class LoanController extends Controller implements RequestHandlerInterface
             $request->getParsedBody()["loanBook"],
             $request->getParsedBody()["loanPeople"],
             $request->getParsedBody()["loanDate"],
-            $request->getParsedBody()["loanDateFinal"]
+            null
         );
-        // var_dump($loan);
-        // exit;
 
         $loanDataBase = new LoanDataBase();
         $loanDataBase->add($loan);
@@ -98,7 +96,7 @@ class LoanController extends Controller implements RequestHandlerInterface
             $request->getParsedBody()["loanBook"],
             $request->getParsedBody()["loanPeople"],
             $request->getParsedBody()["loanDate"],
-            $request->getParsedBody()["loanDateFinal"],
+            null,
             $request->getQueryParams()["id"]
         );
 

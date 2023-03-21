@@ -41,7 +41,7 @@ class TableController extends Controller implements RequestHandlerInterface
             } 
         }else if (strpos($path_info, "livro_didatico")) {
             $response = $this->textBook();
-            if (strpos($path_info, "edit")) {
+            if (strpos($path_info, "xedit")) {
                 $response = $this->editBook($request);
             } else if (strpos($path_info, "update")) {
                 $response = $this->updateBook($request);

@@ -75,12 +75,11 @@ class CadastreController extends Controller implements RequestHandlerInterface
             $request->getParsedBody()["bookClassificon"],
             $request->getParsedBody()["bookQuantity"]
         );
-
         
         $bookDataBase = new BookDataBase();
         $bookDataBase->add($book);
 
-        $response = new Response(302, ["Location" => "/tabela/livro"], null);
+        $response = new Response(302, ["Location" => "/tabela/livro_nao_didatico"], null);
 
         return $response;
     }

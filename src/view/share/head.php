@@ -11,9 +11,9 @@
 <body>
     <header>
         <nav>
-            <a href="/" id="logo">Library</a>
+            <a href="/home" id="logo">Library</a>
             <ul id="nav-list">
-                <li><a href="/">Home</a></li>
+                <li><a href="/home">Home</a></li>
                 <li class="dropdown-center">
                     <a href="">Cadastro</a>
                     <ul class="dropdown">

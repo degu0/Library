@@ -22,8 +22,6 @@
             </select><br>
             <label for="loanDate">Data de pega:</label>
             <input type="date" name="loanDate" id="loanDate" value="<?php echo $loan->getDate();?>"><br>
-            <label for="loanDateFinal">Data de devolução:</label>
-            <input type="date" name="loanDateFinal" id="loanDateFinal" value="<?php echo $loan->getDateFinal();?>"><br>
             <input type="submit" value="Cadastrar">
         </form>
     </section>

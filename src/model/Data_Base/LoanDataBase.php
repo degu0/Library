@@ -20,7 +20,7 @@ class LoanDataBase
         $nameBook = $Loan->getBook();
         $namePeople = $Loan->getPeople();
         $dateStart = $Loan->getDate();
-        $dateFinal = $Loan->getDateFinal();
+        $dateFinal = date('Y/m/d', strtotime("+8 days",strtotime($dateStart)));
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
 
@@ -71,7 +71,7 @@ class LoanDataBase
         $book = $LoanUpdate->getBook();
         $people = $LoanUpdate->getPeople();
         $date = $LoanUpdate->getDate();
-        $dateFinal = $LoanUpdate->getDateFinal();
+        $dateFinal = date('Y/m/d', strtotime("+8 days",strtotime($date)));
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param(
@@ -109,7 +109,11 @@ class LoanDataBase
 
     public function getLoan($id)
     {
-        $comando = "SELECT * FROM Emprestimo WHERE id = ?;";
+        $comando = "SELECT e.id, p.Nome as Nome_Pessoa, l.Nome as Nome_Livro, e.Data_Entrega, e.Data_Final 
+        FROM Emprestimo e 
+        INNER JOIN Pessoas p ON p.id = e.FK_id_Pessoa
+        INNER JOIN Livros l ON l.id = e.FK_id_Livro
+        WHERE id = ?;";
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id);
@@ -121,8 +125,32 @@ class LoanDataBase
         }
 
         $linha = $resultado->fetch_assoc();
-        $Loan = new Loan($linha[""], $linha["Oficio"], $linha["Turma"], $linha["id"]);
+        $Loan = new Loan($linha["e.id"], $linha["Nome_Pessoa"],$linha["Nome_Livro"], $linha["Data_Entrega"], $linha["Data_Final"]);
         $this->conexao->fecharConexao();
         return $Loan;
+    }
+    
+    public function search($pesquisa)
+    {
+        $comando = "SELECT e.id, p.Nome as Nome_Pessoa, l.Nome as Nome_Livro, e.Data_Entrega, e.Data_Final 
+        FROM Emprestimo e 
+        INNER JOIN Pessoas p ON p.id = e.FK_id_Pessoa
+        INNER JOIN Livros l ON l.id = e.FK_id_Livro
+        WHERE p.Nome LIKE '%$pesquisa%'
+        OR l.Nome LIKE '%$pesquisa%'
+        OR Data_Entrega LIKE '%$pesquisa%'
+        OR Data_Final LIKE '%$pesquisa%';";
+        $resultado = $this->conexao->mysqli->query($comando);
+        if ($resultado == false) {
+            return null;
+        }
+        $listLoan = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $listLoan[] = new Loan($linha["Nome_Livro"], $linha["Nome_Pessoa"], $linha["Data_Entrega"], $linha["Data_Final"], $linha["id"]);
+        }
+
+        $this->conexao->fecharConexao();
+        return $listLoan;
     }
 }
