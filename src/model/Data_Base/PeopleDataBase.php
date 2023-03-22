@@ -43,7 +43,7 @@ class PeopleDataBase
 
     public function getList()
     {
-        $comando = "SELECT * FROM Pessoas;";
+        $comando = "SELECT * FROM Pessoas";
         $resultado = $this->conexao->mysqli->query($comando);
         if ($resultado == false) {
             return null;
@@ -52,6 +52,38 @@ class PeopleDataBase
 
         while ($linha = $resultado->fetch_assoc()) {
             $listPeople[] = new People($linha["Nome"], $linha["Oficio"], $linha["Turma"], $linha["id"]);
+        }
+
+        $this->conexao->fecharConexao();
+        return $listPeople;
+    }
+    public function getStudent()
+    {
+        $comando = "SELECT * FROM Pessoas WHERE Oficio = '';";
+        $resultado = $this->conexao->mysqli->query($comando);
+        if ($resultado == false) {
+            return null;
+        }
+        $listPeople = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $listPeople[] = new People($linha["Nome"], null, $linha["Turma"], $linha["id"]);
+        }
+
+        $this->conexao->fecharConexao();
+        return $listPeople;
+    }
+    public function getFuncionario()
+    {
+        $comando = "SELECT * FROM Pessoas WHERE Turma = '';";
+        $resultado = $this->conexao->mysqli->query($comando);
+        if ($resultado == false) {
+            return null;
+        }
+        $listPeople = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $listPeople[] = new People($linha["Nome"], $linha["Oficio"], null, $linha["id"]);
         }
 
         $this->conexao->fecharConexao();

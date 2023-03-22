@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/librares/css/head.css">
+    <link rel="shortcut icon" href="/images/LIbrary_Icon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -31,7 +32,7 @@
                 <li class="dropdown-center">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #F2F5F9; font-size: 17px;">Tabela</a>
                     <ul class="dropdown">
-                        <li><a href="/tabela/pessoa">Pessoas</a></li>
+                        <li><a href="/tabela/aluno">Pessoas</a></li>
                         <li><a href="/tabela/livro_nao_didatico">Livros</a></li>
                     </ul>
                 </li>

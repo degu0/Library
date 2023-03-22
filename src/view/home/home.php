@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
+    <link rel="shortcut icon" href="/images/LIbrary_Icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/librares/css/head_home.css">
     <link rel="stylesheet" href="/librares/css/home.css">
     <style>
@@ -46,7 +47,7 @@
                 <li class="dropdown-center">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #F2F5F9; font-size: 17px;">Tabela</a>
                     <ul class="dropdown">
-                        <li><a href="/tabela/pessoa">Pessoas</a></li>
+                        <li><a href="/tabela/aluno">Pessoas</a></li>
                         <li><a href="/tabela/livro_nao_didatico">Livros</a></li>
                     </ul>
                 </li>
@@ -55,7 +56,7 @@
         </nav>
     </header>
     <main>
-        <div class="divPart">
+        <div class="divPart" id="divInformationLoan">
             <div id="box-search">
                 <form action="/home/pesquisar" method="GET">
                     <input type="search" name="busca" id="search" placeholder="Pesquisar">
@@ -77,7 +78,7 @@
                                 <td><?php echo  date('d/m/Y', strtotime($loan->getDateFinal())); ?></td>
                                 <td><?php echo $loan->getBook(); ?></td>
                                 <td><?php echo $loan->getPeople(); ?></td>
-                                <td><?php echo "<a href='/home/delete?id=" . $loan->getId() . "'>DELETE</a>"; ?></td>
+                                <td><?php echo "<a href='/home/delete?id=" . $loan->getId() . "' class='link'>DELETE</a>"; ?></td>
                                 <td>+</td>
                             </tr>
                         <?php } ?>
@@ -85,14 +86,32 @@
                 </table>
             </div>
         </div>
-        <div class="divPart">
-            <div>
-                <a href="/cadastro/pessoa">Pessoa</a>
-                <a href="/cadastro/livro">Livro</a>
-                <a href="/emprestimo/cadastro">Emprestimo</a>
-                <a href="/tabela/livro_nao_didatico">Livro</a>
-                <a href="/tabela/pessoa">Pessoa</a>
+        <div class="divPart" id="divWelcome">
+            <div id="information">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut error velit dignissimos beatae saepe, numquam ipsum mollitia possimus unde, temporibus corporis non omnis amet iure! Rerum voluptate accusamus consectetur corrupti?Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates maiores aspernatur dolorem ratione itaque odit, eligendi, nostrum aliquid consequuntur similique alias explicabo. Doloremque architecto dolorum aliquam ut assumenda quam tenetur.
+                </p>
             </div>
+            <div id="image">
+                <img src="/images/Welcome.png" alt="">
+            </div>
+        </div>
+        <div class="divPart">
+            <div id="divCards">
+                <a href="/cadastro/pessoa" class="card">
+                    <img src="/images/card_people.png" alt=""><br>
+                    Pessoa
+                </a>
+                <a href="/emprestimo/cadastro" class="card">
+                    <img src="/images/card_loan.png" alt=""><br>
+                    Empréstimo
+                </a>
+                <a href="/cadastro/livro" class="card">
+                    <img src="/images/card_book.png" alt=""><br>
+                    Livro
+                </a>
+            </div>
+        </div>
+        <div class="divPart">
             <div>
                 <h2>Percentual</h2>
             </div>

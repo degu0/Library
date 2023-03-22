@@ -113,7 +113,7 @@ class LoanDataBase
         FROM Emprestimo e 
         INNER JOIN Pessoas p ON p.id = e.FK_id_Pessoa
         INNER JOIN Livros l ON l.id = e.FK_id_Livro
-        WHERE id = ?;";
+        WHERE e.id = ?;";
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id);
@@ -125,7 +125,7 @@ class LoanDataBase
         }
 
         $linha = $resultado->fetch_assoc();
-        $Loan = new Loan($linha["e.id"], $linha["Nome_Pessoa"],$linha["Nome_Livro"], $linha["Data_Entrega"], $linha["Data_Final"]);
+        $Loan = new Loan($linha["Nome_Pessoa"],$linha["Nome_Livro"], $linha["Data_Entrega"], $linha["Data_Final"], $linha["id"]);
         $this->conexao->fecharConexao();
         return $Loan;
     }

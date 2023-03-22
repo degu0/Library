@@ -56,7 +56,7 @@ class CadastreController extends Controller implements RequestHandlerInterface
         $peopleDataBase = new PeopleDataBase();
         $peopleDataBase->add($people);
 
-        $response = new Response(302, ["Location" => "/tabela/pessoa"], null);
+        $response = new Response(302, ["Location" => "/tabela/aluno"], null);
 
         return $response;
     }

@@ -3,8 +3,8 @@ use Library;
 
 create table Livros (
 	id int auto_increment,
-	Nome varchar(50) not null,
-    Classificacao enum('Nao_Didaticos', 'Didaticos', 'Tecnicos') not null, 
+	Nome varchar(50),
+    Classificacao enum('Nao_Didaticos', 'Didaticos', 'Tecnicos'), 
     Quantidade int not null,
     primary key(id)
 );
@@ -31,7 +31,7 @@ create table Emprestimo (
 
 
 SELECT * FROM livros;
-SELECT * FROM livros WHERE Classificao = 'Nao_Didaticos';
+SELECT * FROM livros WHERE Classificacao = 'Tecnicos';
 UPDATE Livros SET Nome = 'text', Classificacao = 'Didaticos', Quantidade = 123 WHERE id = 1;
 INSERT INTO Livros (Nome, Classificacao, Quantidade) VALUES ('o', 'Didaticos', 2);
 
@@ -43,3 +43,17 @@ INNER JOIN Livros l ON l.id = e.FK_id_Livro;
 
 DROP DATABASE Library;
 
+
+SELECT e.id, p.Nome as Nome_Pessoa, l.Nome as Nome_Livro, e.Data_Entrega, e.Data_Final 
+        FROM Emprestimo e 
+        INNER JOIN Pessoas p ON p.id = e.FK_id_Pessoa
+        INNER JOIN Livros l ON l.id = e.FK_id_Livro
+        WHERE p.Nome LIKE 'dasdas';
+        
+SELECT e.id, p.Nome as Nome_Pessoa, l.Nome as Nome_Livro, e.Data_Entrega, e.Data_Final 
+        FROM Emprestimo e 
+        INNER JOIN Pessoas p ON p.id = e.FK_id_Pessoa
+        INNER JOIN Livros l ON l.id = e.FK_id_Livro
+        WHERE e.id = 2;
+        
+SELECT * FROM Pessoas WHERE Oficio = ;

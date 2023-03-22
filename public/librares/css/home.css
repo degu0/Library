@@ -4,7 +4,7 @@
 }
 
 :root {
-    --cor1:#261A1A;
+    --cor1: #261A1A;
     --cor2: #593527;
     --cor3: #8C6B4F;
     --cor4: #D9C1B4;
@@ -21,47 +21,12 @@ body {
 main {
     min-width: 300px;
     max-width: 1000px;
-    margin: auto;
     text-align: center;
-    padding: 50px;
 }
 
 h1 {
     padding-bottom: 15px;
     font: normal 40px Arial;
-}
-
-#search {
-    width: 700px;
-    height: 43px;
-    font: normal 23px Roboto;
-    padding: 26.5px 24px 20px;
-    border: 1px gray solid;
-    border-radius: 5px;
-
-}
-
-#tableInfo {
-    margin: 25px;
-    
-}
-
-#box-search {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#buttom-search {
-    background-color: #593527;
-    margin-left: -28px;
-    padding: 10px 15px 10px 12px;
-    border-radius: 0px 5px 5px 0px;
-    border: 1px #593527 solid;
-}
-
-.divPart {
-    height: 75vh;
 }
 
 table {
@@ -70,7 +35,8 @@ table {
     margin: 100px 0px 0px 30px;
 }
 
-td, th {
+td,
+th {
     border: 1px solid black;
     padding: 10px;
 }
@@ -82,7 +48,8 @@ caption {
     background-color: #a1a0a09b;
 }
 
-thead, tbody {
+thead,
+tbody {
     background-color: #bebebe8f;
     font-size: 18px;
     color: rgba(23, 23, 23, 0.928);
@@ -104,3 +71,97 @@ tbody>tr:nth-child(even) {
     /* 2n */
     background-color: var(--cor4_1);
 }
+
+.link {
+    color: var(--cor5);
+    text-decoration: none;
+}
+
+.divPart {
+    height: 75vh;
+    width: 98.7vw;
+}
+
+.card {
+    height: 300px;
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.637);
+    margin-left: 20px;
+    border-radius: 10px;
+    display: grid;
+    align-content: space-evenly;
+    justify-content: center;
+    color: black;
+    text-decoration: none;
+    font-size: 23px;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.661);
+}
+
+.card img {
+    max-width: 130px;
+}
+
+.card:hover {
+    border: 2px solid  rgba(255, 255, 255, 0.637);
+    transform: translate(-3px, -3px);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.661);
+    transition: transform .3s, border 1s;
+}
+
+#search {
+    width: 700px;
+    height: 43px;
+    font: normal 23px Roboto;
+    padding: 26.5px 24px 20px;
+    border: 1px gray solid;
+    border-radius: 5px;
+
+}
+
+#tableInfo {
+    margin: 25px;
+    display: grid;
+    place-items: center;
+}
+
+#box-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttom-search {
+    background-color: #593527;
+    margin-left: -28px;
+    padding: 10px 15px 10px 12px;
+    border-radius: 0px 5px 5px 0px;
+    border: 1px #593527 solid;
+}
+
+#divInformationLoan {
+    margin: 50px 0px;
+}
+
+
+#divWelcome {
+    background: rgba(0, 0, 255, 0.426);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#information {
+    width: 55vw;
+    padding: 50px;
+    margin: 50px;
+    font-size: 25px;
+}
+
+#divCards {
+    height: 75vh;
+    background: rgba(72, 255, 0, 0.426);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
