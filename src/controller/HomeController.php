@@ -24,6 +24,8 @@ class HomeController extends Controller implements RequestHandlerInterface
                 $response = $this->search($request);
             } else if (strpos($path_info, "delete")) {
                 $response = $this->delete($request);
+            } else if (strpos($path_info, "adiar")) {
+                $response = $this->adiar($request);
             }
         }
         return $response;
@@ -54,6 +56,17 @@ class HomeController extends Controller implements RequestHandlerInterface
     {
         $loanDB = new LoanDataBase();
         $loanDB->delete($request->getQueryParams()["id"]);
+
+        $response = new Response(302, ["Location" => "/home"], null);
+        return $response;
+    }
+    
+    public function adiar(ServerRequestInterface $request) : ResponseInterface
+    {
+        $loanDB = new LoanDataBase();
+        $id = $request->getQueryParams()["id"];
+        $dadoDate = $loanDB->getDate($id);
+        $loanDB->updateDate($id, $dadoDate);
 
         $response = new Response(302, ["Location" => "/home"], null);
         return $response;

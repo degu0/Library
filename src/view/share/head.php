@@ -29,14 +29,21 @@
                         <li><a href="/emprestimo/tabela">Tabela</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-center">
-                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #F2F5F9; font-size: 17px;">Tabela</a>
+                <li>
+                    <a href="">Tabela</a>
                     <ul class="dropdown">
                         <li><a href="/tabela/aluno">Pessoas</a></li>
                         <li><a href="/tabela/livro_nao_didatico">Livros</a></li>
                     </ul>
                 </li>
-                <li><a href="/percentual">Percentual</a></li>
+                <li>
+                    <a href="">Percentual</a>
+                    <ul class="dropdown">
+                        <li><a href="/percentual/cadastro">Cadastro</a></li>
+                        <li><a href="/percentual/tabela">Tabela</a></li>
+                        <li><a href="/percentual/grafico_1_ano">Gráficos</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>

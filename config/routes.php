@@ -43,5 +43,14 @@ return [
     "/tabela/livro_tecnico/edit" => TableController::class,
     "/tabela/livro_tecnico/update" => TableController::class,
     "/tabela/livro_tecnico/delete" => TableController::class,
-    "/percentual" => PercentageController::class
+    "/percentual/cadastro" => PercentageController::class,
+    "/percentual/cadastro/add" => PercentageController::class,
+    "/percentual/tabela" => PercentageController::class,
+    "/percentual/tabela/edit" => PercentageController::class,
+    "/percentual/tabela/update" => PercentageController::class,
+    "/percentual/tabela/delete" => PercentageController::class,
+    "/percentual/grafico_1_ano" => PercentageController::class,
+    "/percentual/grafico_2_ano" => PercentageController::class,
+    "/percentual/grafico_3_ano" => PercentageController::class,
+
 ];

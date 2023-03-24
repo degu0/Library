@@ -3,8 +3,8 @@ use Library;
 
 create table Livros (
 	id int auto_increment,
-	Nome varchar(50),
-    Classificacao enum('Nao_Didaticos', 'Didaticos', 'Tecnicos'), 
+	Nome varchar(50) not null,
+    Classificacao enum('Nao_Didaticos', 'Didaticos', 'Tecnicos') not null, 
     Quantidade int not null,
     primary key(id)
 );
@@ -29,8 +29,26 @@ create table Emprestimo (
     foreign key(FK_id_Pessoa) references Pessoas(id) ON DELETE CASCADE
 );
 
+create table Percentual (
+	id int auto_increment,
+    Ano_Escolar enum('1º', '2º', '3º') not null,
+    Serie_Escolar enum('MTK_A', 'MTK_B', 'TDS_A', 'TDS_B') not null,
+    `Status` enum('Entregue', 'Devolvidos') not null,
+    Quantidade int not null,
+    Ano year not null,
+    FK_id_Livro int,
+    
+    primary key(id), 
+    foreign key(FK_id_Livro) references Livros(id) ON DELETE CASCADE
+);
 
-SELECT * FROM livros;
+drop table percentual;
+
+SELECT p.id, l.Nome as Nome_Livro, p.Ano_Escolar, p.Serie_Escolar, p.Status, p.Quantidade, p.Ano 
+        FROM Percentual p 
+        INNER JOIN Livros l ON l.id = p.FK_id_Livro;
+
+SELECT * FROM percentual;
 SELECT * FROM livros WHERE Classificacao = 'Tecnicos';
 UPDATE Livros SET Nome = 'text', Classificacao = 'Didaticos', Quantidade = 123 WHERE id = 1;
 INSERT INTO Livros (Nome, Classificacao, Quantidade) VALUES ('o', 'Didaticos', 2);
@@ -56,4 +74,6 @@ SELECT e.id, p.Nome as Nome_Pessoa, l.Nome as Nome_Livro, e.Data_Entrega, e.Data
         INNER JOIN Livros l ON l.id = e.FK_id_Livro
         WHERE e.id = 2;
         
-SELECT * FROM Pessoas WHERE Oficio = ;
+SELECT * FROM Pessoas;
+SELECT Data_Final FROM Emprestimo WHERE id = ?;
+UPDATE Emprestimo SET Daata_Final = ? WHERE id = ?;

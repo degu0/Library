@@ -51,7 +51,14 @@
                         <li><a href="/tabela/livro_nao_didatico">Livros</a></li>
                     </ul>
                 </li>
-                <li><a href="/percentual">Percentual</a></li>
+                <li>
+                    <a href="">Percentual</a>
+                    <ul class="dropdown">
+                        <li><a href="/percentual/cadastro">Cadastro</a></li>
+                        <li><a href="/percentual/tabela">Tabela</a></li>
+                        <li><a href="/percentual/grafico_1_ano">Gráficos</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>
@@ -79,7 +86,7 @@
                                 <td><?php echo $loan->getBook(); ?></td>
                                 <td><?php echo $loan->getPeople(); ?></td>
                                 <td><?php echo "<a href='/home/delete?id=" . $loan->getId() . "' class='link'>DELETE</a>"; ?></td>
-                                <td>+</td>
+                                <td><?php echo "<a href='/home/adiar?id=" . $loan->getId() . "' class='link'>+</a>"; ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>

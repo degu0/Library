@@ -30,11 +30,11 @@ main {
 
 section {
     background-color: white;
-    border-radius: 15px;
-    width: 1000px;
+    border-radius: 5px;
+    width: 985px;
     height: 500px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.452);
 }
 
@@ -45,20 +45,35 @@ h1 {
 
 label {
     font-size: 20px;
+    margin: -2px 0px -8px 4px;
+    display: flex;
 }
 
 input,
 select {
-    height: 30px;
-    width: 300px;
+    height: 40px;
+    width: 350px;
     font-size: 17px;
-    margin-bottom: 25px;
+    margin: 0px 0px 25px 0px;
+    border: 0.5px solid gray;
+    border-radius: 10px;
+}
+
+img {
+    height: 280px;
+}
+
+#buttom {
+    color: var(--cor5);
+    background-color: var(--cor3);
+    border: none;
 }
 
 #container1 {
-    padding: 100px 55px 50px 20px;
+    margin: auto;
 }
 
 #container2 {
-    padding: 57px 0px 50px 0px;
+    margin: auto;
+    padding-right: 50px;
 }

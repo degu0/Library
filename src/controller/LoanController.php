@@ -82,8 +82,12 @@ class LoanController extends Controller implements RequestHandlerInterface
     public function edit(ServerRequestInterface $request): ResponseInterface
     {
         $loanDB = new LoanDataBase();
+        $peopleDataBase = new PeopleDataBase();
+        $bookDataBase = new BookDataBase();
         $loan = $loanDB->getLoan($request->getQueryParams()["id"]);
-        $bodyHttp = $this->getHTTPBodyBuffer("/loan/edit.php", ["loan" => $loan]);
+        $listNamePeople = $peopleDataBase->getNamePeople();
+        $listNameBook = $bookDataBase->getNameBook();
+        $bodyHttp = $this->getHTTPBodyBuffer("/loan/edit.php", ["loan" => $loan, "listNamePeople" => $listNamePeople, "listNameBook" => $listNameBook]);
         $response = new Response(200, [], $bodyHttp);
 
         return $response;

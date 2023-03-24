@@ -125,7 +125,7 @@ class LoanDataBase
         }
 
         $linha = $resultado->fetch_assoc();
-        $Loan = new Loan($linha["Nome_Pessoa"],$linha["Nome_Livro"], $linha["Data_Entrega"], $linha["Data_Final"], $linha["id"]);
+        $Loan = new Loan($linha["Nome_Livro"],$linha["Nome_Pessoa"], $linha["Data_Entrega"], $linha["Data_Final"], $linha["id"]);
         $this->conexao->fecharConexao();
         return $Loan;
     }
@@ -152,5 +152,40 @@ class LoanDataBase
 
         $this->conexao->fecharConexao();
         return $listLoan;
+    }
+
+    public function getDate($id)
+    {
+        $comando = "SELECT Data_Final FROM Emprestimo WHERE id = ?;";
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("i", $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+
+        $linha = $resultado->fetch_assoc();
+        $dataFinal = $linha['Data_Final'];
+
+        return $dataFinal;
+    }
+
+    public function updateDate($id, $date)
+    {
+        $comando = "UPDATE Emprestimo SET Data_Final = ? WHERE id = ?;";
+        $dateFinal = date('Y/m/d', strtotime("+8 days",strtotime($date)));
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("si", $dateFinal, $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+        $this->conexao->fecharConexao();
     }
 }

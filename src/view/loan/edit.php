@@ -23,7 +23,7 @@
                 </select><br>
                 <label for="loanDate">Data de pega:</label>
                 <input type="date" name="loanDate" id="loanDate" value="<?php echo $loan->getDate();?>"><br>
-                <input type="submit" value="Cadastrar">
+                <input type="submit" value="Cadastrar" id="buttom">
             </form>
         </div>
         <div id="container2">

@@ -6,17 +6,17 @@
         <div id="container1">
             <h1>Cadastro de livros</h1>
             <form action="/cadastro/livro/add" method="POST">
-                <label for="bookName">Nome do livro: </label>
+                <label for="bookName">Nome do livro: </label><br>
                 <input type="text" name="bookName" id="bookName"> <br>
-                <label for="bookClassificon">Classificação: </label>
+                <label for="bookClassificon">Classificação: </label><br>
                 <select name="bookClassificon" id="bookClassificon">
                     <option value="Nao_Didaticos">Não Didáticos</option>
                     <option value="Didaticos">Didáticos</option>
                     <option value="Tecnicos">Técnicos</option>
                 </select><br>
-                <label for="bookQuantity">Quantidade de livros: </label>
+                <label for="bookQuantity">Quantidade de livros: </label><br>
                 <input type="number" name="bookQuantity" id="bookQuantity"><br>
-                <input type="submit" value="Cadastrar">
+                <input type="submit" value="Cadastrar" id="buttom">
             </form>
         </div>
         <div id="container2">
