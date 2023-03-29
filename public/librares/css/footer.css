@@ -1,6 +1,73 @@
 footer {
+    max-width: 98vw;
+    height: 60vh;
     color: white;
     background-color: #261A1A;
-    text-align: center;
-    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
 }
+
+a:hover {
+    transform: translate(-3px, -3px);
+    transition: transform .3s, border 1s;
+}
+
+
+#header {
+    text-align: center;
+    padding-top: 50px; 
+}
+
+#header h1 {
+    font: normal 45px 'Courier New', Courier, monospace;
+}
+
+.information {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 100px;
+}
+
+#instituicao {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 200px;
+}
+
+#instituicao h3 {
+    font-size: 25px;
+}
+#instituicao p {
+    font-size: 20px;
+    display: flex;
+}
+#instituicao img {
+    margin-left: 10px;
+}
+
+
+#autor {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 200px;
+}
+
+#autor h3 {
+    font-size: 25px;
+}
+#autor p {
+    font-size: 20px;
+    display: flex;
+}
+#autor img {
+    margin-left: 10px;
+}
+
+
+.copy {
+    text-align: center;
+    font-size: 20px;
+    padding: 2%;
+}
+

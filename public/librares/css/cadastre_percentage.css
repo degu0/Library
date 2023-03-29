@@ -23,7 +23,7 @@ main {
     min-width: 300px;
     max-width: 1000px;
     margin: auto;
-    height: 90vh;
+    height: 120vh;
     display: grid;
     place-items: center;
     font-family: 'Roboto', sans-serif;
@@ -32,11 +32,14 @@ main {
 section {
     background-color: white;
     border-radius: 5px;
-    width: 985px;
-    height: 500px;
-    display: flex;
-    justify-content: space-between;
+    width: 705px;
+    height: 700px;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.452);
+}
+form {
+    display: grid;
+    justify-items: start;
+    justify-content: center;
 }
 
 h1 {
@@ -47,7 +50,6 @@ h1 {
 label {
     font-size: 20px;
     margin: -2px 0px -8px 4px;
-    display: flex;
 }
 
 input,
@@ -55,14 +57,22 @@ select {
     height: 40px;
     width: 350px;
     font-size: 17px;
-    margin: 0px 0px 25px 0px;
     border: 0.5px solid gray;
     border-radius: 10px;
 }
 
-img {
-    width: 440px;
-    height: 390px;
+span {
+    text-align: start;
+    font: 20px;
+}
+
+.radioStatus {
+    height: 20px;
+    width: 25px;
+}
+
+.label {
+    text-align: end;
 }
 
 #buttom {
@@ -70,13 +80,6 @@ img {
     background-color: var(--cor3);
 }
 
-#container1 {
-    order: 2;
-    margin: auto;
-    padding: 0px 50px 0px 0px;
-}
-
-#container2 {
-    order: 1;
-    margin: auto;
+#containerRadio {
+    margin-bottom: 8px;
 }

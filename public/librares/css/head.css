@@ -4,7 +4,7 @@
 }
 
 :root {
-    --corFundo : #261A1A;
+    --corFundo: #261A1A;
     --corFundoDrop: #2f2121;
     --corFontes: #ffff;
     --corLinha: #3c3939;
@@ -70,4 +70,52 @@ nav ul ul li a {
     padding: 10px 20px;
     line-height: 20px;
     font-size: 14px;
+}
+
+.mobile_menu {
+    display: none;
+}
+
+@media screen and (max-width: 815px) {
+
+    .nav-list {
+        display: none;
+    }
+
+    nav ul li {
+        display: inline-block;
+        position: relative;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 0 20px;
+        line-height: 60px;
+    }
+
+    nav ul ul {
+        position: static;
+        display: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul ul li {
+        width: 100%;
+        display: block;
+    }
+
+    .mobile_menu {
+        display: block;
+    }
+
+    .mobile_menu button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .open {
+        display: block;
+    }
 }

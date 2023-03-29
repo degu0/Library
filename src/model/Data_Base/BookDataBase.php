@@ -184,4 +184,20 @@ class BookDataBase
         return $listName;
     }
 
+    public function getNameTextBook()
+    {
+        $comando = "SELECT id,Nome FROM Livros WHERE Classificacao = 'Didaticos';";
+        $resultado = $this->conexao->mysqli->query($comando);
+        if ($resultado == false) {
+            return null;
+        }
+        $listName = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $listName[] = new Book($linha["Nome"], null, null, $linha["id"]);
+        }
+
+        return $listName;
+    }
+
 }

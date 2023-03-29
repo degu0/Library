@@ -8,6 +8,7 @@
     <title>Library</title>
     <link rel="shortcut icon" href="/images/LIbrary_Icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/librares/css/head_home.css">
+    <link rel="stylesheet" href="/librares/css/media_home.css">
     <link rel="stylesheet" href="/librares/css/home.css">
     <style>
         #green {
@@ -68,6 +69,10 @@
                 <form action="/home/pesquisar" method="GET">
                     <input type="search" name="busca" id="search" placeholder="Pesquisar">
                     <button id="buttom-search"><img src="/images/search.png" alt="search" height="23px" width="23px"></button>
+                    <div id="autocomplete">
+                        <ul>
+                        </ul>
+                    </div>
                 </form>
             </div>
             <div id="tableInfo">
@@ -95,33 +100,37 @@
         </div>
         <div class="divPart" id="divWelcome">
             <div id="information">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut error velit dignissimos beatae saepe, numquam ipsum mollitia possimus unde, temporibus corporis non omnis amet iure! Rerum voluptate accusamus consectetur corrupti?Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates maiores aspernatur dolorem ratione itaque odit, eligendi, nostrum aliquid consequuntur similique alias explicabo. Doloremque architecto dolorum aliquam ut assumenda quam tenetur.
+                <p>Esse web site tem como principal objetivo facilitar a busca e o acesso aos livros de uma biblioteca, tornando a experiência do usuário mais agradável e eficiente. A partir da interface simples e intuitiva, o usuário pode pesquisar, solicitar empréstimo ou devolver livros
                 </p>
             </div>
             <div id="image">
-                <img src="/images/Welcome.png" alt="">
+                <img src="/images/Welcome.png" alt="Welcome to Library" id="welcomeImg">
             </div>
         </div>
-        <div class="divPart">
-            <div id="divCards">
-                <a href="/cadastro/pessoa" class="card">
-                    <img src="/images/card_people.png" alt=""><br>
-                    Pessoa
-                </a>
-                <a href="/emprestimo/cadastro" class="card">
-                    <img src="/images/card_loan.png" alt=""><br>
-                    Empréstimo
-                </a>
-                <a href="/cadastro/livro" class="card">
-                    <img src="/images/card_book.png" alt=""><br>
-                    Livro
-                </a>
-            </div>
+        </div>
+        <div class="divPart" id="divCards">
+            <a href="percentual/cadastro" style="text-decoration: none;">
+                <div class="card">
+                    <img src="/images/card_cadastre.png" alt="">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt, repellat. Sapiente voluptatem ex alias cum praesentium. Vel doloremque, maiores, eligendi facilis quis laborum quos dicta exercitationem autem rem iure deleniti.</p>
+                </div>
+            </a>
+            <a href="percentual/tabela" style="text-decoration: none;">
+                <div class="card">
+                    <img src="/images/card_table.png" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, a. Odit error iusto itaque! Nemo, magnam sequi placeat debitis, impedit dolore porro laboriosam omnis quia repellendus quisquam maxime quas minima.</p>
+                </div>
+            </a>
+
         </div>
         <div class="divPart">
-            <div>
-                <h2>Percentual</h2>
+            <div id="divGrafico">
+                <img src="/images/grafico.png" alt="grafico geral">
+                <p>Grafico de quantidade de livros</p>
             </div>
         </div>
     </main>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.6/underscore-umd-min.js"></script>
+    <script src="/librares/js/search_home.js"></script> -->
     <?php require __DIR__ . "/../share/footer.php"; ?>

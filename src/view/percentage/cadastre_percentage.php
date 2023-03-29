@@ -1,6 +1,6 @@
 <title>Library - Cadastro Percentual</title>
 <?php require __DIR__ . "/../share/head.php"; ?>
-<link rel="stylesheet" href="/librares/css/cadastre_people.css">
+<link rel="stylesheet" href="/librares/css/cadastre_percentage.css">
 
 <main>
     <section>
@@ -12,17 +12,17 @@
                 foreach ($listNameBook as $nameBook) { ?>
                     <option value="<?php echo $nameBook->getId(); ?>"><?php echo $nameBook->getName(); ?></option>
                 <?php } ?>
-            </select>
+            </select><br>
 
             <label for="idQuantidade">Quantidade de livros:</label> <br>
-            <input type="number" name="quantidade" id="idQuantidade">
+            <input type="number" name="quantidade" id="idQuantidade"><br>
 
             <label for="idAnoEscolar">Ano escolar:</label><br>
             <select name="anoEscolar" id="idAnoEscolar">
-                    <option value="1º">1º</option>
-                    <option value="2º">2º</option>
-                    <option value="3º">3º</option>
-            </select>
+                <option value="1º">1º</option>
+                <option value="2º">2º</option>
+                <option value="3º">3º</option>
+            </select><br>
 
             <label for="idSerieEscolar">Serie escolar:</label><br>
             <select name="serieEscolar" id="idSerieEscolar">
@@ -30,20 +30,22 @@
                 <option value="MTK_B">Marketing B</option>
                 <option value="TDS_A">Sistema A</option>
                 <option value="TDS_B">Sistemas B</option>
-            </select>
+            </select><br>
 
-            <div id="div_status">
-                <span>Status:</span>
-                <input type="radio" name="status" id="idEntregue" value="Entregue">
-                <label for="idEntregue">Entregue</label><br>
-                <input type="radio" name="status" id="idDevolvido" value="Devolvido">
+            <span>Status: </span>
+            <div style="margin-top: 8px;">
+                <input type="radio" name="status" id="idEntregue" value="Entregue" class="radioStatus"> <label for="idEntregue" class="label">Entregue</label>
+            </div>
+            <div style="margin-bottom: 8px;">
+                <input type="radio" name="status" id="idDevolvido" value="Devolvido" class="radioStatus">
                 <label for="idDevolvido">Devolvido</label><br>
             </div>
             <label for="idYear">Ano:</label><br>
-            <input type="date" name="year" id="idYear">
-            <div id="buttom">
-                <input type="submit" value="Cadastre">
+            <input type="date" name="year" id="idYear"><br>
+            <div>
+                <input type="submit" value="Cadastre" id="buttom">
             </div>
         </form>
     </section>
 </main>
+<?php require __DIR__ . "/../share/footer.php"; ?>

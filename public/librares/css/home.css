@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&family=Roboto:wght@300&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -22,6 +24,7 @@ main {
     min-width: 300px;
     max-width: 1000px;
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
@@ -33,6 +36,7 @@ table {
     width: 900px;
     border-collapse: collapse;
     margin: 100px 0px 0px 30px;
+    font-family: 'Roboto', sans-serif;
 }
 
 td,
@@ -78,35 +82,57 @@ tbody>tr:nth-child(even) {
 }
 
 .divPart {
-    height: 75vh;
+    height: 82vh;
     width: 98.7vw;
 }
 
+#divCards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.divPart 
+
 .card {
-    height: 300px;
-    width: 300px;
-    background-color: rgba(255, 255, 255, 0.637);
+    height: 330px;
+    width: 550px;
+    background-color: rgba(255, 255, 255, 0.578);
     margin-left: 20px;
     border-radius: 10px;
     display: grid;
     align-content: space-evenly;
-    justify-content: center;
+    justify-items: center;
     color: black;
-    text-decoration: none;
     font-size: 23px;
     box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.661);
 }
 
+@keyframes changeBackgroundColor {
+    5% {
+        background-color: #8C6B4F;
+      }
+    100% {
+      background-color: #8C6B4F;
+    }
+}
+
 .card img {
-    max-width: 130px;
+    max-width: 150px;
+    margin-top: -165px;
+}
+.card p {
+    margin-top: -50px;
 }
 
 .card:hover {
-    border: 2px solid  rgba(255, 255, 255, 0.637);
+    border: none;
     transform: translate(-3px, -3px);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.661);
     transition: transform .3s, border 1s;
+    animation: changeBackgroundColor 10s infinite;
 }
+
 
 #search {
     width: 700px;
@@ -117,6 +143,31 @@ tbody>tr:nth-child(even) {
     border-radius: 5px;
 
 }
+
+#autocomplete{
+    display: none;
+    background-color: white;
+    border: solid 1px #333;
+    position: absolute;
+    height: 150px;
+    overflow: scroll;
+    width: 38%;
+}
+
+#autocomplete ul {
+    list-style: none;
+    padding: 4px;
+}
+#autocomplete ul li {
+    border-bottom: solid 1px #333;
+}
+
+#autocomplete ul li:hover {
+    background-color: beige;
+    cursor: pointer;
+}
+
+
 
 #tableInfo {
     margin: 25px;
@@ -138,13 +189,17 @@ tbody>tr:nth-child(even) {
     border: 1px #593527 solid;
 }
 
+#buttom-search:hover {
+    background-color: #684030;
+}
+
 #divInformationLoan {
     margin: 50px 0px;
 }
 
 
 #divWelcome {
-    background: rgba(0, 0, 255, 0.426);
+    background-color: #e1dad97b;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -157,11 +212,8 @@ tbody>tr:nth-child(even) {
     font-size: 25px;
 }
 
-#divCards {
-    height: 75vh;
-    background: rgba(72, 255, 0, 0.426);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+#welcomeImg {
+    width: 660px;
+    height: 660px;
 }
 

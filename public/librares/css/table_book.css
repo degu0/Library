@@ -23,6 +23,7 @@ main {
     max-width: 1000px;
     margin: auto;
     height: 88vh;
+    font-family: 'Roboto', sans-serif;
 }
 
 h1 {

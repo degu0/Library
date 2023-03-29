@@ -1,6 +1,6 @@
 <title>Library - Cadastro Pessoas</title>
 <?php require __DIR__ . "/../share/head.php"; ?>
-
+<link rel="stylesheet" href="/librares/css/cadastre_people.css">
 
 <main>
     <section>

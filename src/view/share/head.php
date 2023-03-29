@@ -13,7 +13,7 @@
     <header>
         <nav>
             <a href="/home" id="logo">Library</a>
-            <ul id="nav-list">
+            <ul class="nav-list">
                 <li><a href="/home">Home</a></li>
                 <li class="dropdown-center">
                     <a href="">Cadastro</a>
@@ -45,8 +45,12 @@
                     </ul>
                 </li>
             </ul>
+            <div class="mobile_menu">
+                <button onclick="menuShow()"><img class="icon" src="/images/hamburger.png" alt="" style="max-width: 30px; max-height: 30px;"></button>
+            </div>
         </nav>
     </header>
+    <script src="/librares/js/menu.js"></script>
 </body>
 
 </html>

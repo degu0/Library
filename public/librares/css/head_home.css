@@ -77,3 +77,32 @@ nav ul ul li a {
     line-height: 20px;
     font-size: 16px;
 }
+
+@media screen and (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+    }
+  
+    nav ul li {
+      display: inline-block;
+      position: relative;
+    }
+  
+    nav ul li a {
+      display: block;
+      padding: 0 20px;
+      line-height: 60px;
+    }
+  
+    nav ul ul {
+      position: static;
+      display: none;
+      margin: 0;
+      padding: 0;
+    }
+  
+    nav ul ul li {
+      width: 100%;
+      display: block;
+    }
+  }

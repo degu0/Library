@@ -26,6 +26,7 @@ main {
     height: 90vh;
     display: grid;
     place-items: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 section {

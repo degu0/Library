@@ -46,7 +46,9 @@ class PercentageController extends Controller implements RequestHandlerInterface
     }
     public function cadastre(): ResponseInterface
     {
-        $bodyHTTP = $this->getHTTPBodyBuffer("/percentage/cadastre_percentage.php");
+        $bookDataBase = new BookDataBase();
+        $listNameBook = $bookDataBase->getNameTextBook();
+        $bodyHTTP = $this->getHTTPBodyBuffer("/percentage/cadastre_percentage.php", ["listNameBook" => $listNameBook]);
         $response = new Response(200, [], $bodyHTTP);
         return $response;
     }
