@@ -34,11 +34,11 @@ class PercentageController extends Controller implements RequestHandlerInterface
             } else if (strpos($path_info, "delete")) {
                 $response = $this->delete($request);
             }
-        } else if (strpos($path_info, "grafico_1_ano")) {
+        } else if (strpos($path_info, "grafico1ano")) {
             $response = $this->grafico1();
-        } else if (strpos($path_info, "grafico_2_ano")) {
+        }else if (strpos($path_info, "grafico2ano")) {
             $response = $this->grafico2();
-        } else if (strpos($path_info, "grafico_3_ano")) {
+        }else if (strpos($path_info, "grafico3ano")) {
             $response = $this->grafico3();
         }
         
@@ -67,7 +67,7 @@ class PercentageController extends Controller implements RequestHandlerInterface
         $PercentageDataBase = new PercentageDataBase();
         $PercentageDataBase->add($Percentage);
 
-        $response = new Response(302, ["Location" => "/percentage/tabela"], null);
+        $response = new Response(302, ["Location" => "/percentual/tabela"], null);
 
         return $response;
     }
@@ -88,7 +88,7 @@ class PercentageController extends Controller implements RequestHandlerInterface
         $bookDataBase = new BookDataBase();
         $Percentage = $PercentageDB->getPercentage($request->getQueryParams()["id"]);
         $listNameBook = $bookDataBase->getNameBook();
-        $bodyHttp = $this->getHTTPBodyBuffer("/percentage/edit.php", ["Percentage" => $Percentage, "listNameBook" => $listNameBook]);
+        $bodyHttp = $this->getHTTPBodyBuffer("/percentage/edit_percentage.php", ["Percentage" => $Percentage, "listNameBook" => $listNameBook]);
         $response = new Response(200, [], $bodyHttp);
 
         return $response;
@@ -109,7 +109,7 @@ class PercentageController extends Controller implements RequestHandlerInterface
 
         $PercentageDB->update($Percentage);
 
-        $response = new Response(302, ["Location" => "/percentage/tabela"], null);
+        $response = new Response(302, ["Location" => "/percentual/tabela"], null);
         return $response;
     }
 
@@ -118,7 +118,7 @@ class PercentageController extends Controller implements RequestHandlerInterface
         $PercentageDB = new PercentageDataBase();
         $PercentageDB->delete($request->getQueryParams()["id"]);
 
-        $response = new Response(302, ["Location" => "/percentage/tabela"], null);
+        $response = new Response(302, ["Location" => "/percentual/tabela"], null);
         return $response;
     }
 
@@ -126,29 +126,28 @@ class PercentageController extends Controller implements RequestHandlerInterface
     {
         $PercentageDB = new PercentageDataBase();
 
-        $listPercentage = $PercentageDB->getList();
+        $listPercentage = $PercentageDB->graficoBook("1º");
         $bodyHttp = $this->getHTTPBodyBuffer("/percentage/grafico1ano.php", ["listPercentage" => $listPercentage]);
         $response = new Response(200, [], $bodyHttp);
         return $response;
     }
-
     public function grafico2(): ResponseInterface
     {
         $PercentageDB = new PercentageDataBase();
 
-        $listPercentage = $PercentageDB->getList();
+        $listPercentage = $PercentageDB->graficoBook("2º");
         $bodyHttp = $this->getHTTPBodyBuffer("/percentage/grafico2ano.php", ["listPercentage" => $listPercentage]);
         $response = new Response(200, [], $bodyHttp);
         return $response;
     }
-
     public function grafico3(): ResponseInterface
     {
         $PercentageDB = new PercentageDataBase();
 
-        $listPercentage = $PercentageDB->getList();
+        $listPercentage = $PercentageDB->graficoBook("3º");
         $bodyHttp = $this->getHTTPBodyBuffer("/percentage/grafico3ano.php", ["listPercentage" => $listPercentage]);
         $response = new Response(200, [], $bodyHttp);
         return $response;
     }
+
 }

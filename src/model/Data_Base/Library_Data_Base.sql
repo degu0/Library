@@ -13,7 +13,7 @@ create table Pessoas (
 	id int auto_increment,
     Nome  varchar(100) not null,
     Oficio varchar(50), 
-    Turma enum('1_MKT_A', '1_MKT_B', '1_TDS_A', '1_TDS_B','2_MTK_A', '2_MKT_B', '2_TDS_A', '2_TDS_B', '3_MKT_A', '3_MKT_B','3_TDS_A', '3_TDS_B'),
+    Turma enum('1 MKT A', '1 MKT B', '1 TDS A', '1 TDS B','2 MTK A', '2 MKT B', '2 TDS A', '2 TDS B', '3 MKT A', '3 MKT B','3 TDS A', '3 TDS B'),
     primary key(id)
 );
 
@@ -32,7 +32,7 @@ create table Emprestimo (
 create table Percentual (
 	id int auto_increment,
     Ano_Escolar enum('1º', '2º', '3º') not null,
-    Serie_Escolar enum('MTK_A', 'MTK_B', 'TDS_A', 'TDS_B') not null,
+    Serie_Escolar enum('MTK A', 'MTK B', 'TDS A', 'TDS B') not null,
     `Status` enum('Entregue', 'Devolvidos') not null,
     Quantidade int not null,
     Ano year not null,
@@ -49,31 +49,17 @@ SELECT p.id, l.Nome as Nome_Livro, p.Ano_Escolar, p.Serie_Escolar, p.Status, p.Q
         INNER JOIN Livros l ON l.id = p.FK_id_Livro;
 
 SELECT * FROM percentual;
-SELECT * FROM livros WHERE Classificacao = 'Tecnicos';
-UPDATE Livros SET Nome = 'text', Classificacao = 'Didaticos', Quantidade = 123 WHERE id = 1;
-INSERT INTO Livros (Nome, Classificacao, Quantidade) VALUES ('o', 'Didaticos', 2);
-
-
-SELECT e.id, p.Nome as NomePessoa, l.Nome, e.Data_Entrega, e.Data_Final 
-FROM Emprestimo e 
-INNER JOIN Pessoas p ON p.id = e.FK_id_Pessoa
-INNER JOIN Livros l ON l.id = e.FK_id_Livro;
 
 DROP DATABASE Library;
 
+        
+SELECT p.id, l.Nome as Nome_Livro, p.Ano_Escolar, p.Serie_Escolar, p.Quantidade, p.`Status`, p.Ano
+        FROM Percentual p
+        INNER JOIN Livros l on l.id = p.FK_id_Livro
+        ORDER BY Nome_Livro, Ano_Escolar, Serie_Escolar, `Status` ;
 
-SELECT e.id, p.Nome as Nome_Pessoa, l.Nome as Nome_Livro, e.Data_Entrega, e.Data_Final 
-        FROM Emprestimo e 
-        INNER JOIN Pessoas p ON p.id = e.FK_id_Pessoa
-        INNER JOIN Livros l ON l.id = e.FK_id_Livro
-        WHERE p.Nome LIKE 'dasdas';
-        
-SELECT e.id, p.Nome as Nome_Pessoa, l.Nome as Nome_Livro, e.Data_Entrega, e.Data_Final 
-        FROM Emprestimo e 
-        INNER JOIN Pessoas p ON p.id = e.FK_id_Pessoa
-        INNER JOIN Livros l ON l.id = e.FK_id_Livro
-        WHERE e.id = 2;
-        
-SELECT * FROM Pessoas;
-SELECT Data_Final FROM Emprestimo WHERE id = ?;
-UPDATE Emprestimo SET Daata_Final = ? WHERE id = ?;
+SELECT p.id, l.Nome as Nome_Livro, p.Ano_Escolar, p.Serie_Escolar, p.Quantidade, p.`Status`, p.Ano
+        FROM Percentual p
+        INNER JOIN Livros l on l.id = p.FK_id_Livro
+        WHERE Ano_Escolar = "1º"
+        ORDER BY Nome_Livro, Ano_Escolar, Serie_Escolar ;

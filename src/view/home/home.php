@@ -38,6 +38,13 @@
                         <li><a href="/cadastro/livro">Livros</a></li>
                     </ul>
                 </li>
+                <li class="dropdown-center">
+                    <a href="">Tabela</a>
+                    <ul class="dropdown">
+                        <li><a href="/tabela/aluno">Pessoas</a></li>
+                        <li><a href="/tabela/livro_nao_didatico">Livros</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a href="">Emprestimo</a>
                     <ul class="dropdown">
@@ -45,19 +52,12 @@
                         <li><a href="/emprestimo/tabela">Tabela</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-center">
-                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #F2F5F9; font-size: 17px;">Tabela</a>
-                    <ul class="dropdown">
-                        <li><a href="/tabela/aluno">Pessoas</a></li>
-                        <li><a href="/tabela/livro_nao_didatico">Livros</a></li>
-                    </ul>
-                </li>
                 <li>
                     <a href="">Percentual</a>
                     <ul class="dropdown">
                         <li><a href="/percentual/cadastro">Cadastro</a></li>
                         <li><a href="/percentual/tabela">Tabela</a></li>
-                        <li><a href="/percentual/grafico_1_ano">Gráficos</a></li>
+                        <li><a href="/percentual/grafico1ano">Gráficos</a></li>
                     </ul>
                 </li>
             </ul>
@@ -112,22 +112,65 @@
             <a href="percentual/cadastro" style="text-decoration: none;">
                 <div class="card">
                     <img src="/images/card_cadastre.png" alt="">
+                    <h2>Cadastro</h2>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt, repellat. Sapiente voluptatem ex alias cum praesentium. Vel doloremque, maiores, eligendi facilis quis laborum quos dicta exercitationem autem rem iure deleniti.</p>
                 </div>
             </a>
             <a href="percentual/tabela" style="text-decoration: none;">
                 <div class="card">
                     <img src="/images/card_table.png" alt="">
+                    <h2>Tabela</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, a. Odit error iusto itaque! Nemo, magnam sequi placeat debitis, impedit dolore porro laboriosam omnis quia repellendus quisquam maxime quas minima.</p>
                 </div>
             </a>
 
         </div>
         <div class="divPart">
-            <div id="divGrafico">
-                <img src="/images/grafico.png" alt="grafico geral">
-                <p>Grafico de quantidade de livros</p>
-            </div>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+                google.charts.load("current", {
+                    packages: ['corechart']
+                });
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                        ["Títulos de livros", "Quantidade", {
+                            role: "style"
+                        }],
+                        <?php foreach ($listBook as $book) { ?>
+                        ["<?php echo $book->getName(); ?>" , <?php echo $book->getQuantity(); ?>, "#593527"],
+                        <?php }?>
+                    ]);
+
+                    var view = new google.visualization.DataView(data);
+                    view.setColumns([0, 1,
+                        {
+                            calc: "stringify",
+                            sourceColumn: 1,
+                            type: "string",
+                            role: "annotation"
+                        },
+                        2
+                    ]);
+
+                    var options = {
+                        title: "Livros na biblioteca",
+                        width: 1200,
+                        height: 500,
+                        bar: {
+                            groupWidth: "50%"
+                        },
+                        legend: {
+                            position: "none"
+                        },
+                        backgroundColor: "#F2EAE9", 
+                    };
+                    var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+                    chart.draw(view, options);
+                }
+            </script>
+            <div id="columnchart_values" style="width: 1200px; height: 500px;"></div> 
         </div>
     </main>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

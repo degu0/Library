@@ -23,13 +23,6 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="">Emprestimo</a>
-                    <ul class="dropdown">
-                        <li><a href="/emprestimo/cadastro">Cadastro</a></li>
-                        <li><a href="/emprestimo/tabela">Tabela</a></li>
-                    </ul>
-                </li>
-                <li>
                     <a href="">Tabela</a>
                     <ul class="dropdown">
                         <li><a href="/tabela/aluno">Pessoas</a></li>
@@ -37,11 +30,18 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="">Empréstimo</a>
+                    <ul class="dropdown">
+                        <li><a href="/emprestimo/cadastro">Cadastro</a></li>
+                        <li><a href="/emprestimo/tabela">Tabela</a></li>
+                    </ul>
+                </li>
+                <li>
                     <a href="">Percentual</a>
                     <ul class="dropdown">
                         <li><a href="/percentual/cadastro">Cadastro</a></li>
                         <li><a href="/percentual/tabela">Tabela</a></li>
-                        <li><a href="/percentual/grafico_1_ano">Gráficos</a></li>
+                        <li><a href="/percentual/grafico1ano">Gráficos</a></li>
                     </ul>
                 </li>
             </ul>

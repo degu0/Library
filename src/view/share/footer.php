@@ -10,7 +10,7 @@
             </div>
             <div>
                 <p>Redes:
-                    <a href="https://www.instagram.com/etemflcaruaruoficial/" target="_blank"><img src="/images/instagram.png" alt="Icon Instagram"></a>
+                    <a href="https://www.instagram.com/etemflcaruaruoficial/" target="_blank"><img src="/images/instagram.png" alt="Icon Instagram" class="icon"></a>
                 </p>
             </div>
 
@@ -22,8 +22,8 @@
             </div>
             <div>
                 <p>Redes:
-                    <a href="https://www.linkedin.com/in/deyvid-gustavo-0642a2235/" target="_blank"><img src="/images/linkedin.png" alt="Icon LinkedIn"></a>
-                    <a href="https://github.com/degu0" target="_blank"><img src="/images/github.png" alt="Icon GitHub"></a>
+                    <a href="https://www.linkedin.com/in/deyvid-gustavo-0642a2235/" target="_blank"><img src="/images/linkedin.png" alt="Icon LinkedIn" class="icon"></a>
+                    <a href="https://github.com/degu0" target="_blank"><img src="/images/github.png" alt="Icon GitHub" class="icon"></a>
                 </p>
             </div>
         </div>

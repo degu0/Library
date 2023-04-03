@@ -104,7 +104,7 @@ tbody>tr:nth-child(even) {
     align-content: space-evenly;
     justify-items: center;
     color: black;
-    font-size: 23px;
+    font-size: 20px;
     box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.661);
 }
 
@@ -119,10 +119,14 @@ tbody>tr:nth-child(even) {
 
 .card img {
     max-width: 150px;
-    margin-top: -165px;
+    margin-top: -135px;
+
 }
 .card p {
     margin-top: -50px;
+}
+.card h2 {
+    margin-top: -20px;
 }
 
 .card:hover {
@@ -131,6 +135,7 @@ tbody>tr:nth-child(even) {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.661);
     transition: transform .3s, border 1s;
     animation: changeBackgroundColor 10s infinite;
+    color: #F2EAE9;
 }
 
 
@@ -215,5 +220,9 @@ tbody>tr:nth-child(even) {
 #welcomeImg {
     width: 660px;
     height: 660px;
+}
+
+#columnchart_values {
+    margin: auto;
 }
 

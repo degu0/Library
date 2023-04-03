@@ -4,6 +4,7 @@ namespace Library_ETE\controller;
 
 use Library_ETE\model\Data_Base\LoanDataBase;
 use Library_ETE\controller\inheritance\Controller;
+use Library_ETE\model\Data_Base\BookDataBase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -34,9 +35,11 @@ class HomeController extends Controller implements RequestHandlerInterface
     public function home() : ResponseInterface
     {
         $loanDB = new LoanDataBase();
+        $bookDB = new BookDataBase();
 
+        $listBook = $bookDB->getList();
         $listLoan = $loanDB->getList();
-        $bodyHTTP = $this->getHTTPBodyBuffer("/home/home.php", ["listLoan" => $listLoan]);
+        $bodyHTTP = $this->getHTTPBodyBuffer("/home/home.php", ["listLoan" => $listLoan, 'listBook' => $listBook]);
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;

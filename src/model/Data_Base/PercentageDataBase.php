@@ -51,7 +51,8 @@ class PercentageDataBase
     {
         $comando = "SELECT p.id, l.Nome as Nome_Livro, p.Ano_Escolar, p.Serie_Escolar, p.Status, p.Quantidade, p.Ano 
         FROM Percentual p 
-        INNER JOIN Livros l ON l.id = p.FK_id_Livro;";
+        INNER JOIN Livros l ON l.id = p.FK_id_Livro
+        ORDER BY Nome_Livro, Ano_Escolar, Serie_Escolar, `Status`;";
         $resultado = $this->conexao->mysqli->query($comando);
         if ($resultado == false) {
             return null;
@@ -119,8 +120,8 @@ class PercentageDataBase
     {
         $comando = "SELECT p.id, l.Nome as Nome_Livro, p.Ano_Escolar, p.Serie_Escolar, p.Status, p.Quantidade, p.Ano 
         FROM Percentual p 
-        INNER JOIN Livros l ON l.id = e.FK_id_Livro
-        WHERE e.id = ?;";
+        INNER JOIN Livros l ON l.id = p.FK_id_Livro
+        WHERE p.id = ?;";
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id);
@@ -136,4 +137,32 @@ class PercentageDataBase
         $this->conexao->fecharConexao();
         return $Percentage;
     }
+
+    public function graficoBook($ano)
+    {
+        $comando = "SELECT p.id, l.Nome as Nome_Livro, p.Ano_Escolar, p.Serie_Escolar, p.Quantidade, p.`Status`, p.Ano
+        FROM Percentual p
+        INNER JOIN Livros l on l.id = p.FK_id_Livro
+        WHERE Ano_Escolar = ?
+        ORDER BY Nome_Livro, Ano_Escolar, Serie_Escolar, `Status`;";
+
+        
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("s", $ano);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+        $listPercentage = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $listPercentage[] = new Percentage($linha["Nome_Livro"], $linha["Ano_Escolar"], $linha["Serie_Escolar"], $linha["Status"], $linha["Quantidade"], $linha["Ano"], $linha["id"]);
+        }
+
+        $this->conexao->fecharConexao();
+        return $listPercentage;
+    }
+
 }

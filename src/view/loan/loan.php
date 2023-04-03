@@ -5,7 +5,7 @@
 <main>
     <section>
         <div id="container1">
-            <h1>Emprestimo</h1>
+            <h2>Cadastre o empréstimo do livro</h2>
             <form action="/emprestimo/cadastro/add" method="POST">
                 <label for="loanPeople">Aluno(a)/Funcionário(a):</label> <br>
                 <select name="loanPeople" id="loanPeople">
@@ -27,7 +27,7 @@
             </form>
         </div>
         <div id="container2">
-            <img src="/images/Library.png" alt="">
+            <img src="/images/Library.png" alt="Decisão de pegar um livro" id="imgCadastre">
         </div>
     </section>
 </main>

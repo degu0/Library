@@ -1,9 +1,10 @@
 <title>Library - Cadastro Percentual</title>
 <?php require __DIR__ . "/../share/head.php"; ?>
+<link rel="stylesheet" href="/librares/css/cadastre_percentage.css">
 
 <main>
     <section>
-        <h1>Cadastro Percentual</h1>
+        <h2>Cadastro do percentual</h2>
         <form action="/percentual/tabela/update?id=<?php echo $Percentage->getId();?>" method="post">
             <label for="idBook">Livro:</label><br>
             <select name="updateBook" id="idBook">
@@ -14,7 +15,7 @@
             </select>
 
             <label for="idQuantidade">Quantidade de livros:</label> <br>
-            <input type="number" name="updateQuantidade" id="idQuantidade" value="<?php echo $Percentage->getQuantidade();?>">
+            <input type="number" name="updateQuantidade" id="idQuantidade" value="<?php echo $Percentage->getQuantidade();?>" placeholder="Insira a quantidade dos livros" required>
 
             <label for="idAnoEscolar">Ano escolar:</label><br>
             <select name="updateAnoEscolar" id="idAnoEscolar">
@@ -31,18 +32,21 @@
                 <option value="TDS_B">Sistemas B</option>
             </select>
 
-            <div id="div_status">
-                <span>Status:</span>
-                <input type="radio" name="updateStatus" id="idEntregue" value="Entregue">
+            <span>Status: </span>
+            <div style="margin-top: 8px;">
+                <input type="radio" name="updateStatus" id="idEntregue" value="Entregue" class="radioStatus">
                 <label for="idEntregue">Entregue</label><br>
-                <input type="radio" name="updateStatus" id="idDevolvido" value="Devolvido">
+            </div>
+            <div style="margin-bottom: 8px;">
+                <input type="radio" name="status" id="idDevolvido" value="Devolvidos" class="radioStatus">
                 <label for="idDevolvido">Devolvido</label><br>
             </div>
             <label for="idYear">Ano:</label><br>
             <input type="date" name="updateYear" id="idYear" value="<?php echo $Percentage->getAno();?>">
-            <div id="buttom">
-                <input type="submit" value="Cadastre">
+            <div>
+                <input type="submit" value="Cadastre" id="buttom">
             </div>
         </form>
     </section>
 </main>
+<?php require __DIR__ . "/../share/footer.php"; ?>

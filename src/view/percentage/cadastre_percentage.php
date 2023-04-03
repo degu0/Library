@@ -4,7 +4,7 @@
 
 <main>
     <section>
-        <h1>Cadastro Percentual</h1>
+        <h2>Cadastre do percentual</h2>   
         <form action="/percentual/cadastro/add" method="post">
             <label for="idBook">Livro:</label><br>
             <select name="book" id="idBook">
@@ -15,7 +15,7 @@
             </select><br>
 
             <label for="idQuantidade">Quantidade de livros:</label> <br>
-            <input type="number" name="quantidade" id="idQuantidade"><br>
+            <input type="number" name="quantidade" id="idQuantidade" placeholder="Insira a quantidade dos livros" required><br>
 
             <label for="idAnoEscolar">Ano escolar:</label><br>
             <select name="anoEscolar" id="idAnoEscolar">
@@ -26,10 +26,10 @@
 
             <label for="idSerieEscolar">Serie escolar:</label><br>
             <select name="serieEscolar" id="idSerieEscolar">
-                <option value="MTK_A">Marketing A</option>
-                <option value="MTK_B">Marketing B</option>
-                <option value="TDS_A">Sistema A</option>
-                <option value="TDS_B">Sistemas B</option>
+                <option value="MTK A">Marketing A</option>
+                <option value="MTK B">Marketing B</option>
+                <option value="TDS A">Sistema A</option>
+                <option value="TDS B">Sistemas B</option>
             </select><br>
 
             <span>Status: </span>
@@ -37,7 +37,7 @@
                 <input type="radio" name="status" id="idEntregue" value="Entregue" class="radioStatus"> <label for="idEntregue" class="label">Entregue</label>
             </div>
             <div style="margin-bottom: 8px;">
-                <input type="radio" name="status" id="idDevolvido" value="Devolvido" class="radioStatus">
+                <input type="radio" name="status" id="idDevolvido" value="Devolvidos" class="radioStatus">
                 <label for="idDevolvido">Devolvido</label><br>
             </div>
             <label for="idYear">Ano:</label><br>

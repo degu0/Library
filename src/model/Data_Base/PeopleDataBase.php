@@ -59,7 +59,7 @@ class PeopleDataBase
     }
     public function getStudent()
     {
-        $comando = "SELECT * FROM Pessoas WHERE Oficio = '';";
+        $comando = "SELECT * FROM Pessoas WHERE Oficio = 'aluno';";
         $resultado = $this->conexao->mysqli->query($comando);
         if ($resultado == false) {
             return null;
