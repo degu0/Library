@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&family=Roboto:wght@300&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -88,6 +90,20 @@ tbody>tr:nth-child(even) {
 }
 
 #containerTable {
-    display: grid;
-    place-items: center;
+    width: 903px;
+    height: 550px;
+    overflow-y: auto;
+    margin: auto;
+}
+
+#containerTable::-webkit-scrollbar{
+    background-color: #a29086;
+    width: 23px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#containerTable::-webkit-scrollbar-thumb {
+    background-color: #83756d;
+    border-radius: 5px;
 }

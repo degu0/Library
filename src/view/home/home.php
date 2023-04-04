@@ -110,14 +110,14 @@
         </div>
         <div class="divPart" id="divCards">
             <a href="percentual/cadastro" style="text-decoration: none;">
-                <div class="card">
+                <div class="card" data-anime = "left">
                     <img src="/images/card_cadastre.png" alt="">
                     <h2>Cadastro</h2>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt, repellat. Sapiente voluptatem ex alias cum praesentium. Vel doloremque, maiores, eligendi facilis quis laborum quos dicta exercitationem autem rem iure deleniti.</p>
                 </div>
             </a>
             <a href="percentual/tabela" style="text-decoration: none;">
-                <div class="card">
+                <div class="card" data-anime = "right">
                     <img src="/images/card_table.png" alt="">
                     <h2>Tabela</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, a. Odit error iusto itaque! Nemo, magnam sequi placeat debitis, impedit dolore porro laboriosam omnis quia repellendus quisquam maxime quas minima.</p>
@@ -170,10 +170,11 @@
                     chart.draw(view, options);
                 }
             </script>
-            <div id="columnchart_values" style="width: 1200px; height: 500px;"></div> 
+            <div id="columnchart_values" style="width: 1200px; height: 500px;" data-anime = "bottom"></div> 
         </div>
     </main>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.6/underscore-umd-min.js"></script>
     <script src="/librares/js/search_home.js"></script> -->
+    <script src="/librares/js/animation.js"></script>
     <?php require __DIR__ . "/../share/footer.php"; ?>

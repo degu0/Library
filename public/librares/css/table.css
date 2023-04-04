@@ -90,6 +90,39 @@ tbody>tr:nth-child(even) {
 }
 
 #containerTable {
-    display: grid;
-    place-items: center;
+    width: 903px;
+    height: 550px;
+    overflow-y: auto;
+    margin: auto;
+}
+
+#containerTable::-webkit-scrollbar{
+    background-color: #a29086;
+    width: 23px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#containerTable::-webkit-scrollbar-thumb {
+    background-color: #83756d;
+    border-radius: 5px;
+}
+
+#containerTableFull {
+    width: 924px;
+    height: 550px;
+    overflow-y: auto;
+    margin: auto;
+}
+
+#containerTableFull::-webkit-scrollbar{
+    background-color: #a29086;
+    width: 25px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#containerTableFull::-webkit-scrollbar-thumb {
+    background-color: #83756d;
+    border-radius: 5px;
 }

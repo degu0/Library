@@ -42,7 +42,7 @@ create table Percentual (
     foreign key(FK_id_Livro) references Livros(id) ON DELETE CASCADE
 );
 
-drop table percentual;
+drop table livros;
 
 SELECT p.id, l.Nome as Nome_Livro, p.Ano_Escolar, p.Serie_Escolar, p.Status, p.Quantidade, p.Ano 
         FROM Percentual p 

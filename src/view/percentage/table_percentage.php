@@ -4,7 +4,7 @@
 <main>
     <section>
         <h1>Tabela de percentual</h1>
-        <div id="containerTable">
+        <div id="containerTableFull">
             <table>
                 <thead>
                     <td scope="col">Nome do Livro</td>
