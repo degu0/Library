@@ -10,6 +10,8 @@
 </p>
 
 
+![Group 3 (1)](https://user-images.githubusercontent.com/87346972/229935098-bc755f28-ecdd-4175-b40f-2885f22abdd2.png)
+
 > 🛑 EM FINALIZAÇÃO 🛑
 
 Este é um website desenvolvido para facilitar a organização dos livros da biblioteca da Escola Técnica Estadual Ministro Fernando Lyra. Com um sistema de armazenamento de dados simplificado e fácil de usar, os usuário poderão facilmente gerenciar o acervo da biblioteca.
