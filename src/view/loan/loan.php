@@ -21,7 +21,7 @@
                     <option value="<?php echo $nameBook->getId(); ?>"><?php echo $nameBook->getName(); ?></option>
                     <?php } ?>
                 </select><br>
-                <label for="loanDate">Data de pega:</label> <br>
+                <label for="loanDate">Data da reserva:</label> <br>
                 <input type="date" name="loanDate" id="loanDate"><br>
                 <input type="submit" value="Cadastrar" id="buttom">
             </form>

@@ -10,19 +10,6 @@
     <link rel="stylesheet" href="/librares/css/head_home.css">
     <link rel="stylesheet" href="/librares/css/media_home.css">
     <link rel="stylesheet" href="/librares/css/home.css">
-    <style>
-        #green {
-            background-color: green;
-        }
-
-        #yellow {
-            background-color: yellow;
-        }
-
-        #red {
-            background-color: red;
-        }
-    </style>
 </head>
 
 <body>
