@@ -40,7 +40,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="">Percentual</a>
+                    <a href="">Acervo</a>
                     <ul class="dropdown">
                         <li><a href="/percentual/cadastro">Cadastro</a></li>
                         <li><a href="/percentual/tabela">Tabela</a></li>
