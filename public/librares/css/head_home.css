@@ -11,34 +11,33 @@
 }
 
 #logo {
-    font-size: 27px;
+    color: var(--corFontes);
     text-decoration: uppercase;
     letter-spacing: 4px;
     text-decoration: none;
-    color: var(--corFontes);
+    font-size: 27px;
 }
 
 header {
-    height: 75vh;
     background: black url('/images/menu3.jpg') center center no-repeat fixed;
     background-size: cover;
+    height: 75vh;
 }
 
 nav {
+    background: var(--corFundo);
+    height: 12vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
     font-family: 'Courier New', Courier, monospace;
-    background: var(--corFundo);
-    height: 12vh;
 }
 
 nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
-
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 nav ul li {
@@ -46,11 +45,11 @@ nav ul li {
 }
 
 nav ul li a {
-    display: block;
     color: var(--corFontes);
+    display: block;
     text-decoration: none;
-    padding: 0 20px;
     line-height: 60px;
+    padding: 0 20px;
     font-size: 19px;
 }
 
@@ -59,10 +58,10 @@ nav ul li:hover>ul {
 }
 
 nav ul ul {
+    background-color: var(--corFundoDrop);
     display: none;
     position: absolute;
     top: 100%;
-    background-color: var(--corFundoDrop);
     z-index: 1;
 }
 
@@ -73,8 +72,8 @@ nav ul ul li {
 
 nav ul ul li a {
     display: block;
-    padding: 10px 20px;
     line-height: 20px;
+    padding: 10px 20px;
     font-size: 16px;
 }
 

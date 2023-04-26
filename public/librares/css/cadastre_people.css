@@ -16,55 +16,52 @@
 
 html,
 body {
-    min-height: 100vh;
     background-color: var(--cor5);
+    min-height: 100vh;
 }
 
 main {
-    text-align: center;
     min-width: 300px;
     max-width: 1000px;
-    margin: auto;
     height: 90vh;
     display: grid;
+    text-align: center;
     place-items: center;
+    margin: auto;
     font-family: 'Roboto', sans-serif;
 }
 
 section {
     background-color: white;
-    border-radius: 5px;
     width: 985px;
     height: 500px;
     display: flex;
     justify-content: space-between;
+    border-radius: 5px;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.452);
 }
 
 h2 {
+    color: rgba(0, 0, 0, 0.85);
     margin-bottom: 25px;
     font-size: 30px;
-    color: rgba(0, 0, 0, 0.85);
 }
 
 label {
-    font-size: 18px;
-    margin: -2px 0px -8px 4px;
     display: flex;
+    margin: -2px 0px -8px 4px;
+    font-size: 18px;
 }
 
 input,
 select {
-    height: 40px;
     width: 350px;
-    font-size: 17px;
-    font-family: 'Roboto', sans-serif;
-    margin: 0px 0px 25px 0px;
+    height: 40px;
     border: 0.5px solid gray;
     border-radius: 10px;
+    margin: 0px 0px 25px 0px;
+    font: 17px 'Roboto', sans-serif;
 }
-
-
 
 #imgCadastre {
     width: 440px;
@@ -72,14 +69,14 @@ select {
 }
 
 #buttom {
-    color: var(--cor5);
     background-color: var(--cor3);
+    color: var(--cor5);
 }
 
 #container1 {
     order: 2;
-    margin: auto;
     padding: 0px 50px 0px 0px;
+    margin: auto;
 }
 
 #container2 {

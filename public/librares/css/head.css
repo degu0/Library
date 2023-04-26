@@ -11,28 +11,27 @@
 }
 
 #logo {
-    font-size: 25px;
+    color: var(--corFontes);
     text-decoration: uppercase;
     letter-spacing: 4px;
     text-decoration: none;
-    color: var(--corFontes);
+    font-size: 25px;
 }
 
 nav {
+    background: var(--corFundo);
+    height: 12vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
     font-family: 'Courier New', Courier, monospace;
-    background: var(--corFundo);
-    height: 12vh;
 }
 
 nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
-
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 nav ul li {
@@ -40,11 +39,11 @@ nav ul li {
 }
 
 nav ul li a {
-    display: block;
     color: var(--corFontes);
+    display: block;
     text-decoration: none;
-    padding: 0 20px;
     line-height: 60px;
+    padding: 0 20px;
     font-size: 19px;
 }
 
@@ -53,10 +52,10 @@ nav ul li:hover>ul {
 }
 
 nav ul ul {
+    background-color: var(--corFundoDrop);
     display: none;
     position: absolute;
     top: 100%;
-    background-color: var(--corFundoDrop);
     z-index: 1;
 }
 

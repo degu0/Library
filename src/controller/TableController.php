@@ -1,4 +1,4 @@
-P<?php
+<?php
 
 namespace Library_ETE\controller;
 

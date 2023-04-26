@@ -1,33 +1,7 @@
 <title>Library - Graficos</title>
 <?php require __DIR__ . "/../share/head.php"; ?>
-<style>
-    html,
-    body {
-        background-color: #F2EAE9;
-    }
+<link rel="stylesheet" href="/librares/css/grafico.css">
 
-    main {
-        height: 80vh;
-        width: 98vw;
-        text-align: center;
-        font-family: 'Montserrat', sans-serif;
-    }
-    #columnchart_values {
-        display: flex;
-        justify-content: center;
-    }
-    #button {
-       margin: 50px;
-    }
-    .buttonLink {
-        background-color: #593527;
-        color: white;
-        padding: 15px;
-        border: none;
-        border-radius: 5px;
-        text-decoration: none;
-    }
-</style>
 <main>
     <section>
         <div id="button">
@@ -35,6 +9,7 @@
             <a href="/percentual/grafico2ano" class="buttonLink">Grafico 2 ano</a>
             <a href="/percentual/grafico3ano" class="buttonLink">Grafico 3 ano</a>
         </div>
+        <?php if (count($listPercentage) > 0) { ?>
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             <script type="text/javascript">
                 google.charts.load("current", {
@@ -47,8 +22,11 @@
                         ["Títulos de livros", "Quantidade", {
                             role: "style"
                         }],
-                        <?php foreach ($listPercentage as $book) { ?>
-                        ["<?php echo $book->getBook(). ' - '. $book->getAnoEscolar(). ' '. $book->getSerieEscolar(). ' - '. $book->getStatus();?>", <?php echo $book->getQuantidade();?>,"<?php if($book->getStatus() == 'Entregue'){ echo '#8C6B4F';}else if($book->getStatus() == 'Devolvidos'){echo '#593527';}?>"],
+                        <?php foreach ($listPercentage as $book) { ?>["<?php echo $book->getBook() . ' - ' . $book->getAnoEscolar() . ' ' . $book->getSerieEscolar() . ' - ' . $book->getStatus(); ?>", <?php echo $book->getQuantidade(); ?>, "<?php if ($book->getStatus() == 'Entregue') {
+                                                                                                                                                                                                                                            echo '#8C6B4F';
+                                                                                                                                                                                                                                        } else if ($book->getStatus() == 'Devolvidos') {
+                                                                                                                                                                                                                                            echo '#593527';
+                                                                                                                                                                                                                                        } ?>"],
                         <?php } ?>
                     ]);
 
@@ -80,6 +58,15 @@
                 }
             </script>
             <div id="columnchart_values"></div>
+        <?php } else { ?>
+        <script>
+            alert('Sem cadastro no acervo do 3º ano');
+        </script>
+        <div class="Alert">
+            <h2>Alerta!</h2>
+            <p>Sem cadastro de acervo. <br> <a href="/percentual/cadastro">Cadastre aqui!</a></p>
+        </div>
+    <?php } ?>
     </section>
 </main>
 <?php require __DIR__ . "/../share/footer.php"; ?>

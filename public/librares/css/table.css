@@ -12,6 +12,8 @@
     --cor4: #D9C1B4;
     --cor4_1: #bda79b;
     --cor5: #F2EAE9;
+    --cor6:#a29086;
+    --cor7: #83756d;
 }
 
 html,
@@ -23,8 +25,8 @@ body {
 main {
     min-width: 300px;
     max-width: 1000px;
-    margin: auto;
     height: 88vh;
+    margin: auto;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -33,8 +35,8 @@ h1 {
 }
 
 a {
+    color: var(--cor5);
     text-decoration: none;
-    color: #F2EAE9;
     margin-left: 5px;
 }
 
@@ -49,15 +51,15 @@ td, th {
 }
 
 caption {
+    padding: 10px;
     font-size: 1.5em;
     font-weight: bold;
-    padding: 10px;
 }
 
 thead, tbody {
     background-color: var(--cor3);
-    font-size: 18px;
     color: rgba(23, 23, 23, 0.928);
+    font-size: 18px;
 }
 
 thead>tr>th {
@@ -83,8 +85,8 @@ tbody>tr:nth-child(even) {
  
 #classification_people a {
     background-color: var(--cor3);
+    color: var(--cor5);
     border-radius: 10px;
-    color: #F2EAE9;
     text-decoration: none;
     padding: 15px;
 }
@@ -97,14 +99,14 @@ tbody>tr:nth-child(even) {
 }
 
 #containerTable::-webkit-scrollbar{
-    background-color: #a29086;
+    background-color: var(--cor6);
     width: 23px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
 #containerTable::-webkit-scrollbar-thumb {
-    background-color: #83756d;
+    background-color: var(--cor7);
     border-radius: 5px;
 }
 
@@ -116,13 +118,13 @@ tbody>tr:nth-child(even) {
 }
 
 #containerTableFull::-webkit-scrollbar{
-    background-color: #a29086;
+    background-color: var(--cor6);
     width: 25px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
 #containerTableFull::-webkit-scrollbar-thumb {
-    background-color: #83756d;
+    background-color: var(--cor7);
     border-radius: 5px;
 }

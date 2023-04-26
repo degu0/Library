@@ -4,7 +4,7 @@
 
 <main>
     <section>
-        <h2>Cadastre do percentual</h2>   
+        <h2>Cadastre do acervo</h2>   
         <form action="/percentual/cadastro/add" method="post">
             <label for="idBook">Livro:</label><br>
             <select name="book" id="idBook">

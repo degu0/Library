@@ -16,26 +16,26 @@
 
 html,
 body {
-    min-height: 100vh;
     background-color: var(--cor5);
+    min-height: 100vh;
 }
 
 main {
-    text-align: center;
     min-width: 300px;
     max-width: 1000px;
-    margin: auto;
     height: 120vh;
     display: grid;
+    text-align: center;
     place-items: center;
+    margin: auto;
     font-family: 'Roboto', sans-serif;
 }
 
 section {
     background-color: white;
-    border-radius: 5px;
     width: 705px;
     height: 700px;
+    border-radius: 5px;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.452);
 }
 form {
@@ -45,24 +45,23 @@ form {
 }
 
 h2 {
+    color: rgba(0, 0, 0, 0.85);
     margin: 25px 0px 25px 0px;
     font-size: 30px;
-    color: rgba(0, 0, 0, 0.85);
 }
 
 label {
-    font-size: 20px;
     margin: -2px 0px -8px 4px;
+    font-size: 20px;
 }
 
 input,
 select {
-    height: 40px;
     width: 350px;
-    font-size: 17px;
-    font-family: 'Roboto', sans-serif;
+    height: 40px;
     border: 0.5px solid gray;
     border-radius: 10px;
+    font: 17px 'Roboto', sans-serif;
 }
 
 span {
@@ -71,8 +70,8 @@ span {
 }
 
 .radioStatus {
-    height: 20px;
     width: 25px;
+    height: 20px;
 }
 
 .label {
@@ -80,8 +79,8 @@ span {
 }
 
 #buttom {
-    color: var(--cor5);
     background-color: var(--cor3);
+    color: var(--cor5);
 }
 
 #containerRadio {

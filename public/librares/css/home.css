@@ -12,6 +12,9 @@
     --cor4: #D9C1B4;
     --cor4_1: #bda79b;
     --cor5: #F2EAE9;
+    --cor6:#a1a0a09b;
+    --cor7:#bebebe8f;
+
 }
 
 html,
@@ -45,17 +48,17 @@ th {
 }
 
 caption {
+    background-color: var(--cor6);
+    padding: 10px;
     font-size: 1.5em;
     font-weight: bold;
-    padding: 10px;
-    background-color: #a1a0a09b;
 }
 
 thead,
 tbody {
-    background-color: #bebebe8f;
-    font-size: 18px;
+    background-color: var(--cor7);
     color: rgba(23, 23, 23, 0.928);
+    font-size: 18px;
 }
 
 thead>tr>th {
@@ -94,17 +97,17 @@ tbody>tr:nth-child(even) {
 .divPart 
 
 .card {
-    height: 330px;
-    width: 550px;
     background-color: rgba(255, 255, 255, 0.578);
-    margin-left: 20px;
-    border-radius: 10px;
+    color: black;
+    width: 550px;
+    height: 330px;
     display: grid;
     align-content: space-evenly;
     justify-items: center;
-    color: black;
-    font-size: 20px;
+    border-radius: 10px;
     box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.661);
+    margin-left: 20px;
+    font-size: 20px;
 }
 
 @keyframes changeBackgroundColor {
@@ -129,12 +132,12 @@ tbody>tr:nth-child(even) {
 }
 
 .card:hover {
+    color: var(--cor5);
     border: none;
     transform: translate(-3px, -3px);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.661);
     transition: transform .3s, border 1s;
     animation: changeBackgroundColor 10s infinite;
-    color: #F2EAE9;
 }
 
 [data-anime] {
@@ -160,24 +163,23 @@ tbody>tr:nth-child(even) {
 }
 
 #search {
-    width: 700px;
     height: 43px;
-    font: normal 23px Roboto;
-    padding: 26.5px 24px 20px;
+    width: 700px;
     border: 1px gray solid;
     border-radius: 5px;
+    padding: 26.5px 24px 20px;
     margin-bottom: 35px;
-
+    font: normal 23px Roboto;
 }
 
 #autocomplete{
-    display: none;
     background-color: white;
+    width: 38%;
+    height: 150px;
+    display: none;
     border: solid 1px #333;
     position: absolute;
-    height: 150px;
     overflow: scroll;
-    width: 38%;
 }
 
 #autocomplete ul {
@@ -195,10 +197,10 @@ tbody>tr:nth-child(even) {
 
 
 #tableInfo {
-    margin: auto;
     width: 53vw;
     height: 630px;
     overflow-y: auto;
+    margin: auto;
 }
 
 #tableInfo::-webkit-scrollbar{
@@ -221,11 +223,11 @@ tbody>tr:nth-child(even) {
 }
 
 #buttom-search {
-    background-color: #593527;
-    margin-left: -28px;
-    padding: 10px 15px 10px 12px;
+    background-color: var(--cor2);
+    border: 1px var(--cor2) solid;
     border-radius: 0px 5px 5px 0px;
-    border: 1px #593527 solid;
+    padding: 10px 15px 10px 12px;
+    margin-left: -28px;
 }
 
 #buttom-search:hover {
