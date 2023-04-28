@@ -2,18 +2,26 @@
 
 namespace Library_ETE\model;
 
-class Book 
+class Book
 {
     private $id;
-    private $name;
-    private $classification;
-    private $quantity;
+    private $titulo;
+    private $imagem;
+    private $autor;
+    private $id_genero;
+    private $exemplares;
+    private $disponiveis;
+    private $resumo;
 
-    public function __construct($name, $classification, $quantity, $id = null)
+    public function __construct($titulo, $imagem, $autor, $id_genero, $exemplares, $disponiveis, $resumo, $id = null)
     {
-        $this->name = $name;
-        $this->classification = $classification;
-        $this->quantity = $quantity;
+        $this->titulo = $titulo;
+        $this->imagem = $imagem;
+        $this->autor = $autor;
+        $this->id_genero = $id_genero;
+        $this->exemplares = $exemplares;
+        $this->disponiveis = $disponiveis;
+        $this->resumo = $resumo;
         $this->id = $id;
     }
 
@@ -22,18 +30,38 @@ class Book
         return $this->id;
     }
 
-    public function getName()
+    public function getTitulo()
     {
-        return $this->name;
+        return $this->titulo;
     }
 
-    public function getClassification()
+    public function getImagem()
     {
-        return $this->classification;
+        return $this->imagem;
     }
 
-    public function getQuantity()
+    public function getAutor()
     {
-        return $this->quantity;
+        return $this->autor;
+    }
+
+    public function getId_genero()
+    {
+        return $this->id_genero;
+    }
+
+    public function getExemplares()
+    {
+        return $this->exemplares;
+    }
+    
+    public function getDisponiveis()
+    {
+        return $this->disponiveis;
+    }
+
+    public function getResumo()
+    {
+        return $this->resumo;
     }
 }

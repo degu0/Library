@@ -36,14 +36,7 @@ class HomeController extends Controller implements RequestHandlerInterface
 
     public function home() : ResponseInterface
     {
-        $loanDB = new LoanDataBase();
-        $bookDB = new BookDataBase();
-        $collectionDB = new PercentageDataBase();
-
-        $listBook = $bookDB->getList();
-        $listLoan = $loanDB->getList();
-        $listCollection = $collectionDB->getList();
-        $bodyHTTP = $this->getHTTPBodyBuffer("/home/home.php", ["listLoan" => $listLoan, 'listBook' => $listBook, 'listCollection' => $listCollection]);
+        $bodyHTTP = $this->getHTTPBodyBuffer("/home/home.php");
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;

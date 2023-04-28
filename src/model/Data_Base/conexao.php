@@ -9,7 +9,7 @@ class Conexao
     private $endereco = "127.0.0.1";
     private $login = "root";
     private $senha = "";
-    private $banco = "Library";
+    private $banco = "bio";
 
     public $mysqli;
 
