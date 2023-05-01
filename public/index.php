@@ -9,7 +9,7 @@ use Library_ETE\controller\ErroController;
 
 session_start();
 
-$requestRoute = array_key_exists("PATH_INFO", $_SERVER) ? $_SERVER["PATH_INFO"] : "/";
+$requestRoute = array_key_exists("PATH_INFO", $_SERVER) ? $_SERVER["PATH_INFO"] : "/home";
 $routes = require_once __DIR__ . "/../config/routes.php";
 
 

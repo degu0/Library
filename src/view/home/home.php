@@ -22,7 +22,7 @@
                         </button></li>
                     <li><a href="/home">Home</a></li>
                     <li class="dropdown-center">
-                        <a href="">Gêneros</a>
+                        <a href="/">Gêneros</a>
                         <ul class="dropdown">
                             <li><a href="/generos/paradidaticos">Paradidáticos</a></li>
                             <li><a href="/generos/didaticos">Didáticos</a></li>
