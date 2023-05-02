@@ -76,14 +76,18 @@ nav ul li {
     position: relative;
 }
 
-nav ul li a {
+nav ul li a, nav ul li span {
     color: var(--corFontes);
     display: block;
     text-decoration: none;
     line-height: 60px;
     padding: 0 20px;
     font-size: 19px;
+    cursor: pointer;
 }
+
+
+
 
 nav ul li:hover>ul {
     display: block;

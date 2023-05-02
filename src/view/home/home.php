@@ -17,28 +17,43 @@
         <nav>
             <div id="navInformation">
                 <ul id="nav-list">
-                    <li> <button id="login">
-                            <a href="/login">Login</a>
-                        </button></li>
+                    <?php if (empty($_SESSION)) { ?>
+                        <li>
+                            <button id="login">
+                                <a href="/login">Login</a>
+                            </button>
+                        </li>
+                    <?php } else { ?>
+                        <li>  
+                            <a href=""><?php echo $_SESSION['tipo_usuario'];?></a> 
+                            <ul class="dropdown">
+                                <li><p>Meu perfil</p></li>
+                                <hr>
+                                <li><a href="/login/deslog">Sair</a></li>
+                            </ul>
+                        </li>
+                    <?php } ?>
                     <li><a href="/home">Home</a></li>
                     <li class="dropdown-center">
-                        <a href="/">Gêneros</a>
+                        <span>Gêneros</span>
                         <ul class="dropdown">
                             <li><a href="/generos/paradidaticos">Paradidáticos</a></li>
                             <li><a href="/generos/didaticos">Didáticos</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown-center">
-                        <a href="">Gerenciar</a>
-                        <ul class="dropdown">
-                            <li><a href="/gerenciar/livro">Cadastre Livros</a></li>
-                            <li><a href="/gerenciar/genero">Cadastre Gêneros</a></li>
-                            <li><a href="/gerenciar/emprestimo">Emprestimo</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/acervo">Acervo</a>
-                    </li>
+                    <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário') { ?>
+                        <li class="dropdown-center">
+                            <span>Gerenciar</span>
+                            <ul class="dropdown">
+                                <li><a href="/gerenciar/livro">Cadastre Livros</a></li>
+                                <li><a href="/gerenciar/genero">Cadastre Gêneros</a></li>
+                                <li><a href="/gerenciar/emprestimo">Emprestimo</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/acervo">Acervo</a>
+                        </li>
+                    <?php } ?>
                     <li>
                         <a href="/sobre">Sobre</a>
                     </li>

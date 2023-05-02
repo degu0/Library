@@ -17,6 +17,11 @@
                 <h1 id="titulo">Library</h1>
             </div>
             <form action="/login/logar" method="POST">
+                <?php
+                    if(isset($loginIncorreto)) {
+                        echo "<script>alert('Email ou senha esta incorreto, por favor reveja')</script>";
+                    }
+                ?>
                 <div class="input">
                     <label for="email">Email:</label><br>
                     <input type="email" name="email" id="email" placeholder="Insira seu email">
@@ -37,7 +42,7 @@
             </div>
             <div class="cadastre">
                 <p>Voce nao tem conta?</p>
-                <a href="/cadastro/usuario">CADASTRE AQUI</a>
+                <a href="/login/cadastro">CADASTRE AQUI</a>
             </div>
         </div>
     </section>
