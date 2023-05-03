@@ -3,6 +3,7 @@
 namespace Library_ETE\controller;
 
 use Library_ETE\controller\inheritance\Controller;
+use Library_ETE\model\Data_Base\BookDataBase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -20,12 +21,14 @@ class BookController extends Controller implements RequestHandlerInterface
         if (strpos($path_info, "livro")) {
             $response = $this->livro();
         }
-        return $response;
+    return $response;
     }
 
     public function livro()
     {
-        $bodyHTTP = $this->getHTTPBodyBuffer("/livro/livro.php");
+        $livroBD = new BookDataBase;
+        $list = $livroBD->queryBook();
+        $bodyHTTP = $this->getHTTPBodyBuffer("/livro/livro.php", ["list" => $list]);
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;

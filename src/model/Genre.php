@@ -6,13 +6,13 @@ class Genre
 {
     private $id;
     private $genero;
-    private $classificao;
+    private $classificacao;
     private $ahLivros;
 
-    public function __construct($genero, $classificao, $ahLivros, $id = null)
+    public function __construct($genero, $classificacao, $ahLivros, $id = null)
     {
         $this->genero = $genero;
-        $this->classificao = $classificao;
+        $this->classificacao = $classificacao;
         $this->ahLivros = $ahLivros;
         $this->id = $id;
     }
@@ -27,9 +27,9 @@ class Genre
         return $this->genero;
     }
 
-    public function getClassificao()
+    public function getClassificacao()
     {
-        return $this->classificao;
+        return $this->classificacao;
     }
 
     public function getAhLivros()

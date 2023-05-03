@@ -1,6 +1,8 @@
 <?php
 
-class Imagem
+namespace Library_ETE\model;
+
+class Image
 {
     private $nome;
     private $imageData;

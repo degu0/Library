@@ -21,7 +21,7 @@ class GenreController extends Controller implements RequestHandlerInterface
         if (strpos($path_info, "generos")) {
             if (strpos($path_info, "didaticos")) {
                 $response = $this->didatico();
-            }else if (strpos($path_info, "paradidaticos")) {
+            }else if (strpos($path_info, "literatura")) {
                 $response = $this->paradidatico();
             }
         }
@@ -32,17 +32,15 @@ class GenreController extends Controller implements RequestHandlerInterface
     public function didatico()
     {
         $generoBD =  new GenreDataBase;
-        $listGenre = $generoBD->queryGenre("didático");
-        $bodyHTTP = $this->getHTTPBodyBuffer("/genero/genero.php", ["listGenre" => $listGenre]);
+        $listGenreDidatico = $generoBD->queryGenre();
+        $bodyHTTP = $this->getHTTPBodyBuffer("/genero/genero_didatico.php", ["listGenreDidatico" => $listGenreDidatico]);
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;
     }
     public function paradidatico()
     {
-        $generoBD =  new GenreDataBase;
-        $listGenre = $generoBD->queryGenre("paradidático");
-        $bodyHTTP = $this->getHTTPBodyBuffer("/genero/genero.php", ["listGenre" => $listGenre]);
+        $bodyHTTP = $this->getHTTPBodyBuffer("/genero/genero_paradidatico.php");
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;

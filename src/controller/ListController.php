@@ -11,27 +11,24 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use Nyholm\Psr7\Response;
 
-class ShareController extends Controller implements RequestHandlerInterface
+class ListController extends Controller implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $path_info = $request->getServerParams()["PATH_INFO"];
         $response = null;
 
-        if (strpos($path_info, "pesquisa")) {
-            $response = $this->pesquisa($request);
+        if (strpos($path_info, "lista")) {
+            $response = $this->livros($request);
         }
-        return $response;
+    return $response;
     }
 
-    public function pesquisa(ServerRequestInterface $request) : ResponseInterface
+    public function livros(ServerRequestInterface $request) : ResponseInterface
     {
-        if($_GET['searchNav'] == null){
-            header(sprintf('location %s', $_SERVER['HTTP_REFERER']));
-        }
         $livroBD = new BookDataBase;
-        $listaLivro = $livroBD->searchBook($request->getQueryParams()["searchNav"]);
-        $bodyHTTP = $this->getHTTPBodyBuffer("/pesquisa/pesquisa.php", ["listaLivro" => $listaLivro]);
+        $list = $livroBD->listBookGenre($request->getQueryParams()['id_genero']);
+        $bodyHTTP = $this->getHTTPBodyBuffer("/livro/lista_livro.php", ["list" => $list]);
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;

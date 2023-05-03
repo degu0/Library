@@ -5,6 +5,7 @@ use Library_ETE\controller\ErroController;
 use Library_ETE\controller\CadastreController;
 use Library_ETE\controller\AboutController;
 use Library_ETE\controller\BookController;
+use Library_ETE\controller\ListController;
 use Library_ETE\controller\GenreController;
 use Library_ETE\controller\LoginController;
 use Library_ETE\controller\ShareController;
@@ -22,9 +23,9 @@ return [
     "/gerenciar/genero/add" => CadastreController::class,
     "/gerenciar/emprestimo" => CadastreController::class,
     "/generos/didaticos" => GenreController::class,
-    "/generos/paradidaticos" => GenreController::class,
-    "/livros" => BookController::class,
-    "/livros/livro" => BookController::class,
+    "/generos/literatura" => GenreController::class,
+    "/lista" => ListController::class,
+    "/livro" => BookController::class,
     "/login" => LoginController::class,
     "/login/logar" => LoginController::class,
     "/login/deslog" => LoginController::class,

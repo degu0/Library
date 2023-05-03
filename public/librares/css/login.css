@@ -35,7 +35,6 @@ body {
 }
 
 #titulo {
-    color: aqua;
     text-align: center;
     font-size: 36px;
     font-family: 'Courier New', Courier, monospace;
@@ -54,25 +53,25 @@ form {
 }
 
 .input input {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.1em;
-    padding: 0px 0px 3px 10px;
-    color: #36383C;
+    background-color: #EFEFEF;
+    color: rgb(104, 104, 104);
+    padding: 18px;
+    font: 17px normal Arial;
     border: none;
-    border-bottom: 2px solid rgb(200, 200, 200);
-    outline: none;
+    border-radius: 4px;
     margin: 10px 0px;
-    width: 350px;
+    width: 450px;
 }
 
 
 #button {
-    padding: 10px;
+    padding: 18px;
     font-size: 18px;
     background-color: #261A1A;
     color: #fff;
     border: none;
     border-radius: 5px;
+    width: 488px;
 }
 
 
@@ -95,10 +94,10 @@ form {
     background-color: #000;
     content: "";
     display: inline-block;
-    height: 1px;
+    height: 1.5px;
     position: relative;
     vertical-align: middle;
-    width: 19%;
+    width: 25%;
 }
 
 /* Aqui configuramos o estilo

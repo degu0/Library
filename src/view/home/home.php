@@ -37,7 +37,7 @@
                     <li class="dropdown-center">
                         <span>Gêneros</span>
                         <ul class="dropdown">
-                            <li><a href="/generos/paradidaticos">Paradidáticos</a></li>
+                            <li><a href="/generos/literatura">Paradidáticos</a></li>
                             <li><a href="/generos/didaticos">Didáticos</a></li>
                         </ul>
                     </li>
@@ -59,9 +59,9 @@
                     </li>
                 </ul>
             </div>
-            <div id="navSearch">
-                <form action="/home/pesquisar" method="GET">
-                    <input type="search" name="buscaNav" id="searchNav" placeholder="Pesquisar">
+            <div>
+                <form action="/pesquisa" method="GET"  id="navSearch">
+                    <input type="search" name="searchNav" id="searchNav" placeholder="Pesquisar">
                     <button id="buttom-searchNav"><img src="/images/search.png" alt="search" height="18px" width="18px"></button>
                 </form>
             </div>

@@ -2,6 +2,8 @@
 
 namespace Library_ETE\model;
 
+use Library_ETE\model\Image;
+
 class Book
 {
     private $id;
@@ -13,7 +15,7 @@ class Book
     private $disponiveis;
     private $resumo;
 
-    public function __construct($titulo, $imagem, $autor, $id_genero, $exemplares, $disponiveis, $resumo, $id = null)
+    public function __construct($titulo, Image $imagem, $autor, $id_genero, $exemplares, $disponiveis, $resumo, $id = null)
     {
         $this->titulo = $titulo;
         $this->imagem = $imagem;
@@ -33,6 +35,11 @@ class Book
     public function getTitulo()
     {
         return $this->titulo;
+    }
+
+    public function getTituloLink()
+    {
+        return str_replace("&", "%26", $this->titulo);
     }
 
     public function getImagem()
