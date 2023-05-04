@@ -19,11 +19,14 @@ class AcervoController extends Controller implements RequestHandlerInterface
 
         if (strpos($path_info, "acervo")) {
             $response = $this->acervo();
+        }else {
+            $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
+            $response = new Response(200, [], $bodyHttp);
         }
         return $response;
     }
 
-    public function acervo()
+    public function acervo() : ResponseInterface
     {
         $bodyHTTP = $this->getHTTPBodyBuffer("/acervo/acervo.php");
         $response = new Response(200, [], $bodyHTTP);

@@ -15,22 +15,26 @@ class BookDataBase
         $this->conexao = new Conexao;
     }
 
-    public function queryBook()
+    public function queryBook($id)
     {
-        $comando = "SELECT * FROM livro;";
+        $comando = "SELECT * FROM livro WHERE id_livro = ?;";
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("i", $id);
+        $preparacao->execute();
 
-        $resultado = $this->conexao->mysqli->query($comando);
+        $resultado = $preparacao->get_result();
         if ($resultado == false) {
             return null;
         }
-        $list = [];
+        $listBook = [];
+
         while ($linha = $resultado->fetch_assoc()) {
             $imagem = new Image($linha['nome'], $linha['imagemData'], $linha['imagemType']);
-            $list[] = new Book($linha['titulo'], $imagem, $linha['autor'], $linha['id_genero'], $linha['exemplares'], $linha['disponiveis'], $linha['resumo']);
+            $listBook[] = new Book($linha['titulo'], $imagem, $linha['autor'], $linha['id_genero'], $linha['exemplares'], $linha['disponiveis'], $linha['resumo'], $linha['id_livro']);
         }
 
         $this->conexao->fecharConexao();
-        return $list;
+        return $listBook;
     }
 
 
@@ -54,7 +58,7 @@ class BookDataBase
 
         while ($linha = $resultado->fetch_assoc()) {
             $imagem = new Image($linha['nome'], $linha['imagemData'], $linha['imagemType']);
-            $listBook[] = new Book($linha['titulo'], $imagem, $linha['autor'], $linha['genero'], $linha['exemplares'], $linha['disponiveis'], $linha['resumo']);
+            $listBook[] = new Book($linha['titulo'], $imagem, $linha['autor'], $linha['genero'], $linha['exemplares'], $linha['disponiveis'], $linha['resumo'], $linha['id']);
         }
 
         $this->conexao->fecharConexao();
@@ -73,7 +77,7 @@ class BookDataBase
 
         while ($linha = $resultado->fetch_assoc()) {
             $imagem = new Image($linha['nome'], $linha['imagemData'], $linha['imagemType']);
-            $listBook[] = new Book($linha['titulo'], $imagem, $linha['autor'], $linha['id_genero'], $linha['exemplares'], $linha['disponiveis'], $linha['resumo']);
+            $listBook[] = new Book($linha['titulo'], $imagem, $linha['autor'], $linha['id_genero'], $linha['exemplares'], $linha['disponiveis'], $linha['resumo'], $linha['id_livro']);
         }
 
         $this->conexao->fecharConexao();

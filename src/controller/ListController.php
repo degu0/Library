@@ -20,11 +20,14 @@ class ListController extends Controller implements RequestHandlerInterface
 
         if (strpos($path_info, "lista")) {
             $response = $this->livros($request);
+        } else {
+            $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
+            $response = new Response(200, [], $bodyHttp);
         }
-    return $response;
+        return $response;
     }
 
-    public function livros(ServerRequestInterface $request) : ResponseInterface
+    public function livros(ServerRequestInterface $request): ResponseInterface
     {
         $livroBD = new BookDataBase;
         $list = $livroBD->listBookGenre($request->getQueryParams()['id_genero']);

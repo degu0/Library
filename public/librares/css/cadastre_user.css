@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+html,
+body {
+    background: -webkit-linear-gradient(left, #402E2C, #8c6c5a);
+    background: -moz-linear-gradient(left, #402E2C, #8c6c5a);
+    background: -ms-linear-gradient(left, #402E2C, #8c6c5a);
+    background: -o-linear-gradient(left, #402E2C, #8c6c5a);
+    background: linear-gradient(to right, #402E2C, #8c6c5a);
+}
+
+
+.area_login {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+
+.login {
+    background-color: #fff;
+    border-radius: 8px;
+    margin: auto;
+    height: 700px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#titulo {
+    text-align: center;
+    font-size: 36px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.input {
+    margin: 15px 0px;
+}
+
+.input input {
+    background-color: #EFEFEF;
+    color: rgb(104, 104, 104);
+    padding: 18px;
+    font: 17px normal Arial;
+    border: none;
+    border-radius: 4px;
+    width: 450px;
+}
+
+#tipoUser {
+    background-color: #EFEFEF;
+    color: rgb(104, 104, 104);
+    padding: 18px;
+    font: 17px normal Arial;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    width: 485px;
+}
+
+
+#button {
+    padding: 18px;
+    font-size: 18px;
+    background-color: #261A1A;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    width: 488px;
+}
+
+
+
+/* Aqui podemos configurar
+   a estilização do título
+*/
+.blog-title {
+    overflow: hidden;
+    text-align: center;
+    margin: 10px 0px;
+}
+
+/* Aqui criamos o estilo
+     da linha esquerda (before)
+     e linha direita (after) 
+  */
+.blog-title:before,
+.blog-title:after {
+    background-color: #000;
+    content: "";
+    display: inline-block;
+    height: 1.5px;
+    position: relative;
+    vertical-align: middle;
+    width: 25%;
+}
+
+/* Aqui configuramos o estilo
+     da linha esquerda (before)
+  */
+.blog-title:before {
+    right: 0.5em;
+}
+
+/* Aqui configuramos o estilo
+     da linha direita (after)
+  */
+.blog-title:after {
+    left: 0.5em;
+}
+
+
+.cadastre {
+    text-align: center;
+}
+
+.cadastre p {
+    font-size: 20px;
+    font-weight: 200;
+    color: gray;
+    margin: 20px 0px;
+}
+
+.cadastre a {
+    color: black;
+    text-decoration: none;
+    font: 30px 300 arial;
+}
+
+.cadastre_google {
+    display: flex;
+    flex-direction: column;
+}
+
+.link_google {
+    background-color: transparent;
+    border-radius: 50%;
+    border: none;
+    width: 42px;
+    height: 42px;
+    margin: auto;
+    outline: 1px solid black;
+}

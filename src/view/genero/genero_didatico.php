@@ -1,4 +1,4 @@
-<title>Library - Cadastro Livros</title>
+<title>Library - Genero Didático</title>
 <?php require __DIR__ . "/../share/head.php"; ?>
 <style>
     main {

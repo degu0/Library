@@ -22,9 +22,9 @@
                         </li>
                     <?php } else { ?>
                         <li>  
-                            <a href=""><?php echo $_SESSION['tipo_usuario'];?></a> 
+                            <a href=""><?php echo $_SESSION['usuario'];?></a> 
                             <ul class="dropdown">
-                                <li><p>Meu perfil</p></li>
+                                <li><a href="/meu-perfil">Meu perfil</a></li>
                                 <hr>
                                 <li><a href="/login/deslog">Sair</a></li>
                             </ul>

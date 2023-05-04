@@ -1,4 +1,4 @@
-<title>Library - Cadastro Livros</title>
+<title>Library - Lista de livro</title>
 <?php require __DIR__ . "/../share/head.php"; ?>
 
 <body>
@@ -6,7 +6,7 @@
         <?php
         foreach($list as $l) {
         ?>
-            <p><?php echo $l->getTitulo();?></p>
+            <a href="/livro?titulo=<?php echo $l->getTituloLink();?>"><?php echo $l->getTitulo();?></a><br>
         <?php }?>
     </section>
 </body>

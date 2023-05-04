@@ -37,11 +37,6 @@ class Book
         return $this->titulo;
     }
 
-    public function getTituloLink()
-    {
-        return str_replace("&", "%26", $this->titulo);
-    }
-
     public function getImagem()
     {
         return $this->imagem;

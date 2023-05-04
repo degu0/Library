@@ -11,6 +11,7 @@ use Library_ETE\controller\LoginController;
 use Library_ETE\controller\ShareController;
 use Library_ETE\controller\EditController;
 use Library_ETE\controller\AcervoController;
+use Library_ETE\controller\MyPerfilController;
 
 return [
     "/home" => HomeController::class,
@@ -33,6 +34,7 @@ return [
     "/login/cadastro/add" => LoginController::class,
     "/editar/livro" => EditController::class,
     "/editar/genero" => EditController::class,
+    "/meu-perfil" => MyPerfilController::class,
     "/acervo" => AcervoController::class,
     "/pesquisa" => ShareController::class,
     "/sobre" => AboutController::class,

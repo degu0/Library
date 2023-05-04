@@ -24,12 +24,15 @@ class GenreController extends Controller implements RequestHandlerInterface
             }else if (strpos($path_info, "literatura")) {
                 $response = $this->paradidatico();
             }
+        }else {
+            $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
+            $response = new Response(200, [], $bodyHttp);
         }
 
         return $response;
     }
 
-    public function didatico()
+    public function didatico() : ResponseInterface
     {
         $generoBD =  new GenreDataBase;
         $listGenreDidatico = $generoBD->queryGenre();
@@ -38,9 +41,11 @@ class GenreController extends Controller implements RequestHandlerInterface
 
         return $response;
     }
-    public function paradidatico()
+    public function paradidatico() : ResponseInterface
     {
-        $bodyHTTP = $this->getHTTPBodyBuffer("/genero/genero_paradidatico.php");
+        $generoBD =  new GenreDataBase;
+        $listGenreParadidatico = $generoBD->queryGenre();
+        $bodyHTTP = $this->getHTTPBodyBuffer("/genero/genero_paradidatico.php", ["listGenreParadidatico" => $listGenreParadidatico]);
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;

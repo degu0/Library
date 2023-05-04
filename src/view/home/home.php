@@ -24,10 +24,10 @@
                             </button>
                         </li>
                     <?php } else { ?>
-                        <li>  
-                            <a href=""><?php echo $_SESSION['tipo_usuario'];?></a> 
+                        <li>
+                            <a href=""><?php echo $_SESSION['usuario']; ?></a>
                             <ul class="dropdown">
-                                <li><p>Meu perfil</p></li>
+                                <li><a href="/meu-perfil">Meu perfil</a></li>
                                 <hr>
                                 <li><a href="/login/deslog">Sair</a></li>
                             </ul>
@@ -60,7 +60,7 @@
                 </ul>
             </div>
             <div>
-                <form action="/pesquisa" method="GET"  id="navSearch">
+                <form action="/pesquisa" method="GET" id="navSearch">
                     <input type="search" name="searchNav" id="searchNav" placeholder="Pesquisar">
                     <button id="buttom-searchNav"><img src="/images/search.png" alt="search" height="18px" width="18px"></button>
                 </form>

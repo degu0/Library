@@ -23,13 +23,9 @@ class HomeController extends Controller implements RequestHandlerInterface
 
         if (strpos($path_info, "home")) {
             $response = $this->home();
-            if (strpos($path_info, "pesquisar")) {
-                $response = $this->search($request);
-            } else if (strpos($path_info, "delete")) {
-                $response = $this->delete($request);
-            } else if (strpos($path_info, "adiar")) {
-                $response = $this->adiar($request);
-            }
+        }else {
+            $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
+            $response = new Response(200, [], $bodyHttp);
         }
         return $response;
     }
@@ -42,33 +38,33 @@ class HomeController extends Controller implements RequestHandlerInterface
         return $response;
     }
 
-    public function search(ServerRequestInterface $request): ResponseInterface
-    {
-        $loanDataBase = new LoanDataBase();
-        $dados =  $loanDataBase->search($request->getQueryParams()["busca"]);
-        $bodyHTTP = $this->getHTTPBodyBuffer("/home/home.php", ["listLoan" => $dados]);
-        $response = new Response(200, [], $bodyHTTP);
+    // public function search(ServerRequestInterface $request): ResponseInterface
+    // {
+    //     $loanDataBase = new LoanDataBase();
+    //     $dados =  $loanDataBase->search($request->getQueryParams()["busca"]);
+    //     $bodyHTTP = $this->getHTTPBodyBuffer("/home/home.php", ["listLoan" => $dados]);
+    //     $response = new Response(200, [], $bodyHTTP);
 
-        return $response;
-    }
+    //     return $response;
+    // }
 
-    public function delete(ServerRequestInterface $request): ResponseInterface
-    {
-        $loanDB = new LoanDataBase();
-        $loanDB->delete($request->getQueryParams()["id"]);
+    // public function delete(ServerRequestInterface $request): ResponseInterface
+    // {
+    //     $loanDB = new LoanDataBase();
+    //     $loanDB->delete($request->getQueryParams()["id"]);
 
-        $response = new Response(302, ["Location" => "/home"], null);
-        return $response;
-    }
+    //     $response = new Response(302, ["Location" => "/home"], null);
+    //     return $response;
+    // }
     
-    public function adiar(ServerRequestInterface $request) : ResponseInterface
-    {
-        $loanDB = new LoanDataBase();
-        $id = $request->getQueryParams()["id"];
-        $dadoDate = $loanDB->getDate($id);
-        $loanDB->updateDate($id, $dadoDate);
+    // public function adiar(ServerRequestInterface $request) : ResponseInterface
+    // {
+    //     $loanDB = new LoanDataBase();
+    //     $id = $request->getQueryParams()["id"];
+    //     $dadoDate = $loanDB->getDate($id);
+    //     $loanDB->updateDate($id, $dadoDate);
 
-        $response = new Response(302, ["Location" => "/home"], null);
-        return $response;
-    }
+    //     $response = new Response(302, ["Location" => "/home"], null);
+    //     return $response;
+    // }
 }

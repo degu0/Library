@@ -20,6 +20,9 @@ class ShareController extends Controller implements RequestHandlerInterface
 
         if (strpos($path_info, "pesquisa")) {
             $response = $this->pesquisa($request);
+        }else {
+            $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
+            $response = new Response(200, [], $bodyHttp);
         }
         return $response;
     }

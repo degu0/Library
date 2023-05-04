@@ -19,16 +19,19 @@ class BookController extends Controller implements RequestHandlerInterface
         $response = null;
 
         if (strpos($path_info, "livro")) {
-            $response = $this->livro();
+            $response = $this->livro($request);
+        } else {
+            $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
+            $response = new Response(200, [], $bodyHttp);
         }
-    return $response;
+        return $response;
     }
 
-    public function livro()
+    public function livro(ServerRequestInterface $request): ResponseInterface
     {
         $livroBD = new BookDataBase;
-        $list = $livroBD->queryBook();
-        $bodyHTTP = $this->getHTTPBodyBuffer("/livro/livro.php", ["list" => $list]);
+        $list = $livroBD->queryBook($request->getQueryParams()['id']);
+        $bodyHTTP = $this->getHTTPBodyBuffer("/livro/livro.php", ["listBook" => $list]);
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;

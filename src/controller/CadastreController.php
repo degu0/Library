@@ -2,10 +2,11 @@
 
 namespace Library_ETE\controller;
 
-use Library_ETE\model\People;
 use Library_ETE\model\Book;
-use Library_ETE\model\Data_Base\PeopleDataBase;
+use Library_ETE\model\Image;
+use Library_ETE\model\Genre;
 use Library_ETE\model\Data_Base\BookDataBase;
+use Library_ETE\model\Data_Base\GenreDataBase;
 use Library_ETE\controller\inheritance\Controller;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -21,67 +22,102 @@ class CadastreController extends Controller implements RequestHandlerInterface
         $path_info = $request->getServerParams()["PATH_INFO"];
         $response = null;
 
-        if (strpos($path_info, "pessoa")) {
-            $response = $this->people();
-            if (strpos($path_info, "add")) {
-                $response = $this->addPeople($request);
+        if (strpos($path_info, "gerenciar")) {
+            if (strpos($path_info, "livro")) {
+                $response = $this->Livro();
+                if (strpos($path_info, "add")) {
+                    $response = $this->AdicionarLivro($request);
+                }
+            } else if (strpos($path_info, "genero")) {
+                $response = $this->Genero();
+                if (strpos($path_info, "add")) {
+                    $response = $this->AdicionarGenero($request);
+                }
+            } else if (strpos($path_info, "emprestimo")) {
+                $response = $this->Emprestimo();
             }
-        } else if (strpos($path_info, "livro")) {
-            $response = $this->book();
-            if (strpos($path_info, "add")) {
-                $response = $this->addBook($request);
-            }
-        }else {
+        } else {
             $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
             $response = new Response(200, [], $bodyHttp);
         }
         return $response;
     }
 
-    public function people() : ResponseInterface
+    public function Livro(): ResponseInterface
     {
-        $bodyHttp = $this->getHTTPBodyBuffer("/cadastre/people.php");
+        $bodyHttp = $this->getHTTPBodyBuffer("/gerenciar/gerenciar_livro.php");
         $response = new Response(200, [], $bodyHttp);
         return $response;
     }
 
-    public function addPeople(ServerRequestInterface $request): ResponseInterface 
+    public function AdicionarLivro(ServerRequestInterface $request): ResponseInterface
     {
-        $people = new People(
-            $request->getParsedBody()["peopleName"],
-            $request->getParsedBody()["peopleTrade"],
-            $request->getParsedBody()["peopleClass"]
+        $imgData = addslashes(file_get_contents($_FILES['imagem_capa']['tmp_name']));
+        $imgType = getimageSize($_FILES['imagem_capa']['tmp_name']);
+
+        $imagem = new Image($_FILES['imagem_capa']['name'], $imgData, $imgType['mime']);
+        $livro = new Book(
+            $request->getParsedBody()["titulo"],
+            $imagem,
+            $request->getParsedBody()["autor"],
+            $request->getParsedBody()["genero"],
+            $request->getParsedBody()["exemplares"],
+            null,
+            $request->getParsedBody()["resumo"]
         );
 
-        $peopleDataBase = new PeopleDataBase();
-        $peopleDataBase->add($people);
+        $livroDB = new BookDataBase();
 
-        $response = new Response(302, ["Location" => "/tabela/aluno"], null);
+        $response = new Response(302, ["Location" => "/lista"], null);
 
         return $response;
     }
 
-    public function book() : ResponseInterface
+    public function Genero(): ResponseInterface
     {
-        $bodyHttp = $this->getHTTPBodyBuffer("/cadastre/book.php");
+        $bodyHttp = $this->getHTTPBodyBuffer("/gerenciar/gerenciar_genero.php");
         $response = new Response(200, [], $bodyHttp);
         return $response;
     }
 
-    public function addBook(ServerRequestInterface $request): ResponseInterface 
+    public function AdicionarGenero(ServerRequestInterface $request): ResponseInterface
     {
-        $book = new Book(
-            $request->getParsedBody()["bookName"],
-            $request->getParsedBody()["bookClassificon"],
-            $request->getParsedBody()["bookQuantity"]
-        );
-        
-        $bookDataBase = new BookDataBase();
-        $bookDataBase->add($book);
 
-        $response = new Response(302, ["Location" => "/tabela/livro_nao_didatico"], null);
+        $genero = new Genre(
+            $request->getParsedBody()["titulo"],
+            $request->getParsedBody()["select_genero"],
+            null
+        );
+
+        $generoBD = new GenreDataBase();
+
+
+        $response = new Response(302, ["Location" => "/lista"], null);
 
         return $response;
     }
+
+    public function Emprestimo(): ResponseInterface
+    {
+        $bodyHttp = $this->getHTTPBodyBuffer("/gerenciar/gerenciar_emprestimo.php");
+        $response = new Response(200, [], $bodyHttp);
+        return $response;
+    }
+
+    // public function addBook(ServerRequestInterface $request): ResponseInterface 
+    // {
+    //     $book = new Book(
+    //         $request->getParsedBody()["bookName"],
+    //         $request->getParsedBody()["bookClassificon"],
+    //         $request->getParsedBody()["bookQuantity"]
+    //     );
+
+    //     $bookDataBase = new BookDataBase();
+    //     $bookDataBase->add($book);
+
+    //     $response = new Response(302, ["Location" => "/tabela/livro_nao_didatico"], null);
+
+    //     return $response;
+    // }
 
 }

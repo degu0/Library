@@ -32,12 +32,15 @@ class LoginController extends Controller implements RequestHandlerInterface
                     $response = $this->addUser($request);
                 }
             }
+        }else {
+            $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
+            $response = new Response(200, [], $bodyHttp);
         }
         return $response;
     }
 
 
-    public function login()
+    public function login() : ResponseInterface
     {
         $bodyHTTP = $this->getHTTPBodyBuffer("/login/login.php");
         $response = new Response(200, [], $bodyHTTP);
@@ -67,14 +70,14 @@ class LoginController extends Controller implements RequestHandlerInterface
         }
     }
 
-    public function deslogar()
+    public function deslogar() : ResponseInterface
     {
         session_unset();
         return new Response(302, ["Location" => "/home"],);
     }
 
 
-    public function cadastro()
+    public function cadastro() : ResponseInterface
     {
         $bodyHTTP = $this->getHTTPBodyBuffer("/login/cadastro_user.php");
         $response = new Response(200, [], $bodyHTTP);
