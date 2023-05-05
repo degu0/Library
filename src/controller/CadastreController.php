@@ -5,9 +5,12 @@ namespace Library_ETE\controller;
 use Library_ETE\model\Book;
 use Library_ETE\model\Image;
 use Library_ETE\model\Genre;
+use Library_ETE\model\Loan;
 use Library_ETE\model\Data_Base\BookDataBase;
 use Library_ETE\model\Data_Base\GenreDataBase;
 use Library_ETE\controller\inheritance\Controller;
+use Library_ETE\model\Data_Base\LoanDataBase;
+use Library_ETE\model\Data_Base\StudentDataBase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -35,6 +38,9 @@ class CadastreController extends Controller implements RequestHandlerInterface
                 }
             } else if (strpos($path_info, "emprestimo")) {
                 $response = $this->Emprestimo();
+                if (strpos($path_info, "add")) {
+                    $response = $this->AdicionarEmprestimo($request);
+                }
             }
         } else {
             $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
@@ -45,7 +51,9 @@ class CadastreController extends Controller implements RequestHandlerInterface
 
     public function Livro(): ResponseInterface
     {
-        $bodyHttp = $this->getHTTPBodyBuffer("/gerenciar/gerenciar_livro.php");
+        $genero = new GenreDataBase();
+        $listGenre = $genero->queryGenre();
+        $bodyHttp = $this->getHTTPBodyBuffer("/gerenciar/gerenciar_livro.php", ["listGenre" => $listGenre]);
         $response = new Response(200, [], $bodyHttp);
         return $response;
     }
@@ -84,12 +92,13 @@ class CadastreController extends Controller implements RequestHandlerInterface
     {
 
         $genero = new Genre(
-            $request->getParsedBody()["titulo"],
+            $request->getParsedBody()["genero"],
             $request->getParsedBody()["select_genero"],
             null
         );
 
         $generoBD = new GenreDataBase();
+        $generoBD->adicionar($genero);
 
 
         $response = new Response(302, ["Location" => "/lista"], null);
@@ -99,8 +108,31 @@ class CadastreController extends Controller implements RequestHandlerInterface
 
     public function Emprestimo(): ResponseInterface
     {
-        $bodyHttp = $this->getHTTPBodyBuffer("/gerenciar/gerenciar_emprestimo.php");
+        $aluno = new StudentDataBase();
+        $livro = new BookDataBase();
+        $listaAluno = $aluno->getStudent();
+        $listaLivro = $livro->getBook();
+        $bodyHttp = $this->getHTTPBodyBuffer("/gerenciar/gerenciar_emprestimo.php", ["listaAluno" => $listaAluno, "listaLivro" => $listaLivro ]);
         $response = new Response(200, [], $bodyHttp);
+        return $response;
+    }
+
+    public function AdicionarEmprestimo(ServerRequestInterface $request): ResponseInterface
+    {
+
+        $emprestimo = new Loan(
+            $request->getParsedBody()["aluno"],
+            $request->getParsedBody()["livro"],
+            $request->getParsedBody()["data"],
+            null
+        );
+
+        $emprestimoBD = new LoanDataBase();
+        $emprestimoBD->adicionar($emprestimo);
+
+
+        $response = new Response(302, ["Location" => "/arcevo"], null);
+
         return $response;
     }
 

@@ -3,6 +3,7 @@
 namespace Library_ETE\controller;
 
 use Library_ETE\controller\inheritance\Controller;
+use Library_ETE\model\Data_Base\LoanDataBase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -28,7 +29,9 @@ class AcervoController extends Controller implements RequestHandlerInterface
 
     public function acervo() : ResponseInterface
     {
-        $bodyHTTP = $this->getHTTPBodyBuffer("/acervo/acervo.php");
+        $emprestimo = new LoanDataBase();
+        $listaEmprestimo = $emprestimo->getLoan();
+        $bodyHTTP = $this->getHTTPBodyBuffer("/acervo/acervo.php", ["listaEmprestimo" => $listaEmprestimo]);
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;

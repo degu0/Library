@@ -83,4 +83,25 @@ class BookDataBase
         $this->conexao->fecharConexao();
         return $listBook;
     }
+
+    public function getBook()
+    {
+        $comando = "SELECT * FROM livro;";
+
+        $resultado = $this->conexao->mysqli->query($comando);
+
+        if ($resultado == false) {
+            return null;
+        }
+
+        $listBook = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $imagem = new Image($linha['nome'], $linha['imagemData'], $linha['imagemType']);
+            $listBook[] = new Book($linha['titulo'], $imagem, $linha['autor'], $linha['id_genero'], $linha['exemplares'], $linha['disponiveis'], $linha['resumo'], $linha['id_livro']);
+        }
+        $this->conexao->fecharConexao();
+
+        return $listBook;
+    }
 }

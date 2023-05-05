@@ -7,7 +7,7 @@
         <form action="/gerenciar/genero/add" method="POST">
             <div>
                 <label for="genero">Genero:</label><br>
-                <input type="text" id="genero" class="input">
+                <input type="text" name="genero" id="genero" class="input">
             </div>
             <div>
                 <label for="genero">Classificação:</label><br>

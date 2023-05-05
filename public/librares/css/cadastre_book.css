@@ -33,8 +33,8 @@ main {
 
 .cadastro {
     background-color: white;
-    width: 985px;
-    height: 650px;
+    width: 1000px;
+    height: 760px;
     border-radius: 5px;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.452);
 }
@@ -66,6 +66,11 @@ label {
     border: 0.5px solid gray;
     border-radius: 5px;
     margin: 0px 0px 25px 0px;
+    font: 17px 'Roboto', sans-serif;
+}
+
+#resumo {
+    height: 170px;
     font: 17px 'Roboto', sans-serif;
 }
 

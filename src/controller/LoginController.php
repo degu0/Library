@@ -58,9 +58,11 @@ class LoginController extends Controller implements RequestHandlerInterface
         $senhaMD5 = $user->getSenhaMd5();
         $usuario = $usuarioBD->queryLogin($loginUsuario, $senhaMD5);
         $nomeUsuario = $usuarioBD->queryName($loginUsuario, $senhaMD5);
+        $idUsuario = $usuarioBD->queryId($loginUsuario, $senhaMD5);
         $tipo_usuario = $usuarioBD->queryType($loginUsuario, $senhaMD5);
 
         if (!empty($usuario)) {
+            $_SESSION["id_usuario"] = $idUsuario;
             $_SESSION["usuario"] = $nomeUsuario;
             $_SESSION["tipo_usuario"] = $tipo_usuario;
             return new Response(302, ["Location" => "/home"],);

@@ -24,7 +24,7 @@
                         <li>  
                             <a href=""><?php echo $_SESSION['usuario'];?></a> 
                             <ul class="dropdown">
-                                <li><a href="/meu-perfil">Meu perfil</a></li>
+                                <li><a href="/meu-perfil?id=<?php echo $_SESSION['id_usuario']?>">Meu perfil</a></li>
                                 <hr>
                                 <li><a href="/login/deslog">Sair</a></li>
                             </ul>
@@ -44,7 +44,7 @@
                             <ul class="dropdown">
                                 <li><a href="/gerenciar/livro">Cadastre Livros</a></li>
                                 <li><a href="/gerenciar/genero">Cadastre Gêneros</a></li>
-                                <li><a href="/gerenciar/emprestimo">Emprestimo</a></li>
+                                <li><a href="/gerenciar/emprestimo">Cadastre emprestimo</a></li>
                             </ul>
                         </li>
                         <li>

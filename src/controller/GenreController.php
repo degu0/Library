@@ -35,7 +35,7 @@ class GenreController extends Controller implements RequestHandlerInterface
     public function didatico() : ResponseInterface
     {
         $generoBD =  new GenreDataBase;
-        $listGenreDidatico = $generoBD->queryGenre();
+        $listGenreDidatico = $generoBD->queryGenre('didatico');
         $bodyHTTP = $this->getHTTPBodyBuffer("/genero/genero_didatico.php", ["listGenreDidatico" => $listGenreDidatico]);
         $response = new Response(200, [], $bodyHTTP);
 
@@ -44,7 +44,7 @@ class GenreController extends Controller implements RequestHandlerInterface
     public function paradidatico() : ResponseInterface
     {
         $generoBD =  new GenreDataBase;
-        $listGenreParadidatico = $generoBD->queryGenre();
+        $listGenreParadidatico = $generoBD->queryGenre('paradidatico');
         $bodyHTTP = $this->getHTTPBodyBuffer("/genero/genero_paradidatico.php", ["listGenreParadidatico" => $listGenreParadidatico]);
         $response = new Response(200, [], $bodyHTTP);
 

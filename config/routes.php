@@ -23,6 +23,7 @@ return [
     "/gerenciar/genero" => CadastreController::class,
     "/gerenciar/genero/add" => CadastreController::class,
     "/gerenciar/emprestimo" => CadastreController::class,
+    "/gerenciar/emprestimo/add" => CadastreController::class,
     "/generos/didaticos" => GenreController::class,
     "/generos/literatura" => GenreController::class,
     "/lista" => ListController::class,
