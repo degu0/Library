@@ -23,6 +23,19 @@
         <p>
             <?php echo $listBook->getResumo(); ?>
         </p>
+
+        <?php
+            if($_SESSION['tipo_usuario'] == 'aluno') {        
+        ?>
+            <div class="atividades">
+                <a href="" class="buttonAtividade">Editar</a>
+                <a href="" class="buttonAtividade">Excluir</a>
+            </div>
+        <?php }else if ($_SESSION['tpo_usuario'] == 'funcionário') {?>
+            <div class="acoes">
+                <a href="" class="buttonAtividade">Empréstimo</a>
+            </div>
+        <?php }?>
     </div>
 
 </main>

@@ -104,4 +104,61 @@ class BookDataBase
 
         return $listBook;
     }
+
+    public function remover($id)
+    {
+        $comando = "DELETE FROM Livro WHERE id = ?;";
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+
+        $preparacao->bind_param("s", $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+
+        $this->conexao->fecharConexao();
+    }
+
+    public function update(Book $updateLivro)
+    {
+        $comando = "UPDATE Livro SET
+        nome = ?, imagemData = ?, imagemType = ?, titulo = ?, autor = ?, id_genero = ?, exemplares = ?, disponiveis = ?, resumo = ?  
+        WHERE id_livro = ?;";
+
+        $id = $updateLivro->getId();
+        $imagemNome = $updateLivro->getImagem()->getNome();
+        $imagemData = $updateLivro->getImagem()->getData();
+        $imagemType = $updateLivro->getImagem()->getType();
+        $titulo = $updateLivro->getTitulo();
+        $autor = $updateLivro->getAutor();
+        $genero = $updateLivro->getId_genero();
+        $exemplares = $updateLivro->getExemplares();
+        $disponiveis = $updateLivro->getDisponiveis();
+        $resumo = $updateLivro->getResumo();
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param(
+            "sssssiiisi",
+            $imagemNome,
+            $imagemData,
+            $imagemType,
+            $titulo,
+            $autor,
+            $genero,
+            $exemplares,
+            $disponiveis,
+            $resumo,
+            $id
+        );
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+        $this->conexao->fecharConexao();
+    }
 }

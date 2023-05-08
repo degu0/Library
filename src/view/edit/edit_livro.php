@@ -1,10 +1,11 @@
 <title>Library - Cadastro Livros</title>
 <?php require __DIR__ . "/../share/head.php"; ?>
-<link rel="stylesheet" href="/librares/css/cadastre/cadastre_book.css">
+
+
 <main>
     <div class="cadastro">
         <h1 id="title_cadastre">Cadastro livro</h1>
-        <form action="/gerenciar/livro/add" method="POST">
+        <form action="/gerenciar/livro/update" method="POST">
             <div class="cadastre_image">
                 <h3 id="title_image">Adicionar imagem do livro</h3>
                 <input type="file" id="imagem_livro" name="imagem_livro" required>
@@ -12,11 +13,11 @@
             <div class="cadastre_information">
                 <div>
                     <label for="titlo">Nome do livro:</label><br>
-                    <input type="text" id="titulo" class="input" placeholder="Insira o titulo do livro" required>
+                    <input type="text" id="titulo" class="input" placeholder="Insira o titulo do livro" required value="<?php echo $livro->getTitulo();?>">
                 </div>
                 <div>
                     <label for="autor">Autor:</label><br>
-                    <input type="text" id="autor" class="input" placeholder="Insira o nome do autor" required>
+                    <input type="text" id="autor" class="input" placeholder="Insira o nome do autor" required value="<?php echo $livro->getAutor();?>">
                 </div>
                 <div>
                     <label for="genero">Genero:</label><br>
@@ -29,11 +30,11 @@
                 </div>
                 <div>
                     <label for="exemplares">N exemplares:</label><br>
-                    <input type="number" id="exemplares" class="input" placeholder="Insira a quantidade de livros" required>
+                    <input type="number" id="exemplares" class="input" placeholder="Insira a quantidade de livros" required value="<?php echo $livro->getExemplares();?>">
                 </div>
                 <div>
                     <label for="resumo">Sobre a obre:</label><br>
-                    <textarea id="resumo" class="input" rows="12" cols="45" required></textarea>
+                    <textarea id="resumo" class="input" rows="12" cols="45" required><?php echo $livro->getResumo();?></textarea>
                 </div>
                 <div>
                     <input type="submit" id="button">
@@ -42,5 +43,6 @@
         </form>
     </div>
 </main>
+
 
 <?php require __DIR__ . "/../share/footer.php"; ?>

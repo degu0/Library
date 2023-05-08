@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Library_ETE\model\Data_Base;
 
@@ -8,14 +8,14 @@ use Library_ETE\model\Book;
 use Library_ETE\model\Student;
 use Library_ETE\model\Image;
 
-class LoanDataBase 
+class LoanDataBase
 {
     private $conexao;
 
     public function __construct()
     {
-       $this->conexao = new Conexao; 
-    }  
+        $this->conexao = new Conexao;
+    }
 
     public function adicionar(Loan $emprestimo)
     {
@@ -60,7 +60,7 @@ class LoanDataBase
 
         while ($linha = $resultado->fetch_assoc()) {
             $imagem = new Image('null', 'null', 'null');
-            $livro = new Book($linha['titulo'], $imagem, null, null,null,null,null, $linha['id_livro']);
+            $livro = new Book($linha['titulo'], $imagem, null, null, null, null, null, $linha['id_livro']);
             $aluno = new Student($linha['matricula'], null, null, $linha['id_usuario']);
             $listLoan[] = new Loan($aluno, $livro, $linha['data_entrega'], $linha['data_final'], $linha['id']);
         }
@@ -69,4 +69,105 @@ class LoanDataBase
         return $listLoan;
     }
 
+    public function delete($id)
+    {
+        $comando = "DELETE FROM Emprestimo WHERE id = ?;";
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+
+        $preparacao->bind_param("i", $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+
+        $this->conexao->fecharConexao();
+    }
+
+    public function getDate($id)
+    {
+        $comando = "SELECT Data_Entrega FROM Emprestimo WHERE id = ?;";
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("i", $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+
+        while ($linha = $resultado->fetch_assoc()) {
+            return $linha['data_entrega'];
+        }
+    }
+
+    public function updateDate($id, $dataInicial)
+    {
+        $comando = "UPDATE `emprestimo` SET `data_final` = ? WHERE (`id` = ?);";
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("si", $dataInicial, $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+
+        if ($resultado == false) {
+            return null;
+        }
+    }
+
+    public function queryLoan($id)
+    {
+        $comando = "SELECT * FROM emprestimo WHERE id = ?;";
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("i", $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+        $listLoan = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $imagem = new Image('null', 'null', 'null');
+            $livro = new Book($linha['titulo'], $imagem, null, null, null, null, null, $linha['id_livro']);
+            $aluno = new Student($linha['matricula'], null, null, $linha['id_usuario']);
+            $listLoan[] = new Loan($aluno, $livro, $linha['data_entrega'], $linha['data_final'], $linha['id']);
+        }
+
+        $this->conexao->fecharConexao();
+        return $listLoan;
+    }
+
+    public function updateLoan(Loan $updateLoan)
+    {
+        $comando = "UPDATE Emprestimo SET
+        data_entregra = ?, data_final = ?, FK_id_Livro = ?, FK_id_Aluno = ?
+        WHERE id = ?;";
+
+        $id = $updateLoan->getId();
+        $data_inicial = $updateLoan->getDataInicial();
+        $data_final = date('d/m/Y', strtotime('+8 days', strtotime($data_inicial)));
+        $idLivro = $updateLoan->getLivro();
+        $idAluno = $updateLoan->getAluno();
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param(
+            "ssiii",
+            $data_inicial,
+            $data_final,
+            $idLivro,
+            $idAluno,
+            $id
+        );
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+        $this->conexao->fecharConexao();
+    }
 }

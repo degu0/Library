@@ -42,6 +42,10 @@ class CadastreController extends Controller implements RequestHandlerInterface
                 $response = $this->Emprestimo();
                 if (strpos($path_info, "add")) {
                     $response = $this->AdicionarEmprestimo($request);
+                } else if (strpos($path_info, "editar")) {
+                    $response = $this->EditarEmprestimo($request);
+                } else if (strpos($path_info, "update")) {
+                    $response = $this->UpdateEmprestimo($request);
                 }
             }
         } else if(strpos($path_info, "cadastro-de-informacoes")){
@@ -138,7 +142,7 @@ class CadastreController extends Controller implements RequestHandlerInterface
         $emprestimoBD->adicionar($emprestimo);
 
 
-        $response = new Response(302, ["Location" => "/arcevo"], null);
+        $response = new Response(302, ["Location" => "/confirmacao/confirmacao_emprestimo"], null);
 
         return $response;
     }
@@ -170,20 +174,35 @@ class CadastreController extends Controller implements RequestHandlerInterface
         return $response;
     }
 
-    // public function addBook(ServerRequestInterface $request): ResponseInterface 
-    // {
-    //     $book = new Book(
-    //         $request->getParsedBody()["bookName"],
-    //         $request->getParsedBody()["bookClassificon"],
-    //         $request->getParsedBody()["bookQuantity"]
-    //     );
+    public function EditarEmprestimo(ServerRequestInterface $request) : ResponseInterface
+    {
+        $alunoBD = new StudentDataBase();
+        $livroBD = new BookDataBase();
+        $emprestimoBD = new LoanDataBase();
+        $listaAluno = $alunoBD->getStudent();
+        $listaLivro = $livroBD->getBook();
+        $emprestimo = $emprestimoBD->queryLoan($request->getQueryParams()["id"]);
+        $bodyHttp = $this->getHTTPBodyBuffer("/livro/edit_livro.php", ["emprestimo" => $emprestimo, "listaAluno" => $listaAluno, "listaLivro" => $listaLivro]);
+        $response = new Response(200, [], $bodyHttp);
 
-    //     $bookDataBase = new BookDataBase();
-    //     $bookDataBase->add($book);
+        return $response;
+    }
 
-    //     $response = new Response(302, ["Location" => "/tabela/livro_nao_didatico"], null);
+    public function UpdateEmprestimo(ServerRequestInterface $request) : ResponseInterface
+    {
+        $emprestimo = new Loan(
+            $request->getParsedBody()["aluno"],
+            $request->getParsedBody()["livro"],
+            $request->getParsedBody()["data"],
+            null
+        );
 
-    //     return $response;
-    // }
+        $emprestimoBD = new LoanDataBase();
+        $emprestimoBD->updateLoan($emprestimo);
 
+
+        $response = new Response(302, ["Location" => "/confirmacao/emprestimo"], null);
+
+        return $response;
+    }
 }

@@ -80,4 +80,69 @@ class GenreDataBase
 
         $this->conexao->fecharConexao();
     }
+
+    public function queryGenreId($id)
+    {
+        $comando = "SELECT * FROM genero WHERE id = ?;";
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("i", $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+        $list = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $list[] = new Genre($linha["genero"], $linha["classificao"], null, $linha["id"]);
+        }
+
+        $this->conexao->fecharConexao();
+        return $list;
+    }
+
+    public function remover($id)
+    {
+        $comando = "DELETE FROM Genero WHERE id = ?;";
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+
+        $preparacao->bind_param("s", $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+
+        $this->conexao->fecharConexao();
+    }
+
+
+    public function update(Genre $updateGenero)
+    {
+        $comando = "UPDATE Genero SET
+        genero = ?, classificao = ?
+        WHERE id = ?;";
+
+        $id = $updateGenero->getId();
+        $genero = $updateGenero->getGenero();
+        $classificacao = $updateGenero->getClassificacao();
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param(
+            "ssi",
+            $genero,
+            $classificacao,
+            $id
+        );
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+        $this->conexao->fecharConexao();
+    }
 }

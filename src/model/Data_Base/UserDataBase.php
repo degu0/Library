@@ -59,7 +59,7 @@ class UserDataBase
         $perfil = [];
 
         while ($linha = $resultado->fetch_assoc()) {
-            $perfil[] = new User($linha['nome'], $linha['email'], $linha['senha'], null, $linha['tipo_usuario'], $linha['id_usuario']);
+            $perfil[] = new User($linha['nome'], $linha['email'], null, null, $linha['tipo_usuario'], $linha['id_usuario']);
         }
 
         $this->conexao->fecharConexao();

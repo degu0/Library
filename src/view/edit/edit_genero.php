@@ -1,13 +1,14 @@
-<title>Library - Cadastro Livros</title>
+<title>Library - Cadastro Genero</title>
 <?php require __DIR__ . "/../share/head.php"; ?>
-<link rel="stylesheet" href="/librares/css/cadastre/cadastre_genre.css">
+
+
 <main>
-    <div class="cadastro">
+<div class="cadastro">
         <h2 id="title_cadastre">Cadastre o genero</h2>
-        <form action="/gerenciar/genero/add" method="POST">
+        <form action="/gerenciar/genero/update" method="POST">
             <div>
                 <label for="genero">Genero:</label><br>
-                <input type="text" name="genero" id="genero" class="input">
+                <input type="text" name="genero" id="genero" class="input" value="<?php echo $genero->getGenero();?>">
             </div>
             <div>
                 <label for="genero">Classificação:</label><br>

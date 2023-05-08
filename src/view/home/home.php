@@ -28,7 +28,7 @@
                             <a href=""><?php echo $_SESSION['usuario']; ?></a>
                             <ul class="dropdown">
                                 <li>
-                                    <a href="/meu-perfil?id=<?php echo $_SESSION['id_usuario'];?>">Meu perfil</a>
+                                    <a href="/meu-perfil?id=<?php echo $_SESSION['id_usuario']; ?>">Meu perfil</a>
                                 </li>
                                 <hr>
                                 <li><a href="/login/deslog">Sair</a></li>
@@ -70,40 +70,31 @@
         </nav>
     </header>
     <main>
-        <!-- <div class="divPart" id="divInformationLoan">
-            <div id="box-search">
-                <form action="/home/pesquisar" method="GET">
-                    <input type="search" name="busca" id="search" placeholder="Pesquisar">
-                    <button id="buttom-search"><img src="/images/search.png" alt="search" height="23px" width="23px"></button>
-                    <div id="autocomplete">
-                        <ul>
-                        </ul>
-                    </div>
-                </form>
-            </div>
-            <div id="tableInfo">
-                <table>
-                    <thead>
-                        <th scope="col">Data de entrega</th>
-                        <th scope="col">Nome de livro</th>
-                        <th scope="col">Nome da pessoa</th>
-                        <th scope="col">Deletar</th>
-                        <th scope="col">Adiar</th>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($listLoan as $loan) { ?>
-                            <tr>
-                                <td><?php echo  date('d/m/Y', strtotime($loan->getDateFinal())); ?></td>
-                                <td><?php echo $loan->getBook(); ?></td>
-                                <td><?php echo $loan->getPeople(); ?></td>
-                                <td><?php echo "<a href='/home/delete?id=" . $loan->getId() . "' class='link'>DELETE</a>"; ?></td>
-                                <td><?php echo "<a href='/home/adiar?id=" . $loan->getId() . "' class='link'>+</a>"; ?></td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
-        </div> -->
+    <!-- <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário') { ?>
+        <div id="tableInfo">
+            <table>
+                <thead>
+                    <th scope="col">Data de entrega</th>
+                    <th scope="col">Nome de livro</th>
+                    <th scope="col">Nome da pessoa</th>
+                    <th scope="col">Deletar</th>
+                    <th scope="col">Adiar</th>
+                </thead>
+                <tbody>
+                    <?php foreach ($listLoan as $loan) { ?>
+                        <tr>
+                            <td><?php echo  date('d/m/Y', strtotime($loan->getDataFinal())); ?></td>
+                            <td><?php echo $loan->getLivro(); ?></td>
+                            <td><?php echo $loan->getAluno(); ?></td>
+                            <td><?php echo "<a href='/home/delete?id=" . $loan->getId() . "' class='link'>DELETE</a>"; ?></td>
+                            <td><?php echo "<a href='/home/adiar?id=" . $loan->getId() . "' class='link'>+</a>"; ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+        <?php } ?> -->
+        </div>
         <div class="divPart" id="divWelcome">
             <div id="information">
                 <p>Esse web site tem como principal objetivo facilitar a busca e o acesso aos livros de uma biblioteca, tornando a experiência do usuário mais agradável e eficiente. A partir da interface simples e intuitiva, o usuário pode pesquisar, solicitar empréstimo ou devolver livros

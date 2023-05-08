@@ -23,16 +23,18 @@ class HomeController extends Controller implements RequestHandlerInterface
 
         if (strpos($path_info, "home")) {
             $response = $this->home();
-        }else {
+        } else {
             $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
             $response = new Response(200, [], $bodyHttp);
         }
         return $response;
     }
 
-    public function home() : ResponseInterface
+    public function home(): ResponseInterface
     {
-        $bodyHTTP = $this->getHTTPBodyBuffer("/home/home.php");
+        $loanBD = new LoanDataBase();
+        $listLoan = $loanBD->getLoan();
+        $bodyHTTP = $this->getHTTPBodyBuffer("/home/home.php", ['$listLoan' => $listLoan]);
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;
@@ -48,23 +50,24 @@ class HomeController extends Controller implements RequestHandlerInterface
     //     return $response;
     // }
 
-    // public function delete(ServerRequestInterface $request): ResponseInterface
-    // {
-    //     $loanDB = new LoanDataBase();
-    //     $loanDB->delete($request->getQueryParams()["id"]);
+    public function delete(ServerRequestInterface $request): ResponseInterface
+    {
+        $loanDB = new LoanDataBase();
+        $loanDB->delete($request->getQueryParams()["id"]);
 
-    //     $response = new Response(302, ["Location" => "/home"], null);
-    //     return $response;
-    // }
-    
-    // public function adiar(ServerRequestInterface $request) : ResponseInterface
-    // {
-    //     $loanDB = new LoanDataBase();
-    //     $id = $request->getQueryParams()["id"];
-    //     $dadoDate = $loanDB->getDate($id);
-    //     $loanDB->updateDate($id, $dadoDate);
+        $response = new Response(302, ["Location" => "/home"], null);
+        return $response;
+    }
 
-    //     $response = new Response(302, ["Location" => "/home"], null);
-    //     return $response;
-    // }
+    public function adiar(ServerRequestInterface $request): ResponseInterface
+    {
+        $loanDB = new LoanDataBase();
+        $id = $request->getQueryParams()["id"];
+        $dadoDate = $loanDB->getDate($id);
+        $loanDB->updateDate($id, $dadoDate);
+
+        $response = new Response(302, ["Location" => "/home"], null);
+        return $response;
+    }
+
 }

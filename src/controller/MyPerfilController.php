@@ -40,7 +40,7 @@ class MyPerfilController extends Controller implements RequestHandlerInterface
         } else {
             $user = new UserDataBase();
             $perfilUsuario = $user->getUser($idPerfil);
-            $bodyHTTP = $this->getHTTPBodyBuffer("/perfil/meu_perfil.php", ['perfil' => $perfilUsuario]);
+            $bodyHTTP = $this->getHTTPBodyBuffer("/perfil/meu_perfil.php", ["perfil" => $perfilUsuario]);
             $response = new Response(200, [], $bodyHTTP);
     
             return $response;

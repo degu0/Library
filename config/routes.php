@@ -12,6 +12,7 @@ use Library_ETE\controller\ShareController;
 use Library_ETE\controller\EditController;
 use Library_ETE\controller\AcervoController;
 use Library_ETE\controller\MyPerfilController;
+use Library_ETE\controller\ConfirmationScreenController;
 
 return [
     "/home" => HomeController::class,
@@ -27,7 +28,11 @@ return [
     "/cadastro-de-informacoes" => CadastreController::class,
     "/cadastro-de-informacoes/add" => CadastreController::class,
     "/generos/didaticos" => GenreController::class,
+    "/generos/didaticos/editar" => GenreController::class,
+    "/generos/didaticos/excluir" => GenreController::class,
     "/generos/literatura" => GenreController::class,
+    "/generos/literatura/editar" => GenreController::class,
+    "/generos/literatura/excluir" => GenreController::class,
     "/lista" => ListController::class,
     "/livro" => BookController::class,
     "/login" => LoginController::class,
@@ -37,6 +42,8 @@ return [
     "/login/cadastro/add" => LoginController::class,
     "/editar/livro" => EditController::class,
     "/editar/genero" => EditController::class,
+    "/confirmacao/emprestimo" => ConfirmationScreenController::class,
+    "/confirmacao/devolucao" => ConfirmationScreenController::class,
     "/meu-perfil" => MyPerfilController::class,
     "/acervo" => AcervoController::class,
     "/pesquisa" => ShareController::class,
