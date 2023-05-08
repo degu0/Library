@@ -42,7 +42,7 @@ class UserDataBase
             return null;
         }
 
-        $this->conexao->fecharConexao();
+       
     }
 
     public function getUser($id)

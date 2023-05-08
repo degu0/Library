@@ -32,7 +32,7 @@ class LoginController extends Controller implements RequestHandlerInterface
                     $response = $this->addUser($request);
                 }
             }
-        }else {
+        } else {
             $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
             $response = new Response(200, [], $bodyHttp);
         }
@@ -40,7 +40,7 @@ class LoginController extends Controller implements RequestHandlerInterface
     }
 
 
-    public function login() : ResponseInterface
+    public function login(): ResponseInterface
     {
         $bodyHTTP = $this->getHTTPBodyBuffer("/login/login.php");
         $response = new Response(200, [], $bodyHTTP);
@@ -49,7 +49,7 @@ class LoginController extends Controller implements RequestHandlerInterface
     }
 
 
-    public function logar(ServerRequestInterface $request) : ResponseInterface
+    public function logar(ServerRequestInterface $request): ResponseInterface
     {
         $usuarioBD = new UserDataBase;
         $loginUsuario = $request->getParsedBody()["email"];
@@ -58,8 +58,8 @@ class LoginController extends Controller implements RequestHandlerInterface
         $senhaMD5 = $user->getSenhaMd5();
         $usuario = $usuarioBD->queryLogin($loginUsuario, $senhaMD5);
         $nomeUsuario = $usuarioBD->queryName($loginUsuario, $senhaMD5);
-        $idUsuario = $usuarioBD->queryId($loginUsuario, $senhaMD5);
         $tipo_usuario = $usuarioBD->queryType($loginUsuario, $senhaMD5);
+        $idUsuario = $usuarioBD->queryId($loginUsuario, $senhaMD5);
 
         if (!empty($usuario)) {
             $_SESSION["id_usuario"] = $idUsuario;
@@ -72,14 +72,14 @@ class LoginController extends Controller implements RequestHandlerInterface
         }
     }
 
-    public function deslogar() : ResponseInterface
+    public function deslogar(): ResponseInterface
     {
         session_unset();
         return new Response(302, ["Location" => "/home"],);
     }
 
 
-    public function cadastro() : ResponseInterface
+    public function cadastro(): ResponseInterface
     {
         $bodyHTTP = $this->getHTTPBodyBuffer("/login/cadastro_user.php");
         $response = new Response(200, [], $bodyHTTP);
@@ -107,12 +107,22 @@ class LoginController extends Controller implements RequestHandlerInterface
 
             $usuarioBD = new UserDataBase();
             $usuarioBD->adicionar($usuario);
+            $senhaMD5 = $usuario->getSenhaMd5();
+            $idUsuario = $usuarioBD->queryId($email, $senhaMD5);
+
+
+            $_SESSION["id_usuario"] = $idUsuario;
             $_SESSION["usuario"] = $nome;
             $_SESSION["tipo_usuario"] = $tipo_usuario;
 
-            $response = new Response(302, ["Location" => "/home"], null);
-
+            if ($_SESSION['tipo_usuario'] == 'aluno') {
+                $response = new Response(302, ['Location' => "/cadastro-de-informacoes"]);
+            } else {
+                $response = new Response(302, ["Location" => "/home"], null);
+            }
             return $response;
         }
+        $bodyHTTP = $this->getHTTPBodyBuffer("/login/cadastro_user.php", [ "SenhaIncorreta" => true]);
+        return new Response(200, [], $bodyHTTP);
     }
 }

@@ -6,7 +6,7 @@
         <?php
         foreach($list as $l) {
         ?>
-            <a href="/livro?titulo=<?php echo $l->getTituloLink();?>"><?php echo $l->getTitulo();?></a><br>
+            <a href="/livro?id=<?php echo $l->getId();?>"><?php echo $l->getTitulo();?></a><br>
         <?php }?>
     </section>
 </body>

@@ -1,7 +1,8 @@
 <title>Library - </title>
 <?php require __DIR__ . "/../share/head.php"; ?>
 <main>
-    <p><?php var_dump($listBook->getId());exit(); ?></p>
+    <p><?php var_dump($listBook);
+        exit(); ?></p>
     <div class="livro_imagem">
         <img src="data: <?php echo $listBook->getImagem()->getType(); ?>;base64, <?php echo $listBook->getImagem()->getBase64(); ?>">
     </div>

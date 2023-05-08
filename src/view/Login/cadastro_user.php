@@ -17,6 +17,11 @@
                 <h1 id="titulo">Library</h1>
             </div>
             <form action="/login/cadastro/add" method="POST">
+            <?php
+                    if(isset($SenhaIncorreta)) {
+                        echo "<script>alert('A senha esta incorreto, por favor reveja')</script>";
+                    }
+                ?>
                 <div class="input">
                     <label for="email">Nome Completo:</label><br>
                     <input type="text" name="nome" id="nome" placeholder="Insira seu nome">

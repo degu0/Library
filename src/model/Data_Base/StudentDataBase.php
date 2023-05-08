@@ -59,4 +59,31 @@ class StudentDataBase
         $this->conexao->fecharConexao();
         return $perfil;
     }
+
+    public function adicionar(Student $aluno)
+    {
+        $comando = "INSERT INTO usuario_aluno (matricula, numero_aluno, numero_responsavel) VALUES(?, ?, ?)";
+        $matricula = $aluno->getMatricula();
+        $numeroAluno = $aluno->getNumero();
+        $numeroResponsavel = $aluno->getNumeroResponsavel();
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+
+        $preparacao->bind_param(
+            "iii",
+            $matricula,
+            $numeroAluno,
+            $numeroResponsavel
+        );
+
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+
+        if ($resultado == false) {
+            return null;
+        }
+
+        $this->conexao->fecharConexao();  
+    }
 }

@@ -14,6 +14,26 @@ class GenreDataBase
         $this->conexao = new Conexao;
     }
 
+
+    public function getListGenre()
+    {
+        $comando = "SELECT * FROM genero;";
+
+        $resultado = $this->conexao->mysqli->query($comando);
+
+        if ($resultado == false) {
+            return null;
+        }
+
+        $list = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $list[] = new Genre($linha['genero'], $linha['classificao'], null, $linha['id']);
+        }
+        $this->conexao->fecharConexao();
+
+        return $list;
+    }
     public function queryGenre($classificacao)
     {
         $comando = "SELECT * FROM genero WHERE classificao = ?;";
