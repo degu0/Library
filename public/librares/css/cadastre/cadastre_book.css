@@ -21,19 +21,17 @@ body {
 }
 
 main {
-    min-width: 300px;
-    max-width: 100vh;
     height: 120vh;
     display: grid;
     text-align: center;
     place-items: center;
-    margin: auto;
     font-family: 'Roboto', sans-serif;
+    margin: auto;
 }
 
 .cadastro {
     background-color: white;
-    width: 1000px;
+    width: 1200px;
     height: 760px;
     border-radius: 5px;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.452);
@@ -52,6 +50,10 @@ form {
 
 #title_image{
     font: 22px normal 'Roboto', sans-serif;
+}
+
+#placeholder {
+    height: 400px;
 }
 
 label {

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library - Cadastro Login</title>
     <link rel="shortcut icon" href="/images/Library_Icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="/librares/css/cadastre_user.css">
+    <link rel="stylesheet" href="/librares/css/cadastre/cadastre_user.css">
 </head>
 
 <body>
@@ -17,10 +17,10 @@
                 <h1 id="titulo">Library</h1>
             </div>
             <form action="/login/cadastro/add" method="POST">
-            <?php
-                    if(isset($SenhaIncorreta)) {
-                        echo "<script>alert('A senha esta incorreto, por favor reveja')</script>";
-                    }
+                <?php
+                if (isset($SenhaIncorreta)) {
+                    echo "<script>alert('A senha esta incorreto, por favor reveja')</script>";
+                }
                 ?>
                 <div class="input">
                     <label for="email">Nome Completo:</label><br>
@@ -39,19 +39,20 @@
                     <input type="password" name="confirmaSenha" id="confirmaSenha" placeholder="Confirma sua senha">
                 </div>
                 <div class="select">
-                <label for="tipoUser">Tipo de usuário: </label><br>
-                <select name="tipoUser" id="tipoUser">
-                    <option value="aluno">Aluno(a)</option>
-                    <option value="funcionário">Bibliotecário(a)</option>
-                </select>
+                    <label for="tipoUser">Tipo de usuário: </label><br>
+                    <select name="tipoUser" id="tipoUser">
+                        <option value="aluno">Aluno(a)</option>
+                        <option value="funcionário">Bibliotecário(a)</option>
+                    </select>
                 </div>
                 <input type="submit" value="Entrar" id="button">
             </form>
             <div class="cadastre_google">
                 <p class="blog-title">ou</p>
                 <button class="link_google">
-                    <a href="">
-                        <img src="/images/google.png" alt="Logo da google">
+                    <a href="" class="link">
+                        <img src="/images/google.png" alt="Logo da google" id="google">
+                        CADASTRE-SE COM O GOOGLE
                     </a>
                 </button>
             </div>

@@ -3,29 +3,34 @@
 <link rel="stylesheet" href="librares/css/confirmacao.css">
 
 <main>
-    <div>
-        <h1>Confirmação da sua devolução</h1>
-        <h2>Por favor mostre para a/o bibliotecário</h2>
+<div class="confirmacao">
+        <h1 class="titulo">Confirmação do seu devolução</h1>
+        <h2 class="subtitulo">Por favor mostre para a/o bibliotecário</h2>
         <div class="dados">
             <p class="informacoes">
-                <span>Aluno:</span>
-                <?php echo $loan->getAluno(); ?>
+                <span class="variavel">Aluno:</span>
+                <?php echo $loan->getAluno();?>
             </p>
             <p class="informacoes">
-                <span>Livro:</span>
-                <?php echo $loan->getLivro(); ?>
+                <span class="variavel">Livro:</span>
+                <?php echo $loan->getLivro();?>
             </p>
             <p class="informacoes">
-                <span>Data do empréstimo:</span>
-                <?php echo $loan->getDataInicio(); ?>
+                <span class="variavel">Data do empréstimo:</span>
+                <?php echo $loan->getDataIncial();?>
             </p>
             <p class="informacoes">
-                <span>Data da devolução:</span>
-                <?php echo $loan->getDataFinal(); ?>
+                <span class="variavel">Data da entrega:</span>
+                <?php echo $loan->getDataFinal();?>
             </p>
         </div>
         <div>
-            <a href="/home">Confirme aqui</a>
+            <p>Dados incorretos? Por favor, edite o seu empréstimo. <a href="" class="link">Aqui</a></p>
+        </div>
+        <div>
+            <a href="/home">
+                <img src="/public/images/accept.png" alt="Confirmação">
+            </a>
         </div>
     </div>
 </main>

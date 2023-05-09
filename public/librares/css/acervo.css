@@ -24,13 +24,15 @@ body {
 }
 
 main {
-    min-width: 300px;
-    max-width: 1000px;
     height: 90vh;
     display: grid;
     margin: auto;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
+}
+
+.tabela {
+    margin: auto;
 }
 
 table {

@@ -57,7 +57,7 @@ form {
     color: rgb(104, 104, 104);
     padding: 18px;
     font: 17px normal Arial;
-    border: none;
+    border: 1px solid black;
     border-radius: 4px;
     margin: 10px 0px;
     width: 450px;
@@ -72,6 +72,7 @@ form {
     border: none;
     border-radius: 5px;
     width: 488px;
+    cursor: pointer;
 }
 
 
@@ -91,13 +92,13 @@ form {
   */
 .blog-title:before,
 .blog-title:after {
-    background-color: #000;
+    background-color: gray;
     content: "";
     display: inline-block;
-    height: 1.5px;
+    height: 1px;
     position: relative;
     vertical-align: middle;
-    width: 25%;
+    width: 40%;
 }
 
 /* Aqui configuramos o estilo
@@ -139,10 +140,26 @@ form {
 
 .link_google {
     background-color: transparent;
-    border-radius: 50%;
+    border-radius: 50px;
     border: none;
-    width: 42px;
+    width: 483px;
     height: 42px;
     margin: auto;
     outline: 1px solid black;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: gray;
+}
+
+#google {
+    margin-right: 15px;
+    height: 24px;
 }

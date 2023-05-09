@@ -1,9 +1,11 @@
 <title>Library - Perfil</title>
 <?php require __DIR__ . "/../share/head.php"; ?>
+<link rel="stylesheet" href="/librares/css/perfil.css">
 
 <main>
     <div class="perfil">
-        <h1>Meu Perfil</h1>
+        <h1 class="title">Meu Perfil</h1>
+        <hr id="hr-title">
         <div class="division"></div>
         <div class="division">
             <div class="infomation">

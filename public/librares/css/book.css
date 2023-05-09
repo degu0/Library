@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&family=Roboto:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --cor1: #261A1A;
+    --cor2: #593527;
+    --cor3: #897059;
+    --cor4: #D9C1B4;
+    --cor4_1: #bda79b;
+    --cor5: #F2EAE9;
+    --cor6:#a1a0a09b;
+    --cor7:#bebebe8f;
+
+}
+
+html,
+body {
+    min-height: 100vh;
+    background-color: var(--cor5);
+}
+
+main {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.livro {
+    display: flex;
+}
+
+#imagem {
+    height: 300px;
+    width: 250px;
+}
+
+.title{
+    text-align: center;
+}
+
+.subtitle {
+    margin-bottom: 10px;
+}
+
+.informacoes {
+    list-style: none;
+}
+
+p, li {
+    font-size: 19px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.buttonAtividade {
+    height: 50px;
+    width: 120px;
+    border: 1.5px normal var(--cor1);
+    background-color: #593527;
+    color: #bda79b;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.livro_imagem, .livro_texto {
+    margin: 15px;
+}

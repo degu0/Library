@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&family=Roboto:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --cor1: #261A1A;
+    --cor2: #593527;
+    --cor3: #897059;
+    --cor4: #D9C1B4;
+    --cor4_1: #bda79b;
+    --cor5: #F2EAE9;
+    --cor6: #a1a0a09b;
+    --cor7: #bebebe8f;
+
+}
+
+html,
+body {
+    min-height: 100vh;
+    background-color: var(--cor5);
+}
+
+main {
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#title {
+    text-align: center;
+    font: 20px normal 'Montserrat', sans-serif;
+    margin: 15px 0px;
+}
+
+#divisao {
+    width: 100%;
+}
+
+
+.lista {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+}
+
+.livro {
+    height: 400px;
+    width: 265px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--cor3);
+    margin: 35px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sobre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.tooltip_space {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+}
+
+.tooltip_text {
+    visibility: hidden;
+    width: 95%;
+    margin-left: 0.5%;
+    background-color: var(--cor2);
+    border: 2.5px solid var(--cor4);
+    color: var(--cor4);
+    text-align: center;
+    padding: 0.45vw;
+    border-radius: 1vw;
+    position: absolute;
+    top: -135%;
+    left: 0%;
+    z-index: 1;
+}
+
+.tooltip_space:hover  .tooltip_text {
+    visibility: visible;
+}
+
+.imagemLivro {
+    height: 230px;
+    width: 180px;
+    padding: 10px;
+}
+
+#verMais {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #261A1A;
+    color: var(--cor5);
+    text-decoration: none;
+}
+
+#divVerMais {
+    margin: 15px 0px;
+}

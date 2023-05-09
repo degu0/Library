@@ -5,7 +5,6 @@ footer {
 }
 
 
-
 #header {
     text-align: center;
     padding-top: 50px; 
@@ -18,7 +17,7 @@ footer {
 .information {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 
 #instituicao {

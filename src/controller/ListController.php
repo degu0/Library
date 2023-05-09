@@ -32,7 +32,7 @@ class ListController extends Controller implements RequestHandlerInterface
         $livroBD = new BookDataBase;
         $list = $livroBD->listBookGenre($request->getQueryParams()['id_genero']);
 
-        $bodyHTTP = $this->getHTTPBodyBuffer("/livro/lista_livro.php", ["list" => $list]);
+        $bodyHTTP = $this->getHTTPBodyBuffer("/livro/lista_livro.php", ["listaLivro" => $list]);
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;

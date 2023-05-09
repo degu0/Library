@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&family=Roboto:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --cor1: #261A1A;
+    --cor2: #593527;
+    --cor3: #897059;
+    --cor4: #D9C1B4;
+    --cor4_1: #bda79b;
+    --cor5: #F2EAE9;
+    --cor6:#a1a0a09b;
+    --cor7:#bebebe8f;
+
+}
+
+html,
+body {
+    min-height: 100vh;
+    background-color: var(--cor5);
+}
+
+main {
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.title {
+    text-align: center;
+    font-size: 40px;
+}
+
+.tag {
+    background-color: #261A1A;
+    height: 80px;
+    width: 100%;
+    margin: 50px 0px;
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+}
+
+.subtag {
+    color: var(--cor5);
+    height: 80px;
+    width: 100%;
+    background-color: #897059;
+    display: flex;
+}
+
+.subtag:hover {
+    width: 96%;
+    border-radius: 15px 0px 0px 15px;
+    transition: width .6s, border 1s;
+}
+
+.nome_genero {
+    display: flex;
+    align-items: center;
+}
+
+.genero {
+    margin-left: 10px;
+    padding: 15px;
+}
+
+#genero_link {
+    text-decoration: none;
+    color: #F2EAE9;
+}
+
+
