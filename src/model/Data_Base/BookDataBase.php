@@ -86,7 +86,7 @@ class BookDataBase
 
     public function getBook()
     {
-        $comando = "SELECT * FROM livro;";
+        $comando = "SELECT * FROM livro where disponiveis > 0;";
 
         $resultado = $this->conexao->mysqli->query($comando);
 
@@ -159,6 +159,23 @@ class BookDataBase
         if ($resultado == false) {
             return null;
         }
+        $this->conexao->fecharConexao();
+    }
+
+    public function tirarDisponivel($id)
+    {
+        $comando = "UPDATE `livro` SET `disponiveis` = `disponiveis`- 1 WHERE `id_livro` = ?;";
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+
+        $preparacao->bind_param("s", $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+
         $this->conexao->fecharConexao();
     }
 }

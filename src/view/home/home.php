@@ -70,7 +70,7 @@
         </nav>
     </header>
     <main>
-    <!-- <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário') { ?>
+    <!-- <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário' && $listLoan != null) { ?>
         <div id="tableInfo">
             <table>
                 <thead>
@@ -106,18 +106,18 @@
         </div>
         </div>
         <div class="divPart" id="divCards">
-            <a href="percentual/cadastro" style="text-decoration: none;">
+            <a href="/generos/didaticos" style="text-decoration: none;">
                 <div class="card" data-anime="left">
                     <img src="/images/card_cadastre.png" alt="">
-                    <h2>Cadastro</h2>
-                    <p>Cadastre seu acervo de livros da biblioteca e organize sua coleção da melhor forma possível. Com nosso sistema de cadastro simplificado, você pode facilmente inserir informações sobre os livros.</p>
+                    <h2>Livro didáticos</h2>
+                    <p>Com o nossa organização do genêros dos livros, você pode ter um controle sobre a coleção. Veja os livros didáticos</p>
                 </div>
             </a>
-            <a href="percentual/tabela" style="text-decoration: none;">
+            <a href="/generos/literatura" style="text-decoration: none;">
                 <div class="card" data-anime="right">
                     <img src="/images/card_table.png" alt="">
-                    <h2>Tabela</h2>
-                    <p>Com nossas tabelas dos acervo de livros da biblioteca, você pode ter um controle completo sobre sua coleção. Nossa tabela de cadastro possibilita a inserção de todos os dados necessários para uma gestão eficiente.</p>
+                    <h2>Livro paradidático</h2>
+                    <p>Com o nossa organização do genêros dos livros, você pode ter um controle sobre a coleção. Veja os livros paradidáticos.</p>
                 </div>
             </a>
 

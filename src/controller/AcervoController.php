@@ -4,6 +4,7 @@ namespace Library_ETE\controller;
 
 use Library_ETE\controller\inheritance\Controller;
 use Library_ETE\model\Data_Base\LoanDataBase;
+use Library_ETE\model\Data_Base\HistoryDataBase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -30,8 +31,10 @@ class AcervoController extends Controller implements RequestHandlerInterface
     public function acervo() : ResponseInterface
     {
         $emprestimo = new LoanDataBase();
+        $historico = new HistoryDataBase();
         $listaEmprestimo = $emprestimo->getLoan();
-        $bodyHTTP = $this->getHTTPBodyBuffer("/acervo/acervo.php", ["listaEmprestimo" => $listaEmprestimo]);
+        $listaHisotrico = $historico->getHistory();
+        $bodyHTTP = $this->getHTTPBodyBuffer("/acervo/acervo.php", ["listaEmprestimo" => $listaEmprestimo, "listaHistorico" => $listaHisotrico]);
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;

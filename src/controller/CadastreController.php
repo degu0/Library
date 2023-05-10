@@ -5,14 +5,16 @@ namespace Library_ETE\controller;
 use Library_ETE\model\Book;
 use Library_ETE\model\Image;
 use Library_ETE\model\Genre;
+use Library_ETE\model\Student;
 use Library_ETE\model\Loan;
 use Library_ETE\model\User;
+use Library_ETE\model\History;
 use Library_ETE\model\Data_Base\BookDataBase;
 use Library_ETE\model\Data_Base\GenreDataBase;
 use Library_ETE\controller\inheritance\Controller;
 use Library_ETE\model\Data_Base\LoanDataBase;
 use Library_ETE\model\Data_Base\StudentDataBase;
-use Library_ETE\model\Student;
+use Library_ETE\model\Data_Base\HistoryDataBase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -139,10 +141,14 @@ class CadastreController extends Controller implements RequestHandlerInterface
         );
 
         $emprestimoBD = new LoanDataBase();
+        $historicoBD = new HistoryDataBase();
+        $livroBD = new BookDataBase();
         $emprestimoBD->adicionar($emprestimo);
+        $historicoBD->adicionar($emprestimo);
+        $livroBD->tirarDisponivel($request->getParsedBody()["livro"]);
 
 
-        $response = new Response(302, ["Location" => "/confirmacao/confirmacao_emprestimo"], null);
+        $response = new Response(302, ["Location" => "/confirmacao/emprestimo"], null);
 
         return $response;
     }

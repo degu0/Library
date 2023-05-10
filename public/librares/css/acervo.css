@@ -24,7 +24,7 @@ body {
 }
 
 main {
-    height: 90vh;
+    height: 120vh;
     display: grid;
     margin: auto;
     text-align: center;
@@ -79,6 +79,5 @@ tbody>tr:nth-child(even) {
 }
 
 .title {
-    margin: 100px 0px 50px;
-    font: 30px bold 'Montserrat', sans-serif;
+    margin-bottom: 50px;
 }

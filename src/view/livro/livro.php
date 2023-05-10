@@ -2,8 +2,7 @@
 <?php require __DIR__ . "/../share/head.php"; ?>
 <link rel="stylesheet" href="/librares/css/book.css">
 <main>
-    <p><?php var_dump($listBook);
-        exit(); ?></p>
+
     <div class="livro">
         <div class="livro_imagem">
             <img src="data: <?php echo $listBook->getImagem()->getType(); ?>;base64, <?php echo $listBook->getImagem()->getBase64(); ?>" id="imagem">

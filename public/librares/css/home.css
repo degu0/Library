@@ -238,7 +238,6 @@ tbody>tr:nth-child(even) {
 
 
 #divWelcome {
-    background-color: #e1dad97b;
     display: flex;
     justify-content: center;
     align-items: center;
