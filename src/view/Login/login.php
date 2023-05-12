@@ -42,7 +42,7 @@
                 </button>
             </div>
             <div class="cadastre">
-                <p>Voce nao tem conta?</p>
+                <p>Você não têm conta?</p>
                 <a href="/login/cadastro">CADASTRE AQUI</a>
             </div>
         </div>

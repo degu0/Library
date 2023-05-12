@@ -9,7 +9,7 @@
             if ($listaLivro == null) {
                 echo "Nenhum livro cadastrado";
             } else {
-                echo "Genero ";
+                echo "Gênero ";
             }
             ?>
         </h1>

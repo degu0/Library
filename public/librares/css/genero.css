@@ -30,14 +30,14 @@ main {
 
 .title {
     text-align: center;
-    font-size: 40px;
+    font-size: 4rem;
 }
 
 .tag {
     background-color: #261A1A;
-    height: 80px;
+    height: 8rem;
     width: 100%;
-    margin: 50px 0px;
+    margin: 5rem 0;
     display: flex;
     justify-content: end;
     cursor: pointer;
@@ -45,7 +45,7 @@ main {
 
 .subtag {
     color: var(--cor5);
-    height: 80px;
+    height: 8rem;
     width: 100%;
     background-color: #897059;
     display: flex;
@@ -53,18 +53,19 @@ main {
 
 .subtag:hover {
     width: 96%;
-    border-radius: 15px 0px 0px 15px;
+    border-radius: 1.5rem 0 0 1.5rem;
     transition: width .6s, border 1s;
 }
 
 .nome_genero {
     display: flex;
     align-items: center;
+    font-size: 1.8rem;
 }
 
 .genero {
-    margin-left: 10px;
-    padding: 15px;
+    margin-left: 1rem;
+    padding: 1.5rem;
 }
 
 #genero_link {

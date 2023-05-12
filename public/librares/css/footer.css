@@ -2,12 +2,13 @@ footer {
     background-color: #261A1A;
     color: white;
     font-family: 'Montserrat', sans-serif;
+    width: 100%;
 }
 
 
 #header {
     text-align: center;
-    padding-top: 50px; 
+    padding-top: 50px;
 }
 
 #header h1 {
@@ -29,10 +30,12 @@ footer {
 #instituicao h3 {
     font-size: 25px;
 }
+
 #instituicao p {
     display: flex;
     font-size: 20px;
 }
+
 #instituicao img {
     margin-left: 10px;
 }
@@ -47,10 +50,12 @@ footer {
 #autor h3 {
     font-size: 25px;
 }
+
 #autor p {
     font-size: 20px;
     display: flex;
 }
+
 #autor img {
     margin-left: 10px;
 }
@@ -62,3 +67,61 @@ footer {
     font-size: 20px;
 }
 
+.container_links {
+    display: flex;
+}
+
+.container_links a {
+    margin-right: 20px;
+}
+
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.icon:hover {
+    opacity: 0.8;
+}
+
+#instagram {
+    background: linear-gradient(#7f37c9, #ff2992, #ff9807);
+}
+
+#linkedin {
+    background-color: #0e76a8;
+}
+
+#github {
+    background-color: #171515;
+}
+
+@media screen and (max-width: 850px) {
+    .information {
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0 60px;
+    }
+
+    #autor {
+        margin: 4rem 0 0 -15rem;
+    }
+
+    .icon {
+        height: 5.5rem;
+        width: 5.5rem;
+    }
+}
+
+@media screen and (max-width: 470px ) {
+    #autor {
+        margin: 0;
+    }
+}

@@ -9,9 +9,8 @@
                 <p>Escola Técnica Estadual Ministro Fernando Lyra</p>
             </div>
             <div>
-                <p>Redes:
-                    <a href="https://www.instagram.com/etemflcaruaruoficial/" target="_blank"><img src="/images/instagram.png" alt="Icon Instagram" class="icon"></a>
-                </p>
+                <p>Redes:</p>
+                <a href="https://www.instagram.com/etemflcaruaruoficial/" target="_blank" class="icon" id="instagram"><i class="fa-brands fa-instagram"></i></a>
             </div>
 
         </div>
@@ -21,10 +20,10 @@
                 <p>Deyvid Gustavo Correia de Sousa</p>
             </div>
             <div>
-                <p>Redes:
-                    <a href="https://www.linkedin.com/in/deyvid-gustavo-0642a2235/" target="_blank"><img src="/images/linkedin.png" alt="Icon LinkedIn" class="icon"></a>
-                    <a href="https://github.com/degu0" target="_blank"><img src="/images/github.png" alt="Icon GitHub" class="icon"></a>
-                </p>
+                <p>Redes:</p>
+                <div class="container_links"> <a href="https://www.linkedin.com/in/deyvid-gustavo-0642a2235/" target="_blank" class="icon" id="linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/degu0" target="_blank" class="icon" id="github"><i class="fa-brands fa-github"></i></a>
+                </div>
             </div>
         </div>
     </div>
@@ -33,3 +32,4 @@
 </footer>
 </body>
 <link rel="stylesheet" href="/librares/css/footer.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />

@@ -12,9 +12,14 @@
     --cor4: #D9C1B4;
     --cor4_1: #bda79b;
     --cor5: #F2EAE9;
-    --cor6:#a1a0a09b;
-    --cor7:#bebebe8f;
+    --cor6: #a1a0a09b;
+    --cor7: #bebebe8f;
 
+}
+
+html {
+    /* a cada 1rem será considera 10px */
+    font-size: 62.5%;
 }
 
 html,
@@ -23,18 +28,23 @@ body {
     background-color: var(--cor5);
 }
 
+body {
+    font-size: 1.6rem;
+}
+
+
 main {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
 }
 
-h1 {
+/* h1 {
     padding-bottom: 15px;
     font: normal 40px Arial;
-}
+} */
 
 table {
-    width: 943px;
+    width: 94.3rem;
     border-collapse: collapse;
     font-family: 'Roboto', sans-serif;
 }
@@ -42,12 +52,12 @@ table {
 td,
 th {
     border: 1px solid black;
-    padding: 10px;
+    padding: 1rem;
 }
 
 caption {
     background-color: var(--cor6);
-    padding: 10px;
+    padding: 1rem;
     font-size: 1.5em;
     font-weight: bold;
 }
@@ -56,7 +66,7 @@ thead,
 tbody {
     background-color: var(--cor7);
     color: rgba(23, 23, 23, 0.928);
-    font-size: 18px;
+    font-size: 1.8rem;
 }
 
 thead>tr>th {
@@ -92,41 +102,43 @@ tbody>tr:nth-child(even) {
     align-items: center;
 }
 
-.divPart 
 
 .card {
     background-color: rgba(255, 255, 255, 0.578);
     color: black;
-    width: 550px;
-    height: 330px;
+    width: 55rem;
+    height: 33rem;
     display: grid;
     align-content: space-evenly;
     justify-items: center;
-    border-radius: 10px;
+    border-radius: 1rem;
     box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.661);
-    margin-left: 20px;
-    font-size: 20px;
+    margin-left: 2rem;
+    font-size: 2rem;
 }
 
 @keyframes changeBackgroundColor {
     5% {
         background-color: #8C6B4F;
-      }
+    }
+
     100% {
-      background-color: #8C6B4F;
+        background-color: #8C6B4F;
     }
 }
 
 .card img {
-    max-width: 150px;
-    margin-top: -135px;
+    max-width: 15rem;
+    margin-top: -13.5rem;
 
 }
+
 .card p {
-    margin-top: -50px;
+    margin-top: -5rem;
 }
+
 .card h2 {
-    margin-top: -20px;
+    margin-top: -2rem;
 }
 
 .card:hover {
@@ -143,15 +155,15 @@ tbody>tr:nth-child(even) {
     transition: .3s;
 }
 
-[data-anime = "left"] {
+[data-anime="left"] {
     transform: translate3d(-50px, 0, 0);
 }
 
-[data-anime = "right"] {
+[data-anime="right"] {
     transform: translate3d(50px, 0, 0);
 }
 
-[data-anime = "bottom"] {
+[data-anime="bottom"] {
     transform: translate3d(0, 50px, 0);
 }
 
@@ -161,19 +173,19 @@ tbody>tr:nth-child(even) {
 }
 
 #search {
-    height: 43px;
-    width: 700px;
+    height: 4.3rem;
+    width: 70rem;
     border: 1px gray solid;
     border-radius: 5px;
-    padding: 26.5px 24px 20px;
-    margin-bottom: 35px;
-    font: normal 23px Roboto;
+    padding: 2.6rem 2.4rem 2rem;
+    margin-bottom: 3.5rem;
+    font: normal 2.3rem Roboto;
 }
 
-#autocomplete{
+#autocomplete {
     background-color: white;
     width: 38%;
-    height: 150px;
+    height: 15rem;
     display: none;
     border: solid 1px #333;
     position: absolute;
@@ -184,6 +196,7 @@ tbody>tr:nth-child(even) {
     list-style: none;
     padding: 4px;
 }
+
 #autocomplete ul li {
     border-bottom: solid 1px #333;
 }
@@ -196,21 +209,21 @@ tbody>tr:nth-child(even) {
 
 #tableInfo {
     width: 53vw;
-    height: 630px;
+    height: 63rem;
     overflow-y: auto;
     margin: auto;
 }
 
-#tableInfo::-webkit-scrollbar{
+#tableInfo::-webkit-scrollbar {
     background-color: #a29086;
-    width: 23px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    width: 2.3rem;
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
 }
 
 #tableInfo::-webkit-scrollbar-thumb {
     background-color: #83756d;
-    border-radius: 5px;
+    border-radius: .5rem;
 }
 
 
@@ -223,9 +236,9 @@ tbody>tr:nth-child(even) {
 #buttom-search {
     background-color: var(--cor2);
     border: 1px var(--cor2) solid;
-    border-radius: 0px 5px 5px 0px;
-    padding: 10px 15px 10px 12px;
-    margin-left: -28px;
+    border-radius: 0 .5rem .5rem 0;
+    padding: 1rem 1.5rem 1rem 1.2rem;
+    margin-left: -2.8rem;
 }
 
 #buttom-search:hover {
@@ -233,7 +246,7 @@ tbody>tr:nth-child(even) {
 }
 
 #divInformationLoan {
-    margin: 50px 0px;
+    margin: 5rem 0px;
 }
 
 
@@ -245,17 +258,82 @@ tbody>tr:nth-child(even) {
 
 #information {
     width: 55vw;
-    padding: 50px;
-    margin: 50px;
-    font-size: 25px;
+    padding: 5rem;
+    margin: 5rem;
+    font-size: 2.5rem;
 }
 
 #welcomeImg {
-    width: 660px;
-    height: 660px;
+    width: 66rem;
+    height: 66rem;
 }
 
 #columnchart_values {
     margin: auto;
 }
 
+@media screen and (max-width: 1440px) {
+    #welcomeImg {
+        width: 54rem;
+        height: 54rem;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .card {
+        width: 40rem;
+    }
+
+    #welcomeImg {
+        width: 47rem;
+        height: 47rem;
+    }
+}
+
+
+@media screen and (max-width: 950px) {
+    #divCards {
+        flex-direction: column;
+        margin: 8rem 0 5rem;
+    }
+
+    #didatico,
+    #paradidatico {
+        margin: 5rem 0;
+    }
+
+    #divWelcome {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #information {
+        width: 70vw;
+        padding: 0;
+        margin: 0;
+    }
+
+    #welcomeImg {
+        width: 45rem;
+        height: 45rem;
+    }
+}
+
+
+
+@media screen and (max-width: 800px) {
+    .divPart {
+        height: 150vh;
+    }
+}
+
+@media screen and (max-width:520px) {
+    #welcomeImg {
+        width: 25rem;
+        height: 25rem;
+    }
+
+    .card {
+        width: 25rem;
+    }
+}

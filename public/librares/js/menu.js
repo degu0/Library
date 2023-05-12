@@ -1,11 +1,12 @@
-function menuShow() {
-    let menuMobile = document.querySelector('.nav-list');
-    if (menuMobile.classList.contains('open')) {
-        menuMobile.classList.remove('open');
-        document.querySelector('.icon').src = '/images/hamburger.png';
-    } else {
-        menuMobile.classList.add('open');
-        document.querySelector('.icon').src = '/images/sair.png';
+let show = true; 
 
-    }
-}
+const menuSection = document.querySelector(".menu-section")
+const menuToggle = menuSection.querySelector(".menu-toggle")
+
+menuToggle.addEventListener("click", () => {
+
+    document.body.style.overflow = show ? "hidden" : "initial"
+
+    menuSection.classList.toggle("on", show)
+    show = !show;
+})

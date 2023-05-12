@@ -14,52 +14,59 @@
 
 <body>
     <header>
-        <nav>
-            <div id="navInformation">
-                <ul id="nav-list">
-                    <?php if (empty($_SESSION)) { ?>
-                        <li>
-                            <button id="login">
-                                <a href="/login">Login</a>
-                            </button>
-                        </li>
-                    <?php } else { ?>
-                        <li>
-                            <a href=""><?php echo $_SESSION['usuario']; ?></a>
-                            <ul class="dropdown">
-                                <li>
-                                    <a href="/meu-perfil?id=<?php echo $_SESSION['id_usuario']; ?>">Meu perfil</a>
-                                </li>
-                                <hr>
-                                <li><a href="/login/deslog">Sair</a></li>
-                            </ul>
-                        </li>
-                    <?php } ?>
-                    <li><a href="/home">Home</a></li>
-                    <li class="dropdown-center">
-                        <span>Gêneros</span>
-                        <ul class="dropdown">
-                            <li><a href="/generos/literatura">Paradidáticos</a></li>
-                            <li><a href="/generos/didaticos">Didáticos</a></li>
-                        </ul>
-                    </li>
-                    <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário') { ?>
+        <div class="container">
+            <div class="menu-section">
+                <div class="menu-toggle">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+                </div>
+                <nav>
+                    <ul id="nav-list">
+                        <?php if (empty($_SESSION)) { ?>
+                            <li>
+                                <button id="login">
+                                    <a href="/login">Login</a>
+                                </button>
+                            </li>
+                        <?php } else { ?>
+                            <li>
+                                <a href=""><?php echo $_SESSION['usuario']; ?></a>
+                                <ul class="dropdown">
+                                    <li>
+                                        <a href="/meu-perfil?id=<?php echo $_SESSION['id_usuario']; ?>">Meu perfil</a>
+                                    </li>
+                                    <hr>
+                                    <li><a href="/login/deslog">Sair</a></li>
+                                </ul>
+                            </li>
+                        <?php } ?>
+                        <li><a href="/home">Home</a></li>
                         <li class="dropdown-center">
-                            <span>Gerenciar</span>
+                            <span>Gêneros</span>
                             <ul class="dropdown">
-                                <li><a href="/gerenciar/livro">Cadastre Livros</a></li>
-                                <li><a href="/gerenciar/genero">Cadastre Gêneros</a></li>
-                                <li><a href="/gerenciar/emprestimo">Cadastre emprestimo</a></li>
+                                <li><a href="/generos/literatura">Paradidáticos</a></li>
+                                <li><a href="/generos/didaticos">Didáticos</a></li>
                             </ul>
                         </li>
+                        <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário') { ?>
+                            <li class="dropdown-center">
+                                <span>Gerenciar</span>
+                                <ul class="dropdown">
+                                    <li><a href="/gerenciar/livro">Cadastre Livros</a></li>
+                                    <li><a href="/gerenciar/genero">Cadastre Gêneros</a></li>
+                                    <li><a href="/gerenciar/emprestimo">Cadastre emprestimo</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/acervo">Acervo</a>
+                            </li>
+                        <?php } ?>
                         <li>
-                            <a href="/acervo">Acervo</a>
+                            <a href="/sobre">Sobre</a>
                         </li>
-                    <?php } ?>
-                    <li>
-                        <a href="/sobre">Sobre</a>
-                    </li>
-                </ul>
+                    </ul>
+                </nav>
             </div>
             <div>
                 <form action="/pesquisa" method="GET" id="navSearch">
@@ -67,10 +74,10 @@
                     <button id="buttom-searchNav"><img src="/images/search.png" alt="search" height="18px" width="18px"></button>
                 </form>
             </div>
-        </nav>
+        </div>
     </header>
     <main>
-    <!-- <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário' && $listLoan != null) { ?>
+        <!-- <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário' && $listLoan != null) { ?>
         <div id="tableInfo">
             <table>
                 <thead>
@@ -106,14 +113,14 @@
         </div>
         </div>
         <div class="divPart" id="divCards">
-            <a href="/generos/didaticos" style="text-decoration: none;">
+            <a href="/generos/didaticos" style="text-decoration: none;" id="didatico">
                 <div class="card" data-anime="left">
                     <img src="/images/card_cadastre.png" alt="">
                     <h2>Livro didáticos</h2>
                     <p>Com o nossa organização do genêros dos livros, você pode ter um controle sobre a coleção. Veja os livros didáticos</p>
                 </div>
             </a>
-            <a href="/generos/literatura" style="text-decoration: none;">
+            <a href="/generos/literatura" style="text-decoration: none;" id="paradidatico">
                 <div class="card" data-anime="right">
                     <img src="/images/card_table.png" alt="">
                     <h2>Livro paradidático</h2>
@@ -179,4 +186,5 @@
     <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.6/underscore-umd-min.js"></script>
     <script src="/librares/js/search_home.js"></script> -->
     <script src="/librares/js/animation.js"></script>
+    <script src="/librares/js/menu.js"></script>
     <?php require __DIR__ . "/../share/footer.php"; ?>

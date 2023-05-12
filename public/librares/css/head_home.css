@@ -4,53 +4,15 @@
 }
 
 :root {
-    --corFundo : rgba(38, 26, 26, 0.753);
-    --corFundoDrop: #2f2121;
+    --corFundo: rgba(38, 26, 26, 0.753);
+    --corFundoDrop: hwb(0 13% 82% / 0.776);
     --corFontes: #ffff;
     --corLinha: #3c3939;
 }
 
-#login {
-    background-color: transparent;
-    letter-spacing: 4px;
-    border-radius: 8px;
-    border: 2px solid #ffbb33;
-    height: 57px;
-}
-
-#login a {
-    color: var(--corFontes);
-    text-decoration: none;
-    margin: auto;
-    font-size: 17px;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-#login:hover {
-    background-color: #ecac2d;
-    transition: background-color .3s, border 1s;
-}
-
-#navSearch {
-    display: flex;
-}
-
-#searchNav{
-    height: 35px;
-    width: 410px;
-    border: none;
-    border-radius: 6px;
-    padding: 9px 0px 6px 10px;
-    font: normal 16px Roboto;
-}
-
-#buttom-searchNav {
-    background-color: #ffbb33;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 16px 5.4px 16px;
-    height: 35px;
-    margin-left: 6px;
+html {
+    /* a cada 1rem será considera 10px */
+    font-size: 62.5%;
 }
 
 header {
@@ -59,13 +21,16 @@ header {
     height: 75vh;
 }
 
-nav {
-    background: var(--corFundo);
-    height: 12vh;
+.container {
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    font-family: 'Courier New', Courier, monospace;
+    justify-content: space-around;
+
+    width: 100%;
+    max-width: 100vw;
+    height: 12vh;
+
+    background: var(--corFundo);
 }
 
 nav ul {
@@ -79,18 +44,16 @@ nav ul li {
     position: relative;
 }
 
-nav ul li a, nav ul li span {
+nav ul li a,
+nav ul li span {
     color: var(--corFontes);
     display: block;
     text-decoration: none;
-    line-height: 60px;
-    padding: 0 20px;
-    font-size: 19px;
+    line-height: 6rem;
+    padding: 0 2rem;
+    font-size: 1.9rem;
     cursor: pointer;
 }
-
-
-
 
 nav ul li:hover>ul {
     display: block;
@@ -111,36 +74,179 @@ nav ul ul li {
 
 nav ul ul li a {
     display: block;
-    line-height: 20px;
-    padding: 10px 20px;
-    font-size: 15px;
+    line-height: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
 }
 
-@media screen and (max-width: 768px) {
-    nav ul {
-      flex-direction: column;
+#login {
+    background-color: transparent;
+    letter-spacing: 0.4rem;
+    border-radius: 0.8rem;
+    border: 0.2rem solid #ffbb33;
+    height: 5.7rem;
+}
+
+#login a {
+    color: var(--corFontes);
+    text-decoration: none;
+    margin: auto;
+    font-size: 1.7rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#login:hover {
+    background-color: #ecac2d;
+    transition: background-color .3s, border 1s;
+}
+
+#navSearch {
+    display: flex;
+}
+
+#searchNav {
+    height: 3.5rem;
+    width: 41rem;
+    border: none;
+    border-radius: 0.6rem;
+    padding: 0.9rem 0rem 0.6rem 1rem;
+    font: normal 1.6rem Roboto;
+}
+
+#buttom-searchNav {
+    background-color: #ffbb33;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.6rem 0.5rem 1.6rem;
+    height: 3.5rem;
+    margin-left: 0.6rem;
+}
+
+
+@media screen and (max-width: 900px) {
+    nav {
+        display: none;
     }
-  
-    nav ul li {
-      display: inline-block;
-      position: relative;
+
+    .one,
+    .two,
+    .three {
+        background-color: #fff;
+        height: 5px;
+        width: 100%;
+        margin: 6px auto;
+
+        transition-duration: 0.3s;
     }
-  
-    nav ul li a {
-      display: block;
-      padding: 0 20px;
-      line-height: 60px;
+
+    .menu-toggle {
+        width: 40px;
+        height: 30px;
+        margin-right: 20px;
     }
-  
-    nav ul ul {
-      position: static;
-      display: none;
-      margin: 0;
-      padding: 0;
+
+    /* fullscreen */
+    .menu-section.on {
+        position: absolute;
+        top:0;
+        left:0;
+        
+        width: 100vw;
+        height: 100vh;
+
+        background-color: var(--corFundo);
+        
+        z-index: 10;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-  
-    nav ul ul li {
-      width: 100%;
-      display: block;
+
+    .menu-section.on nav {
+        display: block;
     }
-  }
+
+    .menu-section.on .menu-toggle {
+        position: absolute;
+        right: 85%;
+        top: 32px;
+    }
+
+    .menu-section.on .menu-toggle .one {
+        transform: rotate(45deg) translate(7px, 7px);
+    }
+
+    .menu-section.on .menu-toggle .two {
+        opacity: 0;
+    }
+
+    .menu-section.on .menu-toggle .three {
+        transform: rotate(-45deg) translate(8px, -9px);
+    }
+
+    .menu-section.on nav ul {
+        text-align: center;
+        display: block;
+    }
+
+    .menu-section.on nav ul li{
+        margin: 4rem;
+    }
+
+    .menu-section.on nav ul a, .menu-section.on nav ul span {
+        transition-duration: 0.5s;
+        font-size: 3.5rem;
+        line-height: 4rem;
+        display: block;
+    }
+
+    .menu-section.on nav ul li:hover>ul {
+        display: block;
+    }
+    
+    .menu-section.on nav ul ul {
+        background-color: var(--corFundoDrop);
+        display: none;
+        position: relative;
+        top: 0;
+        z-index: 1;
+        width: 100vw;
+    }
+    
+    .menu-section.on nav ul ul li {
+        width: 100%;
+        border-top: 1px solid var(--corLinha);
+        margin: 0;
+    }
+    
+    .menu-section.on nav ul ul li a {
+        display: block;
+        line-height: 2rem;
+        padding: 3rem 1rem;
+        font-size: 2.5rem;
+    }
+
+    #login {
+        width: 80vw;
+        height: 7rem;
+        order: 1;
+    }
+
+    #login a {
+        font-size: 2.8rem;
+    }
+
+    #searchNav {
+        width: 30rem;
+    }
+}
+
+@media screen and (max-width:520px) {
+    #searchNav {
+        width: 20rem;
+    }
+}
+
+
+

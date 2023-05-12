@@ -4,6 +4,11 @@
 }
 
 
+html {
+    /* a cada 1rem será considera 10px */
+    font-size: 62.5%;
+}
+
 html,
 body {
     background: -webkit-linear-gradient(left, #402E2C, #8c6c5a);
@@ -24,10 +29,10 @@ body {
 
 .login {
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: .8rem;
     margin: auto;
-    height: 700px;
-    width: 600px;
+    height: 83vh;
+    width: 38vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -36,7 +41,7 @@ body {
 
 #titulo {
     text-align: center;
-    font-size: 36px;
+    font-size: 3.6rem;
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -47,31 +52,34 @@ form {
     align-items: center;
 }
 
+label {
+    font-size: 1.7rem;
+}
 
 .input {
-    margin: 15px 0px;
+    margin: 1.5rem 0;
 }
 
 .input input {
     background-color: #EFEFEF;
     color: rgb(104, 104, 104);
-    padding: 18px;
-    font: 17px normal Arial;
+    padding: 1.8rem;
+    font: 1.7rem normal Arial;
     border: 1px solid black;
-    border-radius: 4px;
-    margin: 10px 0px;
-    width: 450px;
+    border-radius: .4rem;
+    margin: 1rme 0;
+    width: 45rem;
 }
 
 
 #button {
-    padding: 18px;
-    font-size: 18px;
+    padding: 1.8rem;
+    font-size: 1.8rem;
     background-color: #261A1A;
     color: #fff;
     border: none;
-    border-radius: 5px;
-    width: 488px;
+    border-radius: .5rem;
+    width: 48.8rem;
     cursor: pointer;
 }
 
@@ -83,7 +91,7 @@ form {
 .blog-title {
     overflow: hidden;
     text-align: center;
-    margin: 10px 0px;
+    margin: 1rem 0px;
 }
 
 /* Aqui criamos o estilo
@@ -121,16 +129,16 @@ form {
 }
 
 .cadastre p {
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 200;
     color: gray;
-    margin: 20px 0px;
+    margin: 2rem 0;
 }
 
 .cadastre a {
     color: black;
     text-decoration: none;
-    font: 30px 300 arial;
+    font: 2rem bold arial;
 }
 
 .cadastre_google {
@@ -140,13 +148,13 @@ form {
 
 .link_google {
     background-color: transparent;
-    border-radius: 50px;
+    border-radius: 5rem;
     border: none;
-    width: 483px;
-    height: 42px;
+    width: 27vw;
+    height: 5vh;
     margin: auto;
     outline: 1px solid black;
-    margin-top: 20px;
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -160,6 +168,25 @@ form {
 }
 
 #google {
-    margin-right: 15px;
-    height: 24px;
+    margin-right: 1.5rem;
+    height: 2.4rem;
+}
+
+
+
+/* Laptop */
+@media screen and (max-width: 1024px) {
+    
+}
+
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+
+}
+
+
+/* Cheio */
+@media screen and (max-width: 670px) {
+
 }
