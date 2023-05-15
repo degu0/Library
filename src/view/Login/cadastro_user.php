@@ -49,12 +49,10 @@
             </form>
             <div class="cadastre_google">
                 <p class="blog-title">ou</p>
-                <button class="link_google">
-                    <a href="" class="link">
-                        <img src="/images/google.png" alt="Logo da google" id="google">
-                        CADASTRE-SE COM O GOOGLE
-                    </a>
-                </button>
+                <a href="" class="link">
+                    <img src="/images/google.png" alt="Logo da google" id="google">
+                    CADASTRE-SE COM O GOOGLE
+                </a>
             </div>
         </div>
     </section>

@@ -30,7 +30,8 @@ main {
 
 #title {
     text-align: center;
-    font: 20px normal 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-family: 'Montserrat', sans-serif;
     margin: 15px 0px;
 }
 
@@ -105,8 +106,16 @@ main {
     background-color: #261A1A;
     color: var(--cor5);
     text-decoration: none;
+    font-size: 16px;
 }
 
 #divVerMais {
     margin: 15px 0px;
 }
+
+
+.text, #tooltip_title {
+    font-size: 17px;
+}
+
+

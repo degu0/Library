@@ -31,7 +31,7 @@
                 <div class="sobre">
                     <div class="tooltip_space">
                         <div class="titulo">
-                            <h3><?php
+                            <h3 class="text"><?php
                                 $nome = $list->getTitulo();
                                 if (strlen($nome) > 30) {
                                     echo substr($nome, 0, 30) . "...";
@@ -45,7 +45,7 @@
                                         } else {
                                             echo "none";
                                         }
-                                        ?>>
+                                        ?> id="tooltip_title">
                                 <?php
                                 if (strlen($nome) > 30) {
                                     echo $nome;
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="autor">
-                        <p>
+                        <p class="text">
                             <?php
                             $autor = $list->getAutor();
                             if (strlen($autor) > 30) {

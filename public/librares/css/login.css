@@ -31,8 +31,8 @@ body {
     background-color: #fff;
     border-radius: .8rem;
     margin: auto;
-    height: 83vh;
-    width: 38vw;
+    height: 80rem;
+    width: 65rem;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -92,6 +92,7 @@ label {
     overflow: hidden;
     text-align: center;
     margin: 1rem 0px;
+    font-size: 1.7rem;
 }
 
 /* Aqui criamos o estilo
@@ -106,7 +107,7 @@ label {
     height: 1px;
     position: relative;
     vertical-align: middle;
-    width: 40%;
+    width: 45%;
 }
 
 /* Aqui configuramos o estilo
@@ -146,25 +147,24 @@ label {
     flex-direction: column;
 }
 
-.link_google {
+.link {
     background-color: transparent;
+    color: gray;
+    font: 1.7rem normal;
+
     border-radius: 5rem;
     border: none;
-    width: 27vw;
-    height: 5vh;
-    margin: auto;
-    outline: 1px solid black;
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.link {
+    width: 45rem;
+    height: 6rem;
+    margin-top: 2rem;
+
+    outline: 1px solid black;
+
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: gray;
+    justify-content: center;
 }
 
 #google {
@@ -174,19 +174,54 @@ label {
 
 
 
-/* Laptop */
-@media screen and (max-width: 1024px) {
-    
-}
-
-
 /* Tablet */
 @media screen and (max-width: 768px) {
+    .login{
+        width: 40rem;
+        height: 53rem;
+    }
+    #titulo {
+        font-size: 2.6rem;
+    }
+    label {
+        font-size: 1.5rem;
+    }
+    .input input {
+      padding: .5rem;
+      width: 30rem;  
+    }
+    #button {
+        padding: 1.3rem;
+        font-size: 1.2rem;
+        width: 31.3rem;
+    }
+    .blog-title {
+        font-size: 1.3rem;
+    }
+
+    .link {
+        font-size: 1.2rem;
+        width: 30rem;
+        height: 3rem;
+    }
+    #google {
+        height: 1.8rem;
+    }
+    .cadastre p {
+        font-size: 1.4rem;
+    }
+    .cadastre a {
+        font-size: 1.6rem;
+    }
 
 }
 
 
 /* Cheio */
 @media screen and (max-width: 670px) {
-
+    .login {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
 }

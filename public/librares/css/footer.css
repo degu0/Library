@@ -80,8 +80,8 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 4rem;
+    width: 4rem;
     color: white;
     border-radius: 50%;
     text-decoration: none;
@@ -115,8 +115,8 @@ footer {
     }
 
     .icon {
-        height: 5.5rem;
-        width: 5.5rem;
+        height: 5rem;
+        width: 5rem;
     }
 }
 

@@ -19,11 +19,11 @@
 
 html,
 body {
-    min-height: 100vh;
     background-color: var(--cor5);
 }
 
 main {
+    height: 100vh;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -32,24 +32,29 @@ main {
 }
 
 #imagem {
-    height: 300px;
-    width: 250px;
+    height: 65vh;
+    width: 23vw;
 }
 
 .title{
+    font-size: 4rem;
     text-align: center;
 }
 
 .subtitle {
-    margin-bottom: 10px;
+    font-size: 3rem;
+    margin: 10px 0;
 }
 
 .informacoes {
     list-style: none;
+    margin: 20px 0;
 }
 
 p, li {
-    font-size: 19px;
+    font-size: 2rem;
+    line-height: 40px;
+    font-weight: 500;
 }
 
 .actions {
@@ -65,7 +70,13 @@ p, li {
     background-color: #593527;
     color: #bda79b;
     border-radius: 8px;
-    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.buttonAtividade p {
+    font-size: 1.8rem;
+    margin: 6px 0;
 }
 
 .livro_imagem, .livro_texto {

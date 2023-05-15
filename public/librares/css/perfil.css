@@ -12,8 +12,8 @@
     --cor4: #D9C1B4;
     --cor4_1: #bda79b;
     --cor5: #F2EAE9;
-    --cor6:#a1a0a09b;
-    --cor7:#bebebe8f;
+    --cor6: #a1a0a09b;
+    --cor7: #bebebe8f;
 
 }
 
@@ -24,8 +24,7 @@ body {
 }
 
 main {
-    min-width: 300px;
-    max-width: 1500px;
+    height: 70vh;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -36,43 +35,50 @@ main {
     background-color: #897059;
     height: 500px;
     width: 850px;
-    display: flex;
-    justify-content: space-evenly;
+
+}
+
+.perfil-funcionario {
+    border: none;
+    border-radius: 10px;
+    background-color: #897059;
+    height: 40vh;
+    width: 40vw;
+    margin: 12rem auto ;
 }
 
 .title {
     text-align: center;
     margin-top: 5px;
+    font-size: 4rem;
 }
 
 
 #hr-title {
-    width: 400px;
-    margin: 8px 0px;
+    width: 60rem;
+    margin: auto;
 }
 
-.imagem {
-    border-radius: 50%;
-    background-color: #736963;
-    height: 230px;
-    width: 230px;
-}
 
 #perfil {
     height: 230px;
     width: 230px;
 }
 
-
-span {
+.perfil-information p span {
     font-weight: bolder;
 }
 
-.information p {
+.perfil-information p {
     margin: 10px 0px;
-    font-size: 18px;
+    font-size: 2rem;
+    line-height: 2rem;
 }
 
 #imagens {
     display: flex
+}
+
+.division {
+    margin-left: 2rem;
 }

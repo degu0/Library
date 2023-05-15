@@ -4,6 +4,7 @@
 
 <main>
     <div class="perfil">
+        <?php foreach($meuPerfil as $perfil) {?>
         <h1 class="title">Meu Perfil</h1>
         <hr id="hr-title">
         <div class="division"></div>
@@ -24,6 +25,7 @@
                 <p>Numero do responsável: <span><?php echo $perfil->getNumeroResponsavel(); ?></span></p>
             </div>
         </div>
+        <?php }?>
     </div>
 </main>
 

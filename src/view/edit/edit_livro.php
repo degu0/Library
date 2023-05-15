@@ -1,14 +1,17 @@
 <title>Library - Cadastro Livros</title>
 <?php require __DIR__ . "/../share/head.php"; ?>
+<link rel="stylesheet" href="/librares/css/cadastre/cadastre_book.css">
 
 
 <main>
+    <?php foreach($informaitonBook as $livro) {?>
     <div class="cadastro">
         <h1 id="title_cadastre">Cadastro livro</h1>
-        <form action="/gerenciar/livro/update" method="POST">
+        <form action="/livro/update" method="POST">
             <div class="cadastre_image">
+            <img src="data: <?php echo $livro->getImagem()->getType(); ?>;base64, <?php echo $livro->getImagem()->getBase64(); ?>" alt="placeholder" id="placeholder" onclick="capaClick()">
                 <h3 id="title_image">Adicionar imagem do livro</h3>
-                <input type="file" id="imagem_livro" name="imagem_livro" required>
+                <input type="file" id="imagem_livro" name="imagem_livro" onchange="exibirCapa(this)">
             </div>
             <div class="cadastre_information">
                 <div>
@@ -42,6 +45,7 @@
             </div>
         </form>
     </div>
+    <?php }?>
 </main>
 
 

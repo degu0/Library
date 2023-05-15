@@ -27,14 +27,14 @@
                     <div class="sobre">
                         <div class="tooltip_space">
                             <div class="titulo">
-                                <h3><?php
-                                    $nome = $list->getTitulo();
-                                    if (strlen($nome) > 30) {
-                                        echo substr($nome, 0, 30) . "...";
-                                    } else {
-                                        echo $nome;
-                                    }
-                                    ?></h3>
+                                <h3 class="text"><?php
+                                                    $nome = $list->getTitulo();
+                                                    if (strlen($nome) > 30) {
+                                                        echo substr($nome, 0, 30) . "...";
+                                                    } else {
+                                                        echo $nome;
+                                                    }
+                                                    ?></h3>
                                 <span class=<?php
                                             if (strlen($nome) > 30) {
                                                 echo "tooltip_text";
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="autor">
-                            <p>
+                            <p class="text">
                                 <?php
                                 $autor = $list->getAutor();
                                 if (strlen($autor) > 30) {
@@ -63,7 +63,7 @@
                             </p>
                         </div>
                         <div id="divVerMais">
-                            <a class="visualizar" href="/livro?id=<?php echo $list->getId(); ?>" id="verMais">Ver Livro</a>
+                            <a class="visualizar" href="/livro?id=<?php echo $list->getId(); ?>" id="verMais" class="text-button">Ver Livro</a>
                         </div>
                     </div>
                 </div>

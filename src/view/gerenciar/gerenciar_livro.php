@@ -7,7 +7,7 @@
         <h1 id="title_cadastre">Cadastro livro</h1>
         <form action="/gerenciar/livro/add" method="POST">
             <div class="cadastre_image">
-            <img src="/images/placeholder.png" alt="placeholder" id="placeholder" onclick="capaClick()">
+                <img src="/images/placeholder.png" alt="placeholder" id="placeholder" onclick="capaClick()">
                 <h3 id="title_image">Adicionar imagem do livro</h3>
                 <input type="file" id="imagem_livro" name="imagem_livro" required onchange="exibirCapa(this)">
             </div>

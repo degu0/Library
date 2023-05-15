@@ -23,6 +23,13 @@ class BookController extends Controller implements RequestHandlerInterface
 
         if (strpos($path_info, "livro")) {
             $response = $this->livro($request);
+            if (strpos($path_info, "edit")) {
+                $response = $this->editar($request);
+            } else if (strpos($path_info, "update")) {
+                $response = $this->update($request);
+            } else if (strpos($path_info, "excluir")) {
+                $response = $this->excluir($request);
+            } 
         } else {
             $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
             $response = new Response(200, [], $bodyHttp);
@@ -46,7 +53,7 @@ class BookController extends Controller implements RequestHandlerInterface
         $genero = new GenreDataBase();
         $listGenre = $genero->getListGenre();
         $livro = $livroBD->queryBook($request->getQueryParams()["id"]);
-        $bodyHttp = $this->getHTTPBodyBuffer("/edit/edit_livro.php", ["livro" => $livro, "listGenre" => $listGenre]);
+        $bodyHttp = $this->getHTTPBodyBuffer("/edit/edit_livro.php", ["informaitonBook" => $livro, "listGenre" => $listGenre]);
         $response = new Response(200, [], $bodyHttp);
 
         return $response;
