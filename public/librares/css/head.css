@@ -96,11 +96,12 @@ nav ul ul li a {
 
 #navSearch {
     display: flex;
+    margin: auto;
 }
 
 #searchNav {
     height: 3.5rem;
-    width: 41rem;
+    width: 21vw;
     border: none;
     border-radius: 0.6rem;
     padding: 0.9rem 0rem 0.6rem 1rem;
@@ -112,7 +113,7 @@ nav ul ul li a {
     border: none;
     border-radius: 0.5rem;
     padding: 0.5rem 1.6rem 0.5rem 1.6rem;
-    height: 3.5rem;
+    height: 4.2vh;
     margin-left: 0.6rem;
 }
 
@@ -233,12 +234,6 @@ nav ul ul li a {
     }
 
     #searchNav {
-        width: 30rem;
-    }
-}
-
-@media screen and (max-width:520px) {
-    #searchNav {
-        width: 20rem;
+        width: 45vw;
     }
 }

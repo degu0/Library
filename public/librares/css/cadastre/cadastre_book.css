@@ -14,6 +14,11 @@
     --cor5: #F2EAE9;
 }
 
+html {
+    /* a cada 1rem será considera 10px */
+    font-size: 62.5%;
+}
+
 html,
 body {
     background-color: var(--cor5);
@@ -31,59 +36,61 @@ main {
 
 .cadastro {
     background-color: white;
-    width: 1200px;
-    height: 760px;
-    border-radius: 5px;
+    width: 78vw;
+    height: 70rem;
+    border-radius: .5rem;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.452);
 }
 
 form {
     display: flex;
-    margin-top: 20px;
+    margin-top: 2rem;
 }
 
 #title_cadastre {
     color: rgba(0, 0, 0, 0.85);
-    margin: 25px 0px;
-    font: 30px normal 'Roboto', sans-serif;
+    margin: 2.5rem 0;
+    font-size: 3rem;
 }
 
-#title_image{
-    font: 22px normal 'Roboto', sans-serif;
+#title_image {
+    font-size: 2.2rem;
+    font-family: "Roboto", sans-serif;
 }
 
 #placeholder {
-    height: 400px;
+    height: 50vh;
 }
 
 label {
     display: flex;
     margin: -2px 0px -8px 4px;
-    font-size: 18px;
+    font-size: 1.8rem;
 }
 
 .input {
-    height: 40px;
-    width: 350px;
+    height: 5vh;
+    width: 35vw;
     border: 0.5px solid gray;
-    border-radius: 5px;
-    margin: 0px 0px 25px 0px;
-    font: 17px 'Roboto', sans-serif;
+    border-radius: .5rem;
+    margin: 0 0 2.5rem 0;
+    font: 1.7rem 'Roboto', sans-serif;
+    padding: .5rem;
 }
 
 #resumo {
-    height: 170px;
-    font: 17px 'Roboto', sans-serif;
+    height: 11rem;
+    font: 1.7rem 'Roboto', sans-serif;
 }
 
 #button {
     background-color: var(--cor3);
     color: var(--cor5);
     border: none;
-    font-size: 19px;
-    height: 50px;
-    width: 120px;
-    border-radius: 5px;
+    font-size: 1.9rem;
+    height: 5rem;
+    width: 20vw;
+    border-radius: .5rem;
 }
 
 .cadastre_image {
@@ -91,6 +98,37 @@ label {
 }
 
 .cadastre_information {
-    padding-right: 50px;
     margin: auto;
+}
+
+@media screen and (max-width: 1024px) {
+    .cadastro {
+        width: 90vw;
+        height: 64rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        height: 200vh;
+    }
+    form {
+        display: block;
+        margin-top: 2rem;
+    }
+    .cadastro {
+        width: 100%;
+        height: 100%;
+    }
+    #title_image, #imagem_livro {
+        display: none;
+    }
+    .input {
+        height: 6vh;
+        width: 80vw;
+    }
+    #placeholder {
+        height: 40vh;
+        margin-bottom: 1.7rem;
+    }
 }

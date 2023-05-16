@@ -2,21 +2,21 @@
 <?php require __DIR__ . "/../share/head.php"; ?>
 <link rel="stylesheet" href="librares/css/book.css">
 <main>
-    <div class="livro">
-        <?php foreach ($listBook as $book) { ?>
+    <?php foreach ($listBook as $book) { ?>
+        <h3 class="title">
+            <?php
+            echo $book->getTitulo();
+            ?>
+        </h3>
+        <hr id="linha">
+        <div class="livro">
             <div class="livro_imagem">
                 <img src="data: <?php echo $book->getImagem()->getType(); ?>;base64, <?php echo $book->getImagem()->getBase64(); ?>" id="imagem">
             </div>
             <div class="livro_texto">
-                <h3 class="title">
-                    <?php
-                    echo $book->getTitulo();
-                    ?>
-                </h3>
                 <h4 class="subtitle">Descrição:</h4>
                 <ul class="informacoes">
                     <li><b>Autor: </b><?php echo $book->getAutor(); ?></li>
-                    <li><b>Genero: </b><?php echo $book->getId_genero(); ?></li>
                     <li><b>N Exemplares: </b><?php echo $book->getExemplares(); ?></li>
                     <li><b>N Disponíveis: </b><?php echo $book->getDisponiveis(); ?></li>
                 </ul>
@@ -29,7 +29,7 @@
                 if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário') {
                 ?>
                     <div class="actions">
-                        <a href="/livro/editar?id=<?php echo $book->getId();?>" class="buttonAtividade">
+                        <a href="/livro/editar?id_livro=<?php echo $book->getId(); ?>" class="buttonAtividade">
                             <p>Editar</p>
                         </a>
                         <a href="/livro/excluir" class="buttonAtividade">
@@ -38,14 +38,14 @@
                     </div>
                 <?php } else if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'aluno') { ?>
                     <div class="actions">
-                        <a href="" class="buttonAtividade">
+                        <a href="/livro/emprestimo?id_livro=<?php echo $book->getId(); ?>&id_usuario=<?php echo $_SESSION['id_usuario'];?>" class="buttonAtividade">
                             <p>Empréstimo</p>
                         </a>
                     </div>
                 <?php } ?>
             </div>
         <?php } ?>
-    </div>
+        </div>
 </main>
 
 <?php require __DIR__ . "/../share/footer.php"; ?>

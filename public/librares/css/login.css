@@ -65,9 +65,9 @@ label {
     color: rgb(104, 104, 104);
     padding: 1.8rem;
     font: 1.7rem normal Arial;
-    border: 1px solid black;
+    border: .1rem solid black;
     border-radius: .4rem;
-    margin: 1rme 0;
+    margin: 1rem 0;
     width: 45rem;
 }
 
@@ -187,13 +187,13 @@ label {
         font-size: 1.5rem;
     }
     .input input {
-      padding: .5rem;
-      width: 30rem;  
+      padding: 1.6rem;
+      width: 49.4vw;  
     }
     #button {
-        padding: 1.3rem;
+        padding: 2rem;
         font-size: 1.2rem;
-        width: 31.3rem;
+        width: 55.7vw;  
     }
     .blog-title {
         font-size: 1.3rem;
@@ -201,7 +201,7 @@ label {
 
     .link {
         font-size: 1.2rem;
-        width: 30rem;
+        width: 55.7vw;  
         height: 3rem;
     }
     #google {

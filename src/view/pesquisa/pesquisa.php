@@ -67,7 +67,7 @@
                         </p>
                     </div>
                     <div id="divVerMais">
-                        <a class="visualizar" href="/livro?id=<?php echo $list->getId(); ?>" id="verMais">Ver Livro</a>
+                        <a class="visualizar" href="/livro?id_livro=<?php echo $list->getId(); ?>" id="verMais">Ver Livro</a>
                     </div>
                 </div>
             </div>

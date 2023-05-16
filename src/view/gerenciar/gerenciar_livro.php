@@ -17,8 +17,8 @@
                     <input type="text" id="titulo" class="input" placeholder="Insira o titulo do livro" required>
                 </div>
                 <div>
-                    <label for="autor">Autor:</label><br>
-                    <input type="text" id="autor" class="input" placeholder="Insira o nome do autor" required>
+                    <label for="autor-input">Autor:</label><br>
+                    <input type="text" id="autor-input" class="input" placeholder="Insira o nome do autor" required>
                 </div>
                 <div>
                     <label for="genero">Genero:</label><br>

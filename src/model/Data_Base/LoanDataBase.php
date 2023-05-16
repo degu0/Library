@@ -47,6 +47,35 @@ class LoanDataBase
         $this->conexao->fecharConexao();
     }
 
+    public function alunoAdicionar(Loan $emprestimo)
+    {
+        $comando = "INSERT INTO emprestimo (FK_id_Aluno, FK_id_Livro, Data_Entrega, Data_Final) VALUES(?, ?, ?, ?)";
+        $aluno = $emprestimo->getAluno();
+        $livro = $emprestimo->getLivro();
+        $data_inicial = date('Y/m/d');
+        $data_final = date('Y/m/d', strtotime('+8 days', strtotime($data_inicial)));
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+
+        $preparacao->bind_param(
+            "iiss",
+            $aluno,
+            $livro,
+            $data_inicial,
+            $data_final
+        );
+
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+
+        if ($resultado == false) {
+            return null;
+        }
+
+        $this->conexao->fecharConexao();
+    }
+
     public function getLoan()
     {
         $comando = "SELECT e.id, e.Data_Entrega, e.Data_Final, l.titulo, l.id_livro, a.matricula, a.id_usuario FROM

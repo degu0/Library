@@ -52,6 +52,39 @@ class HistoryDataBase
         $this->conexao->fecharConexao();
     }
 
+    public function alunoAdicionar(Loan $emprestimo)
+    {
+        $comando = "INSERT INTO historico (FK_id_Aluno, FK_id_Livro, Data_Emprestimo, Data_Devolucao, `Status`, Adiamento) VALUES(?, ?, ?, ?, ?, ?)";
+        $aluno = $emprestimo->getAluno();
+        $livro = $emprestimo->getLivro();
+        $data_inicial = date('Y/m/d');
+        $data_final = date('Y/m/d', strtotime('+8 days', strtotime($data_inicial)));
+        $status = 'nao';
+        $adiamento = 0;
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+
+        $preparacao->bind_param(
+            "iisssi",
+            $aluno,
+            $livro,
+            $data_inicial,
+            $data_final,
+            $status,
+            $adiamento
+        );
+
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+
+        if ($resultado == false) {
+            return null;
+        }
+
+        $this->conexao->fecharConexao();
+    }
+
     public function getHistory()
     {
         $comando = "SELECT h.id, h.Data_Emprestimo, h.Data_Devolucao, h.adiamento, h.`status`, l.id_livro, l.titulo, a.id_usuario, a.matricula  FROM historico h

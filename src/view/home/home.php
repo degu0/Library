@@ -31,7 +31,7 @@
                             </li>
                         <?php } else { ?>
                             <li>
-                                <a href=""><?php echo $_SESSION['usuario']; ?></a>
+                                <span><?php echo $_SESSION['usuario']; ?></span>
                                 <ul class="dropdown">
                                     <li>
                                         <a href="/meu-perfil?id=<?php echo $_SESSION['id_usuario']; ?>">Meu perfil</a>
