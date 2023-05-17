@@ -8,13 +8,13 @@
             <h1 class="title">Meu Perfil</h1>
             <hr id="hr-title">
             <div class="division">
-                <div class="perfil-information">
+                <div class="aboutPerfil">
                     <p>Nome: <span><?php echo $perfil->getNome(); ?></span></p>
                 </div>
-                <div class="perfil-information">
+                <div class="aboutPerfil">
                     <p>Email: <span><?php echo $perfil->getEmail(); ?></span></p>
                 </div>
-                <div class="perfil-information">
+                <div class="aboutPerfil">
                     <p>Função: <span><?php echo $perfil->getTipoUser() ?></span></p>
                 </div>
             </div>

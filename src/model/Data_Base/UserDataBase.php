@@ -135,4 +135,22 @@ class UserDataBase
             return null;
         }
     }
+
+    public function getLastStudent()
+    {
+        $comando = "SELECT * FROM usuario WHERE tipo_usuario = 'aluno' ORDER BY id_usuario DESC LIMIT 1;";
+
+        $resultado = $this->conexao->mysqli->query($comando);
+
+        if ($resultado == false) {
+            return null;
+        }
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $user = $linha['id_usuario'];
+        }
+        $this->conexao->fecharConexao();
+
+        return $user;
+    }
 }

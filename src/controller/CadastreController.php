@@ -15,6 +15,7 @@ use Library_ETE\controller\inheritance\Controller;
 use Library_ETE\model\Data_Base\LoanDataBase;
 use Library_ETE\model\Data_Base\StudentDataBase;
 use Library_ETE\model\Data_Base\HistoryDataBase;
+use Library_ETE\model\Data_Base\UserDataBase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -162,9 +163,11 @@ class CadastreController extends Controller implements RequestHandlerInterface
 
     public function AdicionarInformacoesDoAluno(ServerRequestInterface $request) : ResponseInterface
     {
-        $vazio = new User(null, null, null, null, null, null);
+        $userBD = new UserDataBase();
+        $id_user = $userBD->getLastStudent();
+        $user = new User(null, null, null, null, null, $id_user);
         $aluno = new Student(
-            $vazio,
+            $user,
             $request->getParsedBody()["matricula"],
             $request->getParsedBody()["numeroAluno"],
             $request->getParsedBody()["numeroResponsavel"],

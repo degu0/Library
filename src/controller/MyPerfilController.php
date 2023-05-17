@@ -3,6 +3,7 @@
 namespace Library_ETE\controller;
 
 use Library_ETE\controller\inheritance\Controller;
+use Library_ETE\model\Data_Base\LoanDataBase;
 use Library_ETE\model\Data_Base\StudentDataBase;
 use Library_ETE\model\Data_Base\UserDataBase;
 use Psr\Http\Message\ResponseInterface;
@@ -20,20 +21,22 @@ class MyPerfilController extends Controller implements RequestHandlerInterface
         $response = null;
 
         if (strpos($path_info, "meu-perfil")) {
-            $response = $this->Nome($request);
+            $response = $this->Perfil($request);
         } else {
             $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
             $response = new Response(200, [], $bodyHttp);
         }
         return $response;
     }
-    public function Nome(ServerRequestInterface $request): ResponseInterface
+    public function Perfil(ServerRequestInterface $request): ResponseInterface
     {
         $idPerfil = $request->getQueryParams()['id'];
         if($_SESSION['tipo_usuario'] == 'aluno') {
             $aluno = new StudentDataBase();
+            $emprestimoBD = new LoanDataBase(); 
             $perfil = $aluno->getPerfilAluno($idPerfil);
-            $bodyHTTP = $this->getHTTPBodyBuffer("/aluno/perfil.php", ['meuPerfil' => $perfil]);
+            $emprestimo = $emprestimoBD->queryLoanStudent($idPerfil);
+            $bodyHTTP = $this->getHTTPBodyBuffer("/aluno/perfil.php", ['meuPerfil' => $perfil, 'ListLoan' => $emprestimo]);
             $response = new Response(200, [], $bodyHTTP);
     
             return $response;

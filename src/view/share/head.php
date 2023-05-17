@@ -68,7 +68,7 @@
             <div>
                 <form action="/pesquisa" method="GET" id="navSearch">
                     <input type="search" name="searchNav" id="searchNav" placeholder="Pesquisar">
-                    <button id="buttom-searchNav"><img src="/images/search.png" alt="search" height="18px" width="18px"></button>
+                    <button id="buttom-searchNav"><i class="fa-solid fa-magnifying-glass fa-lg" style="color: white"></i></button>
                 </form>
             </div>
         </div>

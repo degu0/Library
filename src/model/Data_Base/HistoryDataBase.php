@@ -87,9 +87,11 @@ class HistoryDataBase
 
     public function getHistory()
     {
-        $comando = "SELECT h.id, h.Data_Emprestimo, h.Data_Devolucao, h.adiamento, h.`status`, l.id_livro, l.titulo, a.id_usuario, a.matricula  FROM historico h
-        INNER JOIN Livro l ON l.id_livro = h.FK_id_Livro
-        INNER JOIN Usuario_aluno a ON a.id_usuario = h.FK_id_Aluno;";
+        $comando = "SELECT h.id, h.Data_Emprestimo, h.Data_Devolucao, h.adiamento, h.`status`, 
+        l.id_livro, l.titulo, a.FK_id_usuario, a.matricula, u.nome  FROM historico h
+                INNER JOIN Livro l ON l.id_livro = h.FK_id_Livro
+                INNER JOIN Usuario_aluno a ON a.FK_id_usuario = h.FK_id_Aluno
+                INNER JOIN Usuario u ON a.FK_id_usuario = u.id_usuario;";
 
         $resultado = $this->conexao->mysqli->query($comando);
 
@@ -101,9 +103,9 @@ class HistoryDataBase
 
         while ($linha = $resultado->fetch_assoc()) {
             $imagem = new Image('null', 'null', 'null');
-            $user = new User('null', 'null', 'null', 'null', 'null');
+            $user = new User($linha['nome'], 'null', 'null', 'null', 'null');
             $livro = new Book($linha['titulo'], $imagem, null, null, null, null, null, $linha['id_livro']);
-            $aluno = new Student($user, $linha['matricula'], null, null, $linha['id_usuario']);
+            $aluno = new Student($user, $linha['matricula'], null, null, $linha['FK_id_usuario']);
             $listaHistorico[] = new History($aluno, $livro, $linha['Data_Emprestimo'], $linha['Data_Devolucao'], $linha['adiamento'], $linha['status'], $linha['id']);
         }
         $this->conexao->fecharConexao();

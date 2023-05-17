@@ -16,12 +16,12 @@
             <div class="livro_texto">
                 <h4 class="subtitle">Descrição:</h4>
                 <ul class="informacoes">
-                    <li><b>Autor: </b><?php echo $book->getAutor(); ?></li>
-                    <li><b>N Exemplares: </b><?php echo $book->getExemplares(); ?></li>
-                    <li><b>N Disponíveis: </b><?php echo $book->getDisponiveis(); ?></li>
+                    <li class="text"><b>Autor: </b><?php echo $book->getAutor(); ?></li>
+                    <li class="text"><b>N Exemplares: </b><?php echo $book->getExemplares(); ?></li>
+                    <li class="text"><b>N Disponíveis: </b><?php echo $book->getDisponiveis(); ?></li>
                 </ul>
                 <h5 class="subtitle">Sobre a obra</h5>
-                <p>
+                <p class="text">
                     <?php echo $book->getResumo(); ?>
                 </p>
 

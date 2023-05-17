@@ -210,8 +210,9 @@ tbody>tr:nth-child(even) {
 #tableInfo {
     width: 53vw;
     height: 63rem;
-    overflow-y: auto;
     margin: auto;
+    display: flex;
+    align-items: center;
 }
 
 #tableInfo::-webkit-scrollbar {

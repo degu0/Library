@@ -78,10 +78,11 @@ class LoanDataBase
 
     public function getLoan()
     {
-        $comando = "SELECT e.id, e.Data_Entrega, e.Data_Final, l.titulo, l.id_livro, a.matricula, a.id_usuario FROM
+        $comando = "SELECT e.id, e.Data_Entrega, e.Data_Final, l.titulo, l.id_livro, a.matricula, a.FK_id_usuario, u.nome, u.email, u.tipo_usuario FROM
         emprestimo e
-        INNER JOIN usuario_aluno a ON a.id_usuario = e.FK_ID_Aluno
-        INNER JOIN livro l ON l.id_livro = e.FK_ID_Livro;";
+        INNER JOIN usuario_aluno a ON a.FK_id_usuario = e.FK_ID_Aluno
+        INNER JOIN livro l ON l.id_livro = e.FK_ID_Livro
+        INNER JOIN usuario u ON u.id_usuario = a.FK_id_usuario;";
 
         $resultado = $this->conexao->mysqli->query($comando);
 
@@ -93,9 +94,9 @@ class LoanDataBase
 
         while ($linha = $resultado->fetch_assoc()) {
             $imagem = new Image('null', 'null', 'null');
-            $user = new User('null', 'null', 'null', 'null', 'null');
+            $user = new User($linha['nome'], $linha['email'], 'null', 'null', $linha['tipo_usuario']);
             $livro = new Book($linha['titulo'], $imagem, null, null, null, null, null, $linha['id_livro']);
-            $aluno = new Student($user, $linha['matricula'], null, null, $linha['id_usuario']);
+            $aluno = new Student($user, $linha['matricula'], null, null, $linha['FK_id_usuario']);
             $listLoan[] = new Loan($aluno, $livro, $linha['Data_Entrega'], $linha['Data_Final'], $linha['id']);
         }
         $this->conexao->fecharConexao();
@@ -153,11 +154,12 @@ class LoanDataBase
 
     public function queryLoan($id)
     {
-        $comando = "SELECT e.id, e.Data_Entrega, e.Data_Final, l.titulo, l.id_livro, a.matricula, a.id_usuario FROM
+        $comando = "SELECT e.id, e.Data_Entrega, e.Data_Final, l.titulo, l.id_livro, a.matricula, a.FK_id_usuario, u.nome, u.email, u.tipo_usuario FROM
         emprestimo e
-        INNER JOIN usuario_aluno a ON a.id_usuario = e.FK_ID_Aluno
+        INNER JOIN usuario_aluno a ON a.FK_id_usuario = e.FK_ID_Aluno
         INNER JOIN livro l ON l.id_livro = e.FK_ID_Livro
-        WHERE id = ?;";
+        INNER JOIN usuario u ON u.id_usuario = a.FK_ID_Usuario
+        WHERE e.id = ?;";
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id);
         $preparacao->execute();
@@ -170,8 +172,9 @@ class LoanDataBase
 
         while ($linha = $resultado->fetch_assoc()) {
             $imagem = new Image('null', 'null', 'null');
+            $user = new User($linha['nome'], $linha['email'], 'null', 'null', $linha['tipo_usuario']);
             $livro = new Book($linha['titulo'], $imagem, null, null, null, null, null, $linha['id_livro']);
-            $aluno = new Student($linha['matricula'], null, null, $linha['id_usuario']);
+            $aluno = new Student($user, $linha['matricula'], null, null, $linha['id_usuario']);
             $listLoan[] = new Loan($aluno, $livro, $linha['data_entrega'], $linha['data_final'], $linha['id']);
         }
 
@@ -207,5 +210,63 @@ class LoanDataBase
             return null;
         }
         $this->conexao->fecharConexao();
+    }
+    public function queryLoanStudent($id_aluno)
+    {
+        $comando = "SELECT e.id, e.Data_Entrega, e.Data_Final, l.titulo, l.id_livro, a.matricula, a.FK_id_usuario, u.nome, u.email, u.tipo_usuario FROM
+        emprestimo e
+        INNER JOIN usuario_aluno a ON a.FK_id_usuario = e.FK_ID_Aluno
+        INNER JOIN livro l ON l.id_livro = e.FK_ID_Livro
+        INNER JOIN usuario u ON u.id_usuario = a.FK_ID_Usuario
+        WHERE a.FK_id_usuario = ?;";
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("i", $id_aluno);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+        $listLoan = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $imagem = new Image('null', 'null', 'null');
+            $user = new User($linha['nome'], $linha['email'], 'null', 'null', $linha['tipo_usuario']);
+            $livro = new Book($linha['titulo'], $imagem, null, null, null, null, null, $linha['id_livro']);
+            $aluno = new Student($user, $linha['matricula'], null, null, $linha['FK_id_usuario']);
+            $listLoan[] = new Loan($aluno, $livro, $linha['Data_Entrega'], $linha['Data_Final'], $linha['id']);
+        }
+
+        $this->conexao->fecharConexao();
+        return $listLoan;
+    }
+
+    public function queryLastLoan()
+    {
+        $comando = "SELECT e.id, e.Data_Entrega, e.Data_Final, l.titulo, l.id_livro, a.matricula, a.FK_id_usuario, u.nome, u.email, u.tipo_usuario FROM
+        emprestimo e
+        INNER JOIN usuario_aluno a ON a.FK_id_usuario = e.FK_ID_Aluno
+        INNER JOIN livro l ON l.id_livro = e.FK_ID_Livro
+        INNER JOIN usuario u ON u.id_usuario = a.FK_ID_Usuario
+        ORDER BY id DESC LIMIT 1;";
+
+        $resultado = $this->conexao->mysqli->query($comando);
+
+        if ($resultado == false) {
+            return null;
+        }
+
+        $listLoan = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $imagem = new Image('null', 'null', 'null');
+            $user = new User($linha['nome'], $linha['email'], 'null', 'null', $linha['tipo_usuario']);
+            $livro = new Book($linha['titulo'], $imagem, null, null, null, null, null, $linha['id_livro']);
+            $aluno = new Student($user, $linha['matricula'], null, null, $linha['FK_id_usuario']);
+            $listLoan[] = new Loan($aluno, $livro, $linha['Data_Entrega'], $linha['Data_Final'], $linha['id']);
+        }
+
+        $this->conexao->fecharConexao();
+        return $listLoan;
     }
 }

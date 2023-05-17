@@ -12,9 +12,14 @@
     --cor4: #D9C1B4;
     --cor4_1: #bda79b;
     --cor5: #F2EAE9;
-    --cor6:#a1a0a09b;
-    --cor7:#bebebe8f;
+    --cor6: #a1a0a09b;
+    --cor7: #bebebe8f;
 
+}
+
+html {
+    /* a cada 1rem será considera 10px */
+    font-size: 62.5%;
 }
 
 html,
@@ -23,7 +28,7 @@ body {
 }
 
 main {
-    height: 100vh;
+    height: 120vh;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -33,16 +38,16 @@ main {
 
 #imagem {
     height: 65vh;
-    width: 23vw;
+    width: 25vw;
 }
 
-.title{
-    font-size: 4rem;
+.title {
+    font-size: 3.5rem;
     text-align: center;
 }
 
 .subtitle {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin: 10px 0;
 }
 
@@ -51,8 +56,8 @@ main {
     margin: 20px 0;
 }
 
-p, li {
-    font-size: 2rem;
+.text {
+    font-size: 1.8rem;
     font-weight: 500;
 }
 
@@ -78,11 +83,52 @@ p, li {
     margin: 15px 0;
 }
 
-.livro_imagem, .livro_texto {
+.livro_imagem,
+.livro_texto {
     margin: 15px;
 }
 
 #linha {
     width: 70%;
     margin: 5px auto;
+}
+
+@media screen and (max-width: 1024px) {
+    .text {
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 3.5rem;
+    }
+
+    .subtitle {
+        font-size: 2.5rem;
+    }
+
+    .text {
+        font-size: 1rem;
+    }
+
+    #imagem {
+        height: 50vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        height: 200vh;
+    }
+    .livro {
+        flex-direction: column;
+        align-items: center;
+    }
+    #imagem {
+        width: 40vw;
+    }
+    .text {
+        font-size: 1.2rem;
+    }
 }

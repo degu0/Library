@@ -3,6 +3,7 @@
 namespace Library_ETE\controller;
 
 use Library_ETE\controller\inheritance\Controller;
+use Library_ETE\model\Data_Base\LoanDataBase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -32,7 +33,9 @@ class ConfirmationScreenController extends Controller implements RequestHandlerI
 
     public function emprestimo() : ResponseInterface
     {
-        $bodyHTTP = $this->getHTTPBodyBuffer("/layout/confirmacao_emprestimo.php");
+        $emprestimoBD = new LoanDataBase();
+        $informacoes = $emprestimoBD->queryLastLoan();
+        $bodyHTTP = $this->getHTTPBodyBuffer("/layout/confirmacao_emprestimo.php", ['listInformation' => $informacoes]);
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;

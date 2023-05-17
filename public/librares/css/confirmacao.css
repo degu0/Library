@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&family=Roboto:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --cor1: #261A1A;
+    --cor2: #593527;
+    --cor3: #8C6B4F;
+    --cor4: #D9C1B4;
+    --cor4_1: #bda79b;
+    --cor5: #F2EAE9;
+    --cor6:#a1a0a09b;
+    --cor7:#bebebe8f;
+
+}
+
+html {
+    /* a cada 1rem será considera 10px */
+    font-size: 62.5%;
+}
+
+html,
+body {
+    min-height: 100vh;
+    background-color: var(--cor5);
+}
+
+main {
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirmacao {
+    height: 73vh;
+    width: 60vw;
+    border: none;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--cor1);
+    color: var(--cor5);
+}
+
+.titulo {
+    font-size: 3.6rem;
+}
+
+.subtitulo, .erro {
+    font-size: 2.6rem;
+}
+
+.dados {
+    font-size: 1.8rem;
+    line-height: 3rem;
+}
+
+.variavel {
+    font-weight: bolder;
+}
+
+
+.erro a {
+    text-decoration: none;
+    color: var(--cor5);
+    font-weight: bolder;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.confirmation {
+    height: 15vh;
+}
+
+@media screen and (max-width:980px) {
+    .confirmacao {
+        width: 80vw;
+    }
+    .titulo {
+        font-size: 2.8rem;
+    }
+    .subtitle, .erro {
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width:600px) {
+    main {
+        height: 120vh;
+    }
+    .confirmacao {
+        height: 85vh;
+        width: 92vw;
+    }
+    .titulo {
+        font-size: 2rem;
+    }
+    .subtitulo {
+        font-size: 1.8rem;
+    }
+    .erro {
+        font-size: 1.4rem;
+    }
+}
+

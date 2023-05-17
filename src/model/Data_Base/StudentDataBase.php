@@ -29,7 +29,7 @@ class StudentDataBase
 
         while ($linha = $resultado->fetch_assoc()) {
             $user = new User(null, null, null, null, null);
-            $listStudent[] = new Student($user, $linha['matricula'], $linha['numero_aluno'], $linha['numero_responsavel'], $linha['id_usuario']);
+            $listStudent[] = new Student($user, $linha['matricula'], $linha['numero_aluno'], $linha['numero_responsavel'], $linha['FK_id_usuario']);
         }
         $this->conexao->fecharConexao();
 
@@ -39,7 +39,7 @@ class StudentDataBase
     public function getPerfilAluno($id)
     {
         $comando = "SELECT u.id_usuario as id, u.nome, u.email, u.senha, u.tipo_usuario as tipo, a.numero_aluno, a.numero_responsavel, a.matricula FROM usuario u
-        INNER JOIN usuario_aluno a ON a.id_usuario = u.id_usuario
+        INNER JOIN usuario_aluno a ON a.Fk_id_usuario = u.id_usuario
         WHERE u.id_usuario = ? ;";
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id);
@@ -62,18 +62,20 @@ class StudentDataBase
 
     public function adicionar(Student $aluno)
     {
-        $comando = "INSERT INTO usuario_aluno (matricula, numero_aluno, numero_responsavel) VALUES(?, ?, ?)";
+        $comando = "INSERT INTO usuario_aluno (matricula, numero_aluno, numero_responsavel, FK_id_Usuario) VALUES(?, ?, ?, ?)";
         $matricula = $aluno->getMatricula();
         $numeroAluno = $aluno->getNumero();
         $numeroResponsavel = $aluno->getNumeroResponsavel();
+        $id_usuario = $aluno->getUsuario()->getId();
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
 
         $preparacao->bind_param(
-            "iii",
+            "iiii",
             $matricula,
             $numeroAluno,
-            $numeroResponsavel
+            $numeroResponsavel,
+            $id_usuario
         );
 
         $preparacao->execute();

@@ -8,7 +8,7 @@
         <table>
             <thead>
                 <th scope="col">Nome de livro</th>
-                <th scope="col">Numero da matricula do aluno</th>
+                <th scope="col">Numero do(a) aluno(a)</th>
                 <th scope="col">Data de inicial</th>
                 <th scope="col">Data de final</th>
             </thead>
@@ -16,7 +16,7 @@
                 <?php foreach ($listaEmprestimo as $list) { ?>
                     <tr>
                         <td><?php echo $list->getLivro()->getTitulo(); ?></td>
-                        <td><?php echo $list->getAluno()->getMatricula(); ?></td>
+                        <td><?php echo $list->getAluno()->getUsuario()->getNome(); ?></td>
                         <td><?php echo  date('d/m/Y', strtotime($list->getDataInicial())); ?></td>
                         <td><?php echo  date('d/m/Y', strtotime($list->getDataFinal())); ?></td>
                     </tr>
@@ -29,7 +29,7 @@
         <table>
             <thead>
                 <th scope="col">Nome de livro</th>
-                <th scope="col">Numero da matricula do aluno</th>
+                <th scope="col">Numero do(a) aluno(a)</th>
                 <th scope="col">Data de inicial</th>
                 <th scope="col">Data de final</th>
                 <th scope="col">Adiamentos</th>
@@ -39,7 +39,7 @@
                 <?php foreach ($listaHistorico as $list) { ?>
                     <tr>
                         <td><?php echo $list->getLivro()->getTitulo(); ?></td>
-                        <td><?php echo $list->getAluno()->getMatricula(); ?></td>
+                        <td><?php echo $list->getAluno()->getUsuario()->getNome(); ?></td>
                         <td><?php echo  date('d/m/Y', strtotime($list->getDataInicial())); ?></td>
                         <td><?php echo  date('d/m/Y', strtotime($list->getDataFinal())); ?></td>
                         <td><?php echo  $list->getAdiamento(); ?></td>

@@ -100,11 +100,10 @@ nav ul ul li a {
 }
 
 #searchNav {
-    height: 3.5rem;
     width: 21vw;
     border: none;
     border-radius: 0.6rem;
-    padding: 0.9rem 0rem 0.6rem 1rem;
+    padding-left: 1rem;
     font: normal 1.6rem Roboto;
 }
 

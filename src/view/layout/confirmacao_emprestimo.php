@@ -1,31 +1,33 @@
-<title>Library - Confirmação de devolução</title>
+<title>Library - Confirmação de empréstimo</title>
 <?php require __DIR__ . "/../share/head.php"; ?>
-<link rel="stylesheet" href="librares/css/confirmacao.css">
+<link rel="stylesheet" href="/librares/css/confirmacao.css">
 
 <main>
     <div class="confirmacao">
         <h1 class="titulo">Confirmação do seu empréstimo</h1>
         <h2 class="subtitulo">Por favor mostre para a/o bibliotecário</h2>
-        <div class="dados">
-            <p class="informacoes">
-                <span class="variavel">Aluno:</span>
-                <?php echo $loan->getAluno();?>
-            </p>
-            <p class="informacoes">
-                <span class="variavel">Livro:</span>
-                <?php echo $loan->getLivro();?>
-            </p>
-            <p class="informacoes">
-                <span class="variavel">Data do empréstimo:</span>
-                <?php echo $loan->getDataIncial();?>
-            </p>
-        </div>
+        <?php foreach ($listInformation as $loan) { ?>
+            <div class="dados">
+                <p class="informacoes">
+                    <span class="variavel">Aluno:</span>
+                    <?php echo $loan->getAluno()->getUsuario()->getNome(); ?>
+                </p>
+                <p class="informacoes">
+                    <span class="variavel">Livro:</span>
+                    <?php echo $loan->getLivro()->getTitulo(); ?>
+                </p>
+                <p class="informacoes">
+                    <span class="variavel">Data do empréstimo:</span>
+                    <?php echo $loan->getDataInicial(); ?>
+                </p>
+            </div>
+            <div>
+                <p class="erro">Dados incorretos? Por favor, edite o seu empréstimo. <br> <a href="" class="link">Aqui</a></p>
+            </div>
+        <?php } ?>
         <div>
-            <p>Dados incorretos? Por favor, edite o seu empréstimo. <a href="" class="link">Aqui</a></p>
-        </div>
-        <div>
-            <a href="/home">
-                <img src="/public/images/accept.png" alt="Confirmação">
+            <a href="/home" class="confirmation">
+            <i class="fa-solid fa-circle-check fa-7x" style="color: #8c6b4f;"></i>
             </a>
         </div>
     </div>

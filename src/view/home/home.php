@@ -71,36 +71,36 @@
             <div>
                 <form action="/pesquisa" method="GET" id="navSearch">
                     <input type="search" name="searchNav" id="searchNav" placeholder="Pesquisar">
-                    <button id="buttom-searchNav"><img src="/images/search.png" alt="search" height="18px" width="18px"></button>
+                    <button id="buttom-searchNav"><i class="fa-solid fa-magnifying-glass fa-lg" style="color: white"></i></button>
                 </form>
             </div>
         </div>
     </header>
     <main>
-        <!-- <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário' && $listLoan != null) { ?>
-        <div id="tableInfo">
-            <table>
-                <thead>
-                    <th scope="col">Data de entrega</th>
-                    <th scope="col">Nome de livro</th>
-                    <th scope="col">Nome da pessoa</th>
-                    <th scope="col">Deletar</th>
-                    <th scope="col">Adiar</th>
-                </thead>
-                <tbody>
-                    <?php foreach ($listLoan as $loan) { ?>
-                        <tr>
-                            <td><?php echo  date('d/m/Y', strtotime($loan->getDataFinal())); ?></td>
-                            <td><?php echo $loan->getLivro(); ?></td>
-                            <td><?php echo $loan->getAluno(); ?></td>
-                            <td><?php echo "<a href='/home/delete?id=" . $loan->getId() . "' class='link'>DELETE</a>"; ?></td>
-                            <td><?php echo "<a href='/home/adiar?id=" . $loan->getId() . "' class='link'>+</a>"; ?></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        </div>
-        <?php } ?> -->
+        <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário' && $listLoan != null) { ?>
+            <div id="tableInfo">
+                <table>
+                    <thead>
+                        <th scope="col">Data de entrega</th>
+                        <th scope="col">Nome de livro</th>
+                        <th scope="col">Nome da pessoa</th>
+                        <th scope="col">Deletar</th>
+                        <th scope="col">Adiar</th>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($listLoan as $loan) { ?>
+                            <tr>
+                                <td><?php echo  date('d/m/Y', strtotime($loan->getDataFinal())); ?></td>
+                                <td><?php echo $loan->getLivro()->getTitulo(); ?></td>
+                                <td><?php echo $loan->getAluno()->getUsuario()->getNome(); ?></td>
+                                <td><?php echo "<a href='/home/delete?id=" . $loan->getId() . "' class='link'><i class='fa-sharp fa-solid fa-trash fa-lg'></i></a>"; ?></td>
+                                <td><?php echo "<a href='/home/adiar?id=" . $loan->getId() . "' class='link'><i class='fa-solid fa-plus fa-lg'></i></a>"; ?></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php } ?>
         </div>
         <div class="divPart" id="divWelcome">
             <div id="information">
@@ -129,62 +129,7 @@
             </a>
 
         </div>
-        <!-- <?php
-                if ($listBook != null) {
-                ?>
-            <div class="divPart">
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                    google.charts.load("current", {
-                        packages: ['corechart']
-                    });
-                    google.charts.setOnLoadCallback(drawChart);
-
-                    function drawChart() {
-                        var data = google.visualization.arrayToDataTable([
-                            ["Títulos de livros", "Quantidade", {
-                                role: "style"
-                            }],
-                            <?php foreach ($listBook as $book) { ?>["<?php echo $book->getName(); ?>", <?php echo $book->getQuantity(); ?>, "#593527"],
-                            <?php } ?>
-                        ]);
-
-                        var view = new google.visualization.DataView(data);
-                        view.setColumns([0, 1,
-                            {
-                                calc: "stringify",
-                                sourceColumn: 1,
-                                type: "string",
-                                role: "annotation"
-                            },
-                            2
-                        ]);
-
-                        var options = {
-                            title: "Livros na biblioteca",
-                            width: 1200,
-                            height: 500,
-                            bar: {
-                                groupWidth: "50%"
-                            },
-                            legend: {
-                                position: "none"
-                            },
-                            backgroundColor: "#F2EAE9",
-                        };
-                        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-                        chart.draw(view, options);
-                    }
-                </script>
-                <div id="columnchart_values" style="width: 1200px; height: 500px;" data-anime="bottom"></div>
-            </div>
-        <?php
-                }
-        ?> -->
     </main>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.6/underscore-umd-min.js"></script>
-    <script src="/librares/js/search_home.js"></script> -->
     <script src="/librares/js/animation.js"></script>
     <script src="/librares/js/menu.js"></script>
     <?php require __DIR__ . "/../share/footer.php"; ?>
