@@ -14,11 +14,11 @@
             <div class="cadastre_information">
                 <div>
                     <label for="titlo">Nome do livro:</label><br>
-                    <input type="text" id="titulo" class="input" placeholder="Insira o titulo do livro" required>
+                    <input type="text" id="titulo" name="titulo" class="input" placeholder="Insira o titulo do livro" required>
                 </div>
                 <div>
                     <label for="autor-input">Autor:</label><br>
-                    <input type="text" id="autor-input" class="input" placeholder="Insira o nome do autor" required>
+                    <input type="text" id="autor-input" name="autor" class="input" placeholder="Insira o nome do autor" required>
                 </div>
                 <div>
                     <label for="genero">Genero:</label><br>
@@ -31,11 +31,11 @@
                 </div>
                 <div>
                     <label for="exemplares">N exemplares:</label><br>
-                    <input type="number" id="exemplares" class="input" placeholder="Insira a quantidade de livros" required>
+                    <input type="number" id="exemplares" name="exemplares" class="input" placeholder="Insira a quantidade de livros" required>
                 </div>
                 <div>
                     <label for="resumo">Sobre a obre:</label><br>
-                    <textarea id="resumo" class="input" rows="12" cols="45" required></textarea>
+                    <textarea id="resumo" name="resumo" class="input" rows="12" cols="45" required></textarea>
                 </div>
                 <div>
                     <input type="submit" id="button">

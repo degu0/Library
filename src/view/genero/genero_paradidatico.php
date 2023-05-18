@@ -13,6 +13,12 @@
                     <div class="subtag">
                         <div class="nome_genero">
                             <h3 class="genero"><?php echo $list->getGenero(); ?></h3>
+                            <a href="/generos/literatura/editar?id=<?php echo $list->getId()?>" class="superLinks" id="edit">
+                                <i class="fa-solid fa-pen fa-xl" style="color: #ffffff;"></i>
+                            </a>
+                            <a href="" class="superLinks" id="trash">
+                                <i class="fa-solid fa-trash fa-xl" style="color: #fff;"></i>
+                            </a>
                         </div>
                     </div>
                 </div>

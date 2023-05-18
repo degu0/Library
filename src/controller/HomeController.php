@@ -5,6 +5,7 @@ namespace Library_ETE\controller;
 use Library_ETE\model\Data_Base\LoanDataBase;
 use Library_ETE\controller\inheritance\Controller;
 use Library_ETE\model\Data_Base\BookDataBase;
+use Library_ETE\model\Data_Base\HistoryDataBase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -21,6 +22,11 @@ class HomeController extends Controller implements RequestHandlerInterface
 
         if (strpos($path_info, "home")) {
             $response = $this->home();
+            if (strpos($path_info, 'delete')) {
+                $response = $this->delete($request);
+            } else if (strpos($path_info, 'adiar')) {
+                $response = $this->adiar($request);
+            }
         } else {
             $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
             $response = new Response(200, [], $bodyHttp);
@@ -50,8 +56,11 @@ class HomeController extends Controller implements RequestHandlerInterface
 
     public function delete(ServerRequestInterface $request): ResponseInterface
     {
+        $id = $request->getQueryParams()["id"];
         $loanDB = new LoanDataBase();
-        $loanDB->delete($request->getQueryParams()["id"]);
+        $historyDB = new HistoryDataBase();
+        $loanDB->delete($id);
+        $historyDB->devolucao($id);
 
         $response = new Response(302, ["Location" => "/home"], null);
         return $response;
@@ -60,12 +69,14 @@ class HomeController extends Controller implements RequestHandlerInterface
     public function adiar(ServerRequestInterface $request): ResponseInterface
     {
         $loanDB = new LoanDataBase();
+        $historyDB = new HistoryDataBase();
         $id = $request->getQueryParams()["id"];
         $dadoDate = $loanDB->getDate($id);
         $loanDB->updateDate($id, $dadoDate);
+        $historyDB->adiamento($id);
+
 
         $response = new Response(302, ["Location" => "/home"], null);
         return $response;
     }
-
 }

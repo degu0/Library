@@ -36,7 +36,7 @@ class GenreDataBase
     }
     public function queryGenre($classificacao)
     {
-        $comando = "SELECT * FROM genero WHERE classificao = ?;";
+        $comando = "SELECT * FROM genero WHERE classificao = ? ORDER BY genero;";
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("s", $classificacao);
         $preparacao->execute();
@@ -122,13 +122,11 @@ class GenreDataBase
 
     public function update(Genre $updateGenero)
     {
-        $comando = "UPDATE Genero SET
-        genero = ?, classificao = ?
-        WHERE id = ?;";
-
+        $comando = "UPDATE `genero` SET `genero` = ? , `classificao` = ? WHERE (`id` = ?);";
         $id = $updateGenero->getId();
         $genero = $updateGenero->getGenero();
         $classificacao = $updateGenero->getClassificacao();
+
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param(
@@ -143,6 +141,25 @@ class GenreDataBase
         if ($resultado == false) {
             return null;
         }
+    }
+
+    public function queryLastGenre()
+    {
+        $comando = "SELECT * FROM
+        genero
+        ORDER BY id DESC LIMIT 1;";
+
+        $resultado = $this->conexao->mysqli->query($comando);
+
+        if ($resultado == false) {
+            return null;
+        }
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $genre = $linha['classificao'];
+        }
         $this->conexao->fecharConexao();
+
+        return $genre;
     }
 }

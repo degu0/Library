@@ -17,7 +17,9 @@ class StudentDataBase
 
     public function getStudent()
     {
-        $comando = "SELECT * FROM usuario_aluno;";
+        $comando = "SELECT a.id, a.numero_aluno, a.numero_responsavel, a.matricula, u.id_usuario, u.nome 
+        FROM usuario_aluno a 
+        INNER JOIN usuario u ON u.id_usuario = a.FK_id_usuario; ";
 
         $resultado = $this->conexao->mysqli->query($comando);
 
@@ -28,8 +30,8 @@ class StudentDataBase
         $listStudent = [];
 
         while ($linha = $resultado->fetch_assoc()) {
-            $user = new User(null, null, null, null, null);
-            $listStudent[] = new Student($user, $linha['matricula'], $linha['numero_aluno'], $linha['numero_responsavel'], $linha['FK_id_usuario']);
+            $user = new User($linha['nome'], null, null, null, null);
+            $listStudent[] = new Student($user, $linha['matricula'], $linha['numero_aluno'], $linha['numero_responsavel'], $linha['id']);
         }
         $this->conexao->fecharConexao();
 

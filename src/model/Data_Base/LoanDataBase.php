@@ -123,7 +123,7 @@ class LoanDataBase
 
     public function getDate($id)
     {
-        $comando = "SELECT Data_Entrega FROM Emprestimo WHERE id = ?;";
+        $comando = "SELECT Data_Final FROM Emprestimo WHERE id = ?;";
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id);
         $preparacao->execute();
@@ -134,15 +134,16 @@ class LoanDataBase
         }
 
         while ($linha = $resultado->fetch_assoc()) {
-            return $linha['data_entrega'];
+            return $linha['Data_Final'];
         }
     }
 
     public function updateDate($id, $dataInicial)
     {
         $comando = "UPDATE `emprestimo` SET `data_final` = ? WHERE (`id` = ?);";
+        $data_final = date('Y/m/d', strtotime('+8 days', strtotime($dataInicial)));
         $preparacao = $this->conexao->mysqli->prepare($comando);
-        $preparacao->bind_param("si", $dataInicial, $id);
+        $preparacao->bind_param("si", $data_final, $id);
         $preparacao->execute();
 
         $resultado = $preparacao->get_result();
@@ -174,8 +175,8 @@ class LoanDataBase
             $imagem = new Image('null', 'null', 'null');
             $user = new User($linha['nome'], $linha['email'], 'null', 'null', $linha['tipo_usuario']);
             $livro = new Book($linha['titulo'], $imagem, null, null, null, null, null, $linha['id_livro']);
-            $aluno = new Student($user, $linha['matricula'], null, null, $linha['id_usuario']);
-            $listLoan[] = new Loan($aluno, $livro, $linha['data_entrega'], $linha['data_final'], $linha['id']);
+            $aluno = new Student($user, $linha['matricula'], null, null, $linha['FK_id_usuario']);
+            $listLoan[] = new Loan($aluno, $livro, $linha['Data_Entrega'], $linha['Data_Final'], $linha['id']);
         }
 
         $this->conexao->fecharConexao();
@@ -184,13 +185,11 @@ class LoanDataBase
 
     public function updateLoan(Loan $updateLoan)
     {
-        $comando = "UPDATE Emprestimo SET
-        data_entregra = ?, data_final = ?, FK_id_Livro = ?, FK_id_Aluno = ?
-        WHERE id = ?;";
+        $comando = "UPDATE `emprestimo` SET `Data_Entrega` = ?, `Data_Final` = ?, `FK_id_Livro` = ?, `FK_id_Aluno` = ? WHERE (`id` = ?);";
 
         $id = $updateLoan->getId();
         $data_inicial = $updateLoan->getDataInicial();
-        $data_final = date('d/m/Y', strtotime('+8 days', strtotime($data_inicial)));
+        $data_final = date('Y/m/d', strtotime('+8 days', strtotime($data_inicial)));
         $idLivro = $updateLoan->getLivro();
         $idAluno = $updateLoan->getAluno();
 

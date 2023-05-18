@@ -40,6 +40,8 @@ class CadastreController extends Controller implements RequestHandlerInterface
                 $response = $this->Genero();
                 if (strpos($path_info, "add")) {
                     $response = $this->AdicionarGenero($request);
+                } else if (strpos($path_info, "update")) {
+                    $response = $this->UpdateGenre($request);
                 }
             } else if (strpos($path_info, "emprestimo")) {
                 $response = $this->Emprestimo();
@@ -74,10 +76,11 @@ class CadastreController extends Controller implements RequestHandlerInterface
 
     public function AdicionarLivro(ServerRequestInterface $request): ResponseInterface
     {
-        $imgData = addslashes(file_get_contents($_FILES['imagem_capa']['tmp_name']));
-        $imgType = getimageSize($_FILES['imagem_capa']['tmp_name']);
+        //erro! Concertar!
+        $imgData = addslashes(file_get_contents($_FILES['imagem_livro']['tmp_name']));
+        $imgType = getimageSize($_FILES['imagem_livro']['tmp_name']);
 
-        $imagem = new Image($_FILES['imagem_capa']['name'], $imgData, $imgType['mime']);
+        $imagem = new Image($_FILES['imagem_livro']['name'], $imgData, $imgType['mime']);
         $livro = new Book(
             $request->getParsedBody()["titulo"],
             $imagem,
@@ -113,10 +116,31 @@ class CadastreController extends Controller implements RequestHandlerInterface
 
         $generoBD = new GenreDataBase();
         $generoBD->adicionar($genero);
+        $classificacao = $generoBD->queryLastGenre();
 
+        if($classificacao == 'didático') {
+            $response = new Response(302, ["Location" => "/generos/didaticos"], null);
+        }else {
+            $response = new Response(302, ["Location" => "/generos/literatura"], null);
+        }
 
-        $response = new Response(302, ["Location" => "/lista"], null);
+        return $response;
+    }
 
+    
+    public function UpdateGenre(ServerRequestInterface $request) : ResponseInterface
+    {
+        $genero = new Genre(
+            $request->getParsedBody()["genero"],
+            $request->getParsedBody()["classificacao"],
+            null,
+            $request->getQueryParams()["id"]
+        );
+        $generoBD = new GenreDataBase();
+
+        $generoBD->update($genero);
+
+        $response = new Response(302, ["Location" => "/home"], null);
         return $response;
     }
 
@@ -133,11 +157,16 @@ class CadastreController extends Controller implements RequestHandlerInterface
 
     public function AdicionarEmprestimo(ServerRequestInterface $request): ResponseInterface
     {
+        if($request->getParsedBody()['data'] == null) {
+            $data = date('Y/m/d');
+        } else {
+            $data = $request->getParsedBody()['data'];
+        } 
 
         $emprestimo = new Loan(
             $request->getParsedBody()["aluno"],
             $request->getParsedBody()["livro"],
-            $request->getParsedBody()["data"],
+            $data,
             null
         );
 
@@ -191,7 +220,7 @@ class CadastreController extends Controller implements RequestHandlerInterface
         $listaAluno = $alunoBD->getStudent();
         $listaLivro = $livroBD->getBook();
         $emprestimo = $emprestimoBD->queryLoan($request->getQueryParams()["id"]);
-        $bodyHttp = $this->getHTTPBodyBuffer("/livro/edit_livro.php", ["emprestimo" => $emprestimo, "listaAluno" => $listaAluno, "listaLivro" => $listaLivro]);
+        $bodyHttp = $this->getHTTPBodyBuffer("/edit/edit_emprestimo.php", ["emprestimo" => $emprestimo, "listaAluno" => $listaAluno, "listaLivro" => $listaLivro]);
         $response = new Response(200, [], $bodyHttp);
 
         return $response;
@@ -199,12 +228,19 @@ class CadastreController extends Controller implements RequestHandlerInterface
 
     public function UpdateEmprestimo(ServerRequestInterface $request) : ResponseInterface
     {
+        if($request->getParsedBody()['data'] == null) {
+            $data = date('Y/m/d');
+        } else {
+            $data = $request->getParsedBody()['data'];
+        } 
         $emprestimo = new Loan(
             $request->getParsedBody()["aluno"],
             $request->getParsedBody()["livro"],
-            $request->getParsedBody()["data"],
-            null
+            $data,
+            null,
+            $request->getQueryParams()["id"]
         );
+
 
         $emprestimoBD = new LoanDataBase();
         $emprestimoBD->updateLoan($emprestimo);

@@ -55,7 +55,7 @@
                                 <ul class="dropdown">
                                     <li><a href="/gerenciar/livro">Cadastre Livros</a></li>
                                     <li><a href="/gerenciar/genero">Cadastre Gêneros</a></li>
-                                    <li><a href="/gerenciar/emprestimo">Cadastre emprestimo</a></li>
+                                    <li><a href="/gerenciar/emprestimo">Cadastre Empréstimo</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -84,7 +84,7 @@
                         <th scope="col">Data de entrega</th>
                         <th scope="col">Nome de livro</th>
                         <th scope="col">Nome da pessoa</th>
-                        <th scope="col">Deletar</th>
+                        <th scope="col">Devolução</th>
                         <th scope="col">Adiar</th>
                     </thead>
                     <tbody>
@@ -93,7 +93,7 @@
                                 <td><?php echo  date('d/m/Y', strtotime($loan->getDataFinal())); ?></td>
                                 <td><?php echo $loan->getLivro()->getTitulo(); ?></td>
                                 <td><?php echo $loan->getAluno()->getUsuario()->getNome(); ?></td>
-                                <td><?php echo "<a href='/home/delete?id=" . $loan->getId() . "' class='link'><i class='fa-sharp fa-solid fa-trash fa-lg'></i></a>"; ?></td>
+                                <td><?php echo "<a href='/confirmacao/devolucao?id=" . $loan->getId() . "' class='link'><i class='fa-solid fa-check fa-lg'></i></a>"; ?></td>
                                 <td><?php echo "<a href='/home/adiar?id=" . $loan->getId() . "' class='link'><i class='fa-solid fa-plus fa-lg'></i></a>"; ?></td>
                             </tr>
                         <?php } ?>

@@ -112,4 +112,32 @@ class HistoryDataBase
 
         return $listaHistorico;
     }
+
+    public function devolucao($id)
+    {
+        $comando = "UPDATE `historico` SET `Status` = 'sim' WHERE (`id` = ?);";
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("i", $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+
+        if ($resultado == false) {
+            return null;
+        }
+    }
+
+    public function adiamento($id)
+    {
+        $comando = "UPDATE `historico` SET `Adiamento` = `Adiamento`+ 1 WHERE (`id` = ?);";
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("i", $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+
+        if ($resultado == false) {
+            return null;
+        }
+    }
 }

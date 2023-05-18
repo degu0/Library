@@ -10,7 +10,7 @@
                     <label for="aluno">Nome do aluno(a):</label>
                     <select name="aluno" id="aluno">
                     <?php foreach($listaAluno as $aluno) {?>
-                            <option value="<?php echo $aluno->getId();?>"><?php echo $aluno->getMatricula();?></option>    
+                            <option value="<?php echo $aluno->getId();?>"><?php echo $aluno->getUsuario()->getNome();?></option>    
                         <?php }?>
                     </select>
                 </div>

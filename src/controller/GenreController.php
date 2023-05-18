@@ -23,8 +23,6 @@ class GenreController extends Controller implements RequestHandlerInterface
                 $response = $this->didatico();
                 if (strpos($path_info, "editar")) {
                     $response = $this->editar($request);
-                } else if (strpos($path_info, "update")) {
-                    $response = $this->update($request);
                 } else if (strpos($path_info, "excluir")) {
                     $response = $this->excluir($request);
                 }
@@ -32,8 +30,6 @@ class GenreController extends Controller implements RequestHandlerInterface
                 $response = $this->paradidatico();
                 if (strpos($path_info, "editar")) {
                     $response = $this->editar($request);
-                } else if (strpos($path_info, "update")) {
-                    $response = $this->update($request);
                 } else if (strpos($path_info, "excluir")) {
                     $response = $this->excluir($request);
                 }
@@ -65,37 +61,22 @@ class GenreController extends Controller implements RequestHandlerInterface
         return $response;
     }
 
-    public function excluir( ServerRequestInterface $request) : ResponseInterface
+    public function excluir(ServerRequestInterface $request): ResponseInterface
     {
         $generoBD = new GenreDataBase();
         $generoBD->remover($request->getQueryParams()["id"]);
 
-        $response = new Response(302, ["Location" => "/genero"], null);
+        $response = new Response(302, ["Location" => "/home"], null);
         return $response;
     }
 
-    public function editar(ServerRequestInterface $request) : ResponseInterface
+    public function editar(ServerRequestInterface $request): ResponseInterface
     {
         $generoBD = new GenreDataBase();
         $genero = $generoBD->queryGenreId($request->getQueryParams()["id"]);
-        $bodyHttp = $this->getHTTPBodyBuffer("/edit/edit_genero.php", ["genero" => $genero]);
+        $bodyHttp = $this->getHTTPBodyBuffer("/edit/edit_genero.php", ["Listgenero" => $genero]);
         $response = new Response(200, [], $bodyHttp);
 
-        return $response;
-    }
-
-    public function update(ServerRequestInterface $request) : ResponseInterface
-    {
-        $genero = new Genre(
-            $request->getParsedBody()["genero"],
-            $request->getParsedBody()["classificacao"],
-            null
-        );
-        $generoBD = new GenreDataBase();
-
-        $generoBD->update($genero);
-
-        $response = new Response(302, ["Location" => "/lista"], null);
         return $response;
     }
 }

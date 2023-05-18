@@ -52,7 +52,7 @@
                                 <ul class="dropdown">
                                     <li><a href="/gerenciar/livro">Cadastre Livros</a></li>
                                     <li><a href="/gerenciar/genero">Cadastre Gêneros</a></li>
-                                    <li><a href="/gerenciar/emprestimo">Cadastre emprestimo</a></li>
+                                    <li><a href="/gerenciar/emprestimo">Cadastre Empréstimo</a></li>
                                 </ul>
                             </li>
                             <li>

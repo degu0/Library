@@ -82,4 +82,7 @@ tbody>tr:nth-child(even) {
     margin-bottom: 50px;
 }
 
+.semCadastro {
+    font-size: 3rem;
+}
 

@@ -5,6 +5,7 @@
 <main>
     <div class="tabela">
         <h1 class="title">Empréstimo</h1>
+        <?php if ($listaEmprestimo != null) {?>
         <table>
             <thead>
                 <th scope="col">Nome de livro</th>
@@ -23,9 +24,13 @@
                 <?php } ?>
             </tbody>
         </table>
+        <?php } else  {?>
+            <h1 class="semCadastro">Sem empréstimo no momento!</h1>
+        <?php }?>
     </div>
     <div class="tabela">
         <h1 class="title">Histórico</h1>
+        <?php if ($listaHistorico != null) {?>
         <table>
             <thead>
                 <th scope="col">Nome de livro</th>
@@ -55,6 +60,9 @@
                 <?php } ?>
             </tbody>
         </table>
+        <?php } else {?>
+            <h1 class="semCadastro">Sem histórico no momento!</h1>
+        <?php }?>
     </div>
 </main>
 

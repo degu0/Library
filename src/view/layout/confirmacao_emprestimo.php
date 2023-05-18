@@ -18,11 +18,11 @@
                 </p>
                 <p class="informacoes">
                     <span class="variavel">Data do empréstimo:</span>
-                    <?php echo $loan->getDataInicial(); ?>
+                    <?php echo date('d/m/Y', strtotime($loan->getDataInicial())); ?>
                 </p>
             </div>
             <div>
-                <p class="erro">Dados incorretos? Por favor, edite o seu empréstimo. <br> <a href="" class="link">Aqui</a></p>
+                <p class="erro">Dados incorretos? Por favor, edite o seu empréstimo. <br> <a href="/gerenciar/emprestimo/editar?id=<?php echo $loan->getId();?>" class="link">Aqui</a></p>
             </div>
         <?php } ?>
         <div>

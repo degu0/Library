@@ -64,13 +64,33 @@ main {
 }
 
 .genero {
-    margin-left: 1rem;
     padding: 1.5rem;
 }
 
 #genero_link {
     text-decoration: none;
     color: #F2EAE9;
+    width: 83vw;
 }
 
+.superLinks {
+    width: 4vw;
+    height: 8vh;
+    border: none;
+    border-radius: .5rem;
+    background-color: blue;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+#edit  {
+    margin-right: 2rem;
+}
+
+#trash {
+    background-color: red;
+    margin-right: 2rem; 
+}

@@ -22,7 +22,7 @@ class ConfirmationScreenController extends Controller implements RequestHandlerI
             if(strpos($path_info, "emprestimo")) {
                 $response = $this->emprestimo();
             }else if (strpos($path_info, "devolucao")) {
-                $response = $this->devolucao();
+                $response = $this->devolucao($request);
             }
         } else {
             $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
@@ -41,9 +41,11 @@ class ConfirmationScreenController extends Controller implements RequestHandlerI
         return $response;
     }
 
-    public function devolucao() : ResponseInterface
+    public function devolucao(ServerRequestInterface $request) : ResponseInterface
     {
-        $bodyHTTP = $this->getHTTPBodyBuffer("/layout/confirmacao_devolucao.php");
+        $emprestimoBD = new LoanDataBase();
+        $informacoes = $emprestimoBD->queryLoan($request->getQueryParams()["id"]);
+        $bodyHTTP = $this->getHTTPBodyBuffer("/layout/confirmacao_devolucao.php", ['listInformation' => $informacoes]);
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;
