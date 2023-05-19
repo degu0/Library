@@ -50,6 +50,7 @@ form {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    font-family: 'Mulish', sans-serif;
 }
 
 label {
@@ -127,6 +128,7 @@ label {
 
 .cadastre {
     text-align: center;
+    font-family: 'Mulish', sans-serif;
 }
 
 .cadastre p {
@@ -145,6 +147,7 @@ label {
 .cadastre_google {
     display: flex;
     flex-direction: column;
+    font-family: 'mulish', sans-serif;
 }
 
 .link {

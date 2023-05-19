@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Mulish:wght@200;300;400;500;600&family=Open+Sans:wght@300;400;500&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
@@ -31,6 +34,7 @@ header {
     height: 12vh;
 
     background: var(--corFundo);
+    font-family: 'Montserrat', sans-serif;
 }
 
 nav ul {
@@ -110,7 +114,9 @@ nav ul ul li a {
     border: none;
     border-radius: 0.6rem;
     padding-left: 1rem;
-    font: normal 1.6rem Roboto;
+    font-size: 1.6rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
 }
 
 #buttom-searchNav {
@@ -148,14 +154,14 @@ nav ul ul li a {
     /* fullscreen */
     .menu-section.on {
         position: absolute;
-        top:0;
-        left:0;
-        
+        top: 0;
+        left: 0;
+
         width: 100vw;
         height: 100vh;
 
         background-color: var(--corFundo);
-        
+
         z-index: 10;
 
         display: flex;
@@ -190,11 +196,12 @@ nav ul ul li a {
         display: block;
     }
 
-    .menu-section.on nav ul li{
+    .menu-section.on nav ul li {
         margin: 4rem;
     }
 
-    .menu-section.on nav ul a, .menu-section.on nav ul span {
+    .menu-section.on nav ul a,
+    .menu-section.on nav ul span {
         transition-duration: 0.5s;
         font-size: 3.5rem;
         line-height: 4rem;
@@ -204,7 +211,7 @@ nav ul ul li a {
     .menu-section.on nav ul li:hover>ul {
         display: block;
     }
-    
+
     .menu-section.on nav ul ul {
         background-color: var(--corFundoDrop);
         display: none;
@@ -213,13 +220,13 @@ nav ul ul li a {
         z-index: 1;
         width: 100vw;
     }
-    
+
     .menu-section.on nav ul ul li {
         width: 100%;
         border-top: 1px solid var(--corLinha);
         margin: 0;
     }
-    
+
     .menu-section.on nav ul ul li a {
         display: block;
         line-height: 2rem;
@@ -247,6 +254,3 @@ nav ul ul li a {
         width: 20rem;
     }
 }
-
-
-
