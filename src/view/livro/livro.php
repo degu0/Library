@@ -1,8 +1,10 @@
-<title>Library - </title>
+<?php foreach ($listBook as $book) { ?>
+<title>Library -             <?php
+            echo $book->getTitulo();
+            ?></title>
 <?php require __DIR__ . "/../share/head.php"; ?>
 <link rel="stylesheet" href="librares/css/book.css">
 <main>
-    <?php foreach ($listBook as $book) { ?>
         <h3 class="title">
             <?php
             echo $book->getTitulo();
@@ -32,7 +34,7 @@
                         <a href="/livro/editar?id_livro=<?php echo $book->getId(); ?>" class="buttonAtividade">
                             <p>Editar</p>
                         </a>
-                        <a href="/livro/excluir" class="buttonAtividade">
+                        <a href="/livro/excluir?id_livro=<?php echo $book->getId();?>&id_genero=<?php echo $book->getId_genero();?>" class="buttonAtividade">
                             <p>Excluir</p>
                         </a>
                     </div>

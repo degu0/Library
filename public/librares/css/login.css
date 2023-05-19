@@ -175,6 +175,11 @@ label {
     height: 2.4rem;
 }
 
+#mostrar, #ocultar {
+    width: 2vw;
+    height: 2vh;
+}
+
 
 
 /* Tablet */

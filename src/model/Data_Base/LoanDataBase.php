@@ -268,4 +268,20 @@ class LoanDataBase
         $this->conexao->fecharConexao();
         return $listLoan;
     }
+
+    public function verificationStudent($idAluno)
+    {
+        $comando = "SELECT * FROM EMPRESTIMO WHERE FK_ID_ALUNO = ?;";
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("i", $id_aluno);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+
+        $this->conexao->fecharConexao();
+        return true; 
+    }
 }

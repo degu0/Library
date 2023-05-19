@@ -66,33 +66,38 @@ class BookController extends Controller implements RequestHandlerInterface
 
     public function update(ServerRequestInterface $request): ResponseInterface
     {
-        $imgData = addslashes(file_get_contents($_FILES['imagem_capa']['tmp_name']));
-        $imgType = getimageSize($_FILES['imagem_capa']['tmp_name']);
+        $livroDB = new BookDataBase();
+        if($_FILES['imagem_livro']['size'] == null) {
+            $imagem = $livroDB->queryImagem($request->getQueryParams()["id_livro"]);
+        } else {
+            $imgData = addslashes(file_get_contents($_FILES['imagem_livro']['tmp_name']));
+            $imgType = getimageSize($_FILES['imagem_livro']['tmp_name']);
+    
+            $imagem = new Image($_FILES['imagem_livro ']['name'], $imgData, $imgType['mime']);
+        }
 
-        $imagem = new Image($_FILES['imagem_capa']['name'], $imgData, $imgType['mime']);
         $livro = new Book(
             $request->getParsedBody()["titulo"],
             $imagem,
             $request->getParsedBody()["autor"],
             $request->getParsedBody()["genero"],
             $request->getParsedBody()["exemplares"],
-            null,
+            $request->getParsedBody()["exemplares"],
             $request->getParsedBody()["resumo"]
         );
-        $livroDB = new BookDataBase();
-
+        
         $livroDB->update($livro);
 
-        $response = new Response(302, ["Location" => "/lista"], null);
+        $response = new Response(302, ["Location" => "/lista?id_genero=".$request->getQueryParams()["id_genero"]], null);
         return $response;
     }
 
     public function excluir(ServerRequestInterface $request): ResponseInterface
     {
         $livroBD = new BookDataBase();
-        $livroBD->remover($request->getQueryParams()["id"]);
+        $livroBD->remover($request->getQueryParams()["id_livro"]);
 
-        $response = new Response(302, ["Location" => "/lista"], null);
+        $response = new Response(302, ["Location" => "/lista?id_genero=".$request->getQueryParams()["id_genero"]], null);
         return $response;
     }
 

@@ -7,7 +7,7 @@
     <?php foreach($informaitonBook as $livro) {?>
     <div class="cadastro">
         <h1 id="title_cadastre">Cadastro livro</h1>
-        <form action="/livro/update" method="POST">
+        <form action="/livro/update?id_livro=<?php echo $livro->getId();?>&id_genero=<?php echo $livro->getId_genero();?>" method="POST" enctype="multipart/form-data">
             <div class="cadastre_image">
             <img src="data: <?php echo $livro->getImagem()->getType(); ?>;base64, <?php echo $livro->getImagem()->getBase64(); ?>" alt="placeholder" id="placeholder" onclick="capaClick()">
                 <h3 id="title_image">Adicionar imagem do livro</h3>
@@ -16,11 +16,11 @@
             <div class="cadastre_information">
                 <div>
                     <label for="titlo">Nome do livro:</label><br>
-                    <input type="text" id="titulo" class="input" placeholder="Insira o titulo do livro" required value="<?php echo $livro->getTitulo();?>">
+                    <input type="text" name="titulo" id="titulo" class="input" placeholder="Insira o titulo do livro" required value="<?php echo $livro->getTitulo();?>">
                 </div>
                 <div>
                     <label for="autor">Autor:</label><br>
-                    <input type="text" id="autor" class="input" placeholder="Insira o nome do autor" required value="<?php echo $livro->getAutor();?>">
+                    <input type="text" name="autor" id="autor" class="input" placeholder="Insira o nome do autor" required value="<?php echo $livro->getAutor();?>">
                 </div>
                 <div>
                     <label for="genero">Genero:</label><br>
@@ -33,11 +33,11 @@
                 </div>
                 <div>
                     <label for="exemplares">N exemplares:</label><br>
-                    <input type="number" id="exemplares" class="input" placeholder="Insira a quantidade de livros" required value="<?php echo $livro->getExemplares();?>">
+                    <input type="number" name="exemplares" id="exemplares" class="input" placeholder="Insira a quantidade de livros" required value="<?php echo $livro->getExemplares();?>">
                 </div>
                 <div>
                     <label for="resumo">Sobre a obre:</label><br>
-                    <textarea id="resumo" class="input" rows="12" cols="45" required><?php echo $livro->getResumo();?></textarea>
+                    <textarea id="resumo" name="resumo" class="input" rows="12" cols="45" required><?php echo $livro->getResumo();?></textarea>
                 </div>
                 <div>
                     <input type="submit" id="button">

@@ -107,7 +107,7 @@ class BookDataBase
 
     public function remover($id)
     {
-        $comando = "DELETE FROM Livro WHERE id = ?;";
+        $comando = "DELETE FROM Livro WHERE id_livro = ?;";
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
 
@@ -141,7 +141,7 @@ class BookDataBase
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param(
-            "sssssiiisi",
+            "sbsssiiisi",
             $imagemNome,
             $imagemData,
             $imagemType,
@@ -177,5 +177,64 @@ class BookDataBase
         }
 
         $this->conexao->fecharConexao();
+    }
+
+    public function addBook(Book $book)
+    {
+        $comando = "INSERT INTO livro (nome, imagemData, imagemType, titulo, autor, id_genero, exemplares, disponiveis, resumo) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $nomeImagem = $book->getImagem()->getNome();
+        $imagemData = $book->getImagem()->getData();
+        $iamgemType = $book->getImagem()->getType();
+        $titulo = $book->getTitulo();
+        $autor = $book->getAutor();
+        $id_genero = $book->getId_genero();
+        $exemplares = $book->getExemplares();
+        $disponiveis = $book->getDisponiveis();
+        $resumo = $book->getResumo();
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+
+        $preparacao->bind_param(
+            "sbsssiiis",
+            $nomeImagem,
+            $imagemData,
+            $iamgemType,
+            $titulo,
+            $autor,
+            $id_genero,
+            $exemplares,
+            $disponiveis,
+            $resumo
+        );
+
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+
+        if ($resultado == false) {
+            return null;
+        }
+
+        $this->conexao->fecharConexao();  
+    }
+
+    public function queryImagem($id)
+    {
+        $comando = "SELECT nome, imagemData, imagemType FROM livro WHERE id_livro = ?;";
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("i", $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+        $imagem = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $imagem = new Image($linha['nome'], $linha['imagemData'], $linha['imagemType']);
+        }
+        return $imagem;
     }
 }

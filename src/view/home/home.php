@@ -62,6 +62,11 @@
                                 <a href="/acervo">Acervo</a>
                             </li>
                         <?php } ?>
+                        <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'aluno' &&  array_key_exists('emprestimo', $_SESSION) && $_SESSION['emprestimo']) { ?>
+                            <li>
+                                <a href="/emprestimo">Emprestimo</a>
+                            </li>
+                        <?php } ?>
                         <li>
                             <a href="/sobre">Sobre</a>
                         </li>

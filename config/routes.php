@@ -13,6 +13,7 @@ use Library_ETE\controller\EditController;
 use Library_ETE\controller\AcervoController;
 use Library_ETE\controller\MyPerfilController;
 use Library_ETE\controller\ConfirmationScreenController;
+use Library_ETE\controller\LoanController;
 
 return [
     "/home" => HomeController::class,
@@ -51,6 +52,7 @@ return [
     "/editar/genero" => EditController::class,
     "/confirmacao/emprestimo" => ConfirmationScreenController::class,
     "/confirmacao/devolucao" => ConfirmationScreenController::class,
+    "/emprestimo" => LoanController::class,
     "/meu-perfil" => MyPerfilController::class,
     "/acervo" => AcervoController::class,
     "/pesquisa" => ShareController::class,

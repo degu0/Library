@@ -76,7 +76,6 @@ class CadastreController extends Controller implements RequestHandlerInterface
 
     public function AdicionarLivro(ServerRequestInterface $request): ResponseInterface
     {
-        //erro! Concertar!
         $imgData = addslashes(file_get_contents($_FILES['imagem_livro']['tmp_name']));
         $imgType = getimageSize($_FILES['imagem_livro']['tmp_name']);
 
@@ -87,13 +86,14 @@ class CadastreController extends Controller implements RequestHandlerInterface
             $request->getParsedBody()["autor"],
             $request->getParsedBody()["genero"],
             $request->getParsedBody()["exemplares"],
-            null,
+            $request->getParsedBody()["exemplares"],
             $request->getParsedBody()["resumo"]
         );
 
         $livroDB = new BookDataBase();
+        $livroDB->addBook($livro);
 
-        $response = new Response(302, ["Location" => "/lista"], null);
+        $response = new Response(302, ["Location" => "/lista?id_genero=".$request->getParsedBody()["genero"]], null);
 
         return $response;
     }
@@ -140,7 +140,7 @@ class CadastreController extends Controller implements RequestHandlerInterface
 
         $generoBD->update($genero);
 
-        $response = new Response(302, ["Location" => "/home"], null);
+        $response = new Response(302, ["Location" => "/lista?id_genero=".$request->getQueryParams()["id"]], null);
         return $response;
     }
 

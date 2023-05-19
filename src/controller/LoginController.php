@@ -3,6 +3,7 @@
 namespace Library_ETE\controller;
 
 use Library_ETE\controller\inheritance\Controller;
+use Library_ETE\model\Data_Base\LoanDataBase;
 use Library_ETE\model\User;
 use Library_ETE\model\Data_Base\UserDataBase;
 use Psr\Http\Message\ResponseInterface;
@@ -52,6 +53,7 @@ class LoginController extends Controller implements RequestHandlerInterface
     public function logar(ServerRequestInterface $request): ResponseInterface
     {
         $usuarioBD = new UserDataBase;
+        $emprestimoBD = new LoanDataBase;
         $loginUsuario = $request->getParsedBody()["email"];
         $senhaUsuario = $request->getParsedBody()["senha"];
         $user = new User(null, $loginUsuario, $senhaUsuario, null, null);
@@ -65,6 +67,13 @@ class LoginController extends Controller implements RequestHandlerInterface
             $_SESSION["id_usuario"] = $idUsuario;
             $_SESSION["usuario"] = $nomeUsuario;
             $_SESSION["tipo_usuario"] = $tipo_usuario;
+
+            if($tipo_usuario == "aluno") {
+                $temEmprestimo = $emprestimoBD->verificationStudent($idUsuario);
+                if($temEmprestimo) {
+                    $_SESSION['emprestimo'] = true;
+                }
+            }
             return new Response(302, ["Location" => "/home"],);
         } else {
             $bodyHTTP = $this->getHTTPBodyBuffer("/login/login.php", ["loginIncorreto" => true, "SenhaIncorreta" => true]);

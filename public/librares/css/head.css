@@ -25,6 +25,7 @@ html {
     height: 12vh;
 
     background: var(--corFundo);
+    font-family: 'Montserrat', sans-serif;
 }
 
 nav ul {
@@ -45,7 +46,7 @@ nav ul li span {
     text-decoration: none;
     line-height: 6rem;
     padding: 0 2rem;
-    font-size: 1.9rem;
+    font-size: 1.7rem;
     cursor: pointer;
 }
 
@@ -85,8 +86,8 @@ nav ul ul li a {
     color: var(--corFontes);
     text-decoration: none;
     margin: auto;
-    font-size: 1.7rem;
-    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #login:hover {

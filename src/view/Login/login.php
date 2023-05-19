@@ -27,8 +27,7 @@
                     <input type="email" name="email" id="email" placeholder="Insira seu email">
                 </div>
                 <div class="input">
-                    <!-- <input type="image" src="/images/versenha.png" id="mostrar" class="olho ver_senha" onclick="mostrar();return false;" title="Ver senha">
-                    <input type="image" src="/images/ocultarsenha.png" id="ocultar" class="olho ocultar_senha" onclick="ocultar();return false;" title="Ocultar senha"> -->
+
                     <label for="senha">Senha:</label><br>
                     <input type="password" name="senha" id="senha" placeholder="Insira sua senha">
                 </div>
