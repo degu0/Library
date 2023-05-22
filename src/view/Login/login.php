@@ -27,9 +27,9 @@
                     <input type="email" name="email" id="email" placeholder="Insira seu email">
                 </div>
                 <div class="input">
-
                     <label for="senha">Senha:</label><br>
-                    <input type="password" name="senha" id="senha" placeholder="Insira sua senha">
+                    <input type="password" name="senha" id="password" placeholder="Insira sua senha">
+                    <div id="icon" onclick="showHide()"></div>
                 </div>
                 <input type="submit" value="Entrar" id="button">
             </form>
@@ -46,7 +46,7 @@
             </div>
         </div>
     </section>
-    <script src="/librares/js/senha.js.js"></script>
+    <script src="/librares/js/senha.js"></script>
 </body>
 
 </html>

@@ -12,8 +12,8 @@
     --cor4: #D9C1B4;
     --cor4_1: #bda79b;
     --cor5: #F2EAE9;
-    --cor6:#a1a0a09b;
-    --cor7:#bebebe8f;
+    --cor6: #a1a0a09b;
+    --cor7: #bebebe8f;
 
 }
 
@@ -33,10 +33,13 @@ main {
 
 .tabela {
     margin: auto;
+    height: auto;
+    overflow-y: auto;
 }
 
 table {
     width: 943px;
+    max-height: 20rem;
     border-collapse: collapse;
     font-family: 'Roboto', sans-serif;
 }
@@ -45,6 +48,7 @@ td,
 th {
     border: 1px solid black;
     padding: 10px;
+    min-width: .5rem;
 }
 
 caption {
@@ -86,3 +90,8 @@ tbody>tr:nth-child(even) {
     font-size: 3rem;
 }
 
+#link-aluno {
+    text-decoration: none;
+    color: var(--cor1);
+    font-weight: bold;
+}

@@ -8,7 +8,7 @@ class Image
     private $imageData;
     private $imageType;
 
-    public function __construct(String $nome, String $imageData, String $imageType)
+    public function __construct( $nome, $imageData, $imageType)
     {
         $this->nome = $nome;
         $this->imageData = $imageData;

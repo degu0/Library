@@ -1,10 +1,24 @@
-function mostrar() {
-    document.getElementById("senha").setAttribute("type", "text");
-    document.getElementById("mostrar").style.display = "none";
-    document.getElementById("ocultar").style.display = "block";
+const password = document.getElementById('password')
+const passwordConfirmation = document.getElementById('password-confirmation')
+const icon = document.getElementById('icon')
+const iconConfirmation = document.getElementById('icon-confirmation')
+
+function showHide() {
+    if(password.type === 'password') {
+        password.setAttribute('type', 'text')
+        icon.classList.add('hide')
+    }else {
+        password.setAttribute('type', 'password')
+        icon.classList.remove('hide')
+    }
 }
-function ocultar() {
-    document.getElementById("senha").setAttribute("type", "password");
-    document.getElementById("ocultar").style.display = "none";
-    document.getElementById("mostrar").style.display = "block";
+
+function showHideConfirmation() {
+    if(passwordConfirmation.type === 'password') {
+        passwordConfirmation.setAttribute('type', 'text')
+        iconConfirmation.classList.add('hide')
+    }else {
+        passwordConfirmation.setAttribute('type', 'password')
+        iconConfirmation.classList.remove('hide')
+    }
 }

@@ -31,7 +31,7 @@ class MyPerfilController extends Controller implements RequestHandlerInterface
     public function Perfil(ServerRequestInterface $request): ResponseInterface
     {
         $idPerfil = $request->getQueryParams()['id'];
-        if($_SESSION['tipo_usuario'] == 'aluno') {
+        if($_SESSION['tipo_usuario'] == 'aluno' || isset($request->getQueryParams()['aluno'] )) {
             $aluno = new StudentDataBase();
             $emprestimoBD = new LoanDataBase(); 
             $perfil = $aluno->getPerfilAluno($idPerfil);

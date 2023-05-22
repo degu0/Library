@@ -1,4 +1,6 @@
-<?php foreach ($listBook as $book) { ?>
+<?php 
+
+foreach ($listBook as $book) { ?>
 <title>Library -             <?php
             echo $book->getTitulo();
             ?></title>

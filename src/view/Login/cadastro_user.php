@@ -32,11 +32,13 @@
                 </div>
                 <div class="input">
                     <label for="senha">Senha:</label><br>
-                    <input type="password" name="senha" id="senha" placeholder="Insira sua senha">
+                    <input type="password" name="senha" id="password" placeholder="Insira sua senha">
+                    <div id="icon" onclick="showHide()"></div>
                 </div>
                 <div class="input">
                     <label for="senha">Confirma a sua senha:</label><br>
-                    <input type="password" name="confirmaSenha" id="confirmaSenha" placeholder="Confirma sua senha">
+                    <input type="password" name="confirmaSenha" id="password-confirmation" placeholder="Confirma sua senha">
+                    <div id="icon-confirmation" onclick="showHideConfirmation()"></div>
                 </div>
                 <div class="select">
                     <label for="tipoUser">Tipo de usuário: </label><br>
@@ -56,6 +58,7 @@
             </div>
         </div>
     </section>
+    <script src="/librares/js/senha.js"></script>
 </body>
 
 </html>

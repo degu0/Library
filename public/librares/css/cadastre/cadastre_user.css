@@ -95,6 +95,35 @@ label{
     max-width: 738.5px;
 }
 
+#icon {
+    position: absolute;
+    top: 50.3%;
+    right: 3%;
+    transform: translateY(-50%);
+    background: url('/images/view.png');
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+#icon-confirmation {
+    position: absolute;
+    top: 65.3%;
+    right: 3%;
+    transform: translateY(-50%);
+    background: url('/images/view.png');
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+#icon.hide, #icon-confirmation.hide {
+    background: url('/images/hide.png');
+    background-size: cover;
+}
+
 
 
 /* Aqui podemos configurar

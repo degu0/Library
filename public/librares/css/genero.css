@@ -74,11 +74,11 @@ main {
 }
 
 .superLinks {
-    width: 4vw;
+    width: 3.5vw;
     height: 8vh;
     border: none;
     border-radius: .5rem;
-    background-color: blue;
+    background-color: #402E2C;
     text-align: center;
     text-decoration: none;
     display: flex;
@@ -91,6 +91,23 @@ main {
 }
 
 #trash {
-    background-color: red;
+    background-color: #2e2323;
     margin-right: 2rem; 
+}
+
+@media screen and (max-width: 800px) {
+    .nome_genero {
+        font-size: 1.4rem;
+    }
+    .superLinks {
+        width: 5vw;
+    }
+}
+@media screen and (max-width: 500px) {
+    .superLinks {
+        width: 10vw;
+    }
+    #genero_link {
+        width: 67vw;
+    }
 }

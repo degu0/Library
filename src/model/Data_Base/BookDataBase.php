@@ -185,7 +185,7 @@ class BookDataBase
 
         $nomeImagem = $book->getImagem()->getNome();
         $imagemData = $book->getImagem()->getData();
-        $iamgemType = $book->getImagem()->getType();
+        $imagemType = $book->getImagem()->getType();
         $titulo = $book->getTitulo();
         $autor = $book->getAutor();
         $id_genero = $book->getId_genero();
@@ -199,7 +199,7 @@ class BookDataBase
             "sbsssiiis",
             $nomeImagem,
             $imagemData,
-            $iamgemType,
+            $imagemType,
             $titulo,
             $autor,
             $id_genero,

@@ -5,7 +5,7 @@
 <main>
     <div class="perfil">
         <?php foreach ($meuPerfil as $perfil) { ?>
-            <h1 class="title">Meu Perfil</h1>
+            <h1 class="title">Perfil de <?php echo $perfil->getUsuario()->getNome(); ?></h1>
             <hr id="hr-title">
             <div class="division">
                 <div class="aboutPerfil">
