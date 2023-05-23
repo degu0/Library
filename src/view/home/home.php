@@ -82,30 +82,31 @@
         </div>
     </header>
     <main>
-        <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário' && $listLoan != null) { ?>
-            <div id="tableInfo">
-                <table>
-                    <thead>
-                        <th scope="col">Data de entrega</th>
-                        <th scope="col">Nome de livro</th>
-                        <th scope="col">Nome da pessoa</th>
-                        <th scope="col">Devolução</th>
-                        <th scope="col">Adiar</th>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($listLoan as $loan) { ?>
-                            <tr>
-                                <td><?php echo  date('d/m/Y', strtotime($loan->getDataFinal())); ?></td>
-                                <td><?php echo $loan->getLivro()->getTitulo(); ?></td>
-                                <td><?php echo $loan->getAluno()->getUsuario()->getNome(); ?></td>
-                                <td><?php echo "<a href='/confirmacao/devolucao?id=" . $loan->getId() . "' class='link'><i class='fa-solid fa-check fa-lg'></i></a>"; ?></td>
-                                <td><?php echo "<a href='/home/adiar?id=" . $loan->getId() . "' class='link'><i class='fa-solid fa-plus fa-lg'></i></a>"; ?></td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
-        <?php } ?>
+        <div class="divPart">
+            <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário' && $listLoan != null) { ?>
+                <div id="tableInfo">
+                    <table>
+                        <thead>
+                            <th scope="col">Data de entrega</th>
+                            <th scope="col">Nome de livro</th>
+                            <th scope="col">Nome da pessoa</th>
+                            <th scope="col">Devolução</th>
+                            <th scope="col">Adiar</th>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($listLoan as $loan) { ?>
+                                <tr>
+                                    <td><?php echo  date('d/m/Y', strtotime($loan->getDataFinal())); ?></td>
+                                    <td><?php echo $loan->getLivro()->getTitulo(); ?></td>
+                                    <td><?php echo $loan->getAluno()->getUsuario()->getNome(); ?></td>
+                                    <td><?php echo "<a href='/confirmacao/devolucao?id=" . $loan->getId() . "' class='link'><i class='fa-solid fa-check fa-lg'></i></a>"; ?></td>
+                                    <td><?php echo "<a href='/home/adiar?id=" . $loan->getId() . "' class='link'><i class='fa-solid fa-plus fa-lg'></i></a>"; ?></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php } ?>
         </div>
         <div class="divPart" id="divWelcome">
             <div id="information">

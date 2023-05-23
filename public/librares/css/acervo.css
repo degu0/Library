@@ -33,8 +33,9 @@ main {
 
 .tabela {
     margin: auto;
-    height: auto;
-    overflow-y: auto;
+    max-width: 100%;
+    max-height: 78%;
+    overflow-y: scroll;
 }
 
 table {
@@ -47,13 +48,13 @@ table {
 td,
 th {
     border: 1px solid black;
-    padding: 10px;
+    padding: 1rem;
     min-width: .5rem;
 }
 
 caption {
     background-color: var(--cor6);
-    padding: 10px;
+    padding: 1rem;
     font-size: 1.5em;
     font-weight: bold;
 }
@@ -62,7 +63,7 @@ thead,
 tbody {
     background-color: var(--cor7);
     color: rgba(23, 23, 23, 0.928);
-    font-size: 18px;
+    font-size: 1.8rem;
 }
 
 thead>tr>th {
@@ -94,4 +95,24 @@ tbody>tr:nth-child(even) {
     text-decoration: none;
     color: var(--cor1);
     font-weight: bold;
+}
+
+/* td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } */
+
+
+.tabela::-webkit-scrollbar {
+    background-color: #261A1A;
+    width: 15px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--cor2);
+    border-radius: 5px;
 }

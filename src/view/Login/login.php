@@ -26,7 +26,7 @@
                     <label for="email">Email:</label><br>
                     <input type="email" name="email" id="email" placeholder="Insira seu email">
                 </div>
-                <div class="input">
+                <div class="input" id="input_senha">
                     <label for="senha">Senha:</label><br>
                     <input type="password" name="senha" id="password" placeholder="Insira sua senha">
                     <div id="icon" onclick="showHide()"></div>

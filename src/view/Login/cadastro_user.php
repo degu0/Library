@@ -35,12 +35,12 @@
                     <input type="password" name="senha" id="password" placeholder="Insira sua senha">
                     <div id="icon" onclick="showHide()"></div>
                 </div>
-                <div class="input">
+                <div class="input" id="input_senha">
                     <label for="senha">Confirma a sua senha:</label><br>
                     <input type="password" name="confirmaSenha" id="password-confirmation" placeholder="Confirma sua senha">
                     <div id="icon-confirmation" onclick="showHideConfirmation()"></div>
                 </div>
-                <div class="select">
+                <div class="select" id="input_confirmar_senha">
                     <label for="tipoUser">Tipo de usuário: </label><br>
                     <select name="tipoUser" id="tipoUser">
                         <option value="aluno">Aluno(a)</option>

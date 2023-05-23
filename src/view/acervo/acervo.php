@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="/librares/css/acervo.css">
 
 <main>
+    <h1 class="title">Empréstimo</h1>
     <div class="tabela">
-        <h1 class="title">Empréstimo</h1>
         <?php if ($listaEmprestimo != null) { ?>
             <table>
                 <thead>
@@ -30,8 +30,8 @@
             <h1 class="semCadastro">Sem empréstimo no momento!</h1>
         <?php } ?>
     </div>
+    <h1 class="title">Histórico</h1>
     <div class="tabela">
-        <h1 class="title">Histórico</h1>
         <?php if ($listaHistorico != null) { ?>
             <table>
                 <thead>

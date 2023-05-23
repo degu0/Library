@@ -84,13 +84,16 @@ label {
     width: 48.8rem;
     cursor: pointer;
 }
+#input_senha {
+    position: relative;
+}
 
 #icon {
     position: absolute;
-    top: 42.3%;
-    right: 37%;
+    top: 59.3%;
+    right: 3%;
     transform: translateY(-50%);
-    background: url('/images/view.png');
+    background: url('/images/hide.png');
     background-size: cover;
     width: 32px;
     height: 32px;
@@ -98,7 +101,7 @@ label {
 }
 
 #icon.hide {
-    background: url('/images/hide.png');
+    background: url('/images/view.png');
     background-size: cover;
 }
 

@@ -95,12 +95,16 @@ label{
     max-width: 738.5px;
 }
 
+#input_senha, #input_confirmar_senha {
+    position: relative;
+}
+
 #icon {
     position: absolute;
-    top: 50.3%;
-    right: 3%;
+    top: 40.6rem;
+    right: 5rem;
     transform: translateY(-50%);
-    background: url('/images/view.png');
+    background: url('/images/hide.png');
     background-size: cover;
     width: 32px;
     height: 32px;
@@ -109,10 +113,10 @@ label{
 
 #icon-confirmation {
     position: absolute;
-    top: 65.3%;
+    top: 64.3%;
     right: 3%;
     transform: translateY(-50%);
-    background: url('/images/view.png');
+    background: url('/images/hide.png');
     background-size: cover;
     width: 32px;
     height: 32px;
@@ -120,7 +124,7 @@ label{
 }
 
 #icon.hide, #icon-confirmation.hide {
-    background: url('/images/hide.png');
+    background: url('/images/view.png');
     background-size: cover;
 }
 
@@ -223,5 +227,10 @@ label{
     }
     #tipoUser, #button, .link {
         width: 93vw;
+    }
+}
+@media screen and (max-width: 600px) {
+    #icon {
+        right: 1.3rem;
     }
 }
