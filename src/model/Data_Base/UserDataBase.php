@@ -153,4 +153,21 @@ class UserDataBase
 
         return $user;
     }
+
+    public function getType($id)
+    {
+        $comando = "SELECT tipo_usuario as tipo from Usuario where id_usuario = ?;";
+        $resultado = $this->conexao->mysqli->prepare($comando);
+        $resultado->bind_param('i', $id);
+        $resultado->execute();
+
+        $resultado2 = $resultado->get_result();
+
+        $linha = $resultado2->fetch_assoc();
+        if ($linha['tipo'] == 'funcionário') {
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

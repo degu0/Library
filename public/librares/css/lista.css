@@ -81,6 +81,7 @@ main {
     border: 2.5px solid var(--cor4);
     color: var(--cor4);
     text-align: center;
+    font-size: 15px;
     padding: 0.45vw;
     border-radius: 1vw;
     position: absolute;

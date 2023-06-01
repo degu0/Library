@@ -8,7 +8,7 @@ use Library_ETE\controller\BookController;
 use Library_ETE\controller\ListController;
 use Library_ETE\controller\GenreController;
 use Library_ETE\controller\LoginController;
-use Library_ETE\controller\ShareController;
+use Library_ETE\controller\SearchController;
 use Library_ETE\controller\EditController;
 use Library_ETE\controller\AcervoController;
 use Library_ETE\controller\MyPerfilController;
@@ -55,7 +55,7 @@ return [
     "/emprestimo" => LoanController::class,
     "/meu-perfil" => MyPerfilController::class,
     "/acervo" => AcervoController::class,
-    "/pesquisa" => ShareController::class,
+    "/pesquisa" => SearchController::class,
     "/sobre" => AboutController::class,
     "/erro" => ErroController::class,
 ];

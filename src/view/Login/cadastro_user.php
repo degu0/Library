@@ -16,7 +16,7 @@
             <div>
                 <h1 id="titulo">Library</h1>
             </div>
-            <form action="/login/cadastro/add" method="POST">
+            <form action="/login/cadastro/add?id_usuario=<?php  if (array_key_exists('tipo_usuario', $_SESSION)){echo $_SESSION['id_usuario'];} else {echo 0;}?>" method="POST">
                 <?php
                 if (isset($SenhaIncorreta)) {
                     echo "<script>alert('A senha esta incorreto, por favor reveja')</script>";
@@ -40,13 +40,13 @@
                     <input type="password" name="confirmaSenha" id="password-confirmation" placeholder="Confirma sua senha">
                     <div id="icon-confirmation" onclick="showHideConfirmation()"></div>
                 </div>
-                <div class="select" id="input_confirmar_senha">
+                <!-- <div class="select" id="input_confirmar_senha">
                     <label for="tipoUser">Tipo de usuário: </label><br>
                     <select name="tipoUser" id="tipoUser">
                         <option value="aluno">Aluno(a)</option>
                         <option value="funcionário">Bibliotecário(a)</option>
                     </select>
-                </div>
+                </div> -->
                 <input type="submit" value="Entrar" id="button">
             </form>
             <div class="cadastre_google">

@@ -19,7 +19,8 @@ class StudentDataBase
     {
         $comando = "SELECT a.id, a.numero_aluno, a.numero_responsavel, a.matricula, u.id_usuario, u.nome 
         FROM usuario_aluno a 
-        INNER JOIN usuario u ON u.id_usuario = a.FK_id_usuario; ";
+        INNER JOIN usuario u ON u.id_usuario = a.FK_id_usuario
+        ORDER BY Nome; ";
 
         $resultado = $this->conexao->mysqli->query($comando);
 

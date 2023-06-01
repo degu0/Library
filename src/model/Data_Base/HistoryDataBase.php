@@ -91,7 +91,8 @@ class HistoryDataBase
         l.id_livro, l.titulo, a.FK_id_usuario, a.matricula, u.nome  FROM historico h
                 INNER JOIN Livro l ON l.id_livro = h.FK_id_Livro
                 INNER JOIN Usuario_aluno a ON a.FK_id_usuario = h.FK_id_Aluno
-                INNER JOIN Usuario u ON a.FK_id_usuario = u.id_usuario;";
+                INNER JOIN Usuario u ON a.FK_id_usuario = u.id_usuario
+                ORDER BY Data_Devolucao DESC, `status`;";
 
         $resultado = $this->conexao->mysqli->query($comando);
 

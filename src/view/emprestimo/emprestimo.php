@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="/librares/css/acervo.css">
 
 <main>
-<?php foreach ($listLoan  as $loan) { ?>
     <div class="tabela">
         <table>
             <thead>
@@ -12,17 +11,17 @@
                 <th scope="col">Data de final</th>
             </thead>
             <tbody>
-
+                <?php foreach ($listLoan  as $loan) { ?>
                 <tr>
                     <td><?php echo $loan->getLivro()->getTitulo(); ?></td>
                     <td><?php echo  date('d/m/Y', strtotime($loan->getDataInicial())); ?></td>
                     <td><?php echo  date('d/m/Y', strtotime($loan->getDataFinal())); ?></td>
                 </tr>
+                <?php } ?>
 
             </tbody>
         </table>
     </div>
-<?php } ?>
 </main>
 
 

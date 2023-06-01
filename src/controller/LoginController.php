@@ -98,11 +98,16 @@ class LoginController extends Controller implements RequestHandlerInterface
 
     public function addUser(ServerRequestInterface $request): ResponseInterface
     {
+        $usuarioBD = new UserDataBase();
         $nome = $request->getParsedBody()["nome"];
         $email = $request->getParsedBody()["email"];
         $senha = $request->getParsedBody()["senha"];
         $confirma_senha = $request->getParsedBody()["confirmaSenha"];
-        $tipo_usuario = $request->getParsedBody()["tipoUser"];
+        if($usuarioBD->getType($request->getQueryParams()['id_usuario'])) {
+            $tipo_usuario = 'funcionário';
+        }else {
+            $tipo_usuario = 'aluno';
+        }
 
         if ($confirma_senha == $senha) {
             $usuario = new User(
@@ -114,7 +119,7 @@ class LoginController extends Controller implements RequestHandlerInterface
             );
 
 
-            $usuarioBD = new UserDataBase();
+
             $usuarioBD->adicionar($usuario);
             $senhaMD5 = $usuario->getSenhaMd5();
             $idUsuario = $usuarioBD->queryId($email, $senhaMD5);

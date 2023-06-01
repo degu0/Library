@@ -9,7 +9,7 @@ class Conexao
     private $endereco = "127.0.0.1";
     private $login = "root";
     private $senha = "";
-    private $banco = "bio";
+    private $banco = "library";
 
     public $mysqli;
 
@@ -27,4 +27,5 @@ class Conexao
         $this->mysqli->close();
         $this->__destruct();
     }
+
 }

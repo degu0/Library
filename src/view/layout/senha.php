@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/librares/css/cadastre/cadastre_Genre.css">
+    <title>Library - Cadastro do aluno</title>
+</head>
+<body>
+    <main>
+        <div class="cadastro">
+            <form action="/cadastro-de-informacoes/add" method="POST">
+                <h2>Insira a senha</h2>
+                <div>
+                    <label for="senha">Senha:</label><br>
+                    <input type="password" id="senha" name="senha" class="input">
+                </div>
+                <div>
+                    <input type="submit" id="button" value="Enviar">
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

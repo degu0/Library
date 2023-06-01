@@ -105,7 +105,7 @@ nav ul ul li a {
     border: none;
     border-radius: 0.6rem;
     padding-left: 1rem;
-    font: normal 1.6rem Roboto;
+    font: normal 1.6rem 'Open Sans', sans-serif;
 }
 
 #buttom-searchNav {

@@ -6,6 +6,11 @@
     <div class="cadastro">
         <h1 id="title_cadastre">Cadastro livro</h1>
         <form action="/gerenciar/livro/add" method="POST" enctype="multipart/form-data">
+            <?php
+            if ($ahLivro) {
+                echo "<script>alert('Livro já existente! Por favor, reveja.')</script>";
+            }
+            ?>
             <div class="cadastre_image">
                 <img src="/images/placeholder.png" alt="placeholder" id="placeholder" onclick="capaClick()">
                 <h3 id="title_image">Adicionar imagem do livro</h3>

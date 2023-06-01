@@ -86,7 +86,7 @@ class BookDataBase
 
     public function getBook()
     {
-        $comando = "SELECT * FROM livro where disponiveis > 0;";
+        $comando = "SELECT * FROM livro where disponiveis > 0 ORDER BY titulo;";
 
         $resultado = $this->conexao->mysqli->query($comando);
 
@@ -124,10 +124,6 @@ class BookDataBase
 
     public function update(Book $updateLivro)
     {
-        $comando = "UPDATE Livro SET
-        nome = ?, imagemData = ?, imagemType = ?, titulo = ?, autor = ?, id_genero = ?, exemplares = ?, disponiveis = ?, resumo = ?  
-        WHERE id_livro = ?;";
-
         $id = $updateLivro->getId();
         $imagemNome = $updateLivro->getImagem()->getNome();
         $imagemData = $updateLivro->getImagem()->getData();
@@ -139,27 +135,16 @@ class BookDataBase
         $disponiveis = $updateLivro->getDisponiveis();
         $resumo = $updateLivro->getResumo();
 
-        $preparacao = $this->conexao->mysqli->prepare($comando);
-        $preparacao->bind_param(
-            "sbsssiiisi",
-            $imagemNome,
-            $imagemData,
-            $imagemType,
-            $titulo,
-            $autor,
-            $genero,
-            $exemplares,
-            $disponiveis,
-            $resumo,
-            $id
-        );
-        $preparacao->execute();
+        $update = "UPDATE Livro SET
+        nome = '$imagemNome', imagemData = '$imagemData', imagemType = '$imagemType', titulo = '$titulo', autor = '$autor', id_genero = '$genero', exemplares = '$exemplares', disponiveis = '$disponiveis', resumo = '$resumo'  
+        WHERE id_livro = '$id' ;";
+    
 
-        $resultado = $preparacao->get_result();
-        if ($resultado == false) {
-            return null;
-        }
+        $resultado = $this->conexao->mysqli->query($update);
+
         $this->conexao->fecharConexao();
+
+        return $resultado; 
     }
 
     public function tirarDisponivel($id)
@@ -181,8 +166,6 @@ class BookDataBase
 
     public function addBook(Book $book)
     {
-        $comando = "INSERT INTO livro (nome, imagemData, imagemType, titulo, autor, id_genero, exemplares, disponiveis, resumo) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
         $nomeImagem = $book->getImagem()->getNome();
         $imagemData = $book->getImagem()->getData();
         $imagemType = $book->getImagem()->getType();
@@ -193,30 +176,14 @@ class BookDataBase
         $disponiveis = $book->getDisponiveis();
         $resumo = $book->getResumo();
 
-        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $sql = "INSERT INTO livro ( nome, imagemData, imagemType, titulo, autor, id_genero, exemplares, disponiveis, resumo)
+        VALUES ('$nomeImagem', '$imagemData', '$imagemType', '$titulo','$autor','$id_genero', '$exemplares', '$disponiveis', '$resumo')";
+        
 
-        $preparacao->bind_param(
-            "sbsssiiis",
-            $nomeImagem,
-            $imagemData,
-            $imagemType,
-            $titulo,
-            $autor,
-            $id_genero,
-            $exemplares,
-            $disponiveis,
-            $resumo
-        );
+        $resultado = $this->conexao->mysqli->query($sql);
+        $this->conexao->fecharConexao();
 
-        $preparacao->execute();
-
-        $resultado = $preparacao->get_result();
-
-        if ($resultado == false) {
-            return null;
-        }
-
-        $this->conexao->fecharConexao();  
+        return $resultado;  
     }
 
     public function queryImagem($id)
@@ -233,8 +200,28 @@ class BookDataBase
         $imagem = [];
 
         while ($linha = $resultado->fetch_assoc()) {
-            $imagem = new Image($linha['nome'], $linha['imagemData'], $linha['imagemType']);
+            $imagem = [$linha['nome'], $linha['imagemData'], $linha['imagemType']];
         }
         return $imagem;
+    }
+
+    public function verificacaoDeLivro($titulo, $autor)
+    {
+        $comando = "SELECT * FROM Livro where titulo = ? and autor = ?;";
+
+        $resultado = $this->conexao->mysqli->prepare($comando);
+        $resultado->bind_param('ss', $titulo, $autor);
+        $resultado->execute();
+
+        $resultado2 = $resultado->get_result();
+
+        
+        $linha = $resultado2->fetch_assoc();
+
+        if ($linha) {
+            return true;
+        }else {
+            return false;
+        }
     }
 }

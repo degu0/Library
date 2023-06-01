@@ -6,6 +6,11 @@
         <div class="cadastro">
             <h2 id="title_cadastre">Empréstimos</h2>
             <form action="/gerenciar/emprestimo/add" method="POST">
+            <?php
+                if ($ahEmprestimo) {
+                    echo "<script>alert('Aluno ja tem o emprestimo desse livro! Por favor, reveja!')</script>";
+                }
+                ?>
                 <div>
                     <label for="aluno">Nome do aluno(a):</label>
                     <select name="aluno" id="aluno">

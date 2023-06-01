@@ -40,10 +40,10 @@
                     CADASTRE-SE COM O GOOGLE
                 </a>
             </div>
-            <div class="cadastre">
+            <!-- <div class="cadastre">
                 <p>Você não têm conta?</p>
                 <a href="/login/cadastro">CADASTRE AQUI</a>
-            </div>
+            </div> -->
         </div>
     </section>
     <script src="/librares/js/senha.js"></script>

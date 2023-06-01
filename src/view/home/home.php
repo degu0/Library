@@ -36,7 +36,11 @@
                                     <li>
                                         <a href="/meu-perfil?id=<?php echo $_SESSION['id_usuario']; ?>">Meu perfil</a>
                                     </li>
-                                    <hr>
+                                    <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário') {?>
+                                        <li>
+                                            <a href="/login/cadastro?id_usuario=<?php echo $_SESSION['id_usuario']?>">Cadastro de adm</a>
+                                        </li>
+                                    <?php }?>
                                     <li><a href="/login/deslog">Sair</a></li>
                                 </ul>
                             </li>

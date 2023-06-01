@@ -67,12 +67,15 @@ class BookController extends Controller implements RequestHandlerInterface
     public function update(ServerRequestInterface $request): ResponseInterface
     {
         $livroDB = new BookDataBase();
-        if($_FILES['imagem_livro']['size'] == null) {
-            $imagem = $livroDB->queryImagem($request->getQueryParams()["id_livro"]);
+        if ($_FILES['imagem_livro']['size'] == null) {
+            $arrayImagem = $livroDB->queryImagem($request->getQueryParams()["id_livro"]);
+            $imagemData = addslashes($arrayImagem[1]);
+            $imagem = new Image($arrayImagem[0], $imagemData ,$arrayImagem[2]);
+
         } else {
             $imgData = addslashes(file_get_contents($_FILES['imagem_livro']['tmp_name']));
             $imgType = getimageSize($_FILES['imagem_livro']['tmp_name']);
-    
+
             $imagem = new Image($_FILES['imagem_livro ']['name'], $imgData, $imgType['mime']);
         }
 
@@ -83,12 +86,13 @@ class BookController extends Controller implements RequestHandlerInterface
             $request->getParsedBody()["genero"],
             $request->getParsedBody()["exemplares"],
             $request->getParsedBody()["exemplares"],
-            $request->getParsedBody()["resumo"]
+            $request->getParsedBody()["resumo"], 
+            $request->getQueryParams()["id_livro"]
         );
-        
+
         $livroDB->update($livro);
 
-        $response = new Response(302, ["Location" => "/lista?id_genero=".$request->getQueryParams()["id_genero"]], null);
+        $response = new Response(302, ["Location" => "/lista?id_genero=" . $request->getQueryParams()["id_genero"]], null);
         return $response;
     }
 
@@ -97,7 +101,7 @@ class BookController extends Controller implements RequestHandlerInterface
         $livroBD = new BookDataBase();
         $livroBD->remover($request->getQueryParams()["id_livro"]);
 
-        $response = new Response(302, ["Location" => "/lista?id_genero=".$request->getQueryParams()["id_genero"]], null);
+        $response = new Response(302, ["Location" => "/lista?id_genero=" . $request->getQueryParams()["id_genero"]], null);
         return $response;
     }
 
@@ -115,7 +119,7 @@ class BookController extends Controller implements RequestHandlerInterface
         $livroBD = new BookDataBase();
         $emprestimoBD->alunoAdicionar($emprestimo);
         $historicoBD->alunoAdicionar($emprestimo);
-        $livroBD->tirarDisponivel($request->getParsedBody()["id_livro"]);
+        $livroBD->tirarDisponivel($request->getQueryParams()['id_livro']);
 
         $response = new Response(302, ["Location" => "/confirmacao/emprestimo"], null);
 

@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Mulish:wght@200;300;400;500;600&family=Open+Sans:wght@300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --cor1: #261A1A;
+    --cor2: #593527;
+    --cor3: #8C6B4F;
+    --cor4: #D9C1B4;
+    --cor4_1: #bda79b;
+    --cor5: #F2EAE9;
+    --cor6: #a1a0a09b;
+    --cor7: #bebebe8f;
+
+}
+
+html,
+body {
+    min-height: 100vh;
+    background-color: var(--cor5);
+}
+
+main {
+    height: 120vh;
+    display: grid;
+    margin: auto;
+    text-align: center;
+    font-family: 'Mulish', sans-serif;
+}

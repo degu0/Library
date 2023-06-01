@@ -82,7 +82,8 @@ class LoanDataBase
         emprestimo e
         INNER JOIN usuario_aluno a ON a.FK_id_usuario = e.FK_ID_Aluno
         INNER JOIN livro l ON l.id_livro = e.FK_ID_Livro
-        INNER JOIN usuario u ON u.id_usuario = a.FK_id_usuario;";
+        INNER JOIN usuario u ON u.id_usuario = a.FK_id_usuario
+        ORDER BY Data_Final;";
 
         $resultado = $this->conexao->mysqli->query($comando);
 
@@ -217,7 +218,8 @@ class LoanDataBase
         INNER JOIN usuario_aluno a ON a.FK_id_usuario = e.FK_ID_Aluno
         INNER JOIN livro l ON l.id_livro = e.FK_ID_Livro
         INNER JOIN usuario u ON u.id_usuario = a.FK_ID_Usuario
-        WHERE a.FK_id_usuario = ?;";
+        WHERE a.FK_id_usuario = ?
+        ORDER BY Data_Entrega DESC;";
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id_aluno);
         $preparacao->execute();
@@ -283,5 +285,22 @@ class LoanDataBase
 
         $this->conexao->fecharConexao();
         return true; 
+    }
+
+    public function verificacaoDeEmprestimo($idAluno, $idLivro)
+    {
+        $comando = "SELECT id FROM Emprestimo where FK_ID_Livro = ? and FK_ID_Aluno = ?;";
+
+        $resultado = $this->conexao->mysqli->prepare($comando);
+        $resultado->bind_param('ii', $idLivro, $idAluno);
+        $resultado->execute();
+
+        $resultado2 = $resultado->get_result();
+        $linha = $resultado2->fetch_assoc();
+        if ($linha['id']) {
+            return true;
+        }else {
+            return false;
+        }
     }
 }

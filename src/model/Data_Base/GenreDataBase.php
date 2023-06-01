@@ -17,7 +17,7 @@ class GenreDataBase
 
     public function getListGenre()
     {
-        $comando = "SELECT * FROM genero;";
+        $comando = "SELECT * FROM genero ORDER BY genero;";
 
         $resultado = $this->conexao->mysqli->query($comando);
 
@@ -161,5 +161,23 @@ class GenreDataBase
         $this->conexao->fecharConexao();
 
         return $genre;
+    }
+
+    public function verificacaoDeGenero($genero)
+    {
+        $comando = "SELECT genero FROM Genero where genero = ?;";
+
+        $resultado = $this->conexao->mysqli->prepare($comando);
+        $resultado->bind_param('s', $genero);
+        $resultado->execute();
+
+        $resultado2 = $resultado->get_result();
+
+        $linha = $resultado2->fetch_assoc();
+        if ($linha['genero']) {
+            return true;
+        }else {
+            return false;
+        }
     }
 }
