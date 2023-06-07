@@ -20,9 +20,11 @@ class ConfirmationScreenController extends Controller implements RequestHandlerI
 
         if (strpos($path_info, "confirmacao")) {
             if(strpos($path_info, "emprestimo")) {
-                $response = $this->emprestimo();
+                $response = $this->emprestimo($request);
             }else if (strpos($path_info, "devolucao")) {
                 $response = $this->devolucao($request);
+            }else if (strpos($path_info, "senha")) {
+                $response = $this->senha(false);
             }
         } else {
             $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
@@ -31,14 +33,21 @@ class ConfirmationScreenController extends Controller implements RequestHandlerI
         return $response;
     }
 
-    public function emprestimo() : ResponseInterface
+    public function emprestimo(ServerRequestInterface $request) : ResponseInterface
     {
-        $emprestimoBD = new LoanDataBase();
-        $informacoes = $emprestimoBD->queryLastLoan();
-        $bodyHTTP = $this->getHTTPBodyBuffer("/layout/confirmacao_emprestimo.php", ['listInformation' => $informacoes]);
-        $response = new Response(200, [], $bodyHTTP);
+        if ($request->getParsedBody()["senha"] == "adm") {
+            $emprestimoBD = new LoanDataBase();
+            $informacoes = $emprestimoBD->queryLastLoan();
+            $bodyHTTP = $this->getHTTPBodyBuffer("/layout/confirmacao_emprestimo.php", ['listInformation' => $informacoes]);
+            $response = new Response(200, [], $bodyHTTP);
+    
+            return $response;
 
-        return $response;
+        }else {
+            $response = $this->senha(true);
+            return $response;
+        }
+
     }
 
     public function devolucao(ServerRequestInterface $request) : ResponseInterface
@@ -46,6 +55,14 @@ class ConfirmationScreenController extends Controller implements RequestHandlerI
         $emprestimoBD = new LoanDataBase();
         $informacoes = $emprestimoBD->queryLoan($request->getQueryParams()["id"]);
         $bodyHTTP = $this->getHTTPBodyBuffer("/layout/confirmacao_devolucao.php", ['listInformation' => $informacoes]);
+        $response = new Response(200, [], $bodyHTTP);
+
+        return $response;
+    }
+
+    public function senha($senhaIncorreta) : ResponseInterface
+    {
+        $bodyHTTP = $this->getHTTPBodyBuffer("/layout/senha.php",  [ "senhaIncorreta" => $senhaIncorreta]);
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;

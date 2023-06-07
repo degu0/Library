@@ -121,7 +121,7 @@ class BookController extends Controller implements RequestHandlerInterface
         $historicoBD->alunoAdicionar($emprestimo);
         $livroBD->tirarDisponivel($request->getQueryParams()['id_livro']);
 
-        $response = new Response(302, ["Location" => "/confirmacao/emprestimo"], null);
+        $response = new Response(302, ["Location" => "/confirmacao/senha"], null);
 
         return $response;
     }

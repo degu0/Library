@@ -52,6 +52,7 @@ return [
     "/editar/genero" => EditController::class,
     "/confirmacao/emprestimo" => ConfirmationScreenController::class,
     "/confirmacao/devolucao" => ConfirmationScreenController::class,
+    "/confirmacao/senha" => ConfirmationScreenController::class,
     "/emprestimo" => LoanController::class,
     "/meu-perfil" => MyPerfilController::class,
     "/acervo" => AcervoController::class,

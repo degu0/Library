@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/librares/css/cadastre/cadastre_Genre.css">
+    <link rel="stylesheet" href="/librares/css/cadastre/cadastre_additional.css">
+    <link rel="shortcut icon" href="/images/LIbrary_Icon.png" type="image/x-icon">
     <title>Library - Cadastro do aluno</title>
 </head>
 <body>
     <main>
         <div class="cadastro">
             <form action="/cadastro-de-informacoes/add" method="POST">
+                <h2>Cadastro de Informações dos alunos</h2>
                 <div>
                     <label for="matricula">Numero da matricula escolar:</label><br>
                     <input type="number" id="matricula" name="matricula" class="input">

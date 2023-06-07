@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/librares/css/cadastre/cadastre_Genre.css">
+    <link rel="stylesheet" href="/librares/css/cadastre/cadastre_additional.css">
+    <link rel="shortcut icon" href="/images/LIbrary_Icon.png" type="image/x-icon">
     <title>Library - Cadastro do aluno</title>
 </head>
 <body>
     <main>
         <div class="cadastro">
-            <form action="/cadastro-de-informacoes/add" method="POST">
+            <form action="/confirmacao/emprestimo" method="POST">
+            <?php
+                if ($senhaIncorreta) {
+                    echo "<script>alert('Senha Incorreta! Por favor, reveja!')</script>";
+                }
+                ?>
                 <h2>Insira a senha</h2>
                 <div>
                     <label for="senha">Senha:</label><br>
