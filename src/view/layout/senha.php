@@ -20,7 +20,8 @@
                 <h2>Insira a senha</h2>
                 <div>
                     <label for="senha">Senha:</label><br>
-                    <input type="password" id="senha" name="senha" class="input">
+                    <input type="password" id="password" name="senha" class="input">
+                    <div id="icon" onclick="showHide()"></div>
                 </div>
                 <div>
                     <input type="submit" id="button" value="Enviar">
@@ -28,5 +29,6 @@
             </form>
         </div>
     </main>
+    <script src="/librares/js/senha.js"></script>
 </body>
 </html>
