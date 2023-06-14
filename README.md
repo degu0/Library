@@ -14,86 +14,46 @@
 
 > 🛑 EM FINALIZAÇÃO 🛑
 
-Este é um website desenvolvido para facilitar a organização dos livros da biblioteca da Escola Técnica Estadual Ministro Fernando Lyra. Com um sistema de armazenamento de dados simplificado e fácil de usar, os usuário poderão facilmente gerenciar o acervo da biblioteca.
+Este é um website desenvolvido para facilitar a organização dos livros da biblioteca de instituições de ensimo. Com um sistema de armazenamento de dados simplificado e fácil de usar, os usuário poderão ter: um sistema de empréstimo, controle de dados dos livros e empréstimos e facilmente gerenciar o acervo da biblioteca.
 
-Esperamos que este website ajude a melhorar a experiência de pesquisa e empréstimo de livros na Escola Técnica Estadual Ministro Fernando Lyra.
+Espero que este website ajude a melhorar a experiência de pesquisa e empréstimos de livros das Escolas.
 
 ## Funcionalidade do projeto.
 
-* `Funcionalidade 1` : Adicionar novos livros e usuários ao sistema;
-* `Funcionalidade 2` : Registrar empréstimos e devoluções de livros;
-* `Funcionalidade 3` : Acompanhar o status de reserva de cada livro;
-* `Funcionalidade 4` : Gerenciar o acervo da biblioteca.
+#### Para usuários sem cadastro:
+ * `Funcionalidade 1` : Ver todos os gêneros e livros contido na biblioteca.
+
+#### Para usuários cadastrado como 'aluno':
+  * Tem a funcionalidade 1;
+  * `Funcionalidade 2` : Poderá fazer empréstimo do livro desejavel. Entretanto, terá que mostrar para o bibliotecario para libera o emprestimo;
+  *  `Funcionalidade 3` : Terá um campo Perfil, com as informações do aluno. Até emprestimo feito por ele;
+  *  `Funcionalidade 4` : Se o 'aluno' ter feito o seu emprestimo, aparecerá um campo dos seus emprestimos.
+ 
+#### Para usuários cadastrado como ' funcionário ':
+  * Tem a funcionalidades 1; 
+  * `Funcionalidade 5` : Gerenciar os gêneros, livros e emprestimos. Adicionar e editar esse tais campos;
+  * `Funcionalidade 6` : Controle com os emprestimos, podedo adcionar mais alguns dias da data de entrega e confirmação da devolução;
+  * `Funcionalidade 7` : Acompanhar o status de reserva de cada livro;
 
 ## Técnicas e tecnologia utilizadas
 
  * `PHP`;
  * `HTML, CSS e JavaScript`;
- * `Google charts`;
- * `MVC`;
- * `Composer`.
+ * `Banco de dados: MySql`;
+ * `Composer`;
+ * `Arquitetura usada: MVC`
 
 ## Como rodar a aplicação
 
-Primeiramente, antes de baixar o arquivo. Baixe o [composer](https://www.hostinger.com.br/tutoriais/como-instalar-e-usar-o-composer) no seu computador.
-
-No terminal do git use o comando clone para baixar o projeto: 
-
-```
-git clone https://github.com/degu0/Library.git
-```
-
-Quando estiver com o arquivo baixado, abrira com seu editor de código e após para o terminal. E executará: 
-
-```
-composer install
-```
-
-E logo depois:
-
-```
-composer update
-```
-
-## Inciando com o Banco de Dados
-
-Para rodar o banco de dados do projeto, tera que coloca-lo no seu MySQL Worbench. Logo depois, ira para o arquivo Schron/src/model/BD/conexao.php.
-E lá mudará para a suas informações: 
-* Hostname;
-* Username;
-* Senha;
-* Database.
-
-Ex:
-```
-private $endereco = "127.0.0.1";
-private $login = "root";
-private $senha = "root";
-private $banco = "exemplo";
-```
-
-Assim tera o acesso do banco de dados para a ferramenta.
-
-## Como rodar os testes
-
-Quando efetuar os comandos com o composer, criará um servidor web com php. No seu terminal ainda, efetue o comando:
-
-```
-php -S localhost:8080 -t public
-```
-
-Agora no explorador de escolha coloque barra de pesquisa a localização do servidor web:
-
-```
-localhost:8080
-```
+> Em desenvolvimento para colocar no ar. 🛑
 
 ## Autor
 
 
+
 | Programador |
 | ------------- | 
-| <img src='https://user-images.githubusercontent.com/87346972/217927708-f2a659a3-d43e-417a-a549-c30942a122d6.jpeg' width="150" height="150">  |
+| ![About_Mobile](https://github.com/degu0/Library/assets/87346972/fff6014a-588d-4f0d-90ab-ebc2c78f8447)  |
 | [Deyvid Gustavo](https://www.linkedin.com/in/deyvid-gustavo-0642a2235/)  |
 
 
@@ -101,4 +61,4 @@ localhost:8080
 
 The MIT License (MIT)
 
-Copyright :copyright: 2022 - Library
+Copyright :copyright: 2023 - Library
