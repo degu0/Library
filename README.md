@@ -14,7 +14,7 @@
 
 > 🛑 EM FINALIZAÇÃO 🛑
 
-Este é um website desenvolvido para facilitar a organização dos livros da biblioteca de instituições de ensimo. Com um sistema de armazenamento de dados simplificado e fácil de usar, os usuário poderão ter: um sistema de empréstimo, controle de dados dos livros e empréstimos e facilmente gerenciar o acervo da biblioteca.
+Este é um website desenvolvido para facilitar a organização dos livros da biblioteca de instituições de ensino. Com um sistema de armazenamento de dados simplificado e fácil de usar, os usuários poderão terá: um sistema de empréstimo, controle de dados dos livros e empréstimos e facilmente gerenciar o acervo da biblioteca.
 
 Espero que este website ajude a melhorar a experiência de pesquisa e empréstimos de livros das Escolas.
 
@@ -25,14 +25,14 @@ Espero que este website ajude a melhorar a experiência de pesquisa e empréstim
 
 #### Para usuários cadastrado como 'aluno':
   * Tem a funcionalidade 1;
-  * `Funcionalidade 2` : Poderá fazer empréstimo do livro desejavel. Entretanto, terá que mostrar para o bibliotecario para libera o emprestimo;
-  *  `Funcionalidade 3` : Terá um campo Perfil, com as informações do aluno. Até emprestimo feito por ele;
-  *  `Funcionalidade 4` : Se o 'aluno' ter feito o seu emprestimo, aparecerá um campo dos seus emprestimos.
+  * `Funcionalidade 2` : Poderá fazer empréstimo do livro desejável. Entretanto, terá que mostrar para o bibliotecario para liberar o empréstimo;
+  *  `Funcionalidade 3` : Terá um campo Perfil, com as informações do aluno. Até empréstimo feito por ele;
+  *  `Funcionalidade 4` : Se o 'aluno' tiver feito o seu emprestimo, aparecerá um campo dos seus empréstimos.
  
 #### Para usuários cadastrado como ' funcionário ':
-  * Tem a funcionalidades 1; 
-  * `Funcionalidade 5` : Gerenciar os gêneros, livros e emprestimos. Adicionar e editar esse tais campos;
-  * `Funcionalidade 6` : Controle com os emprestimos, podedo adcionar mais alguns dias da data de entrega e confirmação da devolução;
+  * Tem a funcionalidade 1; 
+  * `Funcionalidade 5` : Gerenciar os gêneros, livros e emprestimos. Adicionar e editar tais campos;
+  * `Funcionalidade 6` : Controle com os emprestimos, podendo adcionar mais alguns dias da data de entrega e confirmação da devolução;
   * `Funcionalidade 7` : Acompanhar o status de reserva de cada livro;
 
 ## Técnicas e tecnologia utilizadas
