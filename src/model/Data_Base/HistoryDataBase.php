@@ -21,7 +21,7 @@ class HistoryDataBase
 
     public function adicionar(Loan $emprestimo)
     {
-        $comando = "INSERT INTO historico (FK_id_Aluno, FK_id_Livro, Data_Emprestimo, Data_Devolucao, `Status`, Adiamento) VALUES(?, ?, ?, ?, ?, ?)";
+        $comando = "INSERT INTO Historico (FK_id_Aluno, FK_id_Livro, Data_Emprestimo, Data_Devolucao, `Status`, Adiamento) VALUES(?, ?, ?, ?, ?, ?)";
         $aluno = $emprestimo->getAluno();
         $livro = $emprestimo->getLivro();
         $data_inicial = $emprestimo->getDataInicial();
@@ -54,7 +54,7 @@ class HistoryDataBase
 
     public function alunoAdicionar(Loan $emprestimo)
     {
-        $comando = "INSERT INTO historico (FK_id_Aluno, FK_id_Livro, Data_Emprestimo, Data_Devolucao, `Status`, Adiamento) VALUES(?, ?, ?, ?, ?, ?)";
+        $comando = "INSERT INTO Historico (FK_id_Aluno, FK_id_Livro, Data_Emprestimo, Data_Devolucao, `Status`, Adiamento) VALUES(?, ?, ?, ?, ?, ?)";
         $aluno = $emprestimo->getAluno();
         $livro = $emprestimo->getLivro();
         $data_inicial = date('Y/m/d');
@@ -88,10 +88,10 @@ class HistoryDataBase
     public function getHistory()
     {
         $comando = "SELECT h.id, h.Data_Emprestimo, h.Data_Devolucao, h.adiamento, h.`status`, 
-        l.id_livro, l.titulo, a.FK_id_usuario, a.matricula, u.nome  FROM historico h
-                INNER JOIN Livro l ON l.id_livro = h.FK_id_Livro
-                INNER JOIN Usuario_aluno a ON a.FK_id_usuario = h.FK_id_Aluno
-                INNER JOIN Usuario u ON a.FK_id_usuario = u.id_usuario
+        l.id_livro, l.titulo, a.FK_id_usuario, a.matricula, u.nome  FROM Historico h
+                INNER JOIN livro l ON l.id_livro = h.FK_id_Livro
+                INNER JOIN usuario_aluno a ON a.id = h.FK_id_Aluno
+                INNER JOIN usuario u ON a.FK_id_usuario = u.id_usuario
                 ORDER BY Data_Devolucao DESC, `status`;";
 
         $resultado = $this->conexao->mysqli->query($comando);
@@ -116,7 +116,7 @@ class HistoryDataBase
 
     public function devolucao($id)
     {
-        $comando = "UPDATE `historico` SET `Status` = 'sim' WHERE (`id` = ?);";
+        $comando = "UPDATE `Historico` SET `Status` = 'sim' WHERE (`id` = ?);";
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id);
         $preparacao->execute();
@@ -130,7 +130,7 @@ class HistoryDataBase
 
     public function adiamento($id)
     {
-        $comando = "UPDATE `historico` SET `Adiamento` = `Adiamento`+ 1 WHERE (`id` = ?);";
+        $comando = "UPDATE `Historico` SET `Adiamento` = `Adiamento`+ 1 WHERE (`id` = ?);";
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id);
         $preparacao->execute();

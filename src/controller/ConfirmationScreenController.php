@@ -19,11 +19,11 @@ class ConfirmationScreenController extends Controller implements RequestHandlerI
         $response = null;
 
         if (strpos($path_info, "confirmacao")) {
-            if(strpos($path_info, "emprestimo")) {
+            if (strpos($path_info, "emprestimo")) {
                 $response = $this->emprestimo($request);
-            }else if (strpos($path_info, "devolucao")) {
+            } else if (strpos($path_info, "devolucao")) {
                 $response = $this->devolucao($request);
-            }else if (strpos($path_info, "senha")) {
+            } else if (strpos($path_info, "senha")) {
                 $response = $this->senha(false);
             }
         } else {
@@ -33,24 +33,30 @@ class ConfirmationScreenController extends Controller implements RequestHandlerI
         return $response;
     }
 
-    public function emprestimo(ServerRequestInterface $request) : ResponseInterface
+    public function emprestimo(ServerRequestInterface $request): ResponseInterface
     {
-        if ($request->getParsedBody()["senha"] == "adm") {
-            $emprestimoBD = new LoanDataBase();
+        $emprestimoBD = new LoanDataBase();
+        if ($_SESSION['tipo_usuario'] == 'funcionário') {
             $informacoes = $emprestimoBD->queryLastLoan();
             $bodyHTTP = $this->getHTTPBodyBuffer("/layout/confirmacao_emprestimo.php", ['listInformation' => $informacoes]);
             $response = new Response(200, [], $bodyHTTP);
-    
-            return $response;
 
-        }else {
-            $response = $this->senha(true);
             return $response;
+        } else {
+            if ($request->getParsedBody()["senha"] == "adm") {
+                $informacoes = $emprestimoBD->queryLastLoan();
+                $bodyHTTP = $this->getHTTPBodyBuffer("/layout/confirmacao_emprestimo.php", ['listInformation' => $informacoes]);
+                $response = new Response(200, [], $bodyHTTP);
+
+                return $response;
+            } else {
+                $response = $this->senha(true);
+                return $response;
+            }
         }
-
     }
 
-    public function devolucao(ServerRequestInterface $request) : ResponseInterface
+    public function devolucao(ServerRequestInterface $request): ResponseInterface
     {
         $emprestimoBD = new LoanDataBase();
         $informacoes = $emprestimoBD->queryLoan($request->getQueryParams()["id"]);
@@ -60,9 +66,9 @@ class ConfirmationScreenController extends Controller implements RequestHandlerI
         return $response;
     }
 
-    public function senha($senhaIncorreta) : ResponseInterface
+    public function senha($senhaIncorreta): ResponseInterface
     {
-        $bodyHTTP = $this->getHTTPBodyBuffer("/layout/senha.php",  [ "senhaIncorreta" => $senhaIncorreta]);
+        $bodyHTTP = $this->getHTTPBodyBuffer("/layout/senha.php",  ["senhaIncorreta" => $senhaIncorreta]);
         $response = new Response(200, [], $bodyHTTP);
 
         return $response;

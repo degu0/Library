@@ -40,13 +40,13 @@
                     <input type="password" name="confirmaSenha" id="password-confirmation" placeholder="Confirma sua senha">
                     <div id="icon-confirmation" onclick="showHideConfirmation()"></div>
                 </div>
-                <!-- <div class="select" id="input_confirmar_senha">
+                 <div class="select" id="input_confirmar_senha">
                     <label for="tipoUser">Tipo de usuário: </label><br>
                     <select name="tipoUser" id="tipoUser">
                         <option value="aluno">Aluno(a)</option>
                         <option value="funcionário">Bibliotecário(a)</option>
                     </select>
-                </div> -->
+                </div> 
                 <input type="submit" value="Entrar" id="button">
             </form>
             <div class="cadastre_google">

@@ -87,9 +87,6 @@ tbody>tr:nth-child(even) {
     margin-bottom: 50px;
 }
 
-.semCadastro {
-    font-size: 3rem;
-}
 
 #link-aluno {
     text-decoration: none;
@@ -115,4 +112,23 @@ tbody>tr:nth-child(even) {
 ::-webkit-scrollbar-thumb {
     background-color: var(--cor2);
     border-radius: 5px;
+}
+
+.alert {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor2);
+    width: 50vw;
+    height: 20vh;
+    border-radius: 1rem;
+    color: var(--cor5);
+}
+
+
+.semCadastro {
+    font-size: 3rem;
+    font-family: 'Mulish', sans-serif;
+    margin: 0 5rem;
 }

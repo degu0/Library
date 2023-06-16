@@ -44,16 +44,6 @@ class HomeController extends Controller implements RequestHandlerInterface
         return $response;
     }
 
-    // public function search(ServerRequestInterface $request): ResponseInterface
-    // {
-    //     $loanDataBase = new LoanDataBase();
-    //     $dados =  $loanDataBase->search($request->getQueryParams()["busca"]);
-    //     $bodyHTTP = $this->getHTTPBodyBuffer("/home/home.php", ["listLoan" => $dados]);
-    //     $response = new Response(200, [], $bodyHTTP);
-
-    //     return $response;
-    // }
-
     public function delete(ServerRequestInterface $request): ResponseInterface
     {
         $id = $request->getQueryParams()["id"];

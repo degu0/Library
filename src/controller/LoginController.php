@@ -28,7 +28,7 @@ class LoginController extends Controller implements RequestHandlerInterface
             } else if (strpos($path_info, "deslog")) {
                 $response = $this->deslogar();
             } else if (strpos($path_info, "cadastro")) {
-                $response = $this->cadastro();
+                $response = $this->cadastro($request);
                 if (strpos($path_info, "add")) {
                     $response = $this->addUser($request);
                 }
@@ -68,9 +68,9 @@ class LoginController extends Controller implements RequestHandlerInterface
             $_SESSION["usuario"] = $nomeUsuario;
             $_SESSION["tipo_usuario"] = $tipo_usuario;
 
-            if($tipo_usuario == "aluno") {
+            if ($tipo_usuario == "aluno") {
                 $temEmprestimo = $emprestimoBD->verificationStudent($idUsuario);
-                if($temEmprestimo) {
+                if ($temEmprestimo) {
                     $_SESSION['emprestimo'] = true;
                 }
             }
@@ -88,10 +88,15 @@ class LoginController extends Controller implements RequestHandlerInterface
     }
 
 
-    public function cadastro(): ResponseInterface
+    public function cadastro(ServerRequestInterface $request): ResponseInterface
     {
-        $bodyHTTP = $this->getHTTPBodyBuffer("/login/cadastro_user.php");
-        $response = new Response(200, [], $bodyHTTP);
+        $usuarioBD = new UserDataBase();
+        if ($usuarioBD->getType($request->getQueryParams()['id_usuario']) != 'funcionario' || !isset($request->getQueryParams()['id_usuario'])) {
+            $response = new Response(302, ["Location" => "/home"], null);
+        } else {
+            $bodyHTTP = $this->getHTTPBodyBuffer("/login/cadastro_user.php");
+            $response = new Response(200, [], $bodyHTTP);
+        }
 
         return $response;
     }
@@ -103,11 +108,7 @@ class LoginController extends Controller implements RequestHandlerInterface
         $email = $request->getParsedBody()["email"];
         $senha = $request->getParsedBody()["senha"];
         $confirma_senha = $request->getParsedBody()["confirmaSenha"];
-        if($usuarioBD->getType($request->getQueryParams()['id_usuario'])) {
-            $tipo_usuario = 'funcionário';
-        }else {
-            $tipo_usuario = 'aluno';
-        }
+        $tipo_usuario = $request->getParsedBody()["tipoUser"];
 
         if ($confirma_senha == $senha) {
             $usuario = new User(
@@ -121,22 +122,15 @@ class LoginController extends Controller implements RequestHandlerInterface
 
 
             $usuarioBD->adicionar($usuario);
-            $senhaMD5 = $usuario->getSenhaMd5();
-            $idUsuario = $usuarioBD->queryId($email, $senhaMD5);
 
-
-            $_SESSION["id_usuario"] = $idUsuario;
-            $_SESSION["usuario"] = $nome;
-            $_SESSION["tipo_usuario"] = $tipo_usuario;
-
-            if ($_SESSION['tipo_usuario'] == 'aluno') {
+            if ($tipo_usuario == 'aluno') {
                 $response = new Response(302, ['Location' => "/cadastro-de-informacoes"]);
             } else {
                 $response = new Response(302, ["Location" => "/home"], null);
             }
             return $response;
         }
-        $bodyHTTP = $this->getHTTPBodyBuffer("/login/cadastro_user.php", [ "SenhaIncorreta" => true]);
+        $bodyHTTP = $this->getHTTPBodyBuffer("/login/cadastro_user.php", ["SenhaIncorreta" => true]);
         return new Response(200, [], $bodyHTTP);
     }
 }

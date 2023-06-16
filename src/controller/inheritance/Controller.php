@@ -14,6 +14,7 @@ class Controller
         $bodyHTTP = ob_get_clean();
         return $bodyHTTP;
     }
+    
     public function validateCredentials(array $credentials)
     {
         if (!array_key_exists("creadential", $_SESSION)) {

@@ -46,6 +46,10 @@ main {
     justify-content: center;
 }
 
+#cadastro-informacoes {
+    height: 69vh;
+}
+
 
 #title_cadastre {
     color: rgba(0, 0, 0, 0.85);

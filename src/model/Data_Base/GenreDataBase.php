@@ -104,7 +104,7 @@ class GenreDataBase
 
     public function remover($id)
     {
-        $comando = "DELETE FROM Genero WHERE id = ?;";
+        $comando = "DELETE FROM genero WHERE id = ?;";
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
 
@@ -165,7 +165,7 @@ class GenreDataBase
 
     public function verificacaoDeGenero($genero)
     {
-        $comando = "SELECT genero FROM Genero where genero = ?;";
+        $comando = "SELECT genero FROM genero where genero = ?;";
 
         $resultado = $this->conexao->mysqli->prepare($comando);
         $resultado->bind_param('s', $genero);

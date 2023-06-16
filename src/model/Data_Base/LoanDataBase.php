@@ -80,7 +80,7 @@ class LoanDataBase
     {
         $comando = "SELECT e.id, e.Data_Entrega, e.Data_Final, l.titulo, l.id_livro, a.matricula, a.FK_id_usuario, u.nome, u.email, u.tipo_usuario FROM
         emprestimo e
-        INNER JOIN usuario_aluno a ON a.FK_id_usuario = e.FK_ID_Aluno
+        INNER JOIN usuario_aluno a ON a.id= e.FK_ID_Aluno
         INNER JOIN livro l ON l.id_livro = e.FK_ID_Livro
         INNER JOIN usuario u ON u.id_usuario = a.FK_id_usuario
         ORDER BY Data_Final;";
@@ -107,7 +107,7 @@ class LoanDataBase
 
     public function delete($id)
     {
-        $comando = "DELETE FROM Emprestimo WHERE id = ?;";
+        $comando = "DELETE FROM emprestimo WHERE id = ?;";
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
 
@@ -124,7 +124,7 @@ class LoanDataBase
 
     public function getDate($id)
     {
-        $comando = "SELECT Data_Final FROM Emprestimo WHERE id = ?;";
+        $comando = "SELECT Data_Final FROM emprestimo WHERE id = ?;";
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id);
         $preparacao->execute();
@@ -158,7 +158,7 @@ class LoanDataBase
     {
         $comando = "SELECT e.id, e.Data_Entrega, e.Data_Final, l.titulo, l.id_livro, a.matricula, a.FK_id_usuario, u.nome, u.email, u.tipo_usuario FROM
         emprestimo e
-        INNER JOIN usuario_aluno a ON a.FK_id_usuario = e.FK_ID_Aluno
+        INNER JOIN usuario_aluno a ON a.id = e.FK_ID_Aluno
         INNER JOIN livro l ON l.id_livro = e.FK_ID_Livro
         INNER JOIN usuario u ON u.id_usuario = a.FK_ID_Usuario
         WHERE e.id = ?;";
@@ -215,7 +215,7 @@ class LoanDataBase
     {
         $comando = "SELECT e.id, e.Data_Entrega, e.Data_Final, l.titulo, l.id_livro, a.matricula, a.FK_id_usuario, u.nome, u.email, u.tipo_usuario FROM
         emprestimo e
-        INNER JOIN usuario_aluno a ON a.FK_id_usuario = e.FK_ID_Aluno
+        INNER JOIN usuario_aluno a ON a.id = e.FK_ID_Aluno
         INNER JOIN livro l ON l.id_livro = e.FK_ID_Livro
         INNER JOIN usuario u ON u.id_usuario = a.FK_ID_Usuario
         WHERE a.FK_id_usuario = ?
@@ -246,7 +246,7 @@ class LoanDataBase
     {
         $comando = "SELECT e.id, e.Data_Entrega, e.Data_Final, l.titulo, l.id_livro, a.matricula, a.FK_id_usuario, u.nome, u.email, u.tipo_usuario FROM
         emprestimo e
-        INNER JOIN usuario_aluno a ON a.FK_id_usuario = e.FK_ID_Aluno
+        INNER JOIN usuario_aluno a ON a.id = e.FK_ID_Aluno
         INNER JOIN livro l ON l.id_livro = e.FK_ID_Livro
         INNER JOIN usuario u ON u.id_usuario = a.FK_ID_Usuario
         ORDER BY id DESC LIMIT 1;";
@@ -273,7 +273,7 @@ class LoanDataBase
 
     public function verificationStudent($idAluno)
     {
-        $comando = "SELECT * FROM EMPRESTIMO WHERE FK_ID_ALUNO = ?;";
+        $comando = "SELECT * FROM emprestimo WHERE FK_id_aluno = ?;";
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id_aluno);
         $preparacao->execute();
@@ -289,7 +289,7 @@ class LoanDataBase
 
     public function verificacaoDeEmprestimo($idAluno, $idLivro)
     {
-        $comando = "SELECT id FROM Emprestimo where FK_ID_Livro = ? and FK_ID_Aluno = ?;";
+        $comando = "SELECT id FROM emprestimo where FK_ID_Livro = ? and FK_ID_Aluno = ?;";
 
         $resultado = $this->conexao->mysqli->prepare($comando);
         $resultado->bind_param('ii', $idLivro, $idAluno);

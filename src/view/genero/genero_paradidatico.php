@@ -4,7 +4,14 @@
 
 <body>
     <main>
-        <h1 class="title">Género Paradidático</h1>
+        <h1 class="title">            <?php
+                if($listGenreParadidatico == null) {
+                    echo "Nenhum cadastro do gênero paradidático.";
+                } else {
+                    echo "Gênero Paradidático.";
+                }
+            ?></h1>
+            <hr id="hr-title">
         <?php
         foreach ($listGenreParadidatico as $list) {
         ?>

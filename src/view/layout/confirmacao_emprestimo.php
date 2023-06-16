@@ -6,7 +6,7 @@
     <div class="confirmacao">
         <h1 class="titulo">Confirmação do seu empréstimo</h1>
         <h2 class="subtitulo">Por favor mostre para a/o bibliotecário</h2>
-        <?php foreach ($listInformation as $loan) { ?>
+        <?php  foreach ($listInformation as $loan) { ?>
             <div class="dados">
                 <p class="informacoes">
                     <span class="variavel">Aluno:</span>

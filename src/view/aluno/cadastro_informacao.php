@@ -10,7 +10,7 @@
 </head>
 <body>
     <main>
-        <div class="cadastro">
+        <div class="cadastro" id="cadastro-informacoes">
             <form action="/cadastro-de-informacoes/add" method="POST">
                 <h2>Cadastro de Informações dos alunos</h2>
                 <div>

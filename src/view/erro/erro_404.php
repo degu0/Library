@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -10,6 +10,7 @@
 
 <body>
     <h1>ERRO</h1>
+    <p>Volte para o <a href="/home">HOME</a></p>
 </body>
 
 </html>

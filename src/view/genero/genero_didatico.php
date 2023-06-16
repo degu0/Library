@@ -4,7 +4,16 @@
 
 <body>
     <main>
-        <h1 class="title">Género Didático</h1>
+        <h1 class="title">
+            <?php
+                if($listGenreDidatico == null) {
+                    echo "Nenhum cadastro do gênero didático.";
+                } else {
+                    echo "Gênero Didático.";
+                }
+            ?>
+        </h1>
+        <hr id="hr-title">
         <?php
         foreach ($listGenreDidatico as $list) {
         ?>

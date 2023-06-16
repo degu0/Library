@@ -13,15 +13,8 @@ class ErroController extends Controller implements RequestHandlerInterface
 {
    public function handle(ServerRequestInterface $request): ResponseInterface
    {
-      $response = null;
-
-      $response = $this->index();
-      return $response;
-   }
-   public function index(): ResponseInterface
-   {
       $bodyHTTP = $this->getHTTPBodyBuffer("/erro/erro_404.php");
-      $response = new Response(404, ["Serve" => "Library_ETE Server"], $bodyHTTP);
+      $response = new Response(404, ["Serve" => "Library Server"], $bodyHTTP);
       return $response;
    }
 }

@@ -4,8 +4,8 @@
 
 <main>
     <h1 class="title">Empréstimo</h1>
-    <div class="tabela">
-        <?php if ($listaEmprestimo != null) { ?>
+    <?php if ($listaEmprestimo != null) { ?>
+        <div class="tabela">
             <table>
                 <thead>
                     <th scope="col">Nome de livro</th>
@@ -26,13 +26,16 @@
                     <?php } ?>
                 </tbody>
             </table>
+        </div>
         <?php } else { ?>
-            <h1 class="semCadastro">Sem empréstimo no momento!</h1>
+            <div class="alert">
+                <h1 class="semCadastro">Sem empréstimo no momento!</h1>
+                <i class="fa-solid fa-triangle-exclamation fa-3x" id="icon-alert"></i>
+            </div>
         <?php } ?>
-    </div>
     <h1 class="title">Histórico</h1>
-    <div class="tabela">
-        <?php if ($listaHistorico != null) { ?>
+    <?php if ($listaHistorico != null) { ?>
+        <div class="tabela">
             <table>
                 <thead>
                     <th scope="col">Nome de livro</th>
@@ -66,10 +69,13 @@
                     <?php } ?>
                 </tbody>
             </table>
+        </div>
         <?php } else { ?>
-            <h1 class="semCadastro">Sem histórico no momento!</h1>
+            <div class="alert">
+                <h1 class="semCadastro">Sem histórico no momento!</h1>
+                <i class="fa-solid fa-triangle-exclamation fa-3x" id="icon-alert"></i>
+            </div>
         <?php } ?>
-    </div>
 </main>
 
 

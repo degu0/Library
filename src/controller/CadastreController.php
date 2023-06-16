@@ -204,7 +204,7 @@ class CadastreController extends Controller implements RequestHandlerInterface
             $livroBD->tirarDisponivel($request->getParsedBody()["livro"]);
 
 
-            $response = new Response(302, ["Location" => "/confirmacao/emprestimo"], null);
+            $response = new Response(302, ["Location" => "/confirmacao/emprestimo" ], null);
 
             return $response;
         }
@@ -226,6 +226,7 @@ class CadastreController extends Controller implements RequestHandlerInterface
 
     public function UpdateEmprestimo(ServerRequestInterface $request): ResponseInterface
     {
+
         if ($request->getParsedBody()['data'] == null) {
             $data = date('Y/m/d');
         } else {

@@ -43,7 +43,7 @@ class BookDataBase
         $comando = "SELECT l.nome, l.imagemData, l.imagemType, l.id_livro as id,
         l.titulo, l.autor, g.genero, l.exemplares, l.disponiveis, l.resumo
         FROM livro l
-        INNER JOIN Genero g ON g.id = l.id_genero
+        INNER JOIN genero g ON g.id = l.id_genero
         WHERE g.id = ?;";
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
@@ -107,7 +107,7 @@ class BookDataBase
 
     public function remover($id)
     {
-        $comando = "DELETE FROM Livro WHERE id_livro = ?;";
+        $comando = "DELETE FROM livro WHERE id_livro = ?;";
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
 
@@ -135,7 +135,7 @@ class BookDataBase
         $disponiveis = $updateLivro->getDisponiveis();
         $resumo = $updateLivro->getResumo();
 
-        $update = "UPDATE Livro SET
+        $update = "UPDATE livro SET
         nome = '$imagemNome', imagemData = '$imagemData', imagemType = '$imagemType', titulo = '$titulo', autor = '$autor', id_genero = '$genero', exemplares = '$exemplares', disponiveis = '$disponiveis', resumo = '$resumo'  
         WHERE id_livro = '$id' ;";
     
@@ -207,7 +207,7 @@ class BookDataBase
 
     public function verificacaoDeLivro($titulo, $autor)
     {
-        $comando = "SELECT * FROM Livro where titulo = ? and autor = ?;";
+        $comando = "SELECT * FROM livro where titulo = ? and autor = ?;";
 
         $resultado = $this->conexao->mysqli->prepare($comando);
         $resultado->bind_param('ss', $titulo, $autor);

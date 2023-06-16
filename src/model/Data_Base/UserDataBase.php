@@ -67,7 +67,7 @@ class UserDataBase
     }
     public function queryLogin($email, $senha)
     {
-        $comando = "SELECT * from Usuario where email = ? and senha = ?;";
+        $comando = "SELECT * from usuario where email = ? and senha = ?;";
         $resultado = $this->conexao->mysqli->prepare($comando);
         $resultado->bind_param("ss", $email, $senha);
         $resultado->execute();
@@ -86,7 +86,7 @@ class UserDataBase
 
     public function queryName($email, $senha)
     {
-        $comando = "SELECT nome from Usuario where email = ? and senha = ?;";
+        $comando = "SELECT nome from usuario where email = ? and senha = ?;";
         $resultado = $this->conexao->mysqli->prepare($comando);
         $resultado->bind_param("ss", $email, $senha);
         $resultado->execute();
@@ -103,7 +103,7 @@ class UserDataBase
 
     public function queryId($email, $senha)
     {
-        $comando = "SELECT id_usuario from Usuario where email = ? and senha = ?;";
+        $comando = "SELECT id_usuario from usuario where email = ? and senha = ?;";
         $resultado = $this->conexao->mysqli->prepare($comando);
         $resultado->bind_param("ss", $email, $senha);
         $resultado->execute();
@@ -121,7 +121,7 @@ class UserDataBase
 
     public function queryType($email, $senha)
     {
-        $comando = "SELECT tipo_usuario as tipo from Usuario where email = ? and senha = ?;";
+        $comando = "SELECT tipo_usuario as tipo from usuario where email = ? and senha = ?;";
         $resultado = $this->conexao->mysqli->prepare($comando);
         $resultado->bind_param("ss", $email, $senha);
         $resultado->execute();
@@ -156,7 +156,7 @@ class UserDataBase
 
     public function getType($id)
     {
-        $comando = "SELECT tipo_usuario as tipo from Usuario where id_usuario = ?;";
+        $comando = "SELECT tipo_usuario as tipo from usuario where id_usuario = ?;";
         $resultado = $this->conexao->mysqli->prepare($comando);
         $resultado->bind_param('i', $id);
         $resultado->execute();
