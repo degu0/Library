@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/librares/css/head_home.css">
     <link rel="stylesheet" href="/librares/css/media_home.css">
     <link rel="stylesheet" href="/librares/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -36,24 +37,28 @@
                                     <li>
                                         <a href="/meu-perfil?id=<?php echo $_SESSION['id_usuario']; ?>">Meu perfil</a>
                                     </li>
-                                    <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário') {?>
+                                    <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'adm') { ?>
                                         <li>
-                                            <a href="/login/cadastro?id_usuario=<?php echo $_SESSION['id_usuario']?>">Cadastro de adm</a>
+                                            <a href="/login/cadastro?id_usuario=<?php echo $_SESSION['id_usuario'] ?>">Cadastro de adm</a>
                                         </li>
-                                    <?php }?>
+                                    <?php } ?>
                                     <li><a href="/login/deslog">Sair</a></li>
                                 </ul>
                             </li>
                         <?php } ?>
                         <li><a href="/home">Home</a></li>
                         <li class="dropdown-center">
-                            <span>Gêneros</span>
-                            <ul class="dropdown">
-                                <li><a href="/generos/literatura">Paradidáticos</a></li>
-                                <li><a href="/generos/didaticos">Didáticos</a></li>
-                            </ul>
+                            <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'adm') { ?>
+                                <span>Gêneros</span>
+                                <ul class="dropdown">
+                                    <li><a href="/generos/literatura">Paradidáticos</a></li>
+                                    <li><a href="/generos/didaticos">Didáticos</a></li>
+                                </ul>
+                            <?php } else { ?>
+                                <a href="/generos/literatura">Gêneros</a>
+                            <?php } ?>
                         </li>
-                        <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário') { ?>
+                        <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'adm') { ?>
                             <li class="dropdown-center">
                                 <span>Gerenciar</span>
                                 <ul class="dropdown">
@@ -86,8 +91,8 @@
         </div>
     </header>
     <main>
-        <div class="divPart">
-            <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário' && $listLoan != null) { ?>
+        <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'adm' && $listLoan != null) { ?>
+            <div class="divPart">
                 <div id="tableInfo">
                     <table>
                         <thead>
@@ -110,8 +115,8 @@
                         </tbody>
                     </table>
                 </div>
-            <?php } ?>
-        </div>
+            </div>
+        <?php } ?>
         <div class="divPart" id="divWelcome">
             <div id="information">
                 <p>Esse web site tem como principal objetivo facilitar a busca e o acesso aos livros de uma biblioteca, tornando a experiência do usuário mais agradável e eficiente. A partir da interface simples e intuitiva, o usuário pode pesquisar, solicitar empréstimo ou devolver livros
@@ -123,17 +128,16 @@
         </div>
         </div>
         <div class="divPart" id="divCards">
-            <a href="/generos/didaticos" style="text-decoration: none;" id="didatico">
-                <div class="card" data-anime="left">
-                    <img src="/images/card_cadastre.png" alt="">
-                    <h2>Livro didáticos</h2>
-                    <p>Com o nossa organização do genêros dos livros, você pode ter um controle sobre a coleção. Veja os livros didáticos</p>
+            <div id="livro-span" data-anime="left">
+                <div id="livro-span-i"><i class="fa-solid fa-book fa-7x" style="color: #261A1A;"></i></div>
+                <div id="livro-span-text">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea possimus voluptate incidunt eligendi blanditiis qui quisquam repudiandae dolorum veritatis. Maiores voluptas inventore, tempore perferendis illo expedita id magnam odio fuga!</p>
                 </div>
-            </a>
+            </div>
             <a href="/generos/literatura" style="text-decoration: none;" id="paradidatico">
                 <div class="card" data-anime="right">
                     <img src="/images/card_table.png" alt="">
-                    <h2>Livro paradidático</h2>
+                    <h2>Livros</h2>
                     <p>Com o nossa organização do genêros dos livros, você pode ter um controle sobre a coleção. Veja os livros paradidáticos.</p>
                 </div>
             </a>

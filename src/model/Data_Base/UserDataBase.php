@@ -164,7 +164,7 @@ class UserDataBase
         $resultado2 = $resultado->get_result();
 
         $linha = $resultado2->fetch_assoc();
-        if ($linha['tipo'] == 'funcionário') {
+        if ($linha['tipo'] == 'adm') {
             return true;
         }else {
             return false;

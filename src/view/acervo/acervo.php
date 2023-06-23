@@ -60,9 +60,9 @@
                             <td><?php
                                 if (date('d/m/Y', strtotime($list->getDataFinal())) < strtotime(date("Y/m/d"))) {
                                     echo "Atrasado";
-                                } else if ($list->getStatus() == 'sim') {
+                                } else if ($list->getStatus() == 'entregue') {
                                     echo "Devolvido";
-                                } else if ($list->getStatus() == 'nao') {
+                                } else if ($list->getStatus() == 'espera') {
                                     echo "Em empréstimo";
                                 } ?></td>
                         </tr>

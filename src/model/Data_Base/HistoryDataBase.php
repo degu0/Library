@@ -26,7 +26,7 @@ class HistoryDataBase
         $livro = $emprestimo->getLivro();
         $data_inicial = $emprestimo->getDataInicial();
         $data_final = date('Y/m/d', strtotime('+8 days', strtotime($data_inicial)));
-        $status = 'nao';
+        $status = 'espera';
         $adiamento = 0;
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
@@ -59,7 +59,7 @@ class HistoryDataBase
         $livro = $emprestimo->getLivro();
         $data_inicial = date('Y/m/d');
         $data_final = date('Y/m/d', strtotime('+8 days', strtotime($data_inicial)));
-        $status = 'nao';
+        $status = 'espera';
         $adiamento = 0;
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
@@ -116,7 +116,7 @@ class HistoryDataBase
 
     public function devolucao($id)
     {
-        $comando = "UPDATE `Historico` SET `Status` = 'sim' WHERE (`id` = ?);";
+        $comando = "UPDATE `Historico` SET `Status` = 'entregue' WHERE (`id` = ?);";
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id);
         $preparacao->execute();

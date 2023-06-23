@@ -6,7 +6,7 @@
     <main>
         <h1 class="title">            <?php
                 if($listGenreParadidatico == null) {
-                    echo "Nenhum cadastro do gênero paradidático.";
+                    echo "Nenhum cadastro do gênero.";
                 } else {
                     echo "Gênero Paradidático.";
                 }
@@ -20,7 +20,7 @@
                     <div class="subtag">
                         <div class="nome_genero">
                             <h3 class="genero"><?php echo $list->getGenero(); ?></h3>
-                            <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário') { ?>
+                            <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'adm') { ?>
                                 <a href="/generos/literatura/editar?id=<?php echo $list->getId() ?>" class="superLinks" id="edit">
                                     <i class="fa-solid fa-pen fa-xl" style="color: #ffffff;"></i>
                                 </a>

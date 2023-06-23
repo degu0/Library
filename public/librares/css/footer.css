@@ -7,61 +7,42 @@ footer {
     width: 100%;
 }
 
-
-#header {
-    text-align: center;
-    padding-top: 50px;
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 25vh;
 }
 
-#header h1 {
+#title h1 {
     font: normal 45px 'Courier New', Courier, monospace;
 }
 
 .information {
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 80px;
-}
-
-#instituicao {
-    display: flex;
-    justify-content: space-evenly;
     flex-direction: column;
+    align-items: center;
 }
 
-#instituicao h3 {
-    font-size: 25px;
+.information h3 {
+    font-size: 2.3rem;
 }
 
-#instituicao p {
-    display: flex;
-    font-size: 20px;
+.hr-footer {
+    width: 8vw;
+    margin-bottom: 1rem;
 }
 
-#instituicao img {
-    margin-left: 10px;
+#abas a, #autor a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 2rem;
 }
 
+#abas a:hover, #autor a:hover {
+    text-decoration: underline;
 
-#autor {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
 }
-
-#autor h3 {
-    font-size: 25px;
-}
-
-#autor p {
-    font-size: 20px;
-    display: flex;
-}
-
-#autor img {
-    margin-left: 10px;
-}
-
 
 .copy {
     text-align: center;
@@ -69,41 +50,6 @@ footer {
     font-size: 20px;
 }
 
-.container_links {
-    display: flex;
-}
-
-.container_links a {
-    margin-right: 20px;
-}
-
-
-.icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 4rem;
-    width: 4rem;
-    color: white;
-    border-radius: 50%;
-    text-decoration: none;
-}
-
-.icon:hover {
-    opacity: 0.8;
-}
-
-#instagram {
-    background: linear-gradient(#7f37c9, #ff2992, #ff9807);
-}
-
-#linkedin {
-    background-color: #0e76a8;
-}
-
-#github {
-    background-color: #171515;
-}
 
 @media screen and (max-width: 850px) {
     .information {

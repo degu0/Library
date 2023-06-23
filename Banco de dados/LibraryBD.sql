@@ -23,13 +23,13 @@ CREATE TABLE `usuario` (
   `nome` text NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
-  `tipo_usuario` enum('aluno', 'funcionário') NOT NULL	,
+  `tipo_usuario` enum('aluno', 'adm') NOT NULL	,
   
   primary key(`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `usuario` ( `nome`, `email`, `senha`, `tipo_usuario`) VALUES
-('Library', 'library@library', '4d70254b3a8e2bc38b6147fa6ee813be', 'funcionário');
+('Library', 'library@library', '4d70254b3a8e2bc38b6147fa6ee813be', 'adm');
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -87,6 +87,8 @@ CREATE TABLE `livro` (
 CREATE TABLE `genero` (
   `id` int(11) auto_increment NOT NULL,
   `genero` varchar(255) NOT NULL,
+  `classificao` enum ('didático', 'paradidático') NOT NULL, 
+  
   
   primary key(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -122,7 +124,7 @@ create table `emprestimo`(
 
 create table `Historico` (
 	`id` int auto_increment not null,
-    `Status` enum('sim', 'nao') not null,
+    `Status` enum('entregue', 'espera') not null,
     `Data_Emprestimo` date not null,
     `Data_devolucao` date,
     `Adiamento` int,

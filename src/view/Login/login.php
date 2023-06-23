@@ -33,13 +33,13 @@
                 </div>
                 <input type="submit" value="Entrar" id="button">
             </form>
-            <div class="cadastre_google">
+            <!-- <div class="cadastre_google">
                 <p class="blog-title">ou</p>
                 <a href="" class="link">
                     <img src="/images/google.png" alt="Logo da google" id="google">
                     CADASTRE-SE COM O GOOGLE
                 </a>
-            </div>
+            </div> -->
             <!-- <div class="cadastre">
                 <p>Você não têm conta?</p>
                 <a href="/login/cadastro">CADASTRE AQUI</a>

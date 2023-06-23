@@ -36,7 +36,7 @@ class ConfirmationScreenController extends Controller implements RequestHandlerI
     public function emprestimo(ServerRequestInterface $request): ResponseInterface
     {
         $emprestimoBD = new LoanDataBase();
-        if ($_SESSION['tipo_usuario'] == 'funcionário') {
+        if ($_SESSION['tipo_usuario'] == 'adm') {
             $informacoes = $emprestimoBD->queryLastLoan();
             $bodyHTTP = $this->getHTTPBodyBuffer("/layout/confirmacao_emprestimo.php", ['listInformation' => $informacoes]);
             $response = new Response(200, [], $bodyHTTP);

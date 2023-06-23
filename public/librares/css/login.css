@@ -32,8 +32,8 @@ body {
     background-color: #fff;
     border-radius: .8rem;
     margin: auto;
-    height: 80rem;
-    width: 65rem;
+    height: 65rem;
+    width: 60rem;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -42,7 +42,7 @@ body {
 
 #titulo {
     text-align: center;
-    font-size: 3.6rem;
+    font-size: 4.3rem;
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -58,9 +58,9 @@ label {
     font-size: 1.7rem;
 }
 
-.input {
+/* .input {
     margin: 1.5rem 0;
-}
+} */
 
 .input input {
     background-color: #EFEFEF;
@@ -83,6 +83,7 @@ label {
     border-radius: .5rem;
     width: 48.8rem;
     cursor: pointer;
+    margin-top: 4rem;
 }
 #input_senha {
     position: relative;

@@ -33,7 +33,7 @@
                                     <li>
                                         <a href="/meu-perfil?id=<?php echo $_SESSION['id_usuario']; ?>">Meu perfil</a>
                                     </li>
-                                    <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário') { ?>
+                                    <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'adm') { ?>
                                         <li>
                                             <a href="/login/cadastro?id_usuario=<?php echo $_SESSION['id_usuario'] ?>">Cadastro de adm</a>
                                         </li>
@@ -44,13 +44,17 @@
                         <?php } ?>
                         <li><a href="/home">Home</a></li>
                         <li class="dropdown-center">
-                            <span>Gêneros</span>
-                            <ul class="dropdown">
-                                <li><a href="/generos/literatura">Paradidáticos</a></li>
-                                <li><a href="/generos/didaticos">Didáticos</a></li>
-                            </ul>
+                            <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'adm') { ?>
+                                <span>Gêneros</span>
+                                <ul class="dropdown">
+                                    <li><a href="/generos/literatura">Paradidáticos</a></li>
+                                    <li><a href="/generos/didaticos">Didáticos</a></li>
+                                </ul>
+                            <?php } else { ?>
+                                <a href="/generos/literatura">Gêneros</a>
+                            <?php } ?>
                         </li>
-                        <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário') { ?>
+                        <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'adm') { ?>
                             <li class="dropdown-center">
                                 <span>Gerenciar</span>
                                 <ul class="dropdown">

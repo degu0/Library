@@ -1,30 +1,19 @@
 <footer>
-    <div id="header">
-        <h1>Library</h1>
-    </div>
-    <div class="information">
-        <div id="instituicao">
-            <div>
-                <h3>Instituição: </h3>
-                <p>Escola Técnica Estadual Ministro Fernando Lyra</p>
-            </div>
-            <div>
-                <p>Redes:</p>
-                <a href="https://www.instagram.com/etemflcaruaruoficial/" target="_blank" class="icon" id="instagram"><i class="fa-brands fa-instagram fa-xl"></i></a>
-            </div>
-
+    <div class="footer">
+        <div id='title'>
+            <h1>Library</h1>
         </div>
-        <div id="autor">
-            <div>
-                <h3>Autor:</h3>
-                <p>Deyvid Gustavo Correia de Sousa</p>
-            </div>
-            <div>
-                <p>Redes:</p>
-                <div class="container_links"> <a href="https://www.linkedin.com/in/deyvid-gustavo-0642a2235/" target="_blank" class="icon" id="linkedin"><i class="fa-brands fa-linkedin fa-xl"></i></a>
-                    <a href="https://github.com/degu0" target="_blank" class="icon" id="github"><i class="fa-brands fa-github fa-xl"></i></a>
-                </div>
-            </div>
+        <div id="abas" class="information">
+            <h3>Aba</h3>
+            <hr class="hr-footer">
+            <a href="/home">Home</a> <br>
+            <a href="/generos/literatura">Gênero</a> <br>
+            <a href="/sobre">Sobre</a>
+        </div>
+        <div id="autor" class="information">
+            <h3>Autor</h3>
+            <hr class="hr-footer">
+            <a href="https://github.com/degu0" target="_blank">GitHub</a>
         </div>
     </div>
     <hr>

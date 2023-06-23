@@ -30,7 +30,7 @@ foreach ($listBook as $book) { ?>
                 </p>
 
                 <?php
-                if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'funcionário') {
+                if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'adm') {
                 ?>
                     <div class="actions">
                         <a href="/livro/editar?id_livro=<?php echo $book->getId(); ?>" class="buttonAtividade">

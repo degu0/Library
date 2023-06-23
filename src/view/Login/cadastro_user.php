@@ -44,18 +44,18 @@
                     <label for="tipoUser">Tipo de usuário: </label><br>
                     <select name="tipoUser" id="tipoUser">
                         <option value="aluno">Aluno(a)</option>
-                        <option value="funcionário">Bibliotecário(a)</option>
+                        <option value="adm">Bibliotecário(a)</option>
                     </select>
                 </div> 
                 <input type="submit" value="Entrar" id="button">
             </form>
-            <div class="cadastre_google">
+            <!-- <div class="cadastre_google">
                 <p class="blog-title">ou</p>
                 <a href="" class="link">
                     <img src="/images/google.png" alt="Logo da google" id="google">
                     CADASTRE-SE COM O GOOGLE
                 </a>
-            </div>
+            </div> -->
         </div>
     </section>
     <script src="/librares/js/senha.js"></script>
