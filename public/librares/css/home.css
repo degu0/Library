@@ -202,7 +202,7 @@ tbody>tr:nth-child(even) {
     height: 79vh;
     width: 30vw;
     margin-left: -25rem;
-    border: 2.4px solid gray;
+    border: 2.4px solid black;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -224,6 +224,11 @@ tbody>tr:nth-child(even) {
     padding-left: 4rem;
 }
 
+#link-aluno {
+    text-decoration: none;
+    color: var(--cor1);
+    font-weight: bold;
+}
 
 #search {
     height: 4.3rem;

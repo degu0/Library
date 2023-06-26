@@ -103,17 +103,50 @@
                             <th scope="col">Adiar</th>
                         </thead>
                         <tbody>
-                            <?php foreach ($listLoan as $loan) { ?>
+                            <?php foreach ($listLoan as $loan) {
+                            ?>
+
                                 <tr>
-                                    <td><?php echo  date('d/m/Y', strtotime($loan->getDataFinal())); ?></td>
-                                    <td><?php echo $loan->getLivro()->getTitulo(); ?></td>
-                                    <td><?php echo $loan->getAluno()->getUsuario()->getNome(); ?></td>
+                                    <td>
+                                        <?php if (strtotime(date('Y/m/d')) >= strtotime($loan->getDataFinal())) {
+                                            echo  " <i class='fa-solid fa-triangle-exclamation ' title = 'ATRASADO!!' id='icon-alert'></i> " . date('d/m/Y', strtotime($loan->getDataFinal()));
+                                        } else {
+                                            echo  date('d/m/Y', strtotime($loan->getDataFinal()));
+                                        }; ?>
+                                    </td>
+                                    <td title=" <?php echo 'Livro: ' . $loan->getLivro()->getTitulo(); ?>" ><?php echo $loan->getLivro()->getTitulo(); ?></td>
+                                    <td><a href="/meu-perfil?id=<?php echo $loan->getAluno()->getId(); ?>&aluno=<?php echo $loan->getAluno()->getUsuario()->getNome(); ?>" id="link-aluno">
+                                            <?php echo $loan->getAluno()->getUsuario()->getNome(); ?>
+                                        </a></td>
+                                    </td>
                                     <td><?php echo "<a href='/confirmacao/devolucao?id=" . $loan->getId() . "' class='link'><i class='fa-solid fa-check fa-lg'></i></a>"; ?></td>
                                     <td><?php echo "<a href='/home/adiar?id=" . $loan->getId() . "' class='link'><i class='fa-solid fa-plus fa-lg'></i></a>"; ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
                     </table>
+                    <!-- <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'adm' && $listLoan != null) { ?>
+                        <table>
+                            <thead>
+                                <th>Livros</th>
+                                <th>aluno</th>
+                                <th>acoes</th>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($listRequest as $request) {
+                                ?>
+                                    <tr>
+                                        <td><?php echo $request->getLivro()->getTitulo(); ?></td>
+                                        <td><a href="/meu-perfil?id=<?php echo $loan->getAluno()->getId(); ?>&aluno=<?php echo $loan->getAluno()->getUsuario()->getNome(); ?>" id="link-aluno">
+                                                <?php echo $loan->getAluno()->getUsuario()->getNome(); ?>
+                                            </a></td>
+                                        </td>
+                                        <td><?php echo "<a href='/confirmacao/emprestimo?id=" . $loan->getId() . "' class='link'><i class='fa-solid fa-check fa-lg'></i></a>"; ?></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    <?php } ?> -->
                 </div>
             </div>
         <?php } ?>
@@ -141,7 +174,6 @@
                     <p>Com o nossa organização do genêros dos livros, você pode ter um controle sobre a coleção. Veja os livros paradidáticos.</p>
                 </div>
             </a>
-
         </div>
     </main>
     <script src="/librares/js/animation.js"></script>

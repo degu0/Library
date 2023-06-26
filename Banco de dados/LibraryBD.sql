@@ -122,7 +122,7 @@ create table `emprestimo`(
 --
 
 
-create table `Historico` (
+create table `historico` (
 	`id` int auto_increment not null,
     `Status` enum('entregue', 'espera') not null,
     `Data_Emprestimo` date not null,
@@ -135,3 +135,21 @@ create table `Historico` (
     foreign key(FK_id_Livro) references Livro(id_livro) ON DELETE CASCADE,
     foreign key(FK_id_Aluno) references usuario_aluno(id) ON DELETE CASCADE
 );
+
+
+-- --------------------------------------------------------
+--
+-- Estrutura da tabela `Solicitacao_Emprestimo`
+--
+
+
+create table `solicitacao_Emprestimo` (
+	`id` int auto_increment not null,
+	`FK_id_Livro` int,
+	`FK_id_Aluno` int,
+    
+    primary key(id),
+    foreign key(FK_id_Livro) references livro(id_livro) ON DELETE CASCADE,
+    foreign key(FK_id_Aluno) references usuario_aluno(id) ON DELETE CASCADE
+);
+

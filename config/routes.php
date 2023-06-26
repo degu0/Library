@@ -2,7 +2,10 @@
 
 use Library_ETE\controller\HomeController;
 use Library_ETE\controller\ErroController;
-use Library_ETE\controller\CadastreController;
+use Library_ETE\controller\CadastreInformationController;
+use Library_ETE\controller\CadastreBookController;
+use Library_ETE\controller\CadastreGenreController;
+use Library_ETE\controller\CadastreLoanController;
 use Library_ETE\controller\AboutController;
 use Library_ETE\controller\BookController;
 use Library_ETE\controller\ListController;
@@ -20,17 +23,17 @@ return [
     "/home/pesquisar" => HomeController::class,
     "/home/delete" => HomeController::class,
     "/home/adiar" => HomeController::class,
-    "/gerenciar/livro" => CadastreController::class,
-    "/gerenciar/livro/add" => CadastreController::class,
-    "/gerenciar/genero" => CadastreController::class,
-    "/gerenciar/genero/add" => CadastreController::class,
-    "/gerenciar/genero/update" => CadastreController::class,
-    "/gerenciar/emprestimo" => CadastreController::class,
-    "/gerenciar/emprestimo/add" => CadastreController::class,
-    "/gerenciar/emprestimo/editar" => CadastreController::class,
-    "/gerenciar/emprestimo/update" => CadastreController::class,
-    "/cadastro-de-informacoes" => CadastreController::class,
-    "/cadastro-de-informacoes/add" => CadastreController::class,
+    "/gerenciar/livro" => CadastreBookController::class,
+    "/gerenciar/livro/add" => CadastreBookController::class,
+    "/gerenciar/genero" => CadastreGenreController::class,
+    "/gerenciar/genero/add" => CadastreGenreController::class,
+    "/gerenciar/genero/update" => CadastreGenreController::class,
+    "/gerenciar/emprestimo" => CadastreLoanController::class,
+    "/gerenciar/emprestimo/add" => CadastreLoanController::class,
+    "/gerenciar/emprestimo/editar" => CadastreLoanController::class,
+    "/gerenciar/emprestimo/update" => CadastreLoanController::class,
+    "/cadastro-de-informacoes" => CadastreInformationController::class,
+    "/cadastro-de-informacoes/add" => CadastreInformationController::class,
     "/generos/didaticos" => GenreController::class,
     "/generos/didaticos/editar" => GenreController::class,
     "/generos/didaticos/excluir" => GenreController::class,

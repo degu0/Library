@@ -21,7 +21,7 @@ class HistoryDataBase
 
     public function adicionar(Loan $emprestimo)
     {
-        $comando = "INSERT INTO Historico (FK_id_Aluno, FK_id_Livro, Data_Emprestimo, Data_Devolucao, `Status`, Adiamento) VALUES(?, ?, ?, ?, ?, ?)";
+        $comando = "INSERT INTO historico (FK_id_Aluno, FK_id_Livro, Data_Emprestimo, Data_Devolucao, `Status`, Adiamento) VALUES(?, ?, ?, ?, ?, ?)";
         $aluno = $emprestimo->getAluno();
         $livro = $emprestimo->getLivro();
         $data_inicial = $emprestimo->getDataInicial();
@@ -54,7 +54,7 @@ class HistoryDataBase
 
     public function alunoAdicionar(Loan $emprestimo)
     {
-        $comando = "INSERT INTO Historico (FK_id_Aluno, FK_id_Livro, Data_Emprestimo, Data_Devolucao, `Status`, Adiamento) VALUES(?, ?, ?, ?, ?, ?)";
+        $comando = "INSERT INTO historico (FK_id_Aluno, FK_id_Livro, Data_Emprestimo, Data_Devolucao, `Status`, Adiamento) VALUES(?, ?, ?, ?, ?, ?)";
         $aluno = $emprestimo->getAluno();
         $livro = $emprestimo->getLivro();
         $data_inicial = date('Y/m/d');
@@ -88,7 +88,7 @@ class HistoryDataBase
     public function getHistory()
     {
         $comando = "SELECT h.id, h.Data_Emprestimo, h.Data_Devolucao, h.adiamento, h.`status`, 
-        l.id_livro, l.titulo, a.FK_id_usuario, a.matricula, u.nome  FROM Historico h
+        l.id_livro, l.titulo, a.FK_id_usuario, a.matricula, u.nome  FROM historico h
                 INNER JOIN livro l ON l.id_livro = h.FK_id_Livro
                 INNER JOIN usuario_aluno a ON a.id = h.FK_id_Aluno
                 INNER JOIN usuario u ON a.FK_id_usuario = u.id_usuario
@@ -100,23 +100,23 @@ class HistoryDataBase
             return null;
         }
 
-        $listaHistorico = [];
+        $listahistorico = [];
 
         while ($linha = $resultado->fetch_assoc()) {
             $imagem = new Image('null', 'null', 'null');
             $user = new User($linha['nome'], 'null', 'null', 'null', 'null');
             $livro = new Book($linha['titulo'], $imagem, null, null, null, null, null, $linha['id_livro']);
             $aluno = new Student($user, $linha['matricula'], null, null, $linha['FK_id_usuario']);
-            $listaHistorico[] = new History($aluno, $livro, $linha['Data_Emprestimo'], $linha['Data_Devolucao'], $linha['adiamento'], $linha['status'], $linha['id']);
+            $listahistorico[] = new History($aluno, $livro, $linha['Data_Emprestimo'], $linha['Data_Devolucao'], $linha['adiamento'], $linha['status'], $linha['id']);
         }
         $this->conexao->fecharConexao();
 
-        return $listaHistorico;
+        return $listahistorico;
     }
 
     public function devolucao($id)
     {
-        $comando = "UPDATE `Historico` SET `Status` = 'entregue' WHERE (`id` = ?);";
+        $comando = "UPDATE `historico` SET `Status` = 'entregue' WHERE (`id` = ?);";
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id);
         $preparacao->execute();
@@ -130,7 +130,7 @@ class HistoryDataBase
 
     public function adiamento($id)
     {
-        $comando = "UPDATE `Historico` SET `Adiamento` = `Adiamento`+ 1 WHERE (`id` = ?);";
+        $comando = "UPDATE `historico` SET `Adiamento` = `Adiamento`+ 1 WHERE (`id` = ?);";
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("i", $id);
         $preparacao->execute();

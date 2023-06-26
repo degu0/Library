@@ -59,6 +59,7 @@ main {
 .text {
     font-size: 1.8rem;
     font-weight: 500;
+    margin: 10px 0;
 }
 
 .actions {
@@ -82,6 +83,15 @@ main {
 .buttonAtividade p {
     font-size: 2.3rem;
     margin: 15px 0;
+}
+
+#solicitacao-emprestimo {
+    height: 75px;
+    width: 220px;
+}
+#solicitacao-emprestimo p {
+    font-size: 2.1rem;
+    margin: 10px;
 }
 
 .livro_imagem,

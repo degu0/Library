@@ -5,11 +5,10 @@ namespace Library_ETE\controller;
 use Library_ETE\controller\inheritance\Controller;
 use Library_ETE\model\Book;
 use Library_ETE\model\Image;
-use Library_ETE\model\Loan;
+use Library_ETE\model\Request;
 use Library_ETE\model\Data_Base\BookDataBase;
 use Library_ETE\model\Data_Base\GenreDataBase;
-use Library_ETE\model\Data_Base\HistoryDataBase;
-use Library_ETE\model\Data_Base\LoanDataBase;
+use Library_ETE\model\Data_Base\RequestDataBase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -33,7 +32,7 @@ class BookController extends Controller implements RequestHandlerInterface
             } else if (strpos($path_info, "excluir")) {
                 $response = $this->excluir($request);
             } else if (strpos($path_info, "emprestimo")) {
-                $response = $this->emprestimo($request);
+                $response = $this->solicitacao_emprestimo($request);
             }
         } else {
             $bodyHttp = $this->getHTTPBodyBuffer("/erro/erro_404.php",);
@@ -105,23 +104,21 @@ class BookController extends Controller implements RequestHandlerInterface
         return $response;
     }
 
-    public function emprestimo(ServerRequestInterface $request): ResponseInterface
+    public function solicitacao_emprestimo(ServerRequestInterface $request): ResponseInterface
     {
-        $emprestimo = new Loan(
-            $request->getQueryParams()["id_usuario"],
+
+        $emprestimo = new Request(
             $request->getQueryParams()["id_livro"],
-            null,
+            $request->getQueryParams()["id_usuario"],
             null
         );
 
-        $emprestimoBD = new LoanDataBase();
-        $historicoBD = new HistoryDataBase();
-        $livroBD = new BookDataBase();
-        $emprestimoBD->alunoAdicionar($emprestimo);
-        $historicoBD->alunoAdicionar($emprestimo);
-        $livroBD->tirarDisponivel($request->getQueryParams()['id_livro']);
+        $solicitacaoBD = new RequestDataBase();
+        $solicitacaoBD->request($emprestimo);
+        var_dump("STOP!!");
+        exit();
 
-        $response = new Response(302, ["Location" => "/confirmacao/senha"], null);
+        $response = new Response(302, ["Location" => "/"], null);
 
         return $response;
     }

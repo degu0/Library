@@ -1,4 +1,4 @@
-<title>Library - EmprestimoP</title>
+<title>Library - Empréstimo</title>
 <?php require __DIR__ . "/../share/head.php"; ?>
 <link rel="stylesheet" href="/librares/css/acervo.css">
 
