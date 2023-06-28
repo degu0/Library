@@ -30,7 +30,7 @@
                     <select name="genero" id="genero" class="input" required>
                         <?php
                         foreach ($listGenre as $list) { ?>
-                            <option value="<?php echo $list->getId(); ?>"><?php echo $list->getGenero(); ?></option>
+                            <option value="<?php echo $list->getId(); ?>"><?php echo $list->getGenero() . " - " . $list->getClassificacao() ?></option>
                         <?php } ?>
                     </select>
                 </div>

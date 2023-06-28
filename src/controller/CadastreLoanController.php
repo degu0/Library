@@ -8,6 +8,7 @@ use Library_ETE\model\Data_Base\StudentDataBase;
 use Library_ETE\model\Data_Base\LoanDataBase;
 use Library_ETE\model\Data_Base\HistoryDataBase;
 use Library_ETE\controller\inheritance\Controller;
+use Library_ETE\model\Data_Base\RequestDataBase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -27,10 +28,10 @@ class CadastreLoanController extends Controller implements RequestHandlerInterfa
                 $response = $this->Emprestimo(false);
                 if (strpos($path_info, "add")) {
                     $response = $this->AdicionarEmprestimo($request);
-                } else if (strpos($path_info, "editar")) {
-                    $response = $this->EditarEmprestimo($request);
                 } else if (strpos($path_info, "update")) {
                     $response = $this->UpdateEmprestimo($request);
+                } else if (strpos($path_info, "editar")) {
+                    $response = $this->EditarEmprestimo($request);
                 }
             }
         } else {

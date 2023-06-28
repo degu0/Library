@@ -8,11 +8,13 @@ class Request
     private $id;
     private $aluno;
     private $livro;
+    private $data;
 
-    public function __construct($livro, $aluno, $id = null)
+    public function __construct($livro, $aluno, $data, $id = null)
     {
         $this->livro = $livro;
         $this->aluno = $aluno;
+        $this->data = $data;
         $this->id = $id;
     }
 
@@ -29,5 +31,10 @@ class Request
     public function getLivro()
     {
         return $this->livro;
+    }
+    
+    public function getData()
+    {
+        return $this->data;
     }
 }

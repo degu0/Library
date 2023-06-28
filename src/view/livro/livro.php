@@ -40,7 +40,7 @@ foreach ($listBook as $book) { ?>
                             <p>Excluir</p>
                         </a>
                     </div>
-                <?php } else if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'aluno') { ?>
+                <?php } else if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'aluno' && $_SESSION['emprestimo'] == false) {?>
                     <div class="actions">
                         <a href="/livro/emprestimo?id_livro=<?php echo $book->getId(); ?>&id_usuario=<?php echo $_SESSION['id_usuario'];?>" class="buttonAtividade" id="solicitacao-emprestimo">
                             <p>Solicitação do empréstimo</p>

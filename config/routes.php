@@ -17,6 +17,7 @@ use Library_ETE\controller\AcervoController;
 use Library_ETE\controller\MyPerfilController;
 use Library_ETE\controller\ConfirmationScreenController;
 use Library_ETE\controller\LoanController;
+use Library_ETE\controller\RequestController;
 
 return [
     "/home" => HomeController::class,
@@ -56,6 +57,8 @@ return [
     "/confirmacao/emprestimo" => ConfirmationScreenController::class,
     "/confirmacao/devolucao" => ConfirmationScreenController::class,
     "/confirmacao/senha" => ConfirmationScreenController::class,
+    "/solicitacao/add" => RequestController::class,
+    "/solicitacao/remover" => RequestController::class,
     "/emprestimo" => LoanController::class,
     "/meu-perfil" => MyPerfilController::class,
     "/acervo" => AcervoController::class,

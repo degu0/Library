@@ -22,7 +22,8 @@
                 </p>
             </div>
             <div>
-                <p class="erro">Dados incorretos? Por favor, edite o seu empréstimo. <br> <a href="/gerenciar/emprestimo/editar?id=<?php echo $loan->getId();?>" class="link">Aqui</a></p>
+                <p class="erro">Dados incorretos? Por favor, edite o seu empréstimo. <br>
+                 <a href="/gerenciar/emprestimo/editar?id=<?php echo $loan->getId();?>" class="link">Aqui</a></p>
             </div>
         <?php } ?>
         <div>

@@ -46,7 +46,7 @@ main {
     font: normal 40px Arial;
 } */
 
-#tableInfo {
+.tableInfo {
     margin: 10rem auto;
     display: flex;
     flex-direction: column;
@@ -55,7 +55,7 @@ main {
     overflow-y: scroll;
 }
 
-#tableInfo::-webkit-scrollbar {
+.tableInfo::-webkit-scrollbar {
     background-color: #261A1A;
     width: 15px;
     border-top-right-radius: 5px;
@@ -114,6 +114,12 @@ tbody>tr:nth-child(even) {
 .link {
     color: var(--cor5);
     text-decoration: none;
+}
+
+#button-modal {
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .divPart {

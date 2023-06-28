@@ -8,6 +8,7 @@ use Library_ETE\model\Image;
 use Library_ETE\model\Request;
 use Library_ETE\model\Data_Base\BookDataBase;
 use Library_ETE\model\Data_Base\GenreDataBase;
+use Library_ETE\model\Data_Base\LoanDataBase;
 use Library_ETE\model\Data_Base\RequestDataBase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -69,8 +70,7 @@ class BookController extends Controller implements RequestHandlerInterface
         if ($_FILES['imagem_livro']['size'] == null) {
             $arrayImagem = $livroDB->queryImagem($request->getQueryParams()["id_livro"]);
             $imagemData = addslashes($arrayImagem[1]);
-            $imagem = new Image($arrayImagem[0], $imagemData ,$arrayImagem[2]);
-
+            $imagem = new Image($arrayImagem[0], $imagemData, $arrayImagem[2]);
         } else {
             $imgData = addslashes(file_get_contents($_FILES['imagem_livro']['tmp_name']));
             $imgType = getimageSize($_FILES['imagem_livro']['tmp_name']);
@@ -85,7 +85,7 @@ class BookController extends Controller implements RequestHandlerInterface
             $request->getParsedBody()["genero"],
             $request->getParsedBody()["exemplares"],
             $request->getParsedBody()["exemplares"],
-            $request->getParsedBody()["resumo"], 
+            $request->getParsedBody()["resumo"],
             $request->getQueryParams()["id_livro"]
         );
 
@@ -106,19 +106,17 @@ class BookController extends Controller implements RequestHandlerInterface
 
     public function solicitacao_emprestimo(ServerRequestInterface $request): ResponseInterface
     {
-
         $emprestimo = new Request(
             $request->getQueryParams()["id_livro"],
             $request->getQueryParams()["id_usuario"],
+            date('Y/m/d'),
             null
         );
 
         $solicitacaoBD = new RequestDataBase();
         $solicitacaoBD->request($emprestimo);
-        var_dump("STOP!!");
-        exit();
 
-        $response = new Response(302, ["Location" => "/"], null);
+        $response = new Response(302, ["Location" => "/home"], null);
 
         return $response;
     }

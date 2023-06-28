@@ -134,7 +134,7 @@ create table `historico` (
     primary key(id),
     foreign key(FK_id_Livro) references Livro(id_livro) ON DELETE CASCADE,
     foreign key(FK_id_Aluno) references usuario_aluno(id) ON DELETE CASCADE
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 -- --------------------------------------------------------
@@ -143,13 +143,14 @@ create table `historico` (
 --
 
 
-create table `solicitacao_Emprestimo` (
+create table `solicitacao_emprestimo` (
 	`id` int auto_increment not null,
+    `Data_Solicitacao` date not null,
 	`FK_id_Livro` int,
 	`FK_id_Aluno` int,
     
     primary key(id),
-    foreign key(FK_id_Livro) references livro(id_livro) ON DELETE CASCADE,
-    foreign key(FK_id_Aluno) references usuario_aluno(id) ON DELETE CASCADE
-);
+    foreign key(FK_id_Livro) references Livro(id_livro) ON DELETE CASCADE,
+    foreign key(FK_id_Aluno) references usuario(id_usuario) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

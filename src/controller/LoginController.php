@@ -4,6 +4,7 @@ namespace Library_ETE\controller;
 
 use Library_ETE\controller\inheritance\Controller;
 use Library_ETE\model\Data_Base\LoanDataBase;
+use Library_ETE\model\Data_Base\StudentDataBase;
 use Library_ETE\model\User;
 use Library_ETE\model\Data_Base\UserDataBase;
 use Psr\Http\Message\ResponseInterface;
@@ -69,11 +70,16 @@ class LoginController extends Controller implements RequestHandlerInterface
             $_SESSION["tipo_usuario"] = $tipo_usuario;
 
             if ($tipo_usuario == "aluno") {
-                $temEmprestimo = $emprestimoBD->verificationStudent($idUsuario);
+                $alunoBD = new StudentDataBase;
+                $idAluno = $alunoBD->queryId($loginUsuario, $senhaMD5);
+                $temEmprestimo = $emprestimoBD->verificationStudent($idAluno);
                 if ($temEmprestimo) {
                     $_SESSION['emprestimo'] = true;
+                }else {
+                    $_SESSION['emprestimo'] = false;
                 }
             }
+
             return new Response(302, ["Location" => "/home"],);
         } else {
             $bodyHTTP = $this->getHTTPBodyBuffer("/login/login.php", ["loginIncorreto" => true, "SenhaIncorreta" => true]);

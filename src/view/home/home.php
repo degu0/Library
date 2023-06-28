@@ -8,8 +8,8 @@
     <title>Library</title>
     <link rel="shortcut icon" href="/images/LIbrary_Icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/librares/css/head_home.css">
-    <link rel="stylesheet" href="/librares/css/media_home.css">
     <link rel="stylesheet" href="/librares/css/home.css">
+    <link rel="stylesheet" href="/librares/css/confirmacao_modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -71,11 +71,6 @@
                                 <a href="/acervo">Acervo</a>
                             </li>
                         <?php } ?>
-                        <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'aluno' &&  array_key_exists('emprestimo', $_SESSION) && $_SESSION['emprestimo']) { ?>
-                            <li>
-                                <a href="/emprestimo">Emprestimo</a>
-                            </li>
-                        <?php } ?>
                         <li>
                             <a href="/sobre">Sobre</a>
                         </li>
@@ -93,7 +88,7 @@
     <main>
         <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'adm' && $listLoan != null) { ?>
             <div class="divPart">
-                <div id="tableInfo">
+                <div class="tableInfo">
                     <table>
                         <thead>
                             <th scope="col">Data de entrega</th>
@@ -114,39 +109,53 @@
                                             echo  date('d/m/Y', strtotime($loan->getDataFinal()));
                                         }; ?>
                                     </td>
-                                    <td title=" <?php echo 'Livro: ' . $loan->getLivro()->getTitulo(); ?>" ><?php echo $loan->getLivro()->getTitulo(); ?></td>
+                                    <td title=" <?php echo 'Livro: ' . $loan->getLivro()->getTitulo(); ?>"><?php echo $loan->getLivro()->getTitulo(); ?></td>
                                     <td><a href="/meu-perfil?id=<?php echo $loan->getAluno()->getId(); ?>&aluno=<?php echo $loan->getAluno()->getUsuario()->getNome(); ?>" id="link-aluno">
                                             <?php echo $loan->getAluno()->getUsuario()->getNome(); ?>
                                         </a></td>
                                     </td>
-                                    <td><?php echo "<a href='/confirmacao/devolucao?id=" . $loan->getId() . "' class='link'><i class='fa-solid fa-check fa-lg'></i></a>"; ?></td>
+                                    <td><button onclick="ModalDevolutionConfirmation()" id="button-modal-loan"><i class='fa-solid fa-check fa-lg'></i></button></td>
                                     <td><?php echo "<a href='/home/adiar?id=" . $loan->getId() . "' class='link'><i class='fa-solid fa-plus fa-lg'></i></a>"; ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
                     </table>
-                    <!-- <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'adm' && $listLoan != null) { ?>
-                        <table>
-                            <thead>
-                                <th>Livros</th>
-                                <th>aluno</th>
-                                <th>acoes</th>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($listRequest as $request) {
-                                ?>
-                                    <tr>
-                                        <td><?php echo $request->getLivro()->getTitulo(); ?></td>
-                                        <td><a href="/meu-perfil?id=<?php echo $loan->getAluno()->getId(); ?>&aluno=<?php echo $loan->getAluno()->getUsuario()->getNome(); ?>" id="link-aluno">
-                                                <?php echo $loan->getAluno()->getUsuario()->getNome(); ?>
-                                            </a></td>
-                                        </td>
-                                        <td><?php echo "<a href='/confirmacao/emprestimo?id=" . $loan->getId() . "' class='link'><i class='fa-solid fa-check fa-lg'></i></a>"; ?></td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    <?php } ?> -->
+                </div>
+            </div>
+        <?php } ?>
+        <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'adm' && $listRequest != null) { ?>
+            <div class="divPart" id="request">
+                <div class="tableInfo" id='request-table'>
+                    <table>
+                        <thead>
+                            <th>Livros</th>
+                            <th>Aluno</th>
+                            <th>Data</th>
+                            <th>Ver</th>
+                            <th>Excluir</th>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($listRequest as $request) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $request->getLivro()->getTitulo(); ?></td>
+                                    <td><a href="/meu-perfil?id=<?php echo $request->getAluno()->getId(); ?>&aluno=<?php echo $request->getAluno()->getUsuario()->getNome(); ?>" id="link-aluno">
+                                            <?php echo $request->getAluno()->getUsuario()->getNome(); ?>
+                                        </a></td>
+                                    </td>
+                                    <td><?php echo $request->getData(); ?></td>
+                                    <td>
+                                        <button onclick="ModalLoanConfirmation()" id="button-modal-loan"><i class='fa-solid fa-check fa-lg'></i></button>
+                                    </td>
+                                    <td>
+                                        <a href="/solicitacao/remover?id_solitacao=<?php echo $request->getId(); ?>" class="confirmation">
+                                            <i class="fa-solid fa-x" style="color: #fff;"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         <?php } ?>
@@ -176,6 +185,66 @@
             </a>
         </div>
     </main>
-    <script src="/librares/js/animation.js"></script>
-    <script src="/librares/js/menu.js"></script>
-    <?php require __DIR__ . "/../share/footer.php"; ?>
+    <dialog id="modal-emprestimo">
+        <button onclick="ModalLoanClose()" id="close-modal-loan"> <i class="fa-solid fa-x fa-3x" style="color: #fff;"></i></button>
+        <div class="confirmacao">
+            <h1 class="titulo">Confirmação do empréstimo</h1>
+            <?php foreach ($listRequest as $request) { ?>
+                <div class="dados">
+                    <p class="informacoes">
+                        <span class="variavel">Aluno:</span>
+                        <?php echo $request->getAluno()->getUsuario()->getNome(); ?>
+                    </p>
+                    <p class="informacoes">
+                        <span class="variavel">Livro:</span>
+                        <?php echo $request->getLivro()->getTitulo(); ?>
+                    </p>
+                    <p class="informacoes">
+                        <span class="variavel">Data do empréstimo:</span>
+                        <?php echo date('d/m/Y', strtotime($request->getData())); ?>
+                    </p>
+                </div>
+                <div>
+                    <p class="erro">Dados incorretos? Por favor, edite o seu empréstimo. <br> <a href="/gerenciar/emprestimo/editar?id=<?php echo $loan->getId(); ?>" class="link">Aqui</a></p>
+                </div>
+            <?php } ?>
+            <div>
+                <a href="/solicitacao/add?id_solicitacao=<?php echo $request->getId(); ?>&aluno=<?php echo $request->getAluno()->getId(); ?>&livro=<?php echo $request->GetLivro()->getId(); ?>&data=<?php echo date('d/m/Y', strtotime($request->getData())); ?>" class="confirmation">
+                    <i class="fa-solid fa-circle-check fa-4x" style="color: #8c6b4f;"></i>
+                </a>
+            </div>
+        </div>
+        <dialog id="modal-devolucao">
+            <button onclick="ModalDevolutionClose()" id="close-modal-devolution"> <i class="fa-solid fa-x fa-3x" style="color: #fff;"></i></button>
+            <div class="confirmacao">
+                <h1 class="titulo">Confirmação da devolução</h1>
+                <?php foreach ($listRequest as $request) { ?>
+                    <div class="dados">
+                        <p class="informacoes">
+                            <span class="variavel">Aluno:</span>
+                            <?php echo $request->getAluno()->getUsuario()->getNome(); ?>
+                        </p>
+                        <p class="informacoes">
+                            <span class="variavel">Livro:</span>
+                            <?php echo $request->getLivro()->getTitulo(); ?>
+                        </p>
+                        <p class="informacoes">
+                            <span class="variavel">Data do empréstimo:</span>
+                            <?php echo date('d/m/Y', strtotime($request->getData())) ?>
+                        </p>
+                    </div>
+                    <div>
+                        <p class="erro">Dados incorretos? Por favor, edite o seu empréstimo. <br> <a href="/gerenciar/emprestimo/editar?id=<?php echo $loan->getId(); ?>" class="link">Aqui</a></p>
+                    </div>
+                <?php } ?>
+                <div>
+                    <a href="/home" class="confirmation">
+                        <i class="fa-solid fa-circle-check fa-4x" style="color: #8c6b4f;"></i>
+                    </a>
+                </div>
+            </div>
+        </dialog>
+        <script src="/librares/js/animation.js"></script>
+        <script src="/librares/js/menu.js"></script>
+        <script src="/librares/js/modal.js"></script>
+        <?php require __DIR__ . "/../share/footer.php"; ?>

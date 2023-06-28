@@ -91,4 +91,22 @@ class StudentDataBase
 
         $this->conexao->fecharConexao();  
     }
+
+    public function queryId($email, $senha)
+    {
+        $comando = "SELECT a.id, u.id_usuario FROM usuario_aluno a
+        INNER JOIN usuario u ON a.FK_id_usuario = u.id_usuario where email = ? and senha = ?;";
+        $resultado = $this->conexao->mysqli->prepare($comando);
+        $resultado->bind_param("ss", $email, $senha);
+        $resultado->execute();
+
+        $resultado2 = $resultado->get_result();
+
+        $linha = $resultado2->fetch_assoc();
+        if ($linha != null) {
+            return $linha["id"];
+        }else {
+            return null;
+        }
+    }
 }

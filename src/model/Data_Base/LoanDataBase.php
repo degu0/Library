@@ -246,16 +246,16 @@ class LoanDataBase
     {
         $comando = "SELECT * FROM emprestimo WHERE FK_id_aluno = ?;";
         $preparacao = $this->conexao->mysqli->prepare($comando);
-        $preparacao->bind_param("i", $id_aluno);
+        $preparacao->bind_param("i", $idAluno);
         $preparacao->execute();
 
         $resultado = $preparacao->get_result();
-        if ($resultado == false) {
-            return null;
+        $linha = $resultado->fetch_assoc();
+        if ($linha['id']) {
+            return true;
+        }else {
+            return false;
         }
-
-        $this->conexao->fecharConexao();
-        return true; 
     }
 
     public function verificacaoDeEmprestimo($idAluno, $idLivro)
