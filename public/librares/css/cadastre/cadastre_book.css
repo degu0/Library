@@ -103,8 +103,12 @@ label {
 
 @media screen and (max-width: 1024px) {
     .cadastro {
-        width: 90vw;
-        height: 64rem;
+        width: 100%;
+        height: 100%;
+        box-shadow: none;
+    }
+    .input {
+        font-size: 1.2rem;
     }
 }
 
@@ -125,7 +129,7 @@ label {
     }
     .input {
         height: 6vh;
-        width: 80vw;
+        width: 90vw;
     }
     #placeholder {
         height: 40vh;

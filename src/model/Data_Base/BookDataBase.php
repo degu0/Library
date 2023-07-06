@@ -4,6 +4,7 @@ namespace Library_ETE\model\Data_Base;
 
 use Library_ETE\model\Data_Base\Conexao;
 use Library_ETE\model\Book;
+use Library_ETE\model\Genre;
 use Library_ETE\model\Image;
 
 class BookDataBase
@@ -12,7 +13,7 @@ class BookDataBase
 
     public function __construct()
     {
-        $this->conexao = new Conexao;
+        $this->conexao = new Conexao();
     }
 
     public function queryBook($id)
@@ -138,13 +139,13 @@ class BookDataBase
         $update = "UPDATE livro SET
         nome = '$imagemNome', imagemData = '$imagemData', imagemType = '$imagemType', titulo = '$titulo', autor = '$autor', id_genero = '$genero', exemplares = '$exemplares', disponiveis = '$disponiveis', resumo = '$resumo'  
         WHERE id_livro = '$id' ;";
-    
+
 
         $resultado = $this->conexao->mysqli->query($update);
 
         $this->conexao->fecharConexao();
 
-        return $resultado; 
+        return $resultado;
     }
 
     public function tirarDisponivel($id)
@@ -178,12 +179,12 @@ class BookDataBase
 
         $sql = "INSERT INTO livro ( nome, imagemData, imagemType, titulo, autor, id_genero, exemplares, disponiveis, resumo)
         VALUES ('$nomeImagem', '$imagemData', '$imagemType', '$titulo','$autor','$id_genero', '$exemplares', '$disponiveis', '$resumo')";
-        
+
 
         $resultado = $this->conexao->mysqli->query($sql);
         $this->conexao->fecharConexao();
 
-        return $resultado;  
+        return $resultado;
     }
 
     public function queryImagem($id)
@@ -215,13 +216,34 @@ class BookDataBase
 
         $resultado2 = $resultado->get_result();
 
-        
+
         $linha = $resultado2->fetch_assoc();
 
         if ($linha) {
             return true;
-        }else {
+        } else {
             return false;
         }
+    }
+
+    public function listaParaexcel()
+    {
+        $comando = " SELECT l.titulo, l.autor, g.genero, g.classificao, l.exemplares FROM livro as l
+        INNER JOIN genero g ON l.id_genero = g.id;";
+
+        $resultado = $this->conexao->mysqli->query($comando);
+
+        if ($resultado == false) {
+            return null;
+        }
+        $listBook = [];
+
+        while ($linha = $resultado->fetch_assoc()) {
+            $genero = array($linha['genero'], $linha['classificao']);
+            $listBook[] = array($linha['titulo'], $linha['autor'], $genero, $linha['exemplares']);
+        }
+
+        $this->conexao->fecharConexao();
+        return $listBook;
     }
 }

@@ -61,6 +61,7 @@ return [
     "/solicitacao/remover" => RequestController::class,
     "/emprestimo" => LoanController::class,
     "/meu-perfil" => MyPerfilController::class,
+    "/excel" => MyPerfilController::class,
     "/acervo" => AcervoController::class,
     "/pesquisa" => SearchController::class,
     "/sobre" => AboutController::class,

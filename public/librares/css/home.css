@@ -116,7 +116,7 @@ tbody>tr:nth-child(even) {
     text-decoration: none;
 }
 
-#button-modal {
+[data-open-modal-loan], [data-open-modal-devolution]  {
     background: none;
     border: none;
     cursor: pointer;
@@ -124,7 +124,6 @@ tbody>tr:nth-child(even) {
 
 .divPart {
     height: 90vh;
-    width: 98.7vw;
 }
 
 #divCards {
@@ -215,6 +214,7 @@ tbody>tr:nth-child(even) {
     justify-content: space-between;
     background-color: var(--cor3);
     color: #fff;
+    display: none;
 }
 
 #livro-span-i {
@@ -321,7 +321,7 @@ tbody>tr:nth-child(even) {
     #welcomeImg {
         width: 54rem;
         height: 54rem;
-    }
+}
 }
 
 @media screen and (max-width: 1150px) {
@@ -379,6 +379,6 @@ tbody>tr:nth-child(even) {
     }
 
     .card {
-        width: 25rem;
+        width: 80vw;
     }
 }

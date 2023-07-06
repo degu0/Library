@@ -17,6 +17,7 @@
                 <div class="aboutPerfil">
                     <p>Função: <span><?php echo $perfil->getTipoUser() ?></span></p>
                 </div>
+                <a href="/excel">EXCEL</a>
             </div>
         <?php } ?>
     </div>

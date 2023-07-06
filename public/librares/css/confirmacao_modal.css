@@ -22,7 +22,7 @@ html {
     font-size: 62.5%;
 }
 
-.modal {
+[data-modal-loan], [data-modal-devolution] {
     height: 60vh;
     width: 50vw;
     border: none;
@@ -31,9 +31,10 @@ html {
     background-color: var(--cor1);
     color: var(--cor5);
     box-shadow: 0 0 1rem rgb(0 0 0 / .3);
+    font-family: 'Montserrat', sans-serif;
 }
 
-.close-modal {
+[data-close-modal-loan],[data-close-modal-devolution]  {
     display: flex;
     margin: 1.5rem 0 0 2rem;
     background: none;

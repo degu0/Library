@@ -34,8 +34,11 @@
                                         <a href="/meu-perfil?id=<?php echo $_SESSION['id_usuario']; ?>">Meu perfil</a>
                                     </li>
                                     <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'adm') { ?>
-                                        <li>
+                                        <!-- <li>
                                             <a href="/login/cadastro?id_usuario=<?php echo $_SESSION['id_usuario'] ?>">Cadastro de adm</a>
+                                        </li> -->
+                                        <li>
+                                            <a href="/acervo">Acervo</a>
                                         </li>
                                     <?php } ?>
                                     <li><a href="/login/deslog">Sair</a></li>
@@ -63,9 +66,7 @@
                                     <li><a href="/gerenciar/emprestimo">Cadastre Empréstimo</a></li>
                                 </ul>
                             </li>
-                            <li>
-                                <a href="/acervo">Acervo</a>
-                            </li>
+
                         <?php } ?>
                         <li>
                             <a href="/sobre">Sobre</a>

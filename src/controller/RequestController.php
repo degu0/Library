@@ -39,24 +39,26 @@ class RequestController extends Controller implements RequestHandlerInterface
     public function AdicionarSolicitacao(ServerRequestInterface $request): ResponseInterface
     {
         $emprestimoBD = new LoanDataBase();
+        $alunoBD = new StudentDataBase();
+        $historicoBD = new HistoryDataBase();
+        $livroBD = new BookDataBase();
+        $requestBD = new RequestDataBase();
+
+        $idAluno = $alunoBD->queryIdLoan($request->getQueryParams()["aluno"]);
         $emprestimo = new Loan(
-            $request->getQueryParams()["aluno"],
+            $idAluno,
             $request->getQueryParams()["livro"],
             $request->getQueryParams()["data"],
             null
         );
 
-
-        $historicoBD = new HistoryDataBase();
-        $livroBD = new BookDataBase();
-        $requestBD = new RequestDataBase();
         $emprestimoBD->adicionar($emprestimo);
         $historicoBD->adicionar($emprestimo);
         $livroBD->tirarDisponivel($request->getQueryParams()["livro"]);
-        $requestBD->remover($request->getQueryParams()["id_solitacao"]);
+        $requestBD->remover($request->getQueryParams()["id_solicitacao"]);
 
 
-        $response = new Response(302, ["Location" => "/confirmacao/emprestimo"], null);
+        $response = new Response(302, ["Location" => "/home"], null);
 
         return $response;
     }

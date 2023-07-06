@@ -26,7 +26,7 @@ body {
 }
 
 main {
-    height: 80vh;
+    height: 120vh;
     display: grid;
     text-align: center;
     place-items: center;
@@ -81,7 +81,19 @@ select, #data {
     border-radius: .5rem;
 }
 
-
+@media screen and (max-width: 1024px) {
+    .cadastro {
+        height: 60vh;
+        width: 60vw;
+    }
+    #title_cadastre {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+    select {
+        font-size: 1.3rem;
+    }
+}
 
 @media screen and (max-width: 600px) {
     main {
@@ -98,5 +110,9 @@ select, #data {
     select, #data {
         width: 75vw;
         height: 8vh;
+    }
+    #button {
+        height: 9vh;
+        width: 27vw;
     }
 }

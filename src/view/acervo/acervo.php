@@ -48,16 +48,16 @@
                 <tbody>
                     <?php foreach ($listaHistorico as $list) { ?>
                         <tr>
-                            <td><?php echo $list->getLivro()->getTitulo(); ?></td>
-                            <td>
+                            <td title =" <?php echo 'Titulo: ' . $list->getLivro()->getTitulo(); ?>"><?php echo $list->getLivro()->getTitulo(); ?></td>
+                            <td title=" <?php echo 'Aluno: ' . $list->getAluno()->getUsuario()->getNome(); ?>">
                                 <a href="/meu-perfil?id=<?php echo $list->getAluno()->getId(); ?>&aluno=<?php echo $list->getAluno()->getUsuario()->getNome(); ?>" id="link-aluno">
                                     <?php echo $list->getAluno()->getUsuario()->getNome(); ?>
                                 </a>
                             </td>
-                            <td><?php echo  date('d/m/Y', strtotime($list->getDataInicial())); ?></td>
-                            <td><?php echo  date('d/m/Y', strtotime($list->getDataFinal())); ?></td>
-                            <td><?php echo  $list->getAdiamento(); ?></td>
-                            <td><?php
+                            <td title="<?php echo 'Data de empréstimo: ' .  date('d/m/Y', strtotime($list->getDataInicial())); ?>"><?php echo  date('d/m/Y', strtotime($list->getDataInicial())); ?></td>
+                            <td title="<?php echo 'Data da entrega: ' .  date('d/m/Y', strtotime($list->getDataFinal())); ?>"><?php echo  date('d/m/Y', strtotime($list->getDataFinal())); ?></td>
+                            <td title="<?php echo 'Quantidade de adiamentos: ' .  $list->getAdiamento(); ?>"><?php echo  $list->getAdiamento(); ?></td>
+                            <td title="Status do empréstimo"><?php
                                 if (date('d/m/Y', strtotime($list->getDataFinal())) < strtotime(date("Y/m/d"))) {
                                     echo "Atrasado";
                                 } else if ($list->getStatus() == 'entregue') {

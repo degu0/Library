@@ -41,7 +41,10 @@ footer {
 
 #abas a:hover, #autor a:hover {
     text-decoration: underline;
+}
 
+#autor {
+    height: 25vh;
 }
 
 .copy {
@@ -50,26 +53,31 @@ footer {
     font-size: 20px;
 }
 
+@media screen and (max-width: 1024px) {
+    .footer {
+        height: 30vh;
+    }
+    #abas a, #autor a {
+        font-size: 1.4rem ;
+    }
+}
+
 
 @media screen and (max-width: 850px) {
     .information {
         flex-direction: column;
         align-items: center;
-        margin: 20px 0 60px;
     }
-
-    #autor {
-        margin: 4rem 0 0 -15rem;
+    .information h3 {
+        font-size: 1.8rem;
     }
-
-    .icon {
-        height: 5rem;
-        width: 5rem;
+    #abas a , #autor a {
+        font-size: 1.5rem;
     }
-}
-
-@media screen and (max-width: 470px ) {
-    #autor {
-        margin: 0;
+    #title h1 {
+        font-size: 3.5rem;
     }
+    .copy {
+        font-size: 1.6rem;
+    } 
 }

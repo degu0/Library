@@ -15,16 +15,16 @@
         <?php
         foreach ($listGenreParadidatico as $list) {
         ?>
-            <a href="/lista?id_genero=<?php echo $list->getId(); ?>" id="genero_link">
+            <a href="/lista?id_genero=<?php echo $list->getId(); ?>" id="genero_link" title="<?php echo 'Gênero: '. $list->getGenero(); ?>">
                 <div class="tag">
                     <div class="subtag">
                         <div class="nome_genero">
                             <h3 class="genero"><?php echo $list->getGenero(); ?></h3>
                             <?php if (array_key_exists('tipo_usuario', $_SESSION) && $_SESSION['tipo_usuario'] == 'adm') { ?>
-                                <a href="/generos/literatura/editar?id=<?php echo $list->getId() ?>" class="superLinks" id="edit">
+                                <a href="/generos/literatura/editar?id=<?php echo $list->getId() ?>" class="superLinks" id="edit"  title="Editar o gênero">
                                     <i class="fa-solid fa-pen fa-xl" style="color: #ffffff;"></i>
                                 </a>
-                                <a href="" class="superLinks" id="trash">
+                                <a href="" class="superLinks" id="trash" title="Excluir o gênero">
                                     <i class="fa-solid fa-trash fa-xl" style="color: #fff;"></i>
                                 </a>
                             <?php } ?>

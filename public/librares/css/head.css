@@ -37,7 +37,7 @@ nav ul {
 
 nav ul li {
     position: relative;
-    padding: 15px;
+    padding: 0 1rem;
 }
 
 nav ul li a,
@@ -66,6 +66,7 @@ nav ul ul {
 nav ul ul li {
     width: 200px;
     border-top: 1px solid var(--corLinha);
+    padding: .8rem;
 }
 
 nav ul ul li a {
@@ -164,8 +165,8 @@ nav ul ul li a {
 
     .menu-section.on .menu-toggle {
         position: absolute;
-        right: 85%;
-        top: 32px;
+        right: 81%;
+        top: 19px;
     }
 
     .menu-section.on .menu-toggle .one {
@@ -235,5 +236,9 @@ nav ul ul li a {
 
     #searchNav {
         width: 45vw;
+    }
+
+    #buttom-searchNav {
+        height: 5.5vh;
     }
 }

@@ -1,23 +1,41 @@
-const button_loan = document.getElementById('button-modal-loan')
-const modal_loan = document.querySelector('#modal-loan')
-const close_loan = document.querySelector('.close-modal-loan')
-const modal_devolution = document.querySelector('#modal-devolution')
-const button_devolution = document.getElementById('button-modal-devolution')
-const close_devolution = document.querySelector('.close-modal-devolution')
+console.log('est aqui')
+const openButtonLoan = document.querySelector('.open-modal-loan')
+const closeButtonLoan = document.querySelector('.close-modal-loan')
 
-function ModalLoanConfirmation() {
-    modal_loan.showModal()
+openButtonLoan.addEventListener('click', () => {
+    showModalLoan()
+})
+
+function showModalLoan() {
+    const modalLoan = document.querySelector(".modalLoan")
+    modalLoan.showModal()
+    console.log('1');
 }
 
-function ModalDevolutionConfirmation() {
-    modal_loan.showModal()
+function closeModalLoan() {
+    const modalLoan = document.querySelector(".modalLoan")
+    modalLoan.close()
+    console.log('2');
 }
 
-function ModalLoanClose() {
-    modal_loan.close()
+closeButtonLoan.addEventListener('click', () => {
+    closeModalLoan()
+})
+
+const openButtonDevolution = document.querySelector('.open-modal-devolution')
+const closeButtonDevolution = document.querySelector('.close-modal-devolution')
+
+
+openButtonDevolution.addEventListener('click', () => {
+    showModalDe()
+})
+
+function showModalDe() {
+    const modalDevolution = document.querySelector(".modalDevolution")
+    modalDevolution.showModal()
+    console.log('1');
 }
 
-function ModaldevolutionClose() {
-    modal_devolution.close()
-}
-
+closeButtonDevolution.addEventListener('click', () => {
+    modalDevolution.close()
+})
